@@ -1,0 +1,156 @@
+body {
+  background-color:#49698C;
+  color:#FFF5E0;
+  font-family: "Exo 2";
+}
+
+.button {
+  font-family:"Merriweather";
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:capitalize;
+  background-color:#FF6969;
+  color:#fff7fe;
+  border:2px solid;
+  border-color:#F875AA;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  height:auto;
+  width:auto;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.button6 {
+  font-family:"Exo 2";
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:capitalize;
+  background-color:#49698C;
+  color:#fff7fe;
+  border:2px solid;
+  border-color:#263443;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  height:auto;
+  width:auto;
+  cursor:pointer;
+  text-decoration:none;
+  min-width: 200px;
+}
+
+.button2 {
+  font-family:"Exo 2";
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:capitalize;
+  background-color:#E6F2FF;
+  color:#263443;
+  border:2px solid;
+  border-color:#263443;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  cursor:pointer;
+  vertical-align:5%;
+  margin-bottom:-15px;
+}
+
+.button3 {
+  font-family:"Merriweather";
+  font-size:16px;
+  background-color:#fff7fe;
+  color:#c4214b;
+  border:2px solid;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  cursor:pointer;
+  text-align:center;
+  opacity:0.2;
+  border-color:#fff7fe;
+}
+
+.div1{
+  background-color:#E6F2FF;
+  flex-wrap: wrap;
+  width:auto;
+  border:2px solid;
+  border-color:#fff7fe;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+}
+
+.symbol{
+  max-width: 450px;
+  border:2px solid;
+  border-color:#fff7fe;
+  border-radius:4px;
+  margin: auto;
+  }
+  
+.table {
+  display: table;
+  margin: auto;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.logo {
+  vertical-align:middle;
+}
+
+.collapsible {
+  cursor: pointer;
+  font-size: 20px;
+  text-align:center;
+  background-color:#fff7fe;
+  color:#c4214b;
+  border-color:#fff7fe;
+}
+
+.active, .collapsible:hover {
+  background-color: #fff7fe;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  color:#fff7fe;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+  border-top: 1px solid;
+  border-color:#fff7fe;
+  background-color:#a6143a;
+  width:50%;
+}
+
+.dropdown-arrow {
+  height: 0;
+  width: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #333;
+  position: relative;
+  top: 45px;
+  left: 350px;
+}
+
+.user-id:activate .dropdown-arrow {
+  top: 35px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #333;
+  border-top: 10px solid transparent;
+}
+
+.buttonbox {
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+  border-top: 1px solid;
+  border-color:#fff7fe;
+  background-color:#a6143a;
+  width: 23%;
+}
+

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/decipher_logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2K Hunt</title>
+<!-- There is nothing in the html needed for ANY levels, the entire puzzle is just the text/files you've been provided. Good luck! -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    #background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/2k/decipher.png');
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px);
+        z-index: -1;
+    }
+    #quiz-container {
+        position: relative;
+        z-index: 1;
+        padding: 30px;
+        margin: 50px auto;
+        max-width: 300px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    center {
+        margin-top: 20px;
+    }
+    h2 {
+        color: #007bff;
+    }
+    p {
+        color: #666;
+    }
+    form {
+        margin-top: 20px;
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"] {
+        width: 200px;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        margin-top: 40px;
+        font-weight: bold;
+    }
+
+    /* Bounce animation for the result text */
+    .bounce {
+        animation: bounce 1s ease infinite alternate;
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+<div id="background-overlay"></div>
+<div id="quiz-container">
+    <center>
+        <h2>Level 1</h2>
+        <p>flag format: DCTF{answer}</p>
+        <p>it's spelled "ceasar" right?</p>
+        <form onsubmit="return checkAnswer();">
+            <label for="userInput">Enter Answer:</label><br>
+            <input type="text" id="userInput" name="userInput"><br>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="result"></p>
+    </center>
+</div>
+
+<script>
+    function decryptLink(input) {
+        try {
+            var decryptedBytes = CryptoJS.AES.decrypt("U2FsdGVkX19K8Pq9yEg841kj6q+fkZCbiPBpAKZYF2HXnb45aAGaOQGoPhAADFuXWiamlV+57uMWHb3iILSsEkl+rR/jHKX/7kt7aUnBhIaA1coA50AAX9pUfcsu2/FD", input);
+            var decryptedLink = decryptedBytes.toString(CryptoJS.enc.Utf8);
+            return decryptedLink;
+        } catch (e) {
+            return '';
+        }
+    }
+
+    function checkAnswer() {
+        var userInput = document.getElementById("userInput").value;
+        var decryptedLink = decryptLink(userInput);
+
+        if (decryptedLink) {
+            // Display success message and apply bounce animation
+            var resultText = document.getElementById("result");
+            resultText.innerText = "🎉 Congratulations! You've completed the level! 🎉";
+            resultText.classList.add("bounce");
+
+            // Redirect to the new site after a delay
+            setTimeout(function() {
+                window.location.href = decryptedLink;
+            }, 1500); // Redirect after 1.5 seconds
+
+            return false;
+        } else {
+            document.getElementById("result").innerText = "Incorrect!";
+            return false;
+        }
+    }
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+     crossorigin="anonymous"></script>
+<!-- vertical -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5556863026084584"
+     data-ad-slot="1283858161"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

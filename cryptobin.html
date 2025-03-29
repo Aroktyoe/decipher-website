@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<meta name="keywords" content="Cryptobin,secure pastebin,encrypted pastebin,encrypt pastebin,private pastebin,paste bin,pastebin,paste code,anonymous submission,data encryption,encrypt files,encryption software,secure,security,privacy,encryption,encrypt">
+	<meta name="description" content="Share data securely and anonymously with Cryptobin. The ultimate secure pastebin service since 2011.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Cryptobin - The Ultimate Secure Pastebin</title>
+
+	<link rel="stylesheet" href="https://decipher.neocities.org/cryptobin/bootstrap.min.css">
+	<link rel="stylesheet" href="https://decipher.neocities.org/cryptobin/fonts.css">
+	<link rel="stylesheet" href="https://decipher.neocities.org/cryptobin/styles.css">
+	<link rel="shortcut icon" href="https://decipher.neocities.org/cryptobin/favicon.ico">
+
+</head>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark py-md-4">
+			<div class="container">
+				<a class="navbar-brand" href="https://decipher.neocities.org/cryptobin">
+					<img class="img-fluid" src="https://decipher.neocities.org/cryptobin/logo.svg" alt="Cryptobin">
+				</a>
+				<button class="navbar-toggler border-0 p-1" type="button" aria-controls="header-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<img src="https://decipher.neocities.org/cryptobin/toggler.svg" alt="Menu">
+				</button>
+				<div class="collapse navbar-collapse flex-md-grow-0" id="header-navbar-collapse">
+					<ul class="navbar-nav mt-4 mb-3 my-md-0">
+						<li class="nav-item ml-md-3">
+							<a class="nav-link p-md-2" href="https://decipher.neocities.org/cryptobin">New paste</a>
+						</li>
+						<li class="nav-item ml-md-4">
+							<a class="nav-link p-md-2" href="https://decipher.neocities.org/cryptobin">FAQ</a>
+						</li>
+						<li class="nav-item ml-md-4">
+							<a class="nav-link p-md-2" href="https://decipher.neocities.org/cryptobin">Support</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<main class="bg-light overflow-hidden">
+
+		<noscript>
+			<aside class="my-5">
+				<div class="container">
+					<div class="alert alert-warning m-0" role="alert">Please enable JavaScript before continuing.</div>
+				</div>
+			</aside>
+		</noscript>
+
+		<aside class="my-5 d-none" id="message-wrapper">
+			<div class="container">
+				<div class="alert alert-danger m-0 d-none" role="alert"></div>
+				<div class="alert alert-warning m-0 d-none" role="alert"></div>
+				<div class="alert alert-info m-0 d-none" role="alert"></div>
+				<div class="alert alert-success m-0 d-none" role="alert"></div>
+			</div>
+		</aside>
+
+		<section class="my-5" id="content-paste">
+			<div class="container">
+				<h2 class="d-none">New paste</h2>
+				<form id="paste" method="POST" autocomplete="off">
+				
+					<div class="form-group">
+						<label for="paste-text">Paste your text here</label>
+						<textarea class="form-control" id="paste-text" name="pasteText" rows="10" autofocus></textarea>
+					</div>
+
+					<div id="paste-supplements">
+
+						<div class="form-group">
+							<label for="paste-password">Protect with a password</label>
+							<div class="input-group">
+								<input class="form-control rounded-pill" id="paste-password" name="pastePassword" type="password" aria-describedby="paste-generate-help">
+								<div class="input-group-append">
+									<button class="btn btn-secondary rounded-pill ml-2 px-md-5" id="paste-generate" type="button">Generate</button>
+								</div>
+							</div>
+							<small id="paste-generate-help" class="text-muted d-none d-md-inline">
+								<a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">AES-256</a> encryption is achieved client-side using <a href="https://crypto.stanford.edu/sjcl/" target="_blank" rel="noopener noreferrer">SJCL</a>.
+							</small>
+						</div>
+						<div class="row no-gutters mt-5">
+							<div class="col-md-4">
+								<button class="btn btn-primary btn-block rounded-pill" id="paste-submit" type="button">Bin it</button>
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-secondary btn-block rounded-pill mt-2 mt-md-0 ml-md-2" type="reset">Reset</button>
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="border-top text-muted text-center py-4">
+		<div class="container small">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-12 col-md-auto order-md-1">316,545 total pastes.</div>
+				<div class="col-12 col-md-auto mt-3 mt-md-0">&copy;&nbsp;2024&nbsp;Cryptobin. All&nbsp;rights&nbsp;reserved.</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://decipher.neocities.org/cryptobin/moment.min.js" integrity="" crossorigin="anonymous"></script>
+	<script src="https://decipher.neocities.org/cryptobin/sjcl.js" integrity="" crossorigin="anonymous">/* Stanford Javascript Crypto Library */</script>
+	<script src="https://decipher.neocities.org/cryptobin/aes.js" integrity="" crossorigin="anonymous">/* Legacy AES implementation from Movable Type */</script>
+	<script src="https://decipher.neocities.org/cryptobin/alerts.js" integrity="" crossorigin="anonymous"></script>
+	<script src="https://decipher.neocities.org/cryptobin/helpers.js" integrity="" crossorigin="anonymous"></script>
+	<script src="https://decipher.neocities.org/cryptobin/crypto.js" integrity="" crossorigin="anonymous">/* Core Cryptobin logic, code is commented and welcome to inspect. */</script>
+	<script src="https://decipher.neocities.org/cryptobin/events.js" integrity="" crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+     crossorigin="anonymous"></script>
+<!-- horizontal ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5556863026084584"
+     data-ad-slot="8801587236"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+
+</html>

@@ -273,6 +273,7 @@
   for (var i = 0; i < images.length; i++) {
     var fileName = images[i].src.split('/').pop().split('.')[0];
     images[i].insertAdjacentHTML('beforebegin', '<div>' + fileName + ':</div>');
+    images[i].src = 'https://decipher.wiki/symbols/' + fileName + '.png';
   }
 </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"

@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /2k/
-
-User-agent: ia_archiver
-Disallow: /2k/

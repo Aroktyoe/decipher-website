@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Elimination Tournament Chart</title>
+<style>
+    /* Add your CSS styling here */
+</style>
+</head>
+<body>
+<div id="tournament-chart"></div>
+
+<script>
+function generateDoubleEliminationChart() {
+    var players = parseInt(prompt("Enter the number of players:"));
+    if (isNaN(players) || players <= 0) {
+        alert("Please enter a valid number of players.");
+        return;
+    }
+    
+    var numRounds = Math.log2(players) + 1;
+    var totalPlayers = Math.pow(2, numRounds);
+    var byesNeeded = totalPlayers - players;
+    var seeds = [];
+    
+    // Generate seeds for players
+    for (var i = 1; i <= players; i++) {
+        seeds.push("Player " + i);
+    }
+
+    // Add byes if needed
+    for (var i = 0; i < byesNeeded; i++) {
+        seeds.push("Bye " + (i + 1));
+    }
+
+    // Shuffle seeds to randomize initial matchups
+    seeds.sort(() => Math.random() - 0.5);
+
+    // Generate winners bracket
+    var winnersBracket = [];
+    for (var i = 0; i < totalPlayers / 2; i++) {
+        winnersBracket.push([seeds[i], seeds[totalPlayers - 1 - i]]);
+    }
+
+    // Generate losers bracket
+    var losersBracket = [];
+    for (var i = 0; i < totalPlayers / 2; i++) {
+        losersBracket.push(["", ""]);
+    }
+
+    // Display the tournament chart
+    var chart = document.getElementById("tournament-chart");
+    chart.innerHTML = "<h2>Double Elimination Tournament Chart</h2>";
+    chart.innerHTML += "<h3>Winners Bracket</h3>";
+    chart.innerHTML += "<ul>";
+    winnersBracket.forEach(match => {
+        chart.innerHTML += "<li><input type='text' value='" + match[0] + "'> vs <input type='text' value='" + match[1] + "'></li>";
+    });
+    chart.innerHTML += "</ul>";
+
+    chart.innerHTML += "<h3>Losers Bracket</h3>";
+    chart.innerHTML += "<ul>";
+    losersBracket.forEach(match => {
+        chart.innerHTML += "<li><input type='text' value='" + match[0] + "'> vs <input type='text' value='" + match[1] + "'></li>";
+    });
+    chart.innerHTML += "</ul>";
+}
+
+// Generate chart on page load
+generateDoubleEliminationChart();
+</script>
+</body>
+</html>

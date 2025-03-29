@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="decipher_logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Exo 2' rel='stylesheet'>
+  <title>DECIPHER</title>
+  <style>
+    body {
+  background-color: #49698C;
+  color: #fff7fe;
+  font-family: "Exo 2";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+    }
+    .button-container {
+      margin-top: 10px;
+      align-items:center;
+      text-align:center;
+      justify-content:center;
+      flex-direction:horizontal;
+      display:flex;
+    }
+.button2 {
+  font-family:"Exo 2";
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:capitalize;
+  background-color:#E6F2FF;
+  color:#263443;
+  border:2px solid;
+  border-color:#263443;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  cursor:pointer;
+  vertical-align:5%;
+  margin-bottom:1px;
+  margin-top:10px;
+}
+    .symbol {
+      max-width: 400px;
+      height: auto;
+      border: 2px solid;
+      border-color: #fff7fe;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      align-items:center;
+      justify-content: center;
+      text-align:center;
+      font-family:"Exo 2";
+    }
+    .symbol-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+     crossorigin="anonymous"></script>
+<!-- vertical -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5556863026084584"
+     data-ad-slot="1283858161"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<center>
+    <a href="https://decipher.wiki/" class="button2" style="text-decoration:none;"><strong>Home</strong></a>
+    <a href="https://discord.gg/GgRAYJesyY" style="text-decoration: none; display: inline-block;" class="button2">
+  <img src="/discordlogo.jpg" class="logo" style="height: 20px; width: 20px; margin-top:px; margin-bottom:-5px;">
+  <strong>Join DECIPHER Discord here</strong>
+</a>
+</center>
+<nav class="table">
+  <div class="symbol-container">
+    <ul>
+      <img src="/people/alan_turing_and_marian_rejewski_enigma.png" class="symbol">
+      <img src="https://decipher.wiki/people/auguste_kerckhoff.png" class="symbol">
+      <img src="https://decipher.wiki/people/blaise-de-vigenere_vigenere_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/charles_babbage.png" class="symbol">
+      <img src="https://decipher.wiki/people/emile_baudot_baudot_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/felix_delastelle_bifid_trifid_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/francis_bacon_baconian_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/francis_beaufort_beaufort_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/fritz_nebel_adfgxv_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/john-francis-byrne_chao_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/julius_caesar_caesar_cipher.png" class="symbol">
+      <img src="https://decipher.wiki/people/leonardo_fibonacci.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/napoleon_bonaparte_pigpen_cipher.png" class="symbol">
+      <img src="https://decipher.wiki/people/samuel_morse_morse_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/sir_charles_wheatstone_playfair_cipher.png" class="symbol">
+      <img src="https://decipher.wiki/people/thomas_jefferson_jeffersons_wheel_cipher.jpg" class="symbol">
+      <img src="https://decipher.wiki/people/william_friedman_and_frank_rowlett_purple_machine.png" class="symbol">
+      <img src="https://decipher.wiki/people/zodiac_killer_zodiac_cipher.jpg" class="symbol">
+    </ul>
+  </div>
+</nav>
+<script>
+  var images = document.querySelectorAll('.symbol');
+  for (var i = 0; i < images.length; i++) {
+    var fileName = images[i].src.split('/').pop().split('.')[0];
+    images[i].insertAdjacentHTML('beforebegin', '<div>' + fileName + ':</div>');
+  }
+</script>
+</body>
+</html>

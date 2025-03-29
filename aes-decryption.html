@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="decipherfavicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES decryption</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Exo 2' rel='stylesheet'>
+    <style>
+        #password::placeholder, #text::placeholder {
+            font-family: "Exo 2";
+        }
+        #result {
+            opacity: 1;
+        }
+        #result.unable-to-decrypt {
+            opacity: 0.65;
+            resize: none;
+        }
+        body {
+            font-family: "Exo 2";
+            background-color: #49698C;
+            padding: 20px;
+            margin-top: -20px;
+        }
+        .container {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top:15px;
+            width:80%;
+            margin: auto;
+            max-width:1000px;
+        }
+        .title {
+            font-size: 34px;
+            font-weight: bold;
+            font-style: italic;
+            padding-top: 0.2em;
+            padding-bottom: 0.5em;
+        }
+.button {
+  font-family:"Exo 2";
+  font-size:16px;
+  letter-spacing:2px;
+  text-transform:capitalize;
+  background-color:#E6F2FF;
+  color:#263443;
+  border:2px solid;
+  border-color:#263443;
+  padding:0.25em 0.5em;
+  border-radius: 4px;
+  cursor:pointer;
+  vertical-align:5%;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+        .button.encrypt {
+            background-color: #ff551c;
+            color: #fff;
+            width:120px;
+            height:30px;
+            margin-right:5px;
+            font-size:15px;
+        }
+        .button.decrypt {
+            background-color: #1f1e1d;
+            color: #fff;
+            width:120px;
+            height:30px;
+            font-size:15px;
+        }
+        #password {
+            width: 300px;
+            max-width: 100%;
+            padding: 5px;
+            border: 0.5px solid #000;
+            font-size: 14px;
+            border-radius:2px;
+            margin-left:0px;
+            margin-top:10px;
+        }
+        .minibox {
+            margin-top:15px;
+            margin-left:0px;
+            margin-right:0px;
+            border-color:#9e9e9e;
+        }
+        .minibox textarea {
+            width: 100%;
+        }
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <a href="https://decipher.wiki/" class="button" style="text-decoration:none;"><strong>Home</strong></a>
+        <a href="https://discord.gg/GgRAYJesyY" style="text-decoration: none; display: inline-block;" class="button">
+            <img src="/discordlogo.jpg" class="logo" style="height: 20px; width: 20px; margin-top:px; margin-bottom:-5px;">
+            <strong>Join DECIPHER Discord here</strong>
+        </a>
+    </center>
+    <div class="container">
+        <div class="title">AES encryption and decryption</div>
+        <div class="left"><label for="text">Encrypt and decrypt text with AES algorithm</label><br></div>
+        <div class="minibox"><textarea id="text" rows="7" placeholder="Plain or encrypted text here"></textarea><br></div>
+        <input type="text" id="password" placeholder=" Key of the encryption" autocomplete="off"><br>
+        <div class="button-group">
+            <button onclick="encrypt()" class="button encrypt">Encrypt</button>
+            <button onclick="decrypt()" class="button decrypt">Decrypt</button>
+        </div>
+        <label id="resultLabel" for="result" style="display:none;">Result:</label><br>
+        <textarea id="result" rows="4" cols="50" style="display:none;" readonly></textarea>
+    </div>
+    <script>
+        function encrypt() {
+            var text = document.getElementById("text").value;
+            var password = document.getElementById("password").value;
+            var paddedPassword = padPassword(password);
+            paddedPassword = CryptoJS.enc.Utf8.parse(paddedPassword);
+            var iv = CryptoJS.enc.Hex.parse("39bae7d6c97a4789fd1c29c6f14ce10b");
+            var encrypted = CryptoJS.AES.encrypt(text, paddedPassword, { iv: iv }).toString();
+            document.getElementById("result").value = encrypted;
+            document.getElementById("result").classList.remove("unable-to-decrypt");
+            document.getElementById("result").style.opacity = 1;
+            document.getElementById("resultLabel").style.display = "block";
+            document.getElementById("result").style.display = "block";
+        }
+
+        function decrypt() {
+            var encryptedText = document.getElementById("text").value;
+            var password = document.getElementById("password").value;
+            var paddedPassword = padPassword(password);
+            paddedPassword = CryptoJS.enc.Utf8.parse(paddedPassword);
+            var iv = CryptoJS.enc.Hex.parse("39bae7d6c97a4789fd1c29c6f14ce10b");
+            try {
+                var decrypted = CryptoJS.AES.decrypt(encryptedText, paddedPassword, { iv: iv }).toString(CryptoJS.enc.Utf8);
+                if (decrypted === '') {
+                    throw new Error('Empty decryption result');
+                }
+                document.getElementById("result").value = decrypted;
+                document.getElementById("result").readOnly = true;
+                document.getElementById("result").style.opacity = 1;
+            } catch (error) {
+                document.getElementById("result").value = "Unable to decrypt";
+                document.getElementById("result").readOnly = false;
+                document.getElementById("result").classList.add("unable-to-decrypt");
+                document.getElementById("result").style.opacity = 0.65;
+            }
+            document.getElementById("resultLabel").style.display = "block";
+            document.getElementById("result").style.display = "block";
+        }
+
+        function padPassword(password) {
+            var paddedPassword = password;
+            var padding = "DECIPHER";
+            while (paddedPassword.length < 32) {
+                paddedPassword += padding;
+                if (paddedPassword.length > 32) {
+                    paddedPassword = paddedPassword.substring(0, 32);
+                }
+            }
+            return paddedPassword;
+        }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+     crossorigin="anonymous"></script>
+<!-- horizontal ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5556863026084584"
+     data-ad-slot="8801587236"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
+

@@ -74,6 +74,7 @@
 </style>
 </head>
 <body>
+<!--#include virtual="/header.html" -->
 <div class="space">
     <a href="https://decipher.wiki/" class="button"><strong>Home</strong></a>
     <a href="https://discord.gg/GgRAYJesyY" class="button">
@@ -142,3 +143,4 @@ document.querySelectorAll('.image-container').forEach(item => {
 </script>
 </body>
 </html>
+

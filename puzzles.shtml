@@ -100,6 +100,9 @@ body {
 </style>
 
 </head>
+<body>
+<!--#include virtual="/header.html" -->
+
     <center>
     <a href = "https://decipher.wiki/" class="button2" style="text-decoration:none;"><strong>Home</strong></a>
 <a href="https://discord.gg/GgRAYJesyY" style="text-decoration: none; display: inline-block;" class="button2">
@@ -330,7 +333,7 @@ The keys to each sentence can be made of any character and not necessarily lette
     }
   });
 </script>
-<body><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
      crossorigin="anonymous"></script>
 <!-- vertical -->
 <ins class="adsbygoogle"
@@ -343,4 +346,5 @@ The keys to each sentence can be made of any character and not necessarily lette
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </body>
-</html>
+</html
+

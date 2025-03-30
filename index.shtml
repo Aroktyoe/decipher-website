@@ -14,6 +14,7 @@
      crossorigin="anonymous"></script>
   </head>
   <body>
+<!--#include virtual="/header.html" -->
     <center><img src="https://decipher.wiki/decipher.png" style="height:65px; width:280px;">
     <style>
   p {
@@ -77,3 +78,4 @@
 </script>
   </body>
 </html>
+

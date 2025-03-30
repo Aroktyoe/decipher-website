@@ -8,6 +8,7 @@
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
+<!--#include virtual="/header.html" -->
   <!-- !TAH ODHD QE FD WLC PWY OI XFM ZDGT X -->
     <center>
     <a href = "https://decipher.wiki/" class="button2" style="text-decoration:none;"><strong>Home</strong></a>
@@ -18,3 +19,4 @@
 <p>In case you get hungry.</p>
   </body>
 </html>
+

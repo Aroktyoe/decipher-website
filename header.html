@@ -1,0 +1,29 @@
+<!-- /var/www/html/header.html -->
+<div id="header-user-info" style="color: white; font-weight: bold; margin-bottom: 10px;"></div>
+
+<a href="/">Home</a>
+<button onclick="logout()">Logout</button>
+
+<script>
+  async function getUserInfo() {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    const res = await fetch("/me", {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const data = await res.json();
+    if (data.username) {
+      document.getElementById("header-user-info").innerText =
+        "🔒 Logged in as: " + data.username + " (" + data.email + ")";
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("token");
+    location.reload();
+  }
+
+  window.onload = getUserInfo;
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>good luck</title>
+    <style>
+        body, html {
+        color: white;
+    }
+    </style>
+      
+    <script>
+        window.onload = function() {
+            attemptUnlock();
+        };
+
+        function unhex(data) {
+            return new Uint8Array(data.match(/[\da-f]{2}/gi).map(function (h) {
+                return parseInt(h, 16);
+            }));
+        }
+
+        async function attemptUnlock() {
+            const password = prompt("You found the needle! Enter the Needle Key:");
+            const outputElement = document.getElementById('output');
+
+            if (password !== null) {
+                const pbkdf = {
+                    salt: "07470ac8db53649141cf1d36e87adefe",
+                    iterations: 20000
+                };
+
+                const gcm = {
+                    nonce: "07470ac8db53649141cf1d36e87adefe",
+                    header: "07470ac8db53649141cf1d36e87adefe",
+                    tag: "85bee93ccf37930c85db63ecd79fc3a2"
+                };
+
+                const ciphertext = "7169781d0e7310c85ad8c8afca96b8e8ae6eef0e10cb39826dad5c433d00e6b80503dc82a3ad0622b7397ee71b6f5ee2db7384219138e644fc6a6ff56d4c7433db6a2105e991df1f484cfd8113bdb8219a";
+
+                try {
+                    const keydata = await window.crypto.subtle.importKey(
+                        "raw",
+                        (new TextEncoder()).encode(password),
+                        { name: "PBKDF2" },
+                        false,
+                        ["deriveBits", "deriveKey"]
+                    );
+
+                    const key = await window.crypto.subtle.deriveKey(
+                        {
+                            "name": "PBKDF2",
+                            salt: unhex(pbkdf.salt),
+                            "iterations": pbkdf.iterations,
+                            "hash": "SHA-256"
+                        },
+                        keydata,
+                        { "name": "AES-GCM", "length": 128 },
+                        true,
+                        ["encrypt", "decrypt"]
+                    );
+
+                    const decryptedData = await window.crypto.subtle.decrypt(
+                        {
+                            name: "AES-GCM",
+                            iv: unhex(gcm.nonce),
+                            additionalData: new Uint8Array(), // If not using AAD, pass an empty buffer.
+                            tagLength: 128, // bits
+                        },
+                        key,
+                        unhex(ciphertext + gcm.tag)
+                    );
+
+                    outputElement.textContent = (new TextDecoder()).decode(decryptedData);
+                } catch (e) {
+                    console.error(e);
+                    outputElement.textContent = "Incorrect password or error decrypting.";
+                }
+            } else {
+                outputElement.textContent = "No password entered.";
+            }
+        }
+    </script>
+</head>
+<body>
+<!--#include virtual="/header.html" -->
+<h1><a href="https://decipher.wiki/notthenextstep-3.gif" style="color: black;">Good luck!</a></h1>
+    <div id="output"></div>
+</body>
+</html>
+

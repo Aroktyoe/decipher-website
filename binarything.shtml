@@ -41,6 +41,7 @@
 </style>
 </head>
 <body>
+<!--#include virtual="/header.html" -->
 <div id="haystack" onclick="checkClick(event)">
     <div id="needle" onclick="needleClick(event)"></div>
 </div>
@@ -150,3 +151,4 @@ function showMessage(message, x, y) {
 </script>
 </body>
 </html>
+

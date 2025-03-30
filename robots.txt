@@ -1,5 +1,9 @@
 User-agent: *
 Disallow: /2k/
+Disallow: /3k/
+Disallow /4k/
 
 User-agent: ia_archiver
 Disallow: /2k/
+Disallow: /3k/
+Disallow /4k/

@@ -27,3 +27,8 @@ __pycache__/
 KNXXE4TZFQQG4TZAMNWFKZJANBSVEZJAORXSAYTFEBBWYYLJNVCWILQ.png
 PECIPHER coin.png
 website_copy.zip
+/backend/.env
+/backend/app.py
+/backend/templates/token-bridge.html
+/backend/routes/me.js
+/backend/routes/user.js

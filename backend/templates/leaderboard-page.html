@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+  <title>Leaderboard - DECIPHER</title>
+  <style>
+    body {
+      font-family: "Exo 2", sans-serif;
+      background-color: #49698C;
+      color: black;
+      padding: 20px;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      background: #E6F2FF;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      color: black;
+    }
+
+    h1 {
+      text-align: center;
+      color: #263443;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      color: black;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      color: black !important;
+    }
+
+    th {
+      background-color: #49698C;
+      color: black !important;
+    }
+
+    tr {
+      color: black;
+    }
+
+    td {
+      background-color: #f2f8ff;
+      color: black !important;
+    }
+
+    .button2 {
+      font-family: "Exo 2";
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: capitalize;
+      background-color: #E6F2FF;
+      color: #263443;
+      border: 2px solid;
+      border-color: #263443;
+      padding: 0.25em 0.5em;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+
+    .button2:hover {
+      background-color: #49698C;
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Leaderboard</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Puzzles Completed</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-list">
+        <!-- Leaderboard data will be inserted here -->
+      </tbody>
+    </table>
+
+    <a href="/puzzles.html" class="button2" style="text-decoration: none;">
+      Back to Puzzles
+    </a>
+  </div>
+
+  <script>
+    async function fetchLeaderboard() {
+      const res = await fetch("/leaderboard");
+      if (res.ok) {
+        const data = await res.json();
+        const leaderboard = data.leaderboard;
+        const leaderboardList = document.getElementById("leaderboard-list");
+
+        leaderboard.forEach((entry, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td style="color: black !important;">${index + 1}</td>
+          <td style="color: black !important;">${entry.username}</td>
+          <td style="color: black !important;">${entry.completed_puzzles}</td>
+         `;
+
+          leaderboardList.appendChild(row);
+        });
+      } else {
+        alert("Failed to load leaderboard data.");
+      }
+    }
+
+    window.onload = fetchLeaderboard;
+  </script>
+</body>
+</html>

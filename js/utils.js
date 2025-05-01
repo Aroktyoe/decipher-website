@@ -125,27 +125,18 @@ export function themeToggle() {
 
 export function buttonEvents(buttons) {
 
-    console.log(document.getElementById("coinflipButton"))
     document.getElementById("coinflipButton").addEventListener("click", (event) => {
         playCoinflip(event);
     });
-
-    console.log(document.getElementById("bet-button"))
     document.getElementById("bet-button").addEventListener("click", () => {
         placeRouletteBet();
     });
-
-    console.log(document.getElementById("claimDailyButton"))
     document.getElementById("claimDailyButton").addEventListener("click", (event) => {
         claimDaily(event)
     });
-
-    console.log(document.getElementById("slotsButton"))
     document.getElementById("slotsButton").addEventListener("click", (event) => {
         playSlots(event)
     });
-
-    console.log(document.getElementById("blackjack-button"))
     document.getElementById("blackjack-button").addEventListener("click", (event) => {
         startBlackjack(event)
     });

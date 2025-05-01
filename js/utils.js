@@ -6,6 +6,9 @@ import { getCSRFToken } from "./api.js";
 import { fetchBalance } from "./api.js";
 
 
+export let cooldown = false;
+
+
 export function startCooldown(button) {
     cooldown = true;
     button.disabled = true;

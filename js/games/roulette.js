@@ -1,5 +1,6 @@
 import { disableBetButtons, enableBetButtons } from '../utils.js';
 import { getCSRFToken } from "../api.js";
+import { socket } from "../sockets.js";
 
 let countdownInterval;
 let spinInProgress = false;
@@ -32,11 +33,12 @@ export async function placeRouletteBet() {
     
     try {
       console.log("Fetching /casino/roulette/bet with:", color, bet);
+      const token = await getCSRFToken();
       const res = await fetch('/casino/roulette/bet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': getCSRFToken()
+          'X-CSRF-TOKEN': token
         },
         credentials: 'include',
         body: JSON.stringify({ color, amount: bet })
@@ -67,8 +69,8 @@ export async function fetchYourBets() {
   }
 }
 
-export function startCountdown(countdown, countdownInterval) {
-    // Stop any existing countdown interval
+export function startCountdown(countdown) {
+  // Stop any existing countdown interval
     clearInterval(countdownInterval);
 
     // Start a new countdown
@@ -108,13 +110,14 @@ export function updateRouletteTimer(seconds) {
   }, 1000);
 }
 
-export function removeBet(color) {
+export async function removeBet(color) {
   // Send request to server to remove the bet
+  const token = await getCSRFToken();
   fetch('/casino/roulette/remove', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCSRFToken()
+        'X-CSRF-TOKEN': token
       },
       credentials: 'include',
       body: JSON.stringify({ color })
@@ -125,7 +128,7 @@ export function removeBet(color) {
   });
 }
 
-export function addBetDisplay(color, amount, username = currentUsername) {
+export function addBetDisplay(color, amount, username = window.currentUsername) {
   const isOwnBet = username === currentUsername;
   const betDivId = `bet-${username}-${color}`;
   let betDiv = document.getElementById(betDivId);

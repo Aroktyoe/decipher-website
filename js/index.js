@@ -22,7 +22,7 @@ window.socket = io("https://decipher.wiki", {
   withCredentials: true
 });
 
-window.currentUsername = null;
+export let currentUsername = null;
 window.cooldown = false;
 
 document.addEventListener("DOMContentLoaded", async () => {

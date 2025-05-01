@@ -23,11 +23,12 @@ export async function playSlots(event) {
     const symbols = ['🍒', '🍋', '🍉', '⭐', '🔔'];
   
     // Fetch result early
+    const token = await getCSRFToken();
     const res = await fetch('/casino/play/slots', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCSRFToken()
+        'X-CSRF-TOKEN': token
       },
       credentials: 'include',
       body: JSON.stringify({ bet })

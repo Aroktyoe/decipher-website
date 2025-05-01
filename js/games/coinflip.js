@@ -1,4 +1,5 @@
 import { fetchBalance, getCSRFToken } from "../api.js";
+import { startCooldown } from "../utils.js";
 
 
 
@@ -10,12 +11,12 @@ export async function playCoinflip(event) {
     const choice = document.getElementById('coinflip-side').value;
     if (!amount || amount <= 0) return alert('Enter a valid bet amount.');
   
-  
+    const token = await getCSRFToken();
     const res = await fetch('/casino/coinflip/create', { // <-- FIXED
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCSRFToken()
+        'X-CSRF-TOKEN': token
       },
       credentials: 'include',
       body: JSON.stringify({ amount, choice })
@@ -52,11 +53,12 @@ export async function loadOpenCoinflips() {
 }
 
 export async function removeCoinflip(id) {
+  const token = await getCSRFToken();
   const res = await fetch('/casino/coinflip/remove', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': getCSRFToken()
+      'X-CSRF-TOKEN': token
     },
     credentials: 'include',
     body: JSON.stringify({ flip_id: id })
@@ -73,11 +75,12 @@ export async function removeCoinflip(id) {
 }
 
 export async function joinCoinflip(id) {
+  const token = await getCSRFToken();
   const res = await fetch('/casino/coinflip/join', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': getCSRFToken()
+      'X-CSRF-TOKEN': token
     },
     credentials: 'include',
     body: JSON.stringify({ id })

@@ -1,19 +1,19 @@
 import { fetchUser, fetchHeader, fetchBalance, getCSRFToken } from "../api.js";
-
+import { startCooldown } from "../utils.js";
 
 
 export async function startBlackjack(event) {
-    if (cooldown) return;
     startCooldown(event.target);
   
     const bet = parseInt(document.getElementById('blackjack-bet').value);
     if (!bet || bet <= 0) return alert('Enter a valid bet amount.');
   
+    const token = await getCSRFToken();
     const res = await fetch('/casino/play/blackjack/start', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCSRFToken()
+        'X-CSRF-TOKEN': token
       },
       credentials: 'include',
       body: JSON.stringify({ bet })
@@ -24,11 +24,12 @@ export async function startBlackjack(event) {
 }
   
 export async function blackjackAction(action) {
+    const token = await getCSRFToken();
     const res = await fetch('/casino/play/blackjack/action', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': getCSRFToken()
+        'X-CSRF-TOKEN': token
       },
       credentials: 'include',
       body: JSON.stringify({ action })

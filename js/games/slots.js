@@ -1,6 +1,5 @@
 import { getCSRFToken } from "../api.js";
-
-
+import { delayedBalanceUpdate } from "../utils.js";
 
 export async function playSlots(event) {
     if (cooldown) return;

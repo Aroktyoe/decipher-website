@@ -1,7 +1,7 @@
 import { disableBetButtons, enableBetButtons } from '../utils.js';
 import { getCSRFToken } from "../api.js";
 
-
+let countdownInterval;
 let spinInProgress = false;
 
 export function startNewSpin() {

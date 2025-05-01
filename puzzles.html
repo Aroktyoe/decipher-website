@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <link rel="icon" href="decipher_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <title>DECIPHER - Puzzles</title>
+  <meta name="description" content="Test your decoding skills with our extremely hard puzzles!">
+  <meta name="keywords" content="decoding, decoding puzzle, cryptography, cryptography puzzles, puzzles, hard puzzles, iq test, hardest puzzle, hardest puzzle in the world, deciphering puzzles">  
+  <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>-->
+</head>
+<style>
+  /* Modern redesign for DECIPHER website */
+  :root {
+    --primary-color: #121212;
+    --secondary-color: #1e1e1e;
+    --accent-color: #bb86fc;
+    --text-light: #ffffff;
+    --text-dark: #121212;
+    --background-light: #e0e0e0;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+    --nav-height: 70px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-family: 'Exo 2', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    color: #cfa9fd;
+  }
+  
+  /* Navigation header */
+  header {
+    width: 100%;
+    background-color: var(--primary-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0;
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Logo styling */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  .left-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-start;
+    flex: 1;
+  }
+  
+  .right-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .logo-container a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .logo-icon {
+    height: 40px;
+    width: 40px;
+    filter: brightness(1.2) contrast(1.1);
+    transition: var(--transition);
+  }
+  
+  .logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-left: 10px;
+    letter-spacing: 1px;
+  }
+  
+  /* Discord button */
+  .discord-button {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  .discord-button button {
+    background-color: #5865F2;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+  }
+  
+  .discord-button button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Navigation bar */
+  .nav-container {
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 0;
+  }
+  
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .main-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  .main-nav ul li {
+    position: relative;
+  }
+  
+  .main-nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+  }
+  
+  .main-nav ul li a:hover,
+  .main-nav ul li a.active {
+    color: var(--accent-color);
+    background-color: rgba(187, 134, 252, 0.1);
+  }
+  
+  .main-nav ul li a.active {
+    position: relative;
+  }
+  
+  .main-nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 3px;
+    background-color: var(--accent-color);
+  }
+  
+  /* Theme toggle */
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .theme-toggle i {
+    color: var(--text-light);
+    font-size: 18px;
+  }
+  
+  /* Main content area */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  /* Card styling */
+  .div1 {
+    background-color: rgba(30, 30, 30, 0.9);
+    width: 100%;
+    max-width: 1000px;
+    border: none;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 20px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Headings and text */
+  h1 {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  h1::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  h2 {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+  }
+  
+  /* Buttons */
+  button.button6 {
+    background-color: rgba(40, 40, 40, 0.95);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    font-weight: 600;
+    margin: 10px 5px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    min-width: 250px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  button.button6:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    background-color: rgba(60, 60, 60, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Search bar */
+  .search-container {
+    position: relative;
+    margin: 30px auto;
+    max-width: 600px;
+    width: 90%;
+  }
+  
+  .search-container input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(40, 40, 40, 0.9);
+    color: var(--text-light);
+    font-size: 16px;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .search-container input:focus {
+    outline: none;
+    background-color: rgba(50, 50, 50, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--accent-color);
+  }
+  
+  .search-container .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-size: 18px;
+    pointer-events: none;
+  }
+  
+  
+  /* Categories */
+  .tool-categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .category {
+    padding: 10px 20px;
+    background-color: rgba(40, 40, 40, 0.9);
+    color: var(--text-light);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .category:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .category.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Tools grid */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .tool-item {
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .tool-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .tool-item.featured {
+    border: 2px solid var(--accent-color);
+  }
+  
+  .tool-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tool-content h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  
+  .tool-content p {
+    margin-bottom: 20px;
+    flex: 1;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+  }
+  
+  .tool-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tool-category {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  
+  .tool-badge {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  
+  .tool-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+  
+  .tool-link:hover {
+    background-color: #cfa9fd;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .tool-link i {
+    margin-left: 8px;
+  }
+  
+  .highlight {
+    background-color: rgba(187, 134, 252, 0.2);
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    background-color: var(--primary-color);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .contact-info {
+    margin-bottom: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-info p {
+    margin: 8px 0;
+    opacity: 0.8;
+    font-size: 14px;
+  }
+  
+  /* Mobile menu */
+  .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
+  .hamburger-menu span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-light);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+  
+  .mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mobile-nav ul li {
+    margin-bottom: 15px;
+  }
+  
+  .mobile-nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block;
+    transition: var(--transition);
+  }
+  
+  .mobile-nav ul li a:hover {
+    color: var(--accent-color);
+  }
+  
+  /* Loading spinner */
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    pointer-events: none;
+  }
+  
+  .loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 100;
+  }
+
+  .puzzle-content {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.award {
+  color: #f1c40f;
+}
+
+
+.puzzle-dropdown {
+  background-color: rgba(40, 40, 40, 0.95);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px 25px;
+  font-weight: 600;
+  margin: 10px 0;
+  width: 100%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.puzzle-dropdown:hover {
+  transform: translateY(-5px);
+  background-color: rgba(60, 60, 60, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+  
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Light theme */
+  body.light-theme {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+  }
+  
+  body.light-theme header,
+  body.light-theme footer {
+    background-color: #f1f1f1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+  }
+  
+  body.light-theme .nav-container {
+    background-color: #e1e1e1;
+  }
+  
+  body.light-theme .main-nav ul li a {
+    color: var(--text-dark);
+  }
+  
+  body.light-theme .div1 {
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  body.light-theme h1,
+  body.light-theme h2 {
+    color: var(--text-dark);
+  }
+  
+  body.light-theme .subtitle {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  body.light-theme .tool-content h3 {
+    color: var(--accent-color);
+  }
+  
+  body.light-theme .tool-content p {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  body.light-theme .tool-item {
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  body.light-theme .search-container input {
+    background-color: #ffffff;
+    color: var(--text-dark);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  body.light-theme .category {
+    background-color: #e0e0e0;
+    color: var(--text-dark);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  body.light-theme .theme-toggle {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  body.light-theme .theme-toggle i {
+    color: var(--text-dark);
+  }
+  
+  body.light-theme .username {
+    color: var(--text-dark);
+  }
+  
+  body.light-theme .logo-text {
+    color: var(--text-dark);
+  }
+  
+  /* Ad container */
+  .ad-container {
+    margin: 30px auto;
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .main-nav ul li a {
+      padding: 10px 15px;
+      font-size: 15px;
+    }
+    
+    .tools-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .hamburger-menu {
+      display: flex;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+    }
+    
+    .logo-icon {
+      height: 35px;
+      width: 35px;
+    }
+    
+    .discord-button {
+      margin-right: 40px;
+    }
+    
+    .theme-toggle {
+      margin-left: auto;
+    }
+    
+    .nav-container {
+      display: none;
+    }
+    
+    .mobile-nav {
+      display: block;
+    }
+    
+    .tools-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .tool-categories {
+      gap: 8px;
+    }
+    
+    .category {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+    }
+    
+    .div1 {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .tool-categories {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .category {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+    
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .tool-item {
+      margin-bottom: 15px;
+    }
+    
+    .search-container {
+      width: 100%;
+    }
+    
+    .back-to-top {
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+    }
+  
+    #header-auth-slot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+  }
+  
+  #header-auth-slot a,
+  #header-auth-slot button {
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  #header-auth-slot a:hover,
+  #header-auth-slot button:hover {
+    background-color: #a46bf9;
+  }
+}
+</style>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+  <header>
+    <div class="header-container">
+      <div id="header-auth-slot"></div>
+      <div class="logo-container">
+        <a href="/">
+          <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+          <span class="logo-text">DECIPHER</span>
+        </a>
+      </div>
+      <div class="right-header">
+        <div class="discord-button">
+          <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+            <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+            Join Discord
+          </button>
+        </div>
+        <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+        <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <div class="nav-inner">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/onlinetools">Tools</a></li>
+          <li><a href="/symbols-list">Symbols</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/cryptographers">Cryptographers</a></li>
+          <li><a href="/puzzles" class="active">Puzzles</a></li>
+          <li><a href="/dictionary">Dictionary</a></li>
+          <li><a href="/aes-decryption">AES</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/onlinetools">Tools</a></li>
+      <li><a href="/symbols-list">Symbols</a></li>
+      <li><a href="/ciphers">Ciphers</a></li>
+      <li><a href="/cryptographers">Cryptographers</a></li>
+      <li><a href="/puzzles">Puzzles</a></li>
+      <li><a href="/dictionary">Dictionary</a></li>
+      <li><a href="/aes-decryption">AES</a></li>
+      <li><a href="/get-started">Get Started</a></li>
+    </ul>
+  </div>
+
+  <style>
+    .ad-fixed {
+      position: absolute;
+      top: 120px;
+      width: 160px;
+      height: 600px;
+      z-index: 0;
+    }
+    .ad-left { left: 10px; }
+    .ad-right { right: 10px; }
+  
+    .ad-wrapper {
+      position: relative;
+      width: 160px;
+      height: 600px;
+      z-index: 1;
+    }
+  
+    .ad-wrapper ins {
+      position: relative;
+      z-index: 2;
+    }
+  
+    .ad-placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      padding: 10px;
+      border: 2px dotted purple;
+      color: purple;
+      background: rgba(187, 134, 252, 0.05);
+      text-align: center;
+      font-size: 13px;
+      font-style: italic;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  
+    @media (max-width: 1300px) {
+      .ad-fixed {
+        display: none;
+      }
+    }
+  </style>
+  <!--
+  <div class="ad-fixed ad-left">
+    <div class="ad-wrapper">
+      <div class="ad-placeholder">ad would go here without adblocker :)</div>
+      <ins class="adsbygoogle"
+           style="display:block; height:600px; width:160px;"
+           data-ad-client="ca-pub-5556863026084584"
+           data-ad-slot="1283858161"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+    </div>
+  </div>
+  
+  <div class="ad-fixed ad-right">
+    <div class="ad-wrapper">
+      <div class="ad-placeholder">ad would go here without adblocker :)</div>
+      <ins class="adsbygoogle"
+           style="display:block; height:600px; width:160px;"
+           data-ad-client="ca-pub-5556863026084584"
+           data-ad-slot="1283858161"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+    </div>
+  </div>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.ad-wrapper').forEach(wrapper => {
+        const ad = wrapper.querySelector('ins');
+        const placeholder = wrapper.querySelector('.ad-placeholder');
+        if (!ad || ad.offsetHeight === 0 || getComputedStyle(ad).display === 'none') {
+          if (placeholder) {
+            placeholder.style.zIndex = '2';
+            placeholder.style.opacity = '1';
+            placeholder.style.pointerEvents = 'auto';
+          }
+        }
+      });
+    });
+  </script>
+  -->
+
+  <main>
+    <h1>Server Puzzles</h1>
+    <p class="subtitle">Solve puzzles to unlock special Discord roles</p>
+    <a href="/leaderboard-page" class="tool-link" style="margin: 20px auto 0; display: inline-block;">Leaderboard</a>
+    <div class="div1">
+
+       <!-- 4K Puzzle -->
+       <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Medium+ - The 4K Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <p>WW91J2xsIG5lZWQgdG8gMTAwJSBtZSB0byBtb3ZlIG9uISB1Z2djZjovL3FycHZjdXJlLmp2eHYvNHgvcGJieHZyX3B5dnB4cmUvcXJwdmN1cmVfcHl2cHhyZV90bnpyX3NiZV80eCA=</p>
+          <p>Role reward: <span class="award">@4K Award</span></p>
+          <form id="puzzle-form-4k" onsubmit="submitAnswer(event, '4k')">
+            <input type="text" id="answer-4k" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+
+       <!-- 3K Puzzle -->
+       <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Hard - The 3K Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <p>==wM1EDIzQTMgEDNxACN2EDIzYTMgIjNxASN0EDIwUTMgAjNxASM1EDIzQTMgczMxASN0EDIwUTMgQjNxAyNzEDI1QTMgQjNxASN0EDI0UTMgAjNxASN1EDI3UTMgMDNxAyN1AyM1EDIzYDI3UDI3QTMgIjNxAyN1EDI2UDIzYTMgUDNxASM1EDI0YTMgETNxAyM0EDI3UTMgUDNxAiN1EDI2UDIyYTMgUDNxACM1EDIwYTMgETNxAyM0EDI1QTMgQDNxAyN1AyN1AiM3AyM2EDIwYTMgQjNxACN2EDIwUTM</p>
+          <p>Role reward: <span class="award">@3K Award</span></p>
+          <form id="puzzle-form-3k" onsubmit="submitAnswer(event, '3k')">
+            <input type="text" id="answer-3k" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- 2K Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Extreme++ - The 2K Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <a href="https://decipher.wiki/2k/info">The 2K Hunt</a>
+          <p>(There are 25 levels)</p>
+          <p>Role reward: <span class="award">@2K Award</span></p>
+          <form id="puzzle-form-2k" onsubmit="submitAnswer(event, '2k')">
+            <input type="text" id="answer-2k" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Heart Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Medium - The Heart Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <p>43 72 79 70 74 6f 62 69 6e 20 6c 69 6e 6b 3a 0a 34 30 20 33 65 20 33 65 20 33 36 20 33 63 20 36 39 20 35 65 20 35 65 20 33 36 20 33 61 20 34 38 20 33 36 20 33 65 20 33 34 20 33 34 20 34 32 20 33 32 20 35 64 20 33 36 20 33 34 20 35 65 20 33 66 20 36 34 20 34 38 20 35 66 20 33 38 20 36 33 20 34 61 20 36 36 0d 0a 0a 50 61 73 73 77 6f 72 64 3a 0a 34 64 20 34 31 20 33 65 20 33 66 20 34 32 20 34 62 20 34 63 20 34 64 20 34 39 20 33 61 20 34 63 20 34 63 20 35 30 20 34 38 20 34 62 20 33 64 20 34 32 20 34 63 20 34 63 20 34 38 20 33 65 20 33 61 20 34 63 20 35 32</p>
+          <p>PS: All passwords are uppercase and no spacing.</p>
+          <p>Role reward: <span class="award">@Heart Award</span></p>
+          <form id="puzzle-form-heart" onsubmit="submitAnswer(event, 'heart')">
+            <input type="text" id="answer-heart" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- R.I.P Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Medium - The R.I.P Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <img src="/KNXXE4TZFQQG4TZAMNWFKZJANBSVEZJAORXSAYTFEBBWYYLJNVCWILQ.png" class="frame" width="300" height="300" />
+          <p>Role reward: <span class="award">@Superman Award</span></p>
+          <form id="puzzle-form-rip" onsubmit="submitAnswer(event, 'rip')">
+            <input type="text" id="answer-rip" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Blocker Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Easy - The Blocker Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <p>uggcf://qrpvcure.arbpvgvrf.bet/Oynpx_Vzntr.wct</p>
+          <p>Note: all keys in this puzzle will be all lowercase</p>
+          <p>Role reward: <span class="award">@Blocker Award</span></p>
+          <form id="puzzle-form-blocker" onsubmit="submitAnswer(event, 'blocker')">
+            <input type="text" id="answer-blocker" placeholder="Enter your answer" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Good Side Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Hard - The Good Side Puzzle</button>
+        <div class="puzzle-content">
+          <p>You'll receive 2 links in the end. Good luck:</p>
+          <p>====A4AGBKJST4UESJRKSZAHZJJOT4UESJRKS2YGBKJST4UESJRKS3IGBKJAD4UESJRKCBFIFJOSTSIGFKJEE4UEXJOKCZUIFZLEEBVEYJOKCZUIFZMCUSEHZJJETCVEWRQKCZMIFZQEUSAGYJJETCVEBSQKC4EHFRMKUSEICKJMT4UESJRKCZEIFBMQTSIGFKJKT4UEWBOKCZUIFZLGEBVEYJOKCZUIFZQEUSAGYJJETCVETJQKS4EHFRMKUSYFCCOKS3EHFRMKUSYGCKJETBVECCOKS3EHFRMKUSUGBKJST4UESJRKSBJIFBOSTSIGFKJGTAVEZJOKCZUIFRQCUSEHZJJETCVEVJOKC3AHFRMKUSMGBKJST4UESJRKCXAHZJJOT4UESJRKSAJIFRNSTSIGFKJEE4UEXJOKCZUIFJNCUSEHZJJETCVETJQKS4EHFRMKUSYGBKJST4UESJRKSBJIFBMQTSIGFKJCEBVEWJOKCZUIFZL6C5YGCKJETBVEWRQKCZMIFBOSTS4GZJJETCVE</p>
+          <p>Role reward: <span class="award">@Good Side Award</span></p>
+          <form id="puzzle-form-goodside" onsubmit="submitAnswer(event, 'goodside')">
+            <input type="text" id="answer-goodside1" placeholder="Enter link 1" required />
+            <input type="text" id="answer-goodside2" placeholder="Enter link 2" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- XOR Puzzle -->
+      <div class="puzzle-container">
+        <button class="puzzle-dropdown">Difficulty: Easy+ - The XOR Puzzle</button>
+        <div class="puzzle-content">
+          <p>Good luck:</p>
+          <p>1. 1d 35 3c 29 3d 63 27 21 2c 30 3e 34 36 7e 63 08 73 31 3d 39 3e 2e 72 37 29 32 31 75 29 3f 30 75 2f 2d 73 21 3a 70 37 37 37 22 35 73 36 3a 3c 26 2c 3c 24 61 27 2d 3c 23 70 26 3a 22 2d 3f 20 3b 37 35 69 72 37 2e 73 36 21 31 22 31 72 2c 27 35 65 1c 77 3c 29 72 21 24 73 22 3c 26 39 2b 35 63 38 3c 30 75 24 38 2c 21 63 37 36 37 2c 70 3c 2a 3c 24 61 20 20 3b 24 35 2b 31 26 6d 73 2d 3a 20 35 23 27 2f 2d 2a 65 3c 24 70 32 3b 2f 2d 73 21 3a 70 29 2a 27 63 26 3c 2a 31 7e 70 0d 33 35 24 73 23 20 3e 70 24 3c 27 61 34 2a 3a 34 70 29 27 20 2a 72</p>
+          <br>
+          <p>2. 27 0d 06 1d 0b 44 00 00 1c 53 11 14 00 4e 0f 08 1c 1d 00 45 0c 09 4e 14 04 1d 09 1f 00 43 06 00 44 15 1a 10 00 45 14 00 1c 08 05 5e 59 07 0d 0c 1c 0b 44 16 1a 16 53 03 0a 01 07 17 09 52 0e 1b 04 17 4f 1a 0c 04 0b 59 00 11 02 1d 1a 48 41 13 17 17</p>
+          <br>
+          <p>3. 27 0a 13 1d 44 41 06 0c 01 12 52 0b 06 04 52 09 01 06 1a 10 48 03 17 44 00 00 00 00 46</p>
+          <br>
+          <p>4. 69 40 46 51 44 47 5d 0d 42 53 41 45 49 0d 50 55 58 05 1a 40 48 43 4f 4c 1a 54 46 4f 0d 5a 52 42 5c 56 49 09 4d 48 48 48 0d 48 1a 43 46 48 40 48 56 0d 43 5b 4e 42 5f 59 09 53 43 5a 4e 48 48 5e 03</p>
+          <br>
+          <p>5. 10 21 2b 67 33 2a 2f 33 2c 2c 3c 67 22 20 3c 67 30 26 23 28 36 3d 21 30 64 20 3d 67 28 20 21 2c 2d 27 29 67 34 3d 21 2a 2d 3a 27 29 23 61</p>
+          <br>
+          <p>6. 0a 3b 3c 6e 2e 30 27 3c 2c 3c 6b 29 3a 27 3a 6e 22 37 73 20 21 2b 6b 2a 3a 3a 22 62 6b 36 21 74 3a 27 25 32 73 3d 27 6e 3f 31 36 74 39 27 38 2a 7d</p>
+          <br>
+          <p>The XOR encoded sentences are also encoded in hexadecimal format to make sure nothing is lost through discord.
+          <p>The keys to each sentence can be made of any character and not necessarily letters, and not necessarily words.</p>
+          <p>Role reward: <span class="award">@XOR Award</span></p>
+          <form id="puzzle-form-xor" onsubmit="submitAnswer(event, 'xor')">
+            <input type="text" id="answer-xor1" placeholder="Enter answer 1" required />
+            <input type="text" id="answer-xor2" placeholder="Enter answer 2" required />
+            <input type="text" id="answer-xor3" placeholder="Enter answer 3" required />
+            <input type="text" id="answer-xor4" placeholder="Enter answer 4" required />
+            <input type="text" id="answer-xor5" placeholder="Enter answer 5" required />
+            <input type="text" id="answer-xor6" placeholder="Enter answer 6" required />
+            <button type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Cipher Stack Puzzle -->
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Easy - The Cipher Stack Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>aaf temnfm</p>
+      <p>0S6KjanB/bzl.afmjuvny//:vyuug</p>
+      <p>Role reward: <span class="award">@Cipher Stack Award</span></p>
+      <form id="puzzle-form-cipherstack" onsubmit="submitAnswer(event, 'cipherstack')">
+        <input type="text" id="answer-cipherstack" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Practice Puzzle -->
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Easy - Practice Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>8DD@Ci^^@KCD529>]3?=^6C$JuIJ=</p>
+      <p>Role reward: none</p>
+      <form id="puzzle-form-practice" onsubmit="submitAnswer(event, 'practice')">
+        <input type="text" id="answer-practice" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- AFK Puzzle -->
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Medium+ - The AFK Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>566967656e6572652070617373776f726420666f7220746865206236343a20e7b1aae7b280e7b1aae7b282e7b1afe7b1bbe7b1b8e7b1b6e7b1b4e7b1b7e7b1b8e7b280e7b1b5e7b1aee7b1ade7b1b0e7b1ae0a54727920726f746174696e67206974206c696b652037393837206d6f72652074696d657320696620726f743133206469646e277420776f726b3f0a0a5543467869584a756b4a34365743436c674d70684b693874665946686b5546704a3243786a7174644c334834534f54596e3163425977466b693352336233466b4d6e53596e694f5261785a6e4f496c327a484b6c4c4b43714855707865716e7659335767494c79774b734f79794852624f4c5a34454748366758396d4c69783d</p>
+      <p>Role reward: <span class="award">@AFK Award</span></p>
+      <form id="puzzle-form-afk" onsubmit="submitAnswer(event, 'afk')">
+        <input type="text" id="answer-afk" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Christmas 2020 Puzzle -->
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Hard - The Christmas 2020 Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>121321232211131221323222113212321311322123211311231211322312232112311312113112132222322322111312232111311131132222231212321313212232231113211132113121232132211132221131131232111312113222232232211131223132222322311213122323123212321232321311223122311131232111321311232232221131312132231222322231123222213121132223213113212312213112311213112131223112131131122321311231211322221312123213123212312113232131122312231213123122232131123223222113131123223122232223222232131122312123213113212312213112323112131223231231122322213232131122312231131113122232131123223221113131123223122232223112312113112231212321311321232113112322221311213122311312311223213112322322111313223223122232223112312113222213121232131232123121132321311223122311311321232131123222213222113222321312311223211323213222113131213223122232223222232131122312123213123112232213232131122312231213113112232132</p>
+      <p>Role reward: <span class="award">@Christmas 2020 Award</span></p>
+      <form id="puzzle-form-xmas2020" onsubmit="submitAnswer(event, 'xmas2020')">
+        <input type="text" id="answer-xmas2020" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Number Sequence Puzzle -->
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Medium - Number Sequence Puzzle</button>
+    <div class="puzzle-content">
+      <p>This is DECIPHER's Number Sequence Puzzle, what comes next? Good luck.</p>
+      <p>*this is a hint..*</p>
+      <p>Good luck:</p>
+      <p>16 84 98 77 401 84 66 97 401 84 17 28 711 84 17 58 911 84 17 09 221 84 48 09 99 84 68 09 401 84 98 77 401 84 66 97 401 84 17 28 711 84 17 58 911 84 17 09 221 84 48 09 99 84 68 09 401 711 66 76 711 18 27 111 001 28 57 88 111 75 901 211 211 35 601 211 121 77 05 211 84 08 86 201 901 78 47 78 45 37 511 001 221 311 47 78 001 501 011 211 121 18 57 77 99 97 68 28 121 35 58 78 711 38 67 601 15 96 17 87 201 17 05 77 401 98 05 411 601 001 27 98 211 67 67 87 15 48 111 211 311 96 911 311 94 75 76 201 711 611 311 87 001 08 98 87 05 57 801 211 811 48 27 78 94 75 07 401 98 25 911 501 901 411 15 801 021 48 58 97 901 811 08 301 711 56 86 89 711 021 98 76 801 17 48 211 101 77 89 87 901 68 57 601 05 75 09 211 711 56 27 211 411 37 58 411 89 35 27 78 84 78 15 101 401 001 901 86 001 021 37 98 711 17 86 78 211 86 18 78 811 65 79 86 021 86 18 78 901 66 18 28 601 97 18 97 79 37 77 67 87 08 37 88 711 611 78 66 98 311 48 57 021 86 18 78 901 66 901 98 74 011 901 86 74 901 86 78 211 86 18 56 94 96 58 56 211 86 28 56 35 17 86 56 94 68 17 78 701 711 28 98 27 701 18 78 901 66 18 28 601 65 27 98 74 65 47 67 711 47 801 66 84 96 47 47 011 68 78 66 711 78 96 66 401 86 17 56 201 87 021 67 911 84 17 09 221 84 48 09 99 84 68 09 401 84 98 77 401 84 66 97 401 84 17 28 711 84 17 58 911 84 17 09 221 84 48 09 99 84 68 09 401 84 98 77 401 84 66 97 401 84 17 28 711 84 17 58 23 64 64 911 89 911 011 23 89 23 301 411 23 811 911 811 221</p>
+      <p>Role reward: <span class="award">@Sequence Award</span></p>
+      <form id="puzzle-form-number_sequence" onsubmit="submitAnswer(event, 'number_sequence')">
+        <input type="text" id="answer_number_sequence" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Medium - The Christmas 2022 Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>00101111011100100110000101110011001100000010111100110000001011110010111000101111011000110110111101100100001011110111010001110100001011110011000100111001001110000011000100110111001101000011000001000011011100110111000000111010011001000110001101100001011011010111010001101110001110000011011100110001001100010011000000110000001101000011010001101000011000010110111001101000011100110110111001110011011100000110111101100001011001010011010100111000001100000011010000110101001100110011000100110111011100100110110101100111011101000111000000101110011010010111000001100011011000110110110100110001001100100011000100110001001100010011001000110111001110010110100101110100011101000110010000101110011010000011100100111000001101110011100101110011</p>
+      <p>PS: You're looking for ITSSHOWTIME, and also all keys are lowercase</p>
+      <p>Role reward: <span class="award">@Christmas 2022 Award</span></p>
+      <form id="puzzle-form-xmas2022" onsubmit="submitAnswer(event, 'xmas2022')">
+        <input type="text" id="answer-xmas2022" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Easy - Short Cryptograms Puzzle</button>
+    <div class="puzzle-content">
+      <p>1. Kh qpbdc'or vrri fpler. (217)</p>
+      <p>2. Ikpf yf jo k xjkqixun. (186)</p>
+      <p>3. M zulk ykuliuwwe. (128)</p>
+      <p>4. Hcr'e lecx nz rcw. (193)</p>
+      <p>5. Hqkgxv? A rkm'n hqkgxv. (238)</p>
+      <p>6. Ohm smxfe'kj bumou. (205)</p>
+      <p>Role reward: <span class="award">@Cryptogram Award</span></p>
+      <form id="puzzle-form-cryptogram" onsubmit="submitAnswer(event, 'cryptogram')">
+        <input type="text" id="answer-cryptogram1" placeholder="Answer 1" required />
+        <input type="text" id="answer-cryptogram2" placeholder="Answer 2" required />
+        <input type="text" id="answer-cryptogram3" placeholder="Answer 3" required />
+        <input type="text" id="answer-cryptogram4" placeholder="Answer 4" required />
+        <input type="text" id="answer-cryptogram5" placeholder="Answer 5" required />
+        <input type="text" id="answer-cryptogram6" placeholder="Answer 6" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+  
+    </div>
+  </div>
+  
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Medium - Short Vigenère Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <ol>
+        <p>1: 30 yigbw 10 qqnink fo 20 (186)</p>
+        <p>2: Vvvybercdlhvunx rvc vsh gb! (296)</p>
+        <p>3: E'tw ei yrvw 'let 5, yr qfei, fg hmdv. (281)</p>
+        <p>4: Vpfjwb 1: \"C dxsd oifko\". Gmfmgc 2: \"Ud sou!\" (366)</p>
+        <p>5: Fsyv 'ik U'a fyvpk! (184)</p>
+        <p>6: Nsy'k yzf pvqi eoawwiami 1-5? (215)</p>
+      </ol>
+      <p>Role reward: <span class="award">@Vigenère Award</span></p>
+      <form id="puzzle-form-vigenere" onsubmit="submitAnswer(event, 'vigenere')">
+        <input type="text" id="answer-vigenere1" placeholder="Answer 1" required />
+        <input type="text" id="answer-vigenere2" placeholder="Answer 2" required />
+        <input type="text" id="answer-vigenere3" placeholder="Answer 3" required />
+        <input type="text" id="answer-vigenere4" placeholder="Answer 4" required />
+        <input type="text" id="answer-vigenere5" placeholder="Answer 5" required />
+        <input type="text" id="answer-vigenere6" placeholder="Answer 6" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+      
+    </div>
+  </div>
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Medium - The Sourcer's Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <p>aUlYWmpKWGR2Tm5JZ29UZWx0R0lzSWpad2NITjRsak12ODJZdTRXYWk5R2R3bG5jajl5TDZNSGMwUkhh</p>
+      <p>Role reward: <span class="award">@Sourcer's Award</span></p>
+      <form id="puzzle-form-sourcers" onsubmit="submitAnswer(event, 'sourcers')">
+        <input type="text" id="answer-sourcers" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Hard - DECIPHER 1K Puzzle</button>
+    <div class="puzzle-content">
+      <p>Good luck:</p>
+      <img src="/1K_DECIPHER_Puzzle.png" class="frame" width="300" height="300" />
+      <p>Make sure to extract things properly!</p>
+      <p>Edits to the puzzle:</p>
+      <ol>
+        <li>Exchange the dot for a colon.</li>
+        <li>Exchange the P for an R.</li>
+      </ol>
+      <p>Role reward: <span class="award">@1K Award</span></p>
+      <form id="puzzle-form-1k" onsubmit="submitAnswer(event, '1k')">
+        <input type="text" id="answer-1k" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="puzzle-container">
+    <button class="puzzle-dropdown">Difficulty: Hard - Premium One</button>
+    <div class="puzzle-content">
+      <p>Premium Puzzles are on the Patreon page!</p>
+      <p>Role reward: <span class="award">@Premium One Award</span></p>
+      <form id="puzzle-form-p1" onsubmit="submitAnswer(event, 'p1')">
+        <input type="text" id="answer-p1" placeholder="Enter your answer" required />
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+  </div>
+  
+    </div>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+      <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+      <p>Terms: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+      <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+    </div>
+    <div class="ad-container">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5556863026084584" data-ad-slot="8801587236" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </footer>
+
+  <script>
+    fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header-auth-slot").innerHTML = html;
+        const script = document.createElement("script");
+        script.src = "/header.js?v=" + Date.now();
+        script.onload = () => setupHeader();
+        document.body.appendChild(script);
+      });
+  </script>
+  <script src="/puzzle-page-scripts.js"></script>
+<!--
+  <div class="ad-container">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+      crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-5556863026084584"
+      data-ad-slot="8801587236"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+-->
+</footer>
+
+<!-- JavaScript -->
+<script>
+  // Force hide loader even if load event fails
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 500);
+    }
+  });
+
+  // Fallback to hide loader after fixed time
+  setTimeout(() => {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  }, 2000);
+
+  // Loading spinner
+  window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  });
+
+  // Back to top button
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Mobile menu toggle
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const mobileNav = document.getElementById('mobile-nav');
+  
+  if (hamburgerMenu && mobileNav) {
+    hamburgerMenu.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  }
+
+  // Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  const themeIcon = themeToggle.querySelector('i');
+
+  // Set initial theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    if (isLight) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
+  });
+}
+
+  // Button hover effects with animations
+  const buttons = document.querySelectorAll('.button6');
+  
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      button.style.transform = 'translateY(-5px)';
+      button.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
+      button.style.boxShadow = '';
+    });
+
+    // Add pulse animation on page load
+    setTimeout(() => {
+      button.classList.add('pulse');
+      setTimeout(() => {
+        button.classList.remove('pulse');
+      }, 1000);
+    }, Math.random() * 1000 + 1000);
+  });
+
+  // Add subtle animation to logo
+  const logoIcon = document.querySelector('.logo-icon');
+  if (logoIcon) {
+    logoIcon.addEventListener('mouseenter', () => {
+      logoIcon.style.filter = 'brightness(1.3) contrast(1.2)';
+    });
+    
+    logoIcon.addEventListener('mouseleave', () => {
+      logoIcon.style.filter = 'brightness(1.2) contrast(1.1)';
+    });
+  }
+</script>
+<script>
+  function submitAnswer(event, puzzleName) {
+    event.preventDefault();
+
+    const inputs = document.querySelectorAll(`#puzzle-form-${puzzleName} input`);
+    const answer = inputs.length > 1
+      ? Array.from(inputs).map(input => input.value)
+      : inputs[0].value;
+
+    fetch('/submit-puzzle', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': getCSRFToken()
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        puzzleName: puzzleName,
+        answer: answer
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.msg) {
+        alert(data.msg);
+        if (data.msg.toLowerCase().includes("solved")) {
+          setTimeout(() => location.reload(), 1000);
+        }
+      }
+    })
+    .catch(error => {
+      alert("Error submitting the answer: " + error);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.puzzle-dropdown').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+
+      document.querySelectorAll('.puzzle-dropdown').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.puzzle-content').forEach(c => c.style.display = 'none');
+
+      if (!isOpen) {
+        btn.classList.add('active');
+        content.style.display = 'block';
+      }
+    });
+
+    btn.nextElementSibling.style.display = 'none'; // start collapsed
+  });
+});
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("/me", {
+      method: "GET",
+      credentials: "include"
+    })
+    .then(res => res.json())
+    .then(user => {
+      (user.completed_puzzles || []).forEach(puzzle => {
+        const form = document.querySelector(`#puzzle-form-${puzzle}`);
+        if (form) {
+          const container = form.parentElement;
+          const inputs = form.querySelectorAll("input");
+          inputs.forEach(inp => {
+            inp.disabled = true;
+            inp.value = "✅ Already solved :)";
+            inp.style.backgroundColor = "#d4edda";
+            inp.style.color = "#155724";
+            inp.style.border = "2px solid #28a745";
+            inp.style.fontWeight = "bold";
+          });
+          const button = form.querySelector("button");
+          button.disabled = true;
+          button.style.opacity = 0.5;
+        }
+      });
+    });
+  });
+
+  function getCSRFToken() {
+  const match = document.cookie.match(/csrf_access_token=([^;]+)/);
+  return match ? match[1] : '';
+}
+</script>
+
+
+
+</body>
+</html>
+
+
+ 

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script src="/js/googleTags.js"></script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DECIPHER's very own casino (not real money)">
+  <meta name="keywords" content="Gamble, Casino, Fake Casino, Fun Casino, Fake Money">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+
+  <title>DECIPHER – Casino</title>
+
+  <link rel="icon" href="decipher_logo.png">
+  <link href="casino.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://decipher.wiki",
+      "name": "DECIPHER",
+      "description": "Free cryptography tools, cipher decoders, and puzzles to help you solve and understand codes.",
+      "sameAs": [
+        "https://discord.gg/GgRAYJesyY",
+        "https://www.patreon.com/decipher_community"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <p>JavaScript is required for this site to function properly. Please enable it in your browser settings.</p>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <header>
+    <div class="header-container">
+      <div class="left-header">
+        <div class="user-actions" id="header-auth-slot"></div>
+      </div>
+
+      <div class="center-header">
+        <a href="/" class="logo-container">
+          <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon" loading="lazy">
+          <span class="logo-text">DECIPHER</span>
+        </a>
+      </div>
+      
+      <div class="right-header">
+        <div class="discord-button">
+          <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+            <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+            Join Discord
+          </button>
+        </div>
+
+        <div class="theme-toggle" id="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </div>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <div class="nav-inner">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/onlinetools">Tools</a></li>
+          <li><a href="/symbols-list">Symbols</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/cryptographers">Cryptographers</a></li>
+          <li><a href="/puzzles">Puzzles</a></li>
+          <li><a href="/dictionary">Dictionary</a></li>
+          <li><a href="/aes-decryption">AES</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div id="floating-balance">💰 Balance: <span id="balance">$0</span></div>
+
+  <!-- Main Content -->
+  <main>
+    <h1>💰 DECIPHER CASINO</h1>
+    <p class="subtitle">Claim daily cash and try your luck at roulette, blackjack, and more!</p>
+
+    <div class="div1">
+      <button class="button6" id="claimDailyButton">💸 Claim Daily</button>
+      <p id="daily-expl">
+        🧠 $10,000 + $2,000 per completed puzzle<br>
+        ⭐ Patreon Supporters get 6h cooldown (others: 12h)
+      </p>
+      <p id="daily-payout"></p>
+      <p id="daily-msg"></p>
+    </div>
+
+    <!-- Slot Machine -->
+    <section class="slot-machine div1">
+      <h2>🎰 Slot Machine</h2>
+      <div class="slot-payouts">
+        <strong>Payouts:</strong><br>
+        🔔🔔🔔 = 100x&nbsp;&nbsp;⭐⭐⭐ = 50x&nbsp;&nbsp;🍉🍉🍉 = 25x<br>
+        🍋🍋🍋 = 15x&nbsp;&nbsp;🍒🍒🍒 = 8x
+      </div>
+      <div class="slot-controls">
+        <input type="number" id="slot-bet" placeholder="Bet amount" class="input-style">
+        <button class="button6" id="slotsButton">Spin 🎲</button>
+      </div>
+      <div id="slot-display">⬛ ⬛ ⬛</div>
+      <p id="slot-result"></p>
+    </section>
+
+    <!-- Roulette -->
+    <section class="div1">
+      <h2>🌯 Roulette</h2>
+      <div class="roulette-controls">
+        <input type="number" id="roulette-bet" placeholder="Bet amount" class="input-style">
+        <select id="roulette-color" class="input-style">
+          <option value="red">🔴 Red</option>
+          <option value="black">⚫ Black</option>
+          <option value="green">🟢 Green</option>
+        </select>
+        <button class="button6" id="bet-button">Place Bet</button>
+      </div>
+
+      <p id="roulette-timer"></p>
+      <div class="roulette-strip-container">
+        <div class="roulette-highlight"></div>
+        <div class="roulette-row" id="roulette-row"></div>
+      </div>
+      <p id="roulette-result"></p>
+      <p id="roulette-history"></p>
+      <div id="your-bets"></div>
+    </section>
+
+    <!-- Blackjack -->
+    <section class="div1">
+      <h2>🃏 Blackjack</h2>
+      <div class="blackjack-controls">
+        <input type="number" id="blackjack-bet" placeholder="Bet amount" class="input-style">
+        <button class="button6" id="blackjack-button">Deal Cards</button>
+      </div>
+      <div id="blackjack-result"></div>
+    </section>
+
+    <!-- Coinflip -->
+    <section class="div1">
+      <h2>🪙 Create Coinflip</h2>
+      <div class="coinflip-controls">
+        <input type="number" id="coinflip-bet" placeholder="Bet amount" class="input-style">
+        <select id="coinflip-side" class="input-style">
+          <option value="heads">🔴 Heads</option>
+          <option value="tails">⚪ Tails</option>
+        </select>
+        <button class="button6" id="coinflipButton">Create Coinflip</button>
+      </div>
+      
+      <div id="coinflip-result"></div>
+
+      <div class="div1">
+        <h2>🧑‍🤝‍🧑 Open Coinflips</h2>
+        <div id="open-coinflips"></div>
+      </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <article class="leaderboard div1">
+      <h2>🏆 Leaderboard</h2>
+      <ol id="leaderboard"></ol>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="contact-info">
+      <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+      <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+      <p>Terms and Conditions: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+      <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/index.js?v=6"></script>
+</body>
+</html>

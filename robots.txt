@@ -1,9 +1,12 @@
+Sitemap: https://decipher.wiki/sitemap.xml
+
 User-agent: *
 Disallow: /2k/
 Disallow: /3k/
-Disallow /4k/
+Disallow: /4k/
+Disallow: /*.db$
 
 User-agent: ia_archiver
 Disallow: /2k/
 Disallow: /3k/
-Disallow /4k/
+Disallow: /4k/

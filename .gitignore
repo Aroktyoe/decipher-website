@@ -1,1 +1,29 @@
-db.sqlite3
+# Ignore SQLite DB inside backend
+/backend/db.sqlite3
+
+# Ignore the entire backend (if desired)
+#/backend/
+
+# Ignore environment file at root
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore any __pycache__ anywhere
+**/__pycache__/
+
+/2k/
+/3k/
+/4k/
+/3301
+/cryptobin/
+/admin-dashboard.html
+/admin-dashboard-loader.html
+/binarything.html
+/book.html
+/brackets.html/
+KNXXE4TZFQQG4TZAMNWFKZJANBSVEZJAORXSAYTFEBBWYYLJNVCWILQ.png
+PECIPHER coin.png
+website_copy.zip

@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <link rel="icon" href="decipher_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <title>DECIPHER - Dictionary</title>
+  <link href="style.css" rel="stylesheet" type="text/css" media="all">
+  <meta name="description" content="Extensive list of cryptography words and their meaning in the context of decoding and cryptography puzzles.">
+  <meta name="keywords" content="cryptography dictionary, dictionary, cryptography, cryptography terms, cryptography words, cryptography word meaning, cryptograhy glossary"> 
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>-->
+  <style>
+    /* Modern redesign for DECIPHER website */
+    :root {
+      --primary-color: #121212;
+      --secondary-color: #1e1e1e;
+      --accent-color: #bb86fc;
+      --text-light: #ffffff;
+      --text-dark: #121212;
+      --background-light: #e0e0e0;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      --transition: all 0.3s ease;
+      --nav-height: 70px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      font-family: 'Exo 2', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: #cfa9fd;
+    }
+    
+    /* Navigation header */
+    header {
+      width: 100%;
+      background-color: var(--primary-color);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0;
+    }
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      justify-content: space-between;
+      max-width: 100%;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+    
+    /* Logo styling */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+    
+    .left-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: flex-start;
+      flex: 1;
+    }
+    
+    .right-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .logo-container a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      height: 40px;
+      width: 40px;
+      filter: brightness(1.2) contrast(1.1);
+      transition: var(--transition);
+    }
+    
+    .logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-left: 10px;
+      letter-spacing: 1px;
+    }
+    
+    /* Discord button */
+    .discord-button {
+      margin-left: auto;
+      margin-right: 20px;
+    }
+    
+    .discord-button button {
+      background-color: #5865F2;
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+    
+    .discord-button button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Navigation bar */
+    .nav-container {
+      width: 100%;
+      background-color: #1e1e1e;
+      padding: 0;
+    }
+    
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+    
+    .main-nav ul li {
+      position: relative;
+    }
+    
+    .main-nav ul li a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    
+    .main-nav ul li a:hover,
+    .main-nav ul li a.active {
+      color: var(--accent-color);
+      background-color: rgba(187, 134, 252, 0.1);
+    }
+    
+    .main-nav ul li a.active {
+      position: relative;
+    }
+    
+    .main-nav ul li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+    
+    /* Theme toggle */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .theme-toggle i {
+      color: var(--text-light);
+      font-size: 18px;
+    }
+    
+    /* Main content area */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    /* Card styling */
+    .div1 {
+      background-color: rgba(30, 30, 30, 0.9);
+      width: 100%;
+      max-width: 1000px;
+      border: none;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .div1 p {
+  margin: 20px 0;
+}
+    /* Headings and text */
+    h1 {
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    h2 {
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    
+    /* Buttons */
+    button.button6 {
+      background-color: rgba(40, 40, 40, 0.95);
+      color: var(--text-light);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px 25px;
+      font-weight: 600;
+      margin: 10px 5px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      min-width: 250px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    
+    button.button6:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+      background-color: rgba(60, 60, 60, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Search bar */
+    .search-container {
+      position: relative;
+      margin: 30px auto;
+      max-width: 600px;
+      width: 90%;
+    }
+    
+    .search-container input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: rgba(40, 40, 40, 0.9);
+      color: var(--text-light);
+      font-size: 16px;
+      font-family: 'Exo 2', sans-serif;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .search-container input:focus {
+      outline: none;
+      background-color: rgba(50, 50, 50, 0.95);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--accent-color);
+    }
+    
+    .search-container .search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+      font-size: 18px;
+      pointer-events: none;
+    }
+    
+    /* Categories */
+    .tool-categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    
+    .category {
+      padding: 10px 20px;
+      background-color: rgba(40, 40, 40, 0.9);
+      color: var(--text-light);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .category:hover {
+      background-color: rgba(60, 60, 60, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .category.active {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Tools grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    
+    .tool-item {
+      background-color: rgba(40, 40, 40, 0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .tool-item:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .tool-item.featured {
+      border: 2px solid var(--accent-color);
+    }
+    
+    .tool-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .tool-content h3 {
+      color: var(--accent-color);
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    
+    .tool-content p {
+      margin-bottom: 20px;
+      flex: 1;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+    
+    .tool-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tool-category {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+    
+    .tool-badge {
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+    
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent-color);
+      color: var(--primary-color);
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: auto;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+    
+    .tool-link:hover {
+      background-color: #cfa9fd;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .tool-link i {
+      margin-left: 8px;
+    }
+    
+    .highlight {
+      background-color: rgba(187, 134, 252, 0.2);
+      padding: 2px 5px;
+      border-radius: 3px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+    
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      background-color: var(--primary-color);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
+    }
+    
+    .contact-info {
+      margin-bottom: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .contact-info p {
+      margin: 8px 0;
+      opacity: 0.8;
+      font-size: 14px;
+    }
+    
+    /* Mobile menu */
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    
+    .hamburger-menu span {
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-light);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      z-index: 100;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-nav.open {
+      transform: translateX(0);
+    }
+    
+    .mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      list-style: none;
+      padding: 0;
+    }
+    
+    .mobile-nav ul li {
+      margin-bottom: 15px;
+    }
+    
+    .mobile-nav ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px 20px;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .mobile-nav ul li a:hover {
+      color: var(--accent-color);
+    }
+    
+    /* Loading spinner */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+      pointer-events: none;
+    }
+    
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid var(--accent-color);
+      border-radius: 50%;
+      animation: spin 1s ease infinite;
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--accent-color);
+      color: var(--text-dark);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--box-shadow);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 100;
+    }
+  
+    .puzzle-content {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  
+  .award {
+    color: #f1c40f;
+  }
+  
+  
+  .puzzle-dropdown {
+    background-color: rgba(40, 40, 40, 0.95);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    font-weight: 600;
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .puzzle-dropdown:hover {
+    transform: translateY(-5px);
+    background-color: rgba(60, 60, 60, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Light theme */
+    body.light-theme {
+      background-color: var(--background-light);
+      color: var(--text-dark);
+    }
+    
+    body.light-theme header,
+    body.light-theme footer {
+      background-color: #f1f1f1;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      color: black;
+    }
+    
+    body.light-theme .nav-container {
+      background-color: #e1e1e1;
+    }
+    
+    body.light-theme .main-nav ul li a {
+      color: var(--text-dark);
+    }
+    
+    body.light-theme .div1 {
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-theme h1,
+    body.light-theme h2 {
+      color: var(--text-dark);
+    }
+    
+    body.light-theme .subtitle {
+      color: rgba(0, 0, 0, 0.8);
+    }
+    
+    body.light-theme .tool-content h3 {
+      color: var(--accent-color);
+    }
+    
+    body.light-theme .tool-content p {
+      color: rgba(0, 0, 0, 0.8);
+    }
+    
+    body.light-theme .tool-item {
+      background-color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-theme .search-container input {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-theme .category {
+      background-color: #e0e0e0;
+      color: var(--text-dark);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-theme .theme-toggle {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    body.light-theme .theme-toggle i {
+      color: var(--text-dark);
+    }
+    
+    body.light-theme .username {
+      color: var(--text-dark);
+    }
+    
+    body.light-theme .logo-text {
+      color: var(--text-dark);
+    }
+
+    .boxed {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    
+    /* Ad container */
+    .ad-container {
+      margin: 30px auto;
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .main-nav ul li a {
+        padding: 10px 15px;
+        font-size: 15px;
+      }
+      
+      .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 15px;
+        flex-wrap: wrap;
+      }
+      
+      .hamburger-menu {
+        display: flex;
+      }
+      
+      .logo-text {
+        font-size: 24px;
+      }
+      
+      .logo-icon {
+        height: 35px;
+        width: 35px;
+      }
+      
+      .discord-button {
+        margin-right: 40px;
+      }
+      
+      .theme-toggle {
+        margin-left: auto;
+      }
+      
+      .nav-container {
+        display: none;
+      }
+      
+      .mobile-nav {
+        display: block;
+      }
+      
+      .tools-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .tool-categories {
+        gap: 8px;
+      }
+      
+      .category {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .div1 {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .tool-categories {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+      }
+      
+      .category {
+        scroll-snap-align: start;
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+      
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tool-item {
+        margin-bottom: 15px;
+      }
+      
+      .search-container {
+        width: 100%;
+      }
+      
+      .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+      }
+    
+      #header-auth-slot {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+    
+    #header-auth-slot a,
+    #header-auth-slot button {
+      background-color: #bb86fc;
+      color: #121212;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    #header-auth-slot a:hover,
+    #header-auth-slot button:hover {
+      background-color: #a46bf9;
+    }
+  }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+  
+    <header>
+      <div class="header-container">
+        <div id="header-auth-slot"></div>
+        <div class="logo-container">
+          <a href="/">
+            <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+            <span class="logo-text">DECIPHER</span>
+          </a>
+        </div>
+        <div class="right-header">
+          <div class="discord-button">
+            <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+              <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+              Join Discord
+            </button>
+          </div>
+          <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+          <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="nav-container">
+      <div class="nav-inner">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/onlinetools">Tools</a></li>
+            <li><a href="/symbols-list">Symbols</a></li>
+            <li><a href="/ciphers">Ciphers</a></li>
+            <li><a href="/cryptographers">Cryptographers</a></li>
+            <li><a href="/puzzles">Puzzles</a></li>
+            <li><a href="/dictionary" class="active">Dictionary</a></li>
+            <li><a href="/aes-decryption">AES</a></li>
+            <li><a href="/get-started">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  
+    <div class="mobile-nav" id="mobile-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/onlinetools">Tools</a></li>
+        <li><a href="/symbols-list">Symbols</a></li>
+        <li><a href="/ciphers">Ciphers</a></li>
+        <li><a href="/cryptographers">Cryptographers</a></li>
+        <li><a href="/puzzles">Puzzles</a></li>
+        <li><a href="/dictionary">Dictionary</a></li>
+        <li><a href="/aes-decryption">AES</a></li>
+        <li><a href="/get-started">Get Started</a></li>
+      </ul>
+    </div>
+
+    <style>
+      .ad-fixed {
+        position: absolute;
+        top: 120px;
+        width: 160px;
+        height: 600px;
+        z-index: 0;
+      }
+      .ad-left { left: 10px; }
+      .ad-right { right: 10px; }
+    
+      .ad-wrapper {
+        position: relative;
+        width: 160px;
+        height: 600px;
+        z-index: 1;
+      }
+    
+      .ad-wrapper ins {
+        position: relative;
+        z-index: 2;
+      }
+    
+      .ad-placeholder {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        padding: 10px;
+        border: 2px dotted purple;
+        color: purple;
+        background: rgba(187, 134, 252, 0.05);
+        text-align: center;
+        font-size: 13px;
+        font-style: italic;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    
+      @media (max-width: 1300px) {
+        .ad-fixed {
+          display: none;
+        }
+      }
+    </style>
+    <!--
+    <div class="ad-fixed ad-left">
+      <div class="ad-wrapper">
+        <div class="ad-placeholder">ad would go here without adblocker :)</div>
+        <ins class="adsbygoogle"
+             style="display:block; height:600px; width:160px;"
+             data-ad-client="ca-pub-5556863026084584"
+             data-ad-slot="1283858161"
+             data-ad-format="auto"
+             data-full-width-responsive="false"></ins>
+      </div>
+    </div>
+    
+    <div class="ad-fixed ad-right">
+      <div class="ad-wrapper">
+        <div class="ad-placeholder">ad would go here without adblocker :)</div>
+        <ins class="adsbygoogle"
+             style="display:block; height:600px; width:160px;"
+             data-ad-client="ca-pub-5556863026084584"
+             data-ad-slot="1283858161"
+             data-ad-format="auto"
+             data-full-width-responsive="false"></ins>
+      </div>
+    </div>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.ad-wrapper').forEach(wrapper => {
+          const ad = wrapper.querySelector('ins');
+          const placeholder = wrapper.querySelector('.ad-placeholder');
+          if (!ad || ad.offsetHeight === 0 || getComputedStyle(ad).display === 'none') {
+            if (placeholder) {
+              placeholder.style.zIndex = '2';
+              placeholder.style.opacity = '1';
+              placeholder.style.pointerEvents = 'auto';
+            }
+          }
+        });
+      });
+    </script>
+    -->
+
+<script>
+  fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header-placeholder").innerHTML = html;
+      console.log("✅ Header loaded");
+      const script = document.createElement("script");
+      script.src = "/header.js?v=" + Date.now();
+      script.onload = () => {
+        console.log("✅ Script loaded");
+        setupHeader();
+      };
+      document.body.appendChild(script);
+    });
+</script>
+<main>
+  <div class="div1">
+    <h2>Core Concepts & Ciphers</h2>
+
+    <p>Cryptography – The science of hiding and solving secret messages.</p>
+    
+    <p>Cipher – A method or system for disguising a message.</p>
+    
+    <p>Plaintext – The original, readable message.</p>
+    
+    <p>Ciphertext – The encoded or encrypted version of the plaintext.</p>
+    
+    <p>Encryption / Encipher – Turning readable text (plaintext) into secret form (ciphertext) using a specific key, meant to be reversible only with that key.</p>
+    
+    <p>Decryption / Decipher – Turning ciphertext back into plaintext using the key that was used to encrypt it.</p>
+    
+    <p>Key – The secret information used to encrypt or decrypt a message.</p>
+    
+    <p>Encoding – Changing data into another format for transmission or storage (like Base64), not necessarily secret, and often reversible without a key.</p>
+    
+    <p>Decoding – Reversing an encoding process (like Base64 decoding), doesn’t require a key and is usually meant to be publicly reversible.</p>
+    
+    <p>Transcribe – To copy or rewrite something exactly as it appears using a standard alphabet, often used when typing out a cipher made of symbols, for example “#%1 31/” would become “ABC DCE”.</p>
+    
+    <p>Substitution – Replacing each letter or symbol with something else (e.g., A → X), used in many basic ciphers.</p>
+    
+    <p>Monoalphabetic – A cipher that replaces each letter with only one possible substitute throughout the message, for example the caesar cipher.</p>
+    
+    <p>Caesar Shift – A specific type of shift cipher where each letter is shifted by the same fixed number.</p>
+    
+    <p>Rot – A slang for caesar cipher, rot8 would for example mean a caesar cipher with a shift of 8.</p>
+    
+    <p>Cryptogram – A monoalphabetic substitution cipher usually with a random alphabet</p>
+    
+    <p>Polyalphabetic – A cipher that uses multiple alphabets to change how letters are replaced, making it harder to crack, for example the vigenere cipher.</p>
+    
+    <p>Keyword – An arbitrary selected word used as a key.</p>
+    
+    <p>Tabula Recta/Vigenère Square – A table with a normal alphabet as a row or column, and an encryption alphabet as the other. Used in Vigenère and similar ciphers.</p>
+    
+    <p>Autokey – A cipher that uses parts of the plaintext itself as part of the key.</p>
+    
+    <p>Running-key – A cipher using a long key, often from a book or another text, that changes constantly while encrypting.</p>
+    
+    <p>One-Time Pad (OTP) – An unbreakable cipher that uses a truly random key the same length as the message, used only once.</p>
+    
+    <p>Reciprocal – A cipher where encryption and decryption are the same process (like ROT13).</p>
+    
+    <p>Homophonic – A cipher that uses multiple symbols or letters to represent the same letter to confuse frequency analysis.</p>
+    
+    <p>Transposition – A cipher that rearranges the letters without changing them.</p>
+    
+    <p>Permutation – Rearranging elements (like letters or blocks) in a specific order, often to confuse or hide patterns. A transposition cipher will usually have a permutation key.</p>
+    
+    <p>Polygrammic / Polygraphic – Ciphers that work on chunks of multiple letters at once, like digraphs (2 letters) or trigraphs (3 letters), instead of single letters.</p>
+    
+    <p>Monome/Mononome – A cipher unit that represents a single letter or symbol (like basic substitution of one letter at a time).</p>
+    
+    <p>Triliteral – A symbol or cipher element made of 3 letters (often used in historical codes).</p>
+    
+    <p>Anagram – Rearranging letters of a word/phrase to form a new one (e.g., "silent" → "listen").</p>
+    
+    <p>A1Z26 – A cipher where the letters of the alphabet become their corresponding letter position. So A → 1 and Z → 26.</p>
+    
+    <p>Polybius Square – A 5x5 grid used to convert letters to pairs of numbers or coordinates. With a normal polybius square 11 is A 12 is B. 5x5 squares can hold 25 letters, and the english alphabet has 26 so a polybius square alphabet usually discludes “J”.</p>
+    
+    <p>Classical Cryptography – Traditional cipher methods before computers, like Caesar, Vigenère, or Playfair.</p>
+    
+    <p>Modern Cryptography – Computer-era encryption based on algorithms and math, like AES and RSA.</p>
+    
+    <p>AES – A strong, modern encryption standard often used in secure communication (Advanced Encryption Standard).</p>
+    
+    <p>Block Cipher – A cipher that encodes fixed-size blocks of text instead of letter by letter.</p>
+    
+    <p>Block – A group of characters treated together in block ciphers.</p>
+    
+    <p>Block Size – The number of bits or characters in each block (e.g. 128 bits).</p>
+    
+    <p>Stream Cipher – A cipher that encrypts one bit or character at a time in a continuous stream.</p>
+    
+    <p>Initialization Vector (IV) – A random value added to encryption to make it unique, even for the same message.</p>
+    
+    <p>Padding – Extra characters added to a message to hide its true length or align it for encryption.</p>
+    
+    <p>RSA – A common public-key encryption system used for secure data exchange.</p>
+    
+    <p>PGP – “Pretty Good Privacy”; a tool that uses public-key cryptography to secure emails and files.</p>
+    
+    <p>Public Key – A key you share with others so they can encrypt messages to you or verify your signature.</p>
+    
+    <p>Private Key – A secret key only you keep, used to decrypt messages or create digital signatures.</p>
+    
+    <p>Signature – A special code made with your private key to prove a message came from you and wasn't changed.</p>
+    
+    <p>Post-Quantum Cryptography – Cryptography designed to resist attacks from quantum computers, which could at some point break current encryption methods.</p>
+    
+    <br><h2>Analysis, Tools & Hidden Data</h2>
+    
+    <p>Frequency – How often each letter or symbol appears in a text.</p>
+    
+    <p>Frequency Analysis – Looking at letter/symbol frequencies to guess the plaintext or cipher used. Can also be used to figure out what language the plaintext might be in.</p>
+    
+    <p>Index of Coincidence (IoC) – A measure of how likely letters repeat in a text; helps detect cipher type or key length.</p>
+    
+    <p>Repetition – Repeated letters or chunks in a cipher that might reveal patterns or key length.</p>
+    
+    <p>Shannon Index – A formula measuring how random or predictable a text is; higher means more randomness.</p>
+    
+    <p>Unigram, Bigram / Digram / Bigraf, Trigram – These refer to 1-letter, 2-letter, and 3-letter chunks of text. Used in frequency analysis to find common patterns like "TH" or "ING".</p>
+    
+    <p>Isogram / Heterogram – A word or phrase where no letter repeats (e.g., "lumberjack").</p>
+    
+    <p>Cryptoanalysis – The art of breaking ciphers and uncovering hidden messages without knowing the key.</p>
+    
+    <p>Crib – A guessed or known word or phrase that helps break a cipher (like knowing "the" appears in English, or knowing the person always signs their encrypted messages with their name.).</p>
+    
+    <p>Cribbing – The act of searching for or using cribs to crack encryption.</p>
+    
+    <p>Dragging / Sliding – A technique in cribbing where you move the guessed word across the ciphertext to find a match.</p>
+    
+    <p>Brute Force – Trying every possible key or solution until the correct one is found.</p>
+    
+    <p>Collision – When two different inputs give the same output (e.g., in a hash), which can be exploited or hint at a weakness.</p>
+    
+    <p>Hash – A function that turns data into a fixed string. It’s one-way: you can't turn it back into the original text unless you try to hash your own data until something matches the hash you’re cracking.</p>
+    
+    <p>Salt – Random data added to a password before hashing it, so that two users with the same password get different hashes.</p>
+    
+    <p>Checksum – A short code generated from data to verify it’s still the same data and hasn’t changed or been corrupted.</p>
+    
+    <p>Steganography – Hiding information in plain sight, like in images, sound files, or even spaces and formatting.</p>
+    
+    <p>Whitespace – Invisible characters (spaces, tabs, etc.) that can be used to hide messages in steganography.</p>
+    
+    <p>Noise – Random or irrelevant data added to confuse, distract, or hide the real signal. Sometimes noise can be an unwanted side product.</p>
+    
+    <p>Trailing – Data that comes after the intended message, possibly hiding extra info or noise. “Hello World ” has a trailing whitespace.</p>
+    
+    <p>Obfuscation – Deliberately making something harder to understand without truly hiding it.</p>
+    
+    <p>Red Herring – A deliberate distraction in puzzles to mislead you away from the real solution.</p>
+    
+    <p>SSTV – Slow-Scan Television; a way of sending images over radio that can be encoded with hidden info. You can often hear if an audio message is SSTV.</p>
+    
+    <p>Metadata – Data about data, like the author of a file or the time an image was created within the file; sometimes holds hidden clues.</p>
+    
+    <p>LSB (Least Significant Bit) – The smallest bit of data, often used in image/audio steganography to hide secret bits.</p>
+    
+    <p>Bitplane – A layer of bits across an image; changing a single bitplane can hide or reveal hidden patterns.</p>
+    
+    <p>Fourier Transformation – Converts a signal (like sound) into frequencies; useful to find patterns or hidden messages.</p>
+    
+    <p>Spectral Analysis – Looking at the frequency content of a signal (e.g., audio or image), often used to detect hidden info.</p>
+    
+    <p>Spectrogram – A visual map of frequencies over time, often used in puzzles to hide text or imagery.</p>
+    
+    <p>Algorithm – A step-by-step method to encrypt or decrypt data, like a recipe computers follow.</p>
+    
+    <p>Bit – A single 0 or 1; the smallest unit of digital data.</p>
+    
+    <p>Byte – A group of 8 bits; often represents a single character in text or a chunk of data.</p>
+    
+    <p>Numeral – A symbol or number (like 7 or X) used in a numeric system, sometimes important in ciphers.</p>
+    
+    <p>Base – A numbering system (like base-10 = decimal, base-2 = binary or base-64). There are often used to encode raw data.</p>
+    
+    <p>Raw Data – Unprocessed information, if viewed without an encoding it will often look gibberish.</p>
+    
+    <p>Binary – A language of 0s and 1s. Computers and some puzzles use it as a base form of data.</p>
+    
+    <p>ASCII – An older character standard using numbers 0–127 to represent English letters and symbols.</p>
+    
+    <p>Unicode – A standard for representing characters from almost every language (like emojis, Arabic, etc.).</p>
+    
+    <p>Boolean – A true/false value, often used in logic puzzles or computer-based cipher tools.</p>
+    
+    <p>Logical Operator – Tools like AND, OR, XOR, NOT used in logic and bitwise encryption schemes.</p>
+    
+    <p>Modulo – A math operation that gives the remainder (often used in Caesar or Vigenère ciphers for wrapping around alphabets).</p>
+    
+    <p>Bit Shift – Moving bits left or right, often used in ciphers or encoding to change values subtly.</p>
+    
+    <p>Regex (Regular Expression) – A tool for searching or matching patterns in text. For example [A-Z0-9] would match all characters that are either A to Z or 0 to 9.</p>
+    
+    <p>Hill Climbing – A guessing algorithm that tweaks a solution bit by bit, keeping changes that improve it (like trying small key changes to decrypt something better).</p>
+    
+    <p>Esolang – Short for "esoteric language," like Brainfuck or Befunge — weird programming languages sometimes used in puzzles.</p>
+    
+    <p>Mnemonic key – A key constructed as to be easily remembered.</p>
+    
+    <p>Matrix – A grid of letters or numbers, often used in ciphers like the Hill cipher to transform text mathematically.</p>
+    
+    <p>Periodic/Aperiodic – Periodic means the cipher repeats in a pattern (e.g. every 3 letters); aperiodic means it doesn’t follow a strict repeat.</p>
+    
+    <p>Idiomorphic – means that a plaintext or cipher has a noticeable pattern — especially where and how often letters repeat. It looks “structured” or “not random” because of those repeating parts.
+
+      Think of it like this: If you see something like "ABABAB", that is idiomorphic because there’s a clear repeating pattern.</p>
+    
+    <p>Idiome – A recognizable style or structure in ciphertext (like a cipher’s “accent” or common traits).</p>
+    
+    <p>Prefix – A piece of data or text added at the beginning of a message. “+1” uses “+” as a prefix.</p>
+    
+    <p>Suffix – A piece of data or text added at the end of a message. “1+” uses “+” as a suffix.</p>
+    
+    <p>Separator – A symbol or space that splits sections of a message like a space or colon.</p>
+    
+  </div>
+</main>
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5556863026084584"
+     data-ad-slot="8801587236"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->
+<script>
+  // Force hide loader even if load event fails
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 500);
+    }
+  });
+
+  // Fallback to hide loader after fixed time
+  setTimeout(() => {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  }, 2000);
+
+  // Loading spinner
+  window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  });
+
+  // Back to top button
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Mobile menu toggle
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const mobileNav = document.getElementById('mobile-nav');
+  
+  if (hamburgerMenu && mobileNav) {
+    hamburgerMenu.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  }
+
+  // Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  const themeIcon = themeToggle.querySelector('i');
+
+  // Set initial theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    if (isLight) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
+  });
+}
+
+  // Button hover effects with animations
+  const buttons = document.querySelectorAll('.button6');
+  
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      button.style.transform = 'translateY(-5px)';
+      button.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
+      button.style.boxShadow = '';
+    });
+
+    // Add pulse animation on page load
+    setTimeout(() => {
+      button.classList.add('pulse');
+      setTimeout(() => {
+        button.classList.remove('pulse');
+      }, 1000);
+    }, Math.random() * 1000 + 1000);
+  });
+
+  // Add subtle animation to logo
+  const logoIcon = document.querySelector('.logo-icon');
+  if (logoIcon) {
+    logoIcon.addEventListener('mouseenter', () => {
+      logoIcon.style.filter = 'brightness(1.3) contrast(1.2)';
+    });
+    
+    logoIcon.addEventListener('mouseleave', () => {
+      logoIcon.style.filter = 'brightness(1.2) contrast(1.1)';
+    });
+  }
+
+</script>
+<script>
+  fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header-auth-slot").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = "/header.js?v=" + Date.now();
+      script.onload = () => setupHeader();
+      document.body.appendChild(script);
+    });
+</script>
+</body>
+</html>
+

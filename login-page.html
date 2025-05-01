@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="decipher_logo.png">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  
+    .container {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 100%;
+    }
+  
+    h2, h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+  
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-size: 1em;
+    }
+  
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #bb86fc;
+      color: #121212;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  
+    button:hover {
+      background: #9b5dfc;
+    }
+  
+    #forgot-box {
+      margin-top: 20px;
+      display: none;
+    }
+  
+    a.forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 0.9em;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      color: #bb86fc;
+      cursor: pointer;
+    }
+  
+    a.forgot-link:hover {
+      text-decoration: underline;
+    }
+  
+    #user-info {
+      font-weight: bold;
+      margin-top: 15px;
+      text-align: center;
+    }
+  
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px;
+      }
+      h2, h3 {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="container">
+    <div id="error-msg" style="
+  display:none; 
+  padding:10px; 
+  background:#cf6679; 
+  color:#fff; 
+  border-radius:6px; 
+  margin-bottom:15px;
+  text-align:center;">
+</div>
+    <!--#include virtual="/header.html" -->
+
+    <h2>Sign in with Google</h2>
+    <a href="/google/login">
+      <button>Continue with Google</button>
+    </a>
+
+    <hr>
+
+    <form id="register-form" onsubmit="register(); return false;">
+      <h3>Register</h3>
+      <input id="reg-user" placeholder="Username" required />
+      <input id="reg-email" type="email" placeholder="Email" required />
+      <input id="reg-pass" type="password" placeholder="Password" required />
+      <button type="submit">Register</button>
+    </form>
+
+    <button id="resend-btn" style="display:none;">Resend Verification Email</button>
+
+    <form id="login-form" onsubmit="login(); return false;">
+      <h3>Login</h3>
+      <input id="log-id" placeholder="Username or Email" required />
+      <input id="log-pass" type="password" placeholder="Password" required />
+      <a class="forgot-link" onclick="toggleForgot()">Forgot your password?</a>
+      <button type="submit">Login</button>
+    </form>
+    
+    <form id="forgot-password-form" onsubmit="submitForgotPassword(); return false;">
+      <h3>Forgot Password</h3>
+      <input id="forgot-email" type="email" placeholder="Enter your email" required />
+      <button type="submit">Send Recovery Email</button>
+    </form>
+
+    <div id="user-info"></div>
+  </div>
+
+  <script>
+    let unverifiedUserId = null;
+    function toggleForgot() {
+      const box = document.getElementById("forgot-password-form");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+
+    async function submitForgotPassword() {
+      const email = document.getElementById("forgot-email").value;
+      const res = await fetch("/forgot-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        alert("✅ Recovery email sent. Check your (trash) inbox");
+      } else {
+        alert("❌ Failed to send recovery email.");
+      }
+    }
+
+    async function register() {
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById("reg-user").value.trim().toLowerCase(),
+          email: document.getElementById("reg-email").value.trim().toLowerCase(),
+          password: document.getElementById("reg-pass").value
+        })
+      });
+
+      const data = await res.json();
+      const errorMsg = document.getElementById("error-msg");
+      if (res.ok && data.token) {
+        errorMsg.style.display = "none";
+        setTimeout(() => window.location.href = "/", 800);
+      } else {
+        errorMsg.innerText = data.msg || "Registration failed";
+        errorMsg.style.display = "block";
+      }
+    }
+
+    async function login() {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        redirect: "follow",
+        credentials: "include",
+        body: JSON.stringify({
+          identifier: document.getElementById("log-id").value.trim().toLowerCase(),
+          password: document.getElementById("log-pass").value
+        })
+      });
+
+      if (res.redirected) {
+          window.location.href = res.url;
+          return;
+      }
+
+      const data = await res.json();
+      const errorMsg = document.getElementById("error-msg");
+      if (data.token) {
+        errorMsg.style.display = "none";
+        showUserInfo();
+        window.location.href = "/";
+      } else {
+        errorMsg.innerText = data.msg || "Login failed";
+        errorMsg.style.display = "block";
+
+        if (data.msg && data.msg.toLowerCase().includes("email not confirmed")) {
+          document.getElementById("resend-btn").style.display = "block";
+          unverifiedUserId = data.user_id;
+        } else {
+          document.getElementById("resend-btn").style.display = "none";
+        }
+      }
+
+    }
+
+    async function showUserInfo() {
+
+      const res = await fetch("/me", {
+        method: "GET",
+        credentials: "include"
+      });
+
+      if (!res.ok) {
+        document.getElementById("user-info").innerText = "Not logged in";
+        return;
+      }
+
+      const data = await res.json();
+      if (data.username) {
+        document.getElementById("user-info").innerText =
+          `🔒 Logged in as: ${data.username} (${data.email})`;
+      }
+    }
+
+    window.onload = showUserInfo;
+
+    async function resendVerificationEmail() {
+  const btn = document.getElementById("resend-btn");
+  btn.disabled = true;
+  btn.innerText = "Sending...";
+
+  const user_id = unverifiedUserId;
+
+  const res = await fetch("/resend-verification", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ user_id })
+  });
+
+  const data = await res.json();
+  alert(data.msg);
+  btn.innerText = "Resend Verification Email";
+  setTimeout(() => (btn.disabled = false), 10000);
+}
+
+    document.getElementById("resend-btn").onclick = resendVerificationEmail;
+  </script>
+</body>
+</html>

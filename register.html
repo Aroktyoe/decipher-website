@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <title>Register</title>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <!--#include virtual="/header.html" -->
+
+  <h2>Register with Google</h2>
+  <a href="/google/login">
+    <button>Continue with Google</button>
+  </a>
+
+  <hr>
+
+  <h3>Register with Email</h3>
+  <input id="reg-user" placeholder="Username"><br>
+  <input id="reg-email" placeholder="Email"><br>
+  <input id="reg-pass" type="password" placeholder="Password"><br>
+  <button onclick="register()">Register</button>
+
+  <div id="user-info" style="margin-top: 10px; font-weight: bold;"></div>
+
+  <script>
+    async function register() {
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById("reg-user").value.trim().toLowerCase(),
+          email: document.getElementById("reg-email").value.trim().toLowerCase(),
+          password: document.getElementById("reg-pass").value
+        })
+      });
+      const data = await res.json();
+      document.getElementById("user-info").innerText = data.msg || "Registered!";
+    }
+
+    if (localStorage.getItem("token")) {
+      fetch('/me', {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+      }).then(r => r.json()).then(data => {
+        if (data.username) {
+          document.getElementById("user-info").innerText =
+            `🔒 Logged in as: ${data.username} (${data.email})`;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

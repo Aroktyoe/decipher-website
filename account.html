@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="decipher_logo.png">
+  <title>Account - DECIPHER</title>
+  <style>
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #121212;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .container {
+      background: #1f1f1f;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      max-width: 450px;
+      width: 100%;
+    }
+  
+    h1 {
+      margin-top: 0;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 1.8em;
+      color: #fff;
+    }
+  
+    h2, h3, label {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+  
+    form {
+      margin-bottom: 30px;
+    }
+  
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background: #2c2c2c;
+      color: #f9f9f9;
+      border: 1px solid #555;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+  
+    input::placeholder {
+      color: #aaa;
+    }
+  
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #bb86fc;
+      border: none;
+      border-radius: 6px;
+      color: #121212;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    button:hover {
+      background-color: #a46bf9;
+    }
+  
+    #user-info {
+      margin-bottom: 25px;
+      font-size: 0.95em;
+      color: #ccc;
+    }
+  
+    #username {
+      font-weight: bold;
+      color: #fff;
+    }
+  
+    .back-button {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: #333;
+      padding: 10px;
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+  
+    .back-button:hover {
+      background-color: #555;
+    }
+  </style>
+  
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  <div class="container">
+    <a href="/" class="back-button">← Back to Home</a>
+    <h1>Account Management</h1>
+
+    <div id="user-info">
+      Logged in as: <span id="username">Loading...</span>
+    </div>
+
+    <h3>Connect Discord</h3>
+    <button onclick="startDiscordOAuth()">Link Discord</button>
+    <div id="discord-status">
+      <div id="sync-status" style="margin-top: 10px;"></div>
+    </div>
+
+    <form id="change-password-form" onsubmit="changePassword(); return false;">
+      <h2>Change Password</h2>
+      <label for="current-password">Current Password</label>
+      <input type="password" id="current-password" autocomplete="current-password" required />
+      <label for="new-password">New Password</label>
+      <input type="password" id="new-password" autocomplete="new-password" required />
+      <button type="submit">Change Password</button>
+    </form>
+    
+    <form id="set-username-form" onsubmit="setUsername(); return false;">
+      <h2>Set Username</h2>
+      <label for="new-username">New Username</label>
+      <input type="text" id="new-username" required />
+      <button type="submit">Set Username</button>
+    </form>
+
+    <button onclick="logout()" style="margin-top: 20px;">Log Out</button>
+    
+
+    <h2 style="color: #c00;">Danger Zone</h2>
+    <button id="delete-account-btn" style="background-color: #dc3545;">Delete My Account</button>
+  </div>
+
+  <script>
+
+function getCSRFToken() {
+  const match = document.cookie.match(/csrf_access_token=([^;]+)/);
+  return match ? match[1] : '';
+}
+
+async function getUserInfo() {
+  const res = await fetch("/me", {
+    method: "GET",
+    credentials: "include"
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    document.getElementById("username").innerText = data.username;
+
+    if (data.discord_name) {
+        const discordStatus = document.getElementById("discord-status");
+
+        const img = document.createElement("img");
+        img.src = data.discord_avatar;
+        img.width = 24;
+        img.style.borderRadius = "50%";
+        img.style.verticalAlign = "middle";
+        img.style.marginRight = "6px";
+
+        const span = document.createElement("span");
+        span.textContent = data.discord_name;
+
+        discordStatus.textContent = "🔗 Discord: ";
+        discordStatus.appendChild(img);
+        discordStatus.appendChild(span);
+
+        const discordButton = document.querySelector("button[onclick='startDiscordOAuth()']");
+        if (discordButton) discordButton.style.display = "none";
+      }
+    } else {
+      alert("Session expired. Please log in again.");
+      window.location.href = "/login-page";
+    }
+}
+
+
+
+    document.getElementById("change-password-form").onsubmit = async (e) => {
+      e.preventDefault();
+      const currentPassword = document.getElementById("current-password").value;
+      const newPassword = document.getElementById("new-password").value;
+
+      const res = await fetch("/change-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": getCSRFToken()
+        },
+        credentials: "include",
+        body: JSON.stringify({ currentPassword, newPassword }),
+      });
+
+      if (res.ok) {
+        alert("✅ Password changed successfully!");
+      } else {
+        alert("❌ Failed to change password.");
+      }
+    };
+
+    document.getElementById("delete-account-btn").onclick = async () => {
+      if (!confirm("⚠️ Are you sure you want to delete your account? This cannot be undone.")) return;
+
+      const res = await fetch("/delete-account", {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "X-CSRF-TOKEN": getCSRFToken()
+        }
+      });
+
+      if (res.ok) {
+        alert("Your account has been deleted.");
+        window.location.href = "/";
+      } else {
+        alert("Failed to delete account.");
+      }
+    };
+
+    document.getElementById("set-username-form").onsubmit = async (e) => {
+  e.preventDefault();
+  const username = document.getElementById("new-username").value;
+
+  const res = await fetch("/set-username", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-TOKEN": getCSRFToken()
+    },
+    credentials: "include",
+    body: JSON.stringify({ username }),
+  });
+
+  if (res.ok) {
+    alert("✅ Username set successfully!");
+    getUserInfo(); // refresh displayed name
+  } else {
+    const data = await res.json();
+    alert("❌ " + (data.msg || "Failed to set username."));
+  }
+};
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  getUserInfo();
+});
+  </script>
+
+<script>
+function startDiscordOAuth() {
+  window.location.href = `/discord/connect`;
+}
+
+</script>
+
+<script>
+async function syncDiscordProgress() {
+  const res = await fetch("/discord/roles", {
+    method: "GET",
+    credentials: "include"
+  });
+
+  if (res.ok) {
+    document.getElementById("sync-status").innerText = "✅ Sync request sent. Your puzzles will update shortly.";
+  } else {
+    const data = await res.json();
+    document.getElementById("sync-status").innerText = "❌ " + (data.msg || "Sync failed.");
+  }
+}
+</script>
+<script>
+async function logout() {
+  await fetch("/logout", {
+    method: "POST",
+    credentials: "include"
+  });
+  window.location.href = "/";
+}
+  </script>
+
+</body>
+</html>

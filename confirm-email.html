@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <title>Confirming Email...</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; text-align: center; }
+    #status { font-size: 1.2rem; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <h1>Confirming your email...</h1>
+  <div id="status">Please wait...</div>
+
+  <script>
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+if (!token) {
+  document.getElementById("status").textContent = "❌ Missing token.";
+} else {
+  fetch("/confirm-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ token })
+  })
+  .then(res => {
+    const status = res.ok;
+    return res.json().then(data => ({ data, status }));
+  })
+  .then(({ data, status }) => {
+    if (status) {
+      document.getElementById("status").textContent = "✅ Email confirmed! Redirecting...";
+      setTimeout(() => window.location.href = "/", 1000);
+    } else {
+      document.getElementById("status").textContent = "❌ " + (data.msg || "Something went wrong.");
+    }
+  })
+  .catch(() => {
+    document.getElementById("status").textContent = "❌ Network error.";
+  });
+}
+
+  </script>
+</body>
+</html>

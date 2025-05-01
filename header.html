@@ -1,29 +1,95 @@
-<!-- /var/www/html/header.html -->
-<div id="header-user-info" style="color: white; font-weight: bold; margin-bottom: 10px;"></div>
 
-<a href="/">Home</a>
-<button onclick="logout()">Logout</button>
-
-<script>
-  async function getUserInfo() {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
-    const res = await fetch("/me", {
-      headers: { Authorization: "Bearer " + token }
-    });
-
-    const data = await res.json();
-    if (data.username) {
-      document.getElementById("header-user-info").innerText =
-        "🔒 Logged in as: " + data.username + " (" + data.email + ")";
-    }
+<style>
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
-  function logout() {
-    localStorage.removeItem("token");
-    location.reload();
+  @media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    width: 100%;
   }
 
-  window.onload = getUserInfo;
-</script>
+  .left-header,
+  .right-header {
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .discord-button {
+    margin: 0;
+  }
+
+  .center-header {
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  .logo-container {
+    justify-content: center;
+  }
+
+  .user-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .auth-link {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  #header-user-info {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+  .auth-link {
+    background-color: #c4214b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .auth-link:hover {
+    background-color: #a01b3d;
+  }
+
+  .user-info {
+    font-weight: 500;
+  }
+
+  .user-info .username {
+    color: inherit;
+  }
+
+
+  body.light-theme .user-info .username {
+    color: var(--text-dark);
+  }
+</style>
+
+
+<div class="user-actions">
+  <span id="header-user-info" class="user-info"></span>
+  <a href="/login-page.html" id="login-link" class="auth-link">Login/Register</a>
+  <a href="/account.html" id="account-link" class="auth-link" style="display: none;">Account</a>
+  <button id="logout-btn" class="auth-link" style="display: none;">Logout</button>
+</div>

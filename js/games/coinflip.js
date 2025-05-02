@@ -11,7 +11,7 @@ export async function playCoinflip(event) {
     const choice = document.getElementById('coinflip-side').value;
     if (!amount || amount <= 0) return alert('Enter a valid bet amount.');
   
-    const token = await getCSRFToken();
+    const token = getCSRFToken();
     const res = await fetch('/casino/coinflip/create', { // <-- FIXED
       method: 'POST',
       headers: {
@@ -53,7 +53,7 @@ export async function loadOpenCoinflips() {
 }
 
 export async function removeCoinflip(id) {
-  const token = await getCSRFToken();
+  const token = getcsRFToken();
   const res = await fetch('/casino/coinflip/remove', {
     method: 'POST',
     headers: {
@@ -75,7 +75,7 @@ export async function removeCoinflip(id) {
 }
 
 export async function joinCoinflip(id) {
-  const token = await getCSRFToken();
+  const token = getCSRFToken();
   const res = await fetch('/casino/coinflip/join', {
     method: 'POST',
     headers: {

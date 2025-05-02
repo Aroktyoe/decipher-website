@@ -1,10 +1,4 @@
 import { showCoinflipAnimation } from "./games/coinflip.js";
-import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
-
-
-export const socket = io("https://decipher.wiki", {
-  withCredentials: true
-});
 
 export function socketEvents() {
 

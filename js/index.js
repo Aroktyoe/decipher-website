@@ -15,14 +15,14 @@ import {
 import {
   startBlackjack, blackjackAction, displayBlackjackGame
 } from "./games/blackjack.js";
-
+import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
 
 
 window.socket = io("https://decipher.wiki", {
   withCredentials: true
 });
 
-export let currentUsername = null;
+window.currentUsername;
 window.cooldown = false;
 
 document.addEventListener("DOMContentLoaded", async () => {

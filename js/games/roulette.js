@@ -1,11 +1,6 @@
 import { disableBetButtons, enableBetButtons } from '../utils.js';
 import { getCSRFToken } from "../api.js";
-import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
 
-
-export const socket = io("https://decipher.wiki", {
-  withCredentials: true
-});
 
 let countdownInterval;
 let spinInProgress = false;
@@ -93,7 +88,7 @@ export function startCountdown(countdown) {
     }, 1000);
 }
 
-export function updateHistory(history=history) {
+export function updateHistory(history) {
   setTimeout(() => {
       const historyText = history.map(h => h === 'green' ? '🟢' : (h === 'red' ? '🔴' : '⚫')).join(' ');
       document.getElementById("roulette-history").textContent = `Last 15: ${historyText}`;

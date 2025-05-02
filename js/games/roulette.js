@@ -87,7 +87,7 @@ export function startCountdown(countdown) {
     }, 1000);
 }
 
-export function updateHistory(history=history) {
+export function updateHistory(history) {
   setTimeout(() => {
       const historyText = history.map(h => h === 'green' ? '🟢' : (h === 'red' ? '🔴' : '⚫')).join(' ');
       document.getElementById("roulette-history").textContent = `Last 15: ${historyText}`;

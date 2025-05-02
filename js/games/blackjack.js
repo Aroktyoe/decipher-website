@@ -1,7 +1,7 @@
 import { fetchUser, fetchHeader, fetchBalance, getCSRFToken } from "../api.js";
 import { startCooldown } from "../utils.js";
 
-let currentGame;
+window.currentGame;
 
 export async function startBlackjack(event) {
     startCooldown(event.target);

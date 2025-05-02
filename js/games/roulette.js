@@ -3,13 +3,16 @@ import { getCSRFToken } from "../api.js";
 
 let countdownInterval;
 let spinInProgress = false;
+let countdown = 0;
+window.removeBet = removeBet;
+
+
 
 export function startNewSpin() {
   spinInProgress = true;
   startCountdown();
   disableBetButtons();
 
-  socket.emit('start_spin');  // You can emit this event to trigger a spin in the backend
   setTimeout(() => {
       spinInProgress = false;
       startCountdown();
@@ -20,7 +23,10 @@ export function startNewSpin() {
 export async function placeRouletteBet() {
     const bet = parseInt(document.getElementById('roulette-bet').value);
     const color = document.getElementById('roulette-color').value;
-    if (!bet || bet <= 0) return alert('Enter a valid bet amount.');
+    if (!bet || isNaN(bet) || bet <= 0) {
+      console.warn("Ignored invalid bet attempt on load");
+      return;
+    }
   
     const betButton = document.getElementById('bet-button');
     if (spinInProgress) {
@@ -73,7 +79,7 @@ export function startCountdown(countdown) {
     clearInterval(countdownInterval);
 
     // Start a new countdown
-    countdown = 10;
+    if (typeof countdown !== "number" || countdown <= 0) countdown = 10;
     countdownInterval = setInterval(() => {
       if (!spinInProgress) {
         document.getElementById('roulette-timer').textContent = `Next spin in: ${countdown}s`;
@@ -88,16 +94,18 @@ export function startCountdown(countdown) {
 }
 
 export function updateHistory(history) {
+  if (!Array.isArray(history)) return;
+
   setTimeout(() => {
-      const historyText = history.map(h => h === 'green' ? '🟢' : (h === 'red' ? '🔴' : '⚫')).join(' ');
-      document.getElementById("roulette-history").textContent = `Last 15: ${historyText}`;
+    const historyText = history.map(h => h === 'green' ? '🟢' : (h === 'red' ? '🔴' : '⚫')).join(' ');
+    document.getElementById("roulette-history").textContent = `Last 15: ${historyText}`;
   }, 2000);
 }
 
 export function updateRouletteTimer(seconds) {
   clearInterval(countdownInterval);
 
-  countdown = seconds;
+  let countdown = seconds;
   countdownInterval = setInterval(() => {
     if (countdown <= 0) {
       clearInterval(countdownInterval);

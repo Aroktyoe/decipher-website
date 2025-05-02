@@ -1,6 +1,10 @@
 import { fetchBalance, getCSRFToken } from "../api.js";
-import { startCooldown } from "../utils.js";
+import { startCooldown, updateLeaderboard } from "../utils.js";
 
+
+window.joinCoinflip = joinCoinflip;
+window.removeCoinflip = removeCoinflip;
+window.loadOpenCoinflips = loadOpenCoinflips;
 
 
 export async function playCoinflip(event) {
@@ -9,7 +13,12 @@ export async function playCoinflip(event) {
     
     const amount = parseInt(document.getElementById('coinflip-bet').value);
     const choice = document.getElementById('coinflip-side').value;
-    if (!amount || amount <= 0) return alert('Enter a valid bet amount.');
+    const bet = parseInt(document.getElementById("coinflip-bet").value);
+
+    if (!bet || isNaN(bet) || bet <= 0) {
+      console.warn("Ignored invalid bet attempt on load");
+      return;
+    }
   
     const token = getCSRFToken();
     const res = await fetch('/casino/coinflip/create', { // <-- FIXED
@@ -59,13 +68,17 @@ export async function loadOpenCoinflips() {
 }
 
 function onclickButtonEvents(id){
-    document.getElementById(`remove-${id}`).addEventListener("click", () => {
-      removeCoinflip(id);
-    });
-    document.getElementById(`join-${id}`).addEventListener("click", () => {
-      joinCoinflip(id);
-    });
+  const removeBtn = document.getElementById(`remove-${id}`);
+  const joinBtn = document.getElementById(`join-${id}`);
+
+  if (removeBtn) {
+      removeBtn.addEventListener("click", () => removeCoinflip(id));
+  }
+  if (joinBtn) {
+      joinBtn.addEventListener("click", () => joinCoinflip(id));
+  }
 }
+
 
 export async function removeCoinflip(id) {
   const token = getCSRFToken();

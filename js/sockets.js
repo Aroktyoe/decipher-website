@@ -1,7 +1,13 @@
 import { showCoinflipAnimation } from "./games/coinflip.js";
+import { updateBalance, delayedBalanceUpdate } from "./utils.js";
+import { fetchYourBets, updateHistory, startNewSpin, updateRouletteTimer } from "./games/roulette.js";
+import { updateLeaderboard } from './utils.js';
+import { loadOpenCoinflips } from './games/coinflip.js';
+
+let suppressImmediateBalanceUpdate = false;
+
 
 export function socketEvents() {
-
     socket.on("connect", () => {
         console.log("🟢 Connected to socket");
         loadOpenCoinflips(); // ensure flips are loaded once socket is ready
@@ -123,7 +129,7 @@ export function socketEvents() {
     
         setTimeout(() => {
           const centerOffset = (strip.offsetWidth / 2) - (slotWidth / 2);
-          const offsetFix = window.innerWidth > 576 ? 128 : -597;
+          const offsetFix = window.innerWidth > 576 ? 128 : -588;
           strip.style.transform = `translateX(${-finalPosition * slotWidth + centerOffset + offsetFix}px)`;
     
           strip.style.transition = 'transform 2s cubic-bezier(0.25, 1, 0.5, 1)';

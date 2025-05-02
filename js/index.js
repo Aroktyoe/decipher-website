@@ -16,6 +16,7 @@ import {
   startBlackjack, blackjackAction, displayBlackjackGame
 } from "./games/blackjack.js";
 import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
+import { loadDailyInfo } from './utils.js';
 
 
 window.socket = io("https://decipher.wiki", {
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Core setup
   await fetchUser();
+  loadDailyInfo();
   fetchHeader();
   backToTop(backToTopButton);
   loaderEvents();
@@ -41,14 +43,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchBalance();
   getCSRFToken();
 
-  // Game logic
-  startCountdown(10, null);
-  startNewSpin();
 
   await loadOpenCoinflips(); // This loads available coinflips
 
   updateHistory();
-  updateRouletteTimer(10); // Replace 10 with actual time if needed
   // removeBet(), addBetDisplay() are only needed during real interaction
 
   await fetchYourBets();

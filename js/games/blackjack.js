@@ -1,13 +1,19 @@
 import { fetchUser, fetchHeader, fetchBalance, getCSRFToken } from "../api.js";
 import { startCooldown } from "../utils.js";
+import { updateLeaderboard } from "../utils.js";
 
-window.currentGame;
+window.currentGame = null;
+window.blackjackAction = blackjackAction;
+
 
 export async function startBlackjack(event) {
-    startCooldown(event.target);
+    startCooldown(document.getElementById("blackjack-button"));
   
     const bet = parseInt(document.getElementById('blackjack-bet').value);
-    if (!bet || bet <= 0) return alert('Enter a valid bet amount.');
+    if (!bet || isNaN(bet) || bet <= 0) {
+      console.warn("Ignored invalid bet attempt on load");
+      return;
+    }
   
     const token = getCSRFToken();
     const res = await fetch('/casino/play/blackjack/start', {

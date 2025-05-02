@@ -16,7 +16,10 @@ export async function playSlots(event) {
     }, 1200);
   
     const bet = parseInt(document.getElementById('slot-bet').value);
-    if (!bet || bet <= 0) return alert('Enter a valid bet amount.');
+    if (!bet || isNaN(bet) || bet <= 0) {
+      console.warn("Ignored invalid bet attempt on load");
+      return;
+    }
   
     const display = document.getElementById('slot-display');
     const resultText = document.getElementById('slot-result');

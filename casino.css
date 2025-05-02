@@ -828,14 +828,21 @@ font-weight: bold;
 }
 
 .leaderboard {
-  width: 350px;
+  width: 330px;
   flex-shrink: 0;
   padding: 0 8px;
   box-sizing: border-box;
   position: fixed;
-  height: 600px;
+  height: 350px;
   top: 250px; /* moved lower */
   right: 20px;
+  text-align: left;
+}
+
+#leaderboard {
+  padding-left: 1.6em;
+  list-style-position: inside;
+  margin: 0;
 }
 
 
@@ -1028,17 +1035,17 @@ background-color: rgba(60, 60, 60, 0.9);
 
 @media (max-width: 1200px) {
   .leaderboard {
-  width: 350px;
-  flex-shrink: 0;
-  padding: 0 8px;
-  box-sizing: border-box;
-  position: relative;
-  height: 600px;
-  margin: 20px auto;
-  margin-top: -250px;
-  align-items: center;
-  right: 0;
-}
+    width: 330px;
+    max-width: 90vw;
+    margin: 0 auto; /* center horizontally */
+    padding: 0 8px;
+    box-sizing: border-box;
+    position: relative;
+    height: 350px;
+    top: 20px;
+    text-align: left;
+    left: 0px;
+  }
 
 
   .mobile-bottom-ad {
@@ -1217,7 +1224,7 @@ height: auto;
   max-width: 100%;
   overflow-x: hidden;
   position: relative;
-  height: 39px;
+  height: 35px;
 }
 
 .roulette-row {
@@ -1240,7 +1247,7 @@ min-width: 24px;
 min-height: 24px;
 max-width: 35px;
 max-height: 35px;
-margin-top: -17px;
+margin-top: -12px;
 
 }
 
@@ -1348,7 +1355,7 @@ font-size: 2rem;
 text-align: center;
 margin-top: 10px;
 }
-/*
+
 footer {
   margin-top: 40px;
   text-align: center;
@@ -1358,7 +1365,7 @@ footer {
   background-color: var(--primary-color);
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15);
 }
-*/
+
 
 @keyframes coinflip {
 0% { transform: rotateY(0deg); background-position: 0% 0%; }

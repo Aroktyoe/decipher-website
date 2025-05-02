@@ -7,7 +7,7 @@ import { fetchBalance } from "./api.js";
 
 
 export let cooldown = false;
-
+export { loadDailyInfo };
 
 export function startCooldown(button) {
     cooldown = true;

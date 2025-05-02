@@ -9,7 +9,7 @@ export async function startBlackjack(event) {
     const bet = parseInt(document.getElementById('blackjack-bet').value);
     if (!bet || bet <= 0) return alert('Enter a valid bet amount.');
   
-    const token = await getCSRFToken();
+    const token = getcsRFToken();
     const res = await fetch('/casino/play/blackjack/start', {
       method: 'POST',
       headers: {
@@ -25,7 +25,7 @@ export async function startBlackjack(event) {
 }
   
 export async function blackjackAction(action) {
-    const token = await getCSRFToken();
+    const token = getcsRFToken();
     const res = await fetch('/casino/play/blackjack/action', {
       method: 'POST',
       headers: {

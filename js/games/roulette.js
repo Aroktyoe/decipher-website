@@ -32,7 +32,7 @@ export async function placeRouletteBet() {
     
     try {
       console.log("Fetching /casino/roulette/bet with:", color, bet);
-      const token = await getCSRFToken();
+      const token = getCSRFToken();
       const res = await fetch('/casino/roulette/bet', {
         method: 'POST',
         headers: {
@@ -111,7 +111,7 @@ export function updateRouletteTimer(seconds) {
 
 export async function removeBet(color) {
   // Send request to server to remove the bet
-  const token = await getCSRFToken();
+  const token = getCSRFToken();
   fetch('/casino/roulette/remove', {
       method: 'POST',
       headers: {
@@ -127,8 +127,8 @@ export async function removeBet(color) {
   });
 }
 
-export function addBetDisplay(color, amount, username = currentUsername) {
-  const isOwnBet = username === currentUsername;
+export function addBetDisplay(color, amount, username = window.currentUsername) {
+  const isOwnBet = username === window.currentUsername;
   const betDivId = `bet-${username}-${color}`;
   let betDiv = document.getElementById(betDivId);
 

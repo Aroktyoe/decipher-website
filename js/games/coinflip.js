@@ -40,16 +40,31 @@ export async function loadOpenCoinflips() {
 
     container.innerHTML = flips.map(flip => {
         const isCreator = currentUsername && flip.creator?.toLowerCase() === currentUsername.toLowerCase();
+        const buttonHTML = isCreator 
+        ? `<button id="remove-${flip.id}" class="button6">Remove</button>`
+        : `<button id="join-${flip.id}" class="button6">Join</button>`;
+        onclickButtonEvents(flip.id); // Attach event listeners to buttons
+
         return `
         <div style="margin-bottom: 10px;">
             ${flip.creator} bet $${flip.amount.toLocaleString()} on ${flip.choice.toUpperCase()}
-            ${isCreator 
-            ? `<button onclick="removeCoinflip('${flip.id}')" class="button6" style="margin-left:10px;">Remove</button>`
-            : `<button onclick="joinCoinflip('${flip.id}')" class="button6" style="margin-left:10px;">Join</button>`
-            }
+            ${buttonHTML}
         </div>
         `;
     }).join('');
+
+    flips.forEach(flip => {
+      onclickButtonEvents(flip.id);
+    });
+}
+
+function onclickButtonEvents(id){
+    document.getElementById(`remove-${id}`).addEventListener("click", () => {
+      removeCoinflip(id);
+    });
+    document.getElementById(`join-${id}`).addEventListener("click", () => {
+      joinCoinflip(id);
+    });
 }
 
 export async function removeCoinflip(id) {

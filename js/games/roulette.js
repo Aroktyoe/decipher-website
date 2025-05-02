@@ -1,7 +1,6 @@
 import { disableBetButtons, enableBetButtons } from '../utils.js';
 import { getCSRFToken } from "../api.js";
 
-
 let countdownInterval;
 let spinInProgress = false;
 
@@ -128,8 +127,8 @@ export async function removeBet(color) {
   });
 }
 
-export function addBetDisplay(color, amount, username = window.currentUsername) {
-  const isOwnBet = username === window.currentUsername;
+export function addBetDisplay(color, amount, username = currentUsername) {
+  const isOwnBet = username === currentUsername;
   const betDivId = `bet-${username}-${color}`;
   let betDiv = document.getElementById(betDivId);
 

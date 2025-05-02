@@ -54,16 +54,12 @@ export async function loadOpenCoinflips() {
     }).join('');
 
     flips.forEach(flip => {
-      onclickButtonEvents(flip.id);
-    });
-}
-
-function onclickButtonEvents(id){
-    document.getElementById(`remove-${id}`).addEventListener("click", () => {
-      removeCoinflip(id);
-    });
-    document.getElementById(`join-${id}`).addEventListener("click", () => {
-      joinCoinflip(id);
+      document.getElementById(`remove-${flip.id}`).addEventListener("click", () => {
+        removeCoinflip(flip.id);
+      });
+      document.getElementById(`join-${flip.id}`).addEventListener("click", () => {
+        joinCoinflip(flip.id);
+      });
     });
 }
 

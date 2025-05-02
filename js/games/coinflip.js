@@ -64,7 +64,7 @@ export async function loadOpenCoinflips() {
 }
 
 export async function removeCoinflip(id) {
-  const token = getcsRFToken();
+  const token = getCSRFToken();
   const res = await fetch('/casino/coinflip/remove', {
     method: 'POST',
     headers: {

@@ -796,6 +796,18 @@ margin: 20px 0;
   body.light-theme .tool-content p {
     color: rgba(0, 0, 0, 0.8);
   }
+
+  #close-nav {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
   
   body.light-theme .tool-item {
     background-color: #ffffff;
@@ -1031,6 +1043,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="mobile-nav" id="mobile-nav">
     <ul>
+    <button id="close-nav" style="margin: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
+
       <li><a href="/">Home</a></li>
       <li><a href="/onlinetools">Tools</a></li>
       <li><a href="/symbols-list">Symbols</a></li>
@@ -1040,8 +1054,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="/dictionary">Dictionary</a></li>
       <li><a href="/aes-decryption">AES</a></li>
       <li><a href="/get-started">Get Started</a></li>
+      <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+      <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
     </ul>
   </div>
+  <script>
+    document.getElementById('close-nav').addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+  });
+  </script>
 
   <style>
     .ad-fixed {

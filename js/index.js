@@ -58,4 +58,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   displayBlackjackGame();
   delayedBalanceUpdate();
   socketEvents();
+  document.getElementById("buy-balance-button")?.addEventListener("click", async () => {
+    const amount = document.getElementById("buy-amount").value;
+    document.getElementById("buy-status").innerText = "⏳ Redirecting to PayPal...";
+    const res = await fetch("/create-paypal-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN": getCSRFToken()
+      },
+      credentials: "include",
+      body: JSON.stringify({ amount })
+    });
+    const data = await res.json();
+    if (data.approvalUrl) {
+      window.location.href = data.approvalUrl;
+    } else {
+      document.getElementById("buy-status").innerText = "❌ Failed to start payment.";
+    }
+  });
 });

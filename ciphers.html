@@ -721,6 +721,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
       color: black;
     }
+
+    #close-nav {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
     
     body.light-theme .nav-container {
       background-color: #e1e1e1;
@@ -989,6 +1001,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
     <div class="mobile-nav" id="mobile-nav">
       <ul>
+        <button id="close-nav" style="margin: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
         <li><a href="/">Home</a></li>
         <li><a href="/onlinetools">Tools</a></li>
         <li><a href="/symbols-list">Symbols</a></li>
@@ -998,8 +1011,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/dictionary">Dictionary</a></li>
         <li><a href="/aes-decryption">AES</a></li>
         <li><a href="/get-started">Get Started</a></li>
+        <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+        <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
       </ul>
     </div>
+
+    <script>
+      document.getElementById('close-nav').addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.remove('open');
+    });
+    </script>
 <script>
   fetch("/header.html", { headers: { "X-Original-Request": "true" } })
     .then(res => res.text())

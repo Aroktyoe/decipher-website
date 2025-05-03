@@ -41,6 +41,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       padding: 0;
       box-sizing: border-box;
     }
+
+    #close-nav {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
     
     body {
       background-color: var(--primary-color);
@@ -1064,8 +1076,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="/dictionary">Dictionary</a></li>
     <li><a href="/aes-decryption">AES</a></li>
     <li><a href="/get-started">Get Started</a></li>
+    <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+    <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
   </ul>
 </div>
+
+<script>
+  document.getElementById('close-nav').addEventListener('click', () => {
+  document.getElementById('mobile-nav').classList.remove('open');
+});
+</script>
 
 <style>
   .ad-fixed {

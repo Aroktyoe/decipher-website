@@ -563,6 +563,18 @@ footer {
   color: var(--accent-color);
 }
 
+#close-nav {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
 /* Loading spinner */
 .loader {
   position: fixed;

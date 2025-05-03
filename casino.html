@@ -103,7 +103,34 @@
     </div>
   </div>
 
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <button id="close-nav" style="margin: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
+      <li><a href="/">Home</a></li>
+      <li><a href="/onlinetools">Tools</a></li>
+      <li><a href="/symbols-list">Symbols</a></li>
+      <li><a href="/ciphers">Ciphers</a></li>
+      <li><a href="/cryptographers">Cryptographers</a></li>
+      <li><a href="/puzzles">Puzzles</a></li>
+      <li><a href="/dictionary">Dictionary</a></li>
+      <li><a href="/aes-decryption">AES</a></li>
+      <li><a href="/get-started">Get Started</a></li>
+      <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+      <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
+    </ul>
+  </div>
+
+  <script>
+    document.getElementById('close-nav').addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+  });
+  </script>
+
+      <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+    <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
+
   <div id="floating-balance">💰 Balance: <span id="balance">$0</span></div>
+
 
   <!-- Main Content -->
   <main>
@@ -194,7 +221,22 @@
       <h2>🏆 Leaderboard</h2>
       <ol id="leaderboard"></ol>
     </article>
+
   </main>
+  <!--
+  <section class="div1" id="donate-box">
+    <h2>Donate to get more balance:</h2>
+    <select id="buy-amount" class="input-style">
+      <option value="10000">10,000 ($1)</option>
+      <option value="100000">100,000 ($5)</option>
+      <option value="1000000">1,000,000 ($20)</option>
+      <option value="10000000">10,000,000 ($50)</option>
+      <option value="100000000">100,000,000 ($100)</option>
+    </select>
+    <button class="button6" id="buy-balance-button">Buy</button>
+    <div id="buy-status"></div>
+  </section>
+  -->
 
   <!-- Footer -->
   <footer>

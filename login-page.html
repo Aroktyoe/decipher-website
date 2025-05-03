@@ -122,9 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!--#include virtual="/header.html" -->
 
     <h2>Sign in with Google</h2>
-    <a href="/google/login">
-      <button>Continue with Google</button>
-    </a>
+    <button onclick="startGoogleLogin()">Continue with Google</button>
 
     <hr>
 
@@ -156,6 +154,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <script>
+
+
+function startGoogleLogin() {
+  const redirect = sessionStorage.getItem("postLoginRedirect") || "/";
+  window.location.href = "/google/login?next=" + encodeURIComponent(redirect);
+}
+
+    if (!sessionStorage.getItem("postLoginRedirect") && document.referrer && !document.referrer.includes("/login-page")) {
+      sessionStorage.setItem("postLoginRedirect", document.referrer);
+    }
     let unverifiedUserId = null;
     function toggleForgot() {
       const box = document.getElementById("forgot-password-form");
@@ -177,27 +185,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
 
-    async function register() {
-      const res = await fetch("/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: document.getElementById("reg-user").value.trim().toLowerCase(),
-          email: document.getElementById("reg-email").value.trim().toLowerCase(),
-          password: document.getElementById("reg-pass").value
-        })
-      });
+async function register() {
+  const res = await fetch("/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: document.getElementById("reg-user").value.trim().toLowerCase(),
+      email: document.getElementById("reg-email").value.trim().toLowerCase(),
+      password: document.getElementById("reg-pass").value
+    })
+  });
 
-      const data = await res.json();
-      const errorMsg = document.getElementById("error-msg");
-      if (res.ok && data.token) {
-        errorMsg.style.display = "none";
-        setTimeout(() => window.location.href = "/", 800);
-      } else {
-        errorMsg.innerText = data.msg || "Registration failed";
-        errorMsg.style.display = "block";
-      }
-    }
+  if (res.ok) {
+  errorMsg.style.display = "none";
+  alert(data.msg || "Registered! Check your inbox to verify.");
+  const redirect = sessionStorage.getItem("postLoginRedirect") || "/";
+  sessionStorage.removeItem("postLoginRedirect");
+  setTimeout(() => window.location.href = redirect, 800);
+} else {
+  errorMsg.innerText = data.msg || "Registration failed";
+  errorMsg.style.display = "block";
+}
+}
 
     async function login() {
       const res = await fetch("/login", {
@@ -207,21 +216,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         credentials: "include",
         body: JSON.stringify({
           identifier: document.getElementById("log-id").value.trim().toLowerCase(),
-          password: document.getElementById("log-pass").value
+          password: document.getElementById("log-pass").value,
+          next: sessionStorage.getItem("postLoginRedirect") || "/"
         })
       });
-
-      if (res.redirected) {
-          window.location.href = res.url;
-          return;
-      }
-
       const data = await res.json();
       const errorMsg = document.getElementById("error-msg");
+
       if (data.token) {
         errorMsg.style.display = "none";
         showUserInfo();
-        window.location.href = "/";
+        const redirect = sessionStorage.getItem("postLoginRedirect") || "/";
+        sessionStorage.removeItem("postLoginRedirect");
+        window.location.href = redirect;
       } else {
         errorMsg.innerText = data.msg || "Login failed";
         errorMsg.style.display = "block";

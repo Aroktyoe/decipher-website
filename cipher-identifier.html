@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="decipher_logo.png">
+  <title>DECIPHER - Cipher Identifier</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5QWRN8QL"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager -->
+
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+  <header>
+    <div class="header-container">
+      <div id="header-auth-slot"></div>
+      <div class="logo-container">
+        <a href="/">
+          <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+          <span class="logo-text">DECIPHER</span>
+        </a>
+      </div>
+      <div class="right-header">
+        <div class="discord-button">
+          <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+            <img src="/discordlogo.jpg" alt="Discord" width="20"> Join Discord
+          </button>
+        </div>
+        <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+        <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <div class="nav-inner">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/onlinetools">Tools</a></li>
+          <li><a href="/symbols-list">Symbols</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/cryptographers">Cryptographers</a></li>
+          <li><a href="/puzzles">Puzzles</a></li>
+          <li><a href="/dictionary">Dictionary</a></li>
+          <li><a href="/aes-decryption">AES</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/onlinetools">Tools</a></li>
+      <li><a href="/symbols-list">Symbols</a></li>
+      <li><a href="/ciphers">Ciphers</a></li>
+      <li><a href="/cryptographers">Cryptographers</a></li>
+      <li><a href="/puzzles">Puzzles</a></li>
+      <li><a href="/dictionary">Dictionary</a></li>
+      <li><a href="/aes-decryption">AES</a></li>
+      <li><a href="/get-started">Get Started</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <div class="div1">
+      <h1>Cipher Identifier</h1>
+      <p class="subtitle">Paste your ciphertext below. We'll analyze and attempt to identify the cipher used.</p>
+
+      <div class="search-container">
+        <textarea id="cipherInput" rows="6" style="width:100%; border-radius:12px; padding:15px; background:#2a2a2a; color:white; font-family:'Exo 2'; resize:vertical;"></textarea>
+      </div>
+
+      <div style="text-align:center; margin-top:20px;">
+        <button class="button6" onclick="identifyCipher()">Identify Cipher</button>
+      </div>
+
+      <div id="identifierResults" style="margin-top:30px;"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p>&copy; 2025 DECIPHER</p>
+    </div>
+  </footer>
+
+  <script src="/cipher-identifier.js?v=1"></script>
+  <script>
+    fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header-auth-slot").innerHTML = html;
+        const script = document.createElement("script");
+        script.src = "/header.js?v=" + Date.now();
+        script.onload = () => setupHeader();
+        document.body.appendChild(script);
+      });
+  </script>
+  <script src="/common.js?v=1"></script>
+  <script>
+    // Hide loader
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      if (loader) loader.classList.add('hidden');
+    });
+  
+    // Fallback hide after 2s
+    setTimeout(() => {
+      const loader = document.querySelector('.loader');
+      if (loader) loader.classList.add('hidden');
+    }, 2000);
+  
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  
+    // Mobile menu toggle
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburgerMenu.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      themeIcon.classList.toggle('fa-sun', isLight);
+      themeIcon.classList.toggle('fa-moon', !isLight);
+    });
+  
+    // Load header dynamically
+    fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("header-auth-slot").innerHTML = html;
+        const script = document.createElement("script");
+        script.src = "/header.js?v=" + Date.now();
+        script.onload = () => setupHeader();
+        document.body.appendChild(script);
+      });
+  
+    // Load cipher-identifier.js with cache busting
+    const ciScript = document.createElement("script");
+    ciScript.src = "/cipher-identifier.js?v=" + Date.now();
+    document.body.appendChild(ciScript);
+  </script>
+  
+</body>
+</html>

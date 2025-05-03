@@ -89,7 +89,8 @@
 
 <div class="user-actions">
   <span id="header-user-info" class="user-info"></span>
-  <a href="/login-page.html" id="login-link" class="auth-link">Login/Register</a>
+  <a href="/login-page.html" id="login-link" class="auth-link"
+   onclick="sessionStorage.setItem('postLoginRedirect', location.href)">Login/Register</a>
   <a href="/account.html" id="account-link" class="auth-link" style="display: none;">Account</a>
   <button id="logout-btn" class="auth-link" style="display: none;">Logout</button>
 </div>

@@ -1098,8 +1098,12 @@ if (themeToggle) {
       try {
         const res = await fetch(page.path);
         const html = await res.text();
-        if (html.toLowerCase().includes(query)) {
-          results.push(page);
+        const lowerHtml = html.toLowerCase();
+        const matchIndex = lowerHtml.indexOf(query);
+        if (matchIndex !== -1) {
+          const snippet = html.substring(Math.max(0, matchIndex - 60), matchIndex + query.length + 60);
+          const safeSnippet = snippet.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`);
+          results.push({ ...page, snippet: safeSnippet });
         }
       } catch (e) {
         console.error(`Error fetching ${page.path}`, e);
@@ -1116,6 +1120,7 @@ if (themeToggle) {
         <div class="tool-content">
           <h3>${page.title}</h3>
           <p>${page.desc}</p>
+          <p style="color: rgba(255,255,255,0.8); font-size: 0.9em; margin-top: 10px;">...${page.snippet}...</p>
           <a href="${page.link}" class="tool-link">Visit Page &rarr;</a>
         </div>
       </div>
@@ -1123,6 +1128,8 @@ if (themeToggle) {
   }
 
   searchPages(query);
+</script>
+
 </script>
 </body>
 </html>

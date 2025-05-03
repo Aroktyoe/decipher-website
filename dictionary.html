@@ -1333,6 +1333,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchContainer = document.createElement('div');
+    searchContainer.className = 'search-container';
+    searchContainer.innerHTML = `
+      <input type="text" id="dictionarySearch" placeholder="Search terms...">
+      <i class="fas fa-search search-icon"></i>
+    `;
+    const main = document.querySelector('main');
+    main.insertBefore(searchContainer, main.firstChild);
+
+    const searchInput = document.getElementById('dictionarySearch');
+    const entries = document.querySelectorAll('.div1 p');
+
+    searchInput.addEventListener('input', function () {
+      const q = this.value.toLowerCase();
+      entries.forEach(entry => {
+        const text = entry.textContent.toLowerCase();
+        entry.style.display = text.includes(q) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+
+
 <script>
   // Force hide loader even if load event fails
   document.addEventListener('DOMContentLoaded', function() {
@@ -1379,6 +1405,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     });
   }
+
+  
 
   // Mobile menu toggle
   const hamburgerMenu = document.getElementById('hamburger-menu');

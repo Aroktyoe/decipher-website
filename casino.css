@@ -1046,6 +1046,30 @@ box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 font-size: 1.8rem; /* 2x text size */
 }
 
+.merch-button a {
+  background-color: #ff9800;
+  color: #121212;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.merch-button a:hover {
+  background-color: #e68900;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .merch-button {
+    margin-right: 0;
+  }
+}
+
 @media (max-width: 1200px) {
 #floating-balance {
   padding: 12px 20px;

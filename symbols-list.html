@@ -904,6 +904,30 @@ body.light-theme .symbol-name {
   body.light-theme .theme-toggle {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
+  .merch-button a {
+  background-color: #ff9800;
+  color: #121212;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.merch-button a:hover {
+  background-color: #e68900;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .merch-button {
+    margin-right: 0;
+  }
+}
   
   body.light-theme .theme-toggle i {
     color: var(--text-dark);
@@ -1126,6 +1150,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
       <div class="right-header">
+        <div class="merch-button">
+          <a href="https://shop.decipher.wiki" target="_blank">Merch Shop</a>
+        </div>
         <div class="discord-button">
           <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
             <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">

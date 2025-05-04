@@ -45,6 +45,23 @@
     });
   }
 
+
+  document.querySelectorAll('.mobile-nav .dropdown-toggle').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = button.closest('.dropdown');
+      parent.classList.toggle('open');
+    });
+  });
+  
+  // Optional: close dropdown if user taps outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.mobile-nav .dropdown.open').forEach(drop => {
+      drop.classList.remove('open');
+    });
+  });
+  
+  
   
 
   // Mobile menu toggle

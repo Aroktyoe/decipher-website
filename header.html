@@ -85,11 +85,59 @@
     color: var(--text-dark);
   }
 
+  .dropdown.open .dropdown-menu {
+  display: block;
+}
+
   @media (max-width: 768px) {
   .user-actions #account-link,
   .user-actions #logout-btn {
     display: none !important;
   }
+  #account-dropdown {
+    display: none !important
+}
+
+/* Desktop dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #c4214b;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #2a2a2a;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #3a3a3a;
+}
 }
 </style>
 
@@ -98,6 +146,12 @@
   <span id="header-user-info" class="user-info"></span>
   <a href="/login-page.html" id="login-link" class="auth-link"
    onclick="sessionStorage.setItem('postLoginRedirect', location.href)">Login/Register</a>
-  <a href="/account.html" id="account-link" class="auth-link" style="display: none;">Account</a>
-  <button id="logout-btn" class="auth-link" style="display: none;">Logout</button>
+
+  <div id="account-dropdown" class="dropdown" style="display: none;">
+    <button class="auth-link dropdown-toggle">Account ▾</button>
+    <div class="dropdown-menu">
+      <a href="/profile">Profile</a>
+      <a href="/account.html">Settings</a>
+    </div>
+  </div>
 </div>

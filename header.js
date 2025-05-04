@@ -5,11 +5,10 @@ async function setupHeader() {
   const userInfo = document.getElementById("header-user-info");
 
   // 🔽 Add these for mobile menu
-  const mobileLogoutBtn = document.getElementById("mobile-logout-btn");
-  const mobileLogoutLi = document.getElementById("mobile-logout");
-  const mobileAccountLi = document.getElementById("mobile-account");
+  const mobileAccountDropdown = document.getElementById("mobile-account-dropdown");
 
-  if (!loginLink || !accountLink || !logoutBtn || !userInfo) return;
+  if (!loginLink || !userInfo || !document.getElementById("account-dropdown")) return;
+
 
   const logout = async () => {
     await fetch("/logout", {
@@ -32,14 +31,30 @@ async function setupHeader() {
     userInfo.querySelector(".username").textContent = data.username;
 
     loginLink.style.display = "none";
-    accountLink.style.display = "inline";
-    logoutBtn.style.display = "inline";
-    logoutBtn.onclick = logout;
+    document.getElementById("account-dropdown").style.display = "inline-block";
+    const dropdownToggle = document.querySelector("#account-dropdown .dropdown-toggle");
+    const dropdown = document.getElementById("account-dropdown");
+
+    if (dropdownToggle && dropdown) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle("open");
+      });
+
+      // Close dropdown if clicking outside
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove("open");
+        }
+      });
+    }
+
+
+
 
     // 🔽 Show + connect mobile account/logout
-    if (mobileLogoutBtn) mobileLogoutBtn.onclick = logout;
-    if (mobileLogoutLi) mobileLogoutLi.style.display = "list-item";
-    if (mobileAccountLi) mobileAccountLi.style.display = "list-item";
+    if (mobileAccountDropdown) mobileAccountDropdown.style.display = "list-item";
+
 
   } catch (e) {
     userInfo.innerHTML = "";
@@ -48,9 +63,10 @@ async function setupHeader() {
     logoutBtn.style.display = "none";
 
     // 🔽 Hide mobile account/logout on failure
-    if (mobileLogoutLi) mobileLogoutLi.style.display = "none";
-    if (mobileAccountLi) mobileAccountLi.style.display = "none";
+    if (mobileAccountDropdown) mobileAccountDropdown.style.display = "none";
+
   }
 }
+
 
 window.setupHeader = setupHeader;

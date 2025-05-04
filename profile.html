@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <title>Profile – DECIPHER</title>
+  <link rel="icon" href="decipher_logo.png">
+  <link href="index2.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+.avatar-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  background-color: #333;
+}
+#avatarBase {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  top: 11%;
+  left: 5%;
+  object-fit: cover;
+  z-index: 0;
+}
+#frameOverlay {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  pointer-events: none;
+  z-index: 1;
+}
+.avatar-hat, .avatar-accessory {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  top: 8%;
+  pointer-events: none;
+  z-index: 2;
+}
+.avatar-hat { top: -10%; }
+.avatar-accessory { bottom: 5%; }
+
+    .shop-section { margin-top: 30px; }
+    .shop-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .shop-item {
+      background: #2a2a2a;
+      border: 2px solid #555;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      text-align: center;
+      width: 100px;
+      transition: 0.2s;
+    }
+    .shop-item:hover { border-color: gold; }
+    .shop-color {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin: 0 auto 5px;
+    }
+    .shop-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.shop-section {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+}
+
+.shop-item.selected {
+  border-color: lime;
+  box-shadow: 0 0 5px lime;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) --></body>
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+  
+  <header>
+    <div class="header-container">
+      <div id="header-auth-slot"></div>
+      <div class="logo-container">
+        <a href="/">
+          <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+          <span class="logo-text">DECIPHER</span>
+        </a>
+      </div>
+      <div class="right-header">
+        <div class="merch-button">
+          <a href="https://shop.decipher.wiki" target="_blank">Merch Shop</a>
+        </div>
+        <div class="discord-button">
+          <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+            <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+            Join Discord
+          </button>
+        </div>
+        <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+        <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="nav-container">
+    <div class="nav-inner">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/onlinetools">Tools</a></li>
+          <li><a href="/symbols-list">Symbols</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/cryptographers">Cryptographers</a></li>
+          <li><a href="/puzzles">Puzzles</a></li>
+          <li><a href="/dictionary">Dictionary</a></li>
+          <li><a href="/aes-decryption">AES</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+  <li><a href="/casino">Casino</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/onlinetools">Tools</a></li>
+      <li><a href="/symbols-list">Symbols</a></li>
+      <li><a href="/ciphers">Ciphers</a></li>
+      <li><a href="/cryptographers">Cryptographers</a></li>
+      <li><a href="/puzzles">Puzzles</a></li>
+      <li><a href="/dictionary">Dictionary</a></li>
+      <li><a href="/aes-decryption">AES</a></li>
+      <li><a href="/get-started">Get Started</a></li>
+  <li><a href="/casino">Casino</a></li>
+      <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
+      <li id="mobile-logout" style="display: none;"><button id="mobile-logout-btn">Logout</button></li>
+    </ul>
+  </div>
+  <main>
+    <h1 style="text-align:center">Your Avatar</h1>
+    <div class="avatar-container" id="avatarPreview">
+      <img id="avatarBase" src="" style="display:none;" alt="Avatar">
+      <img id="frameOverlay" src="" alt="">
+      <!--<img id="hatLayer" class="avatar-hat" />-->
+      <img id="accessoryLayer" class="avatar-accessory" />
+    </div>
+    <div style="text-align:center; margin-top: 10px;">
+      <button onclick="saveAvatar()">Save</button>
+    </div>
+  <div class="shop-wrapper">
+    <div class="shop-section">
+      <h3>Choose Avatar</h3>
+      <div class="shop-grid">
+        <div class="shop-item" data-id="avatar-none" data-price="0">
+          <div style="width:60px; background:#444; display:flex; align-items:center; justify-content:center; color:white; font-size:12px;">None</div>
+          <button class="buy-btn">Select</button>
+        </div>
+        <div class="shop-item owned" data-id="avatar1" data-price="0">
+          <img src="/avatars/avatar1.png" style="width: 60px;"><br>
+          Avatar 1
+        </div>
+        <div class="shop-item owned" data-id="avatar2" data-price="0">
+          <img src="/avatars/avatar2.png" style="width: 60px;"><br>
+          Avatar 2
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-section">
+      <h3>Background Colors</h3>
+      <div class="shop-grid">
+        <div class="shop-item owned" data-id="bg-none" data-price="0">
+          <div class="shop-color" style="background:#333"></div>
+          <span>None</span>
+          <span class="price"></span><br>
+        </div>
+        <div class="shop-item" data-id="bg-gray" data-price="50000">
+          <div class="shop-color" style="background:gray"></div>
+          <span>Gray</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-red" data-price="50000">
+          <div class="shop-color" style="background:red"></div>
+          <span>Red</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-blue" data-price="50000">
+          <div class="shop-color" style="background:blue"></div>
+          <span>Blue</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-lightgreen" data-price="50000">
+          <div class="shop-color" style="background:lightgreen"></div>
+          <span>Light Green</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-rgb(255, 34, 137)" data-price="50000">
+          <div class="shop-color" style="background:rgb(255, 34, 137)"></div>
+          <span>Pink</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-lightblue" data-price="50000">
+          <div class="shop-color" style="background:lightblue"></div>
+          <span>Light Blue</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-rgb(255, 129, 129)" data-price="50000">
+          <div class="shop-color" style="background:rgb(255, 129, 129)"></div>
+          <span>Light Red</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-darkred" data-price="50000">
+          <div class="shop-color" style="background:darkred"></div>
+          <span>Dark Red</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="bg-yellow" data-price="50000">
+          <div class="shop-color" style="background:yellow"></div>
+          <span>Yellow</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>        
+      </div>
+      </div>  
+
+    <div class="shop-section">
+      <h3>Avatar Frames</h3>
+      <div class="shop-grid">
+        <div class="shop-item owned" data-id="frame-none" data-price="0">
+          <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center;">None</div>
+        </div>
+        <div class="shop-item" data-id="frame-gold" data-price="100000">
+          <img src="/frames/gold.png" style="width:100%; border-radius:50%;"><br>
+          <span>Gold</span><br>
+          <span class="price">$100,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item"data-id="frame-bronze" data-price="50000">
+          <img src="/frames/bronze.png" style="width:100%; border-radius:50%;"><br>
+          <span>Bronze</span><br>
+          <span class="price">$50,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item"data-id="frame-carrot" data-price="75000">
+          <img src="/frames/carrot.png" style="width:100%; border-radius:50%;"><br>
+          <span>Carrot</span><br>
+          <span class="price">$75,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item"data-id="frame-corrupt" data-price="75000">
+          <img src="/frames/corrupt.png" style="width:100%; border-radius:50%;"><br>
+          <span>Corrupt</span><br>
+          <span class="price">$75,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+    </div>
+    
+<!--
+    <div class="shop-section">
+      <h3>Hats</h3>
+      <div class="shop-grid">
+        <div class="shop-item" onclick="buy('hat-top')">Top Hat<br><button>Buy</button></div>
+        <div class="shop-item" onclick="buy('hat-party')">Party Hat<br><button>Buy</button></div>
+      </div>
+    </div>
+-->
+    <div class="shop-section">
+      <h3>Accessories</h3>
+      <div class="shop-grid">
+        <div class="shop-item owned" data-id="accessory-none" data-price="0">
+          <div style="width:60px; height:60px; display:flex; align-items:center; justify-content:center;">None</div>
+        </div>
+        <div class="shop-item" data-id="accessory-sunglasses" data-price="100000">
+          <img src="/accessories/sunglasses.png" style="width: 60px;"><br>
+          Sunglasses<br>
+          <span class="price">$100,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+        <div class="shop-item" data-id="accessory-mask" data-price="100000">
+          <img src="/accessories/mask.png" style="width: 60px;"><br>
+          Mask<br>
+          <span class="price">$100,000</span><br>
+          <button class="buy-btn">Buy</button>
+        </div>
+             
+    </div>
+  </div>
+  </main>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+const avatar = document.getElementById("avatarPreview");
+function applyItem(item) {
+  if (item === "avatar-none") {
+    const img = document.getElementById("avatarBase");
+    img.src = "";
+    img.style.display = "none";
+  } else if (item.startsWith("avatar")) {
+    const img = document.getElementById("avatarBase");
+    img.src = `/avatars/${item}.png`;
+    img.style.display = "block";
+  } else if (item.startsWith("bg-")) {
+    avatar.style.backgroundColor = item.replace("bg-", "");
+  } else if (item.startsWith("frame-")) {
+    document.getElementById("frameOverlay").src = `/frames/${item.split('-')[1]}.png`;
+  } else if (item.startsWith("accessory-")) {
+    document.getElementById("accessoryLayer").src = `/accessories/${item.split('-')[1]}.png`;
+  }
+}
+
+function saveAvatar() {
+  const selectedAvatar = document.querySelector('.shop-item.selected[data-id^="avatar"]')?.dataset.id || null;
+  const selectedBg = document.querySelector('.shop-item.selected[data-id^="bg-"]')?.dataset.id || null;
+  const selectedFrame = document.querySelector('.shop-item.selected[data-id^="frame-"]')?.dataset.id || null;
+  const selectedAccessory = document.querySelector('.shop-item.selected[data-id^="accessory-"]')?.dataset.id || null;
+
+  const token = getCSRFToken();
+
+  fetch("/apply-avatar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-TOKEN": token
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      avatar: selectedAvatar,
+      background: selectedBg,
+      frame: selectedFrame,
+      accessory: selectedAccessory
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    alert(data.success ? "Saved!" : (data.msg || "Failed to save"));
+  });
+}
+</script>
+<script>
+
+    function previewItem(id) {
+      if (id.startsWith("frame-")) {
+        document.getElementById("frameOverlay").src = `/frames/${id.split('-')[1]}.png`;
+      } else if (id.startsWith("accessory-")) {
+        document.getElementById("accessoryLayer").src = `/accessories/${id.split('-')[1]}.png`;
+      } else if (id.startsWith("bg-")) {
+        document.getElementById("avatarPreview").style.backgroundColor = id.replace("bg-", "");
+      } else if (id === "avatar-none") {
+          const img = document.getElementById("avatarBase");
+          img.src = "";
+          img.style.display = "none";
+        } else if (id.startsWith("avatar")) {
+          const img = document.getElementById("avatarBase");
+          img.src = `/avatars/${id}.png`;
+          img.style.display = "block";
+        }
+    }
+
+    function markSelected(itemId) {
+  const prefix = itemId.split('-')[0];
+  document.querySelectorAll(`.shop-item[data-id^="${prefix}-"]`).forEach(el => {
+    el.classList.remove("selected");
+  });
+  const selected = document.querySelector(`.shop-item[data-id="${itemId}"]`);
+  if (selected) selected.classList.add("selected");
+}
+
+
+
+document.querySelectorAll(".shop-item").forEach(item => {
+  const itemId = item.dataset.id;
+  const price = parseInt(item.dataset.price);
+
+  // always clickable if owned or free
+  if (price === 0 || item.classList.contains("owned")) {
+    item.addEventListener("click", () => {
+      markSelected(itemId);
+      previewItem(itemId);
+      applyItem(itemId);
+    });
+  }
+
+const buyBtn = item.querySelector(".buy-btn");
+if (buyBtn) {
+  buyBtn.addEventListener("click", async e => {
+    e.stopPropagation();
+
+    // Apply for free items
+    if (price == 0) {
+      applyItem(itemId);
+      markSelected(itemId);
+      previewItem(itemId);
+      return;
+    }
+
+    const confirmed = confirm(`Buy ${itemId.replace(/bg-/, '')} for $${price}?`);
+    if (!confirmed) return;
+
+    const token = getCSRFToken();
+    const res = await fetch("/buy-avatar-item", {
+      method: "POST",
+      headers: { "Content-Type": "application/json",
+        "X-CSRF-TOKEN": token
+      },
+      credentials: "include",
+      body: JSON.stringify({ item: itemId })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert("Purchased!");
+      applyItem(itemId);
+      markSelected(itemId);
+      const btn = item.querySelector(".buy-btn");
+      if (btn) btn.remove();
+      item.classList.add("owned");
+    } else {
+      alert(data.msg || "Failed");
+    }
+  });
+}
+});
+
+</script>
+    
+  <script>
+    // const hatLayer = document.getElementById('hatLayer');
+    const accessoryLayer = document.getElementById('accessoryLayer');
+
+    function applyAvatar(name) {
+      document.getElementById('avatarBase').src = `/avatars/${name}.png`;
+}
+
+
+function buy(item) {
+  const token = getCSRFToken();
+  if (item === "avatar-none") {
+    const img = document.getElementById("avatarBase");
+    img.src = "";
+    img.style.display = "none";
+  } else if (item.startsWith("avatar")) {
+  const img = document.getElementById("avatarBase");
+  img.src = `/avatars/${item}.png`;
+  img.style.display = "block";
+}
+  const isColor = item.startsWith('bg-');
+  const isFrame = item.startsWith('frame-');
+  const isAccessory = item.startsWith('accessory-');
+
+  if (isColor) {
+    avatar.style.backgroundColor = item.replace('bg-', '');
+  } else if (isFrame) {
+    document.getElementById('frameOverlay').src = `/frames/${item.split('-')[1]}.png`;
+  } else if (isAccessory) {
+    document.getElementById('accessoryLayer').src = `/accessories/${item.split('-')[1]}.png`;
+  }
+
+  fetch("/buy-avatar-item", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': token
+    },
+    credentials: 'include',
+    body: JSON.stringify({ item })
+  }).then(r => r.json()).then(data => {
+    if (data.success) {
+      alert("Purchased and applied!");
+      
+      // Remove Buy button and mark item as owned
+      const shopItem = document.querySelector(`.shop-item[data-id="${item}"]`);
+      if (shopItem) {
+        const btn = shopItem.querySelector(".buy-btn");
+        if (btn) btn.remove();
+        shopItem.classList.add("owned");
+
+        shopItem.addEventListener("click", () => {
+          previewItem(item);
+        }, { once: true });
+      }
+
+    } else {
+      alert(data.msg || "Failed");
+    }
+  });
+}
+
+
+    function getCSRFToken() {
+    const match = document.cookie.match(/csrf_access_token=([^;]+)/);
+    return match ? match[1] : '';
+}
+  </script>
+<script>
+ async function loadAvatar() {
+  const res = await fetch("/me", {
+    method: "GET",
+    credentials: "include"
+  });
+
+  if (!res.ok) return;
+  const data = await res.json();
+
+  const selections = [data.avatar, data.background, data.frame, data.accessory];
+  selections.forEach(id => {
+    if (!id) return;
+    const el = document.querySelector(`.shop-item[data-id="${id}"]`);
+    if (el) {
+      el.classList.add("owned");
+      el.classList.add("selected");
+      applyItem(id);
+      previewItem(id);
+
+      const btn = el.querySelector(".buy-btn");
+      if (btn) btn.remove();
+    }
+  });
+}
+
+window.addEventListener("DOMContentLoaded", loadAvatar);
+
+</script>
+
+  
+<footer>
+  <div class="contact-info">
+    <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+    <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+    <p>Terms: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+    <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+  </div>
+</footer>
+
+  <script src="compiledjs.js"></script>
+</body>
+</html>

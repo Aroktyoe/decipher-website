@@ -246,15 +246,33 @@ export async function updateLeaderboard() {
   const board = await res.json();
   if (!Array.isArray(board)) return;
 
-  const username = window.currentUsername?.toLowerCase?.(); // Safely get it
+  const username = window.currentUsername?.toLowerCase?.();
 
-  const list = board.map(entry => {
-      const isSelf = entry.username.toLowerCase() === username;
-      return `<li${isSelf ? ' style="color: #90ee90; font-weight: bold;"' : ''}>${entry.username}: $${entry.balance.toLocaleString()}</li>`;
+  const list = board.map((entry, i) => {
+    const isSelf = entry.username.toLowerCase() === username;
+    const avatar = entry.avatar || 'avatar1';
+    const frame = entry.frame ? `/frames/${entry.frame.replace('frame-', '')}.png` : '';
+    const accessory = entry.accessory ? `/accessories/${entry.accessory.replace('accessory-', '')}.png` : '';
+    const bg = entry.background ? entry.background.replace('bg-', '') : '#333';
+
+    return `
+      <li style="margin-bottom: 5px; ${isSelf ? 'color: #90ee90; font-weight: bold;' : ''}">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 24px; text-align: right;">${i + 1}.</span>
+          <div style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: ${bg}; position: relative; flex-shrink: 0;">
+            <img src="/avatars/${avatar}.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute;">
+            ${frame ? `<img src="${frame}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
+            ${accessory ? `<img src="${accessory}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
+          </div>
+          <span>${entry.username}: $${entry.balance.toLocaleString()}</span>
+        </div>
+      </li>`;
   }).join('');
 
   document.getElementById('leaderboard').innerHTML = list;
 }
+
+
 
 
 export function updateBalance() {

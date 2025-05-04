@@ -102,77 +102,9 @@
   </footer>
 
   <script src="/cipher-identifier.js?v=1"></script>
-  <script>
-    fetch("/header.html", { headers: { "X-Original-Request": "true" } })
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("header-auth-slot").innerHTML = html;
-        const script = document.createElement("script");
-        script.src = "/header.js?v=" + Date.now();
-        script.onload = () => setupHeader();
-        document.body.appendChild(script);
-      });
-  </script>
+  <script src="compiledjs.js"></script>
   <script src="/common.js?v=1"></script>
   <script>
-    // Hide loader
-    window.addEventListener('load', () => {
-      const loader = document.querySelector('.loader');
-      if (loader) loader.classList.add('hidden');
-    });
-  
-    // Fallback hide after 2s
-    setTimeout(() => {
-      const loader = document.querySelector('.loader');
-      if (loader) loader.classList.add('hidden');
-    }, 2000);
-  
-    // Back to top button
-    const backToTopButton = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    });
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  
-    // Mobile menu toggle
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const mobileNav = document.getElementById('mobile-nav');
-    hamburgerMenu.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
-    });
-  
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-theme');
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-    themeToggle.addEventListener('click', () => {
-      const isLight = document.body.classList.toggle('light-theme');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-      themeIcon.classList.toggle('fa-sun', isLight);
-      themeIcon.classList.toggle('fa-moon', !isLight);
-    });
-  
-    // Load header dynamically
-    fetch("/header.html", { headers: { "X-Original-Request": "true" } })
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("header-auth-slot").innerHTML = html;
-        const script = document.createElement("script");
-        script.src = "/header.js?v=" + Date.now();
-        script.onload = () => setupHeader();
-        document.body.appendChild(script);
-      });
-  
     // Load cipher-identifier.js with cache busting
     const ciScript = document.createElement("script");
     ciScript.src = "/cipher-identifier.js?v=" + Date.now();

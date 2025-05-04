@@ -594,6 +594,228 @@ background-color: rgba(60, 60, 60, 0.95);}
 .collapsible.active {
 background-color: var(--accent-color);
 color: var(--primary-color);}
+
+@media (max-width: 1600px) {
+ 
+
+  .vpn-info {
+ 
+
+    position: relative !important;
+ 
+
+    top: auto !important;
+ 
+
+    right: auto !important;
+ 
+
+    left: auto !important;
+ 
+
+    margin: 30px auto 0;
+ 
+
+    width: 100%;
+ 
+
+    max-width: 100%;
+ 
+
+    background-color: #1e1e1e;
+ 
+
+    padding: 10px 0;
+ 
+
+    text-align: center;
+ 
+
+    z-index: 1;
+ 
+
+  }
+ 
+
+
+ 
+
+  .vpn-info img {
+ 
+
+    max-height: 120px;
+ 
+
+    width: auto;
+ 
+
+  }
+ 
+
+
+ 
+
+  .vpn-info p {
+ 
+
+    color: white;
+ 
+
+    font-size: 14px;
+ 
+
+    margin-top: 5px;
+ 
+
+  }
+ 
+
+}
+ 
+
+
+ 
+
+@media (max-width: 768px) {
+ 
+
+  .vpn-info {
+ 
+
+    position: relative !important;
+ 
+
+    top: auto !important;
+ 
+
+    right: auto !important;
+ 
+
+    left: auto !important;
+ 
+
+    margin: 30px auto 0;
+ 
+
+    width: 100%;
+ 
+
+    max-width: 100%;
+ 
+
+    background-color: #1e1e1e;
+ 
+
+    padding: 10px 0;
+ 
+
+    text-align: center;
+ 
+
+    z-index: 1;
+ 
+
+  }
+ 
+
+
+ 
+
+  .vpn-info img {
+ 
+
+    max-height: 120px;
+ 
+
+    width: auto;
+ 
+
+  }
+ 
+
+
+ 
+
+  .vpn-info p {
+ 
+
+    color: white;
+ 
+
+    font-size: 14px;
+ 
+
+    margin-top: 5px;
+ 
+
+  }
+ 
+
+}
+ 
+
+
+ 
+
+.vpn-info {
+ 
+
+  position: absolute;
+ 
+
+  top: 220px;
+ 
+
+  right: 25px;
+ 
+
+  width: 220px;
+ 
+
+  z-index: 10;
+ 
+
+}
+ 
+
+
+ 
+
+.vpn-info img {
+ 
+
+  width: 220px;
+ 
+
+  height: auto;
+ 
+
+  max-height: 1200px;
+ 
+
+  border-radius: 8px;
+ 
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+ 
+
+  transition: transform 0.2s ease;
+ 
+
+}
+ 
+
+
+ 
+
+.vpn-info img:hover {
+ 
+
+  transform: translateY(-5px);
+ 
+
+}
+
 #close-nav {
 position: absolute;
 top: 10px;

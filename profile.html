@@ -98,6 +98,36 @@
   pointer-events: auto;
 }
 
+button.buy-btn,
+button.save-btn {
+  background-color: #c4214b;
+  color: white;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.buy-btn:hover,
+button.save-btn:hover {
+  background-color: #a01b3d;
+}
+
+.shop-item .none-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: white;
+  font-size: 14px;
+  background: #444;
+  border-radius: 6px;
+  top: 5px;
+}
+
+
   </style>
 </head>
 <body>
@@ -169,6 +199,9 @@
     </ul>
   </div>
   <main>
+    <div id="balance" style="text-align:center; font-weight: bold; margin-bottom: 20px;">
+      Balance: <span id="balance-amount">...</span>
+    </div>
     <h1 style="text-align:center">Your Avatar</h1>
     <div class="avatar-container" id="avatarPreview">
       <img id="avatarBase" src="" style="display:none;" alt="Avatar">
@@ -177,26 +210,28 @@
       <img id="accessoryLayer" class="avatar-accessory" />
     </div>
     <div style="text-align:center; margin-top: 10px;">
-      <button onclick="saveAvatar()">Save</button>
+      <button class="save-btn" onclick="saveAvatar()">Save</button>
     </div>
   <div class="shop-wrapper">
     <div class="shop-section">
       <h3>Choose Avatar</h3>
       <div class="shop-grid">
         <div class="shop-item" data-id="avatar-none" data-price="0">
-          <div style="width:60px; background:#444; display:flex; align-items:center; justify-content:center; color:white; font-size:12px;">None</div>
-          <button class="buy-btn">Select</button>
+          <div style="width:60px; background:#444; display:flex; align-items:center; justify-content:center; color:white; font-size:12px;"></div>
+          <div class="none-label">None</div>
         </div>
-        <div class="shop-item owned" data-id="avatar1" data-price="0">
+        <div class="shop-item owned" data-id="avatar-1" data-price="0">
           <div class="shop-item-content">
           <img src="/avatars/avatar1.png" style="width: 60px;"><br>
-          Avatar 1
+          <span>Avatar 1</span>
+          <span class="price"></span><br>
         </div>
       </div>
-        <div class="shop-item owned" data-id="avatar2" data-price="0">
+        <div class="shop-item owned" data-id="avatar-2" data-price="0">
           <div class="shop-item-content">
           <img src="/avatars/avatar2.png" style="width: 60px;"><br>
-          Avatar 2
+        <span>Avatar 2</span>
+        <span class="price"></span><br>
         </div>
       </div>
     </div>
@@ -206,16 +241,16 @@
       <div class="shop-grid">
         <div class="shop-item owned" data-id="bg-none" data-price="0">
           <div class="shop-item-content">
-            <div class="shop-color" style="background:#333"></div>
-            <span>None</span>
+            <div class="shop-color" style="background:gray"></div>
+            <span>Gray</span><br>
             <span class="price"></span><br>
           </div>
         </div>
-        <div class="shop-item" data-id="bg-gray" data-price="50000">
+        <div class="shop-item" data-id="bg-rgb(51, 51, 51)" data-price="100000">
           <div class="shop-item-content">
-            <div class="shop-color" style="background:gray"></div>
-            <span>Gray</span><br>
-            <span class="price">$50,000</span><br>
+            <div class="shop-color" style="background:#333"></div>
+            <span>Black</span><br>
+            <span class="price">$100,000</span><br>
             <button class="buy-btn">Buy</button>
           </div>
         </div>
@@ -291,7 +326,8 @@
       <div class="shop-grid">
         <div class="shop-item owned" data-id="frame-none" data-price="0">
           <div class="shop-item-content">
-            <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center;">None</div>
+            <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center;"></div>
+            <div class="none-label">None</div>
           </div>
         </div>
         <div class="shop-item" data-id="frame-gold" data-price="100000">
@@ -334,7 +370,8 @@
       <div class="shop-grid">
         <div class="shop-item owned" data-id="accessory-none" data-price="0">
           <div class="shop-item-content">
-            <div style="width:60px; height:60px; display:flex; align-items:center; justify-content:center;">None</div>
+            <div style="width:60px; height:60px; display:flex; align-items:center; justify-content:center;"></div>
+            <div class="none-label">None</div>
           </div>
         </div>
         <div class="shop-item" data-id="accessory-sunglasses" data-price="100000">
@@ -369,16 +406,18 @@ function applyItem(item) {
     img.style.display = "none";
   } else if (item.startsWith("avatar")) {
     const img = document.getElementById("avatarBase");
-    img.src = `/avatars/${item}.png`;
+    img.src = `/avatars/${item.replace("avatar-", "avatar")}.png`;
     img.style.display = "block";
   } else if (item.startsWith("bg-")) {
-    avatar.style.backgroundColor = item.replace("bg-", "");
+    const color = item === "bg-none" ? "#808080" : item.replace("bg-", "");
+    avatar.style.backgroundColor = color;
   } else if (item.startsWith("frame-")) {
     document.getElementById("frameOverlay").src = `/frames/${item.split('-')[1]}.png`;
   } else if (item.startsWith("accessory-")) {
     document.getElementById("accessoryLayer").src = `/accessories/${item.split('-')[1]}.png`;
   }
 }
+
 
 function saveAvatar() {
   const selectedAvatar = document.querySelector('.shop-item.selected[data-id^="avatar"]')?.dataset.id || null;
@@ -423,19 +462,23 @@ function saveAvatar() {
           img.style.display = "none";
         } else if (id.startsWith("avatar")) {
           const img = document.getElementById("avatarBase");
-          img.src = `/avatars/${id}.png`;
+          img.src = `/avatars/${id.replace("avatar-", "avatar")}.png`;
           img.style.display = "block";
         }
     }
 
     function markSelected(itemId) {
   const prefix = itemId.split('-')[0];
-  document.querySelectorAll(`.shop-item[data-id^="${prefix}-"]`).forEach(el => {
-    el.classList.remove("selected");
-  });
+
+    document.querySelectorAll(`.shop-item[data-id^="${prefix}-"]`).forEach(el => {
+      el.classList.remove("selected");
+    });
+
   const selected = document.querySelector(`.shop-item[data-id="${itemId}"]`);
   if (selected) selected.classList.add("selected");
 }
+
+
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -443,56 +486,84 @@ window.addEventListener("DOMContentLoaded", () => {
     const itemId = item.dataset.id;
     const price = parseInt(item.dataset.price);
 
-    // always clickable if owned or free
-    if (price === 0 || item.classList.contains("owned")) {
-      item.addEventListener("click", () => {
+    item.addEventListener("click", () => {
+      previewItem(itemId);
+      if (price === 0 || item.classList.contains("owned")) {
         markSelected(itemId);
+        applyItem(itemId);
         previewItem(itemId);
-        applyItem(itemId);
-      });
-    }
-
-  const buyBtn = item.querySelector(".buy-btn");
-  if (buyBtn) {
-    buyBtn.addEventListener("click", async e => {
-      e.stopPropagation();
-
-      // Apply for free items
-      if (price == 0) {
-        applyItem(itemId);
-        markSelected(itemId);
-        previewItem(itemId);
-        return;
-      }
-
-      const confirmed = confirm(`Buy ${itemId.replace(/bg-/, '')} for $${price}?`);
-      if (!confirmed) return;
-
-      const token = getCSRFToken();
-      const res = await fetch("/buy-avatar-item", {
-        method: "POST",
-        headers: { "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
-        },
-        credentials: "include",
-        body: JSON.stringify({ item: itemId })
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        alert("Purchased!");
-        applyItem(itemId);
-        markSelected(itemId);
-        const btn = item.querySelector(".buy-btn");
-        if (btn) btn.remove();
-        item.classList.add("owned");
-      } else {
-        alert(data.msg || "Failed");
       }
     });
-  }
+
+    const buyBtn = item.querySelector(".buy-btn");
+    if (buyBtn) {
+      buyBtn.addEventListener("click", async e => {
+        e.stopPropagation();
+
+        if (price == 0) {
+          applyItem(itemId);
+          markSelected(itemId);
+          previewItem(itemId);
+          return;
+        }
+
+        const confirmed = confirm(`Buy ${itemId.replace(/bg-/, '')} for $${price}?`);
+        if (!confirmed) return;
+
+        const token = getCSRFToken();
+        const res = await fetch("/buy-avatar-item", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": token },
+          credentials: "include",
+          body: JSON.stringify({ item: itemId })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          alert("Purchased!");
+          applyItem(itemId);
+          markSelected(itemId);
+          const btn = item.querySelector(".buy-btn");
+          if (btn) btn.remove();
+          item.classList.add("owned");
+        } else {
+          alert(data.msg || "Failed");
+        }
+      });
+    }
   });
 });
+
+function updateShopDisplay() {
+  document.querySelectorAll(".shop-item").forEach(itemEl => {
+    const item = itemEl.dataset.id;
+
+    if (ownedItems.includes(item)) {
+      const btn = itemEl.querySelector(".buy-btn");
+      if (btn) btn.remove();
+
+      const priceEl = itemEl.querySelector(".price");
+      if (priceEl) priceEl.remove();
+
+      itemEl.classList.add("owned");
+    }
+  });
+}
+
+
+
+
+let ownedItems = [];
+
+fetch("/my-avatar-items", {
+  method: "GET",
+  credentials: "include"
+})
+  .then(res => res.json())
+  .then(data => {
+    ownedItems = data;
+    updateShopDisplay();
+  });
 
 </script>
     
@@ -565,7 +636,7 @@ function buy(item) {
 }
   </script>
 <script>
- async function loadAvatar() {
+async function loadAvatar() {
   const res = await fetch("/me", {
     method: "GET",
     credentials: "include"
@@ -574,13 +645,19 @@ function buy(item) {
   if (!res.ok) return;
   const data = await res.json();
 
+  // Set balance
+  const balanceSpan = document.getElementById("balance-amount");
+  if (balanceSpan && data.balance != null) {
+    balanceSpan.textContent = data.balance.toLocaleString();
+  }
+
   const selections = [data.avatar, data.background, data.frame, data.accessory];
   selections.forEach(id => {
     if (!id) return;
     const el = document.querySelector(`.shop-item[data-id="${id}"]`);
     if (el) {
       el.classList.add("owned");
-      el.classList.add("selected");
+      markSelected(id);
       applyItem(id);
       previewItem(id);
 
@@ -590,8 +667,19 @@ function buy(item) {
   });
 }
 
-window.addEventListener("DOMContentLoaded", loadAvatar);
+async function fetchBalance() {
+  const res = await fetch('/casino/balance', { credentials: 'include' });
+  const data = await res.json();
+  if (!res.ok) return alert('You must be logged to edit profile.');
+  document.getElementById('balance-amount').textContent = data.balance.toLocaleString();
+  return data;
+}
 
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadAvatar();
+  fetchBalance(); // ← add this here
+});
 </script>
 
   

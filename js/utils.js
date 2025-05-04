@@ -250,17 +250,30 @@ export async function updateLeaderboard() {
 
   const list = board.map((entry, i) => {
     const isSelf = entry.username.toLowerCase() === username;
-    const avatar = entry.avatar || 'avatar1';
-    const frame = entry.frame ? `/frames/${entry.frame.replace('frame-', '')}.png` : '';
-    const accessory = entry.accessory ? `/accessories/${entry.accessory.replace('accessory-', '')}.png` : '';
-    const bg = entry.background ? entry.background.replace('bg-', '') : '#333';
+    const rawAvatar = entry.avatar || '';
+    const hasAvatar = rawAvatar && rawAvatar !== 'avatar-none';
+    const avatar = hasAvatar
+      ? rawAvatar.replace('avatar-', 'avatar').replace('.png', '')
+      : null;
+
+    const frame = entry.frame && entry.frame !== 'frame-none'
+      ? `/frames/${entry.frame.replace('frame-', '').replace('.png', '')}.png`
+      : null;
+
+    const accessory = entry.accessory && entry.accessory !== 'accessory-none'
+      ? `/accessories/${entry.accessory.replace('accessory-', '').replace('.png', '')}.png`
+      : null;
+
+    const bg = entry.background && entry.background !== 'bg-none'
+      ? entry.background.replace('bg-', '')
+      : 'gray';
 
     return `
       <li style="margin-bottom: 5px; ${isSelf ? 'color: #90ee90; font-weight: bold;' : ''}">
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="display: inline-block; width: 24px; text-align: right;">${i + 1}.</span>
           <div style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: ${bg}; position: relative; flex-shrink: 0;">
-            <img src="/avatars/${avatar}.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute;">
+            ${hasAvatar ? `<img src="/avatars/${avatar}.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute;">` : ''}
             ${frame ? `<img src="${frame}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
             ${accessory ? `<img src="${accessory}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
           </div>
@@ -271,6 +284,8 @@ export async function updateLeaderboard() {
 
   document.getElementById('leaderboard').innerHTML = list;
 }
+
+
 
 
 

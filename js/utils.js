@@ -260,9 +260,11 @@ export async function updateLeaderboard() {
       ? `/frames/${entry.frame.replace('frame-', '').replace('.png', '')}.png`
       : null;
 
-    const accessory = entry.accessory && entry.accessory !== 'accessory-none'
-      ? `/accessories/${entry.accessory.replace('accessory-', '').replace('.png', '')}.png`
-      : null;
+    const accessories = entry.accessory && entry.accessory !== 'accessory-none'
+      ? entry.accessory.split(',').map(acc =>
+          `<img src="/accessories/${acc.replace('accessory-', '').replace('.png', '')}.png" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">`
+        ).join('')
+      : '';
 
     const bg = entry.background && entry.background !== 'bg-none'
       ? entry.background.replace('bg-', '')
@@ -275,7 +277,7 @@ export async function updateLeaderboard() {
           <div style="width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: ${bg}; position: relative; flex-shrink: 0;">
             ${hasAvatar ? `<img src="/avatars/${avatar}.png" style="width: 100%; height: 100%; object-fit: cover; position: absolute;">` : ''}
             ${frame ? `<img src="${frame}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
-            ${accessory ? `<img src="${accessory}" style="width: 100%; height: 100%; position: absolute; pointer-events: none;">` : ''}
+            ${accessories}
           </div>
           <span>${entry.username}: $${entry.balance.toLocaleString()}</span>
         </div>
@@ -284,6 +286,7 @@ export async function updateLeaderboard() {
 
   document.getElementById('leaderboard').innerHTML = list;
 }
+
 
 
 

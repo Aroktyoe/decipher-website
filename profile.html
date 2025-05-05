@@ -229,7 +229,8 @@ button.save-btn:hover {
       <img id="avatarBase" src="" style="display:none;" alt="Avatar">
       <img id="frameOverlay" src="" alt="">
       <!--<img id="hatLayer" class="avatar-hat" />-->
-      <img id="accessoryLayer" class="avatar-accessory" />
+      <img id="accessoryLayerClown" class="avatar-accessory" style="bottom: 0%;">
+      <img id="accessoryLayerExtra" class="avatar-accessory" style="bottom: 0%;">
     </div>
     <div style="text-align:center; margin-top: 10px;">
       <button class="save-btn" onclick="saveAvatar()">Save</button>
@@ -759,8 +760,8 @@ function applyItem(item) {
   } else if (item.startsWith("frame-")) {
     document.getElementById("frameOverlay").src = `/frames/${item.split('-')[1]}.png`;
   } else if (item.startsWith("accessory-")) {
-    document.getElementById("accessoryLayer").src = `/accessories/${item.split('-')[1]}.png`;
-  }
+      markAccessory(item);
+    }
 }
 
 
@@ -768,7 +769,7 @@ function saveAvatar() {
   const selectedAvatar = document.querySelector('.shop-item.selected[data-id^="avatar"]')?.dataset.id || null;
   const selectedBg = document.querySelector('.shop-item.selected[data-id^="bg-"]')?.dataset.id || null;
   const selectedFrame = document.querySelector('.shop-item.selected[data-id^="frame-"]')?.dataset.id || null;
-  const selectedAccessory = document.querySelector('.shop-item.selected[data-id^="accessory-"]')?.dataset.id || null;
+  const selectedAccessory = selectedAccessories.join(",");
 
   const token = getCSRFToken();
 
@@ -794,23 +795,23 @@ function saveAvatar() {
 </script>
 <script>
 
-    function previewItem(id) {
-      if (id.startsWith("frame-")) {
-        document.getElementById("frameOverlay").src = `/frames/${id.split('-')[1]}.png`;
-      } else if (id.startsWith("accessory-")) {
-        document.getElementById("accessoryLayer").src = `/accessories/${id.split('-')[1]}.png`;
-      } else if (id.startsWith("bg-")) {
-        document.getElementById("avatarPreview").style.backgroundColor = id.replace("bg-", "");
-      } else if (id === "avatar-none") {
-          const img = document.getElementById("avatarBase");
-          img.src = "";
-          img.style.display = "none";
-        } else if (id.startsWith("avatar")) {
-          const img = document.getElementById("avatarBase");
-          img.src = `/avatars/${id.replace("avatar-", "avatar")}.png`;
-          img.style.display = "block";
-        }
-    }
+function previewItem(id) {
+  if (id.startsWith("frame-")) {
+    document.getElementById("frameOverlay").src = `/frames/${id.split('-')[1]}.png`;
+  } else if (id.startsWith("bg-")) {
+    document.getElementById("avatarPreview").style.backgroundColor = id.replace("bg-", "");
+  } else if (id === "avatar-none") {
+    const img = document.getElementById("avatarBase");
+    img.src = "";
+    img.style.display = "none";
+  } else if (id.startsWith("avatar")) {
+    const img = document.getElementById("avatarBase");
+    img.src = `/avatars/${id.replace("avatar-", "avatar")}.png`;
+    img.style.display = "block";
+  }
+}
+
+
 
     function markSelected(itemId) {
   const prefix = itemId.split('-')[0];
@@ -832,13 +833,21 @@ window.addEventListener("DOMContentLoaded", () => {
     const price = parseInt(item.dataset.price);
 
     item.addEventListener("click", () => {
-      previewItem(itemId);
-      if (price === 0 || item.classList.contains("owned")) {
-        markSelected(itemId);
-        applyItem(itemId);
-        previewItem(itemId);
+      if (itemId.startsWith("accessory-")) {
+        if (price === 0 || item.classList.contains("owned")) {
+          markAccessory(itemId);
+        }
+        previewItem(itemId); // always allow preview
+      } else {
+        if (price === 0 || item.classList.contains("owned")) {
+          markSelected(itemId);
+          applyItem(itemId);
+        }
+        previewItem(itemId); // always allow preview
       }
     });
+
+
 
     const buyBtn = item.querySelector(".buy-btn");
     if (buyBtn) {
@@ -846,11 +855,15 @@ window.addEventListener("DOMContentLoaded", () => {
         e.stopPropagation();
 
         if (price == 0) {
-          applyItem(itemId);
-          markSelected(itemId);
+          if (itemId.startsWith("accessory-")) {
+            markAccessory(itemId);
+          } else {
+            markSelected(itemId);
+          }
           previewItem(itemId);
           return;
         }
+
 
         const confirmed = confirm(`Buy ${itemId.replace(/bg-/, '')} for $${price}?`);
         if (!confirmed) return;
@@ -866,8 +879,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const data = await res.json();
         if (data.success) {
           alert("Purchased!");
-          applyItem(itemId);
-          markSelected(itemId);
+          markAccessory(itemId);
           const btn = item.querySelector(".buy-btn");
           if (btn) btn.remove();
           item.classList.add("owned");
@@ -914,7 +926,6 @@ fetch("/my-avatar-items", {
     
   <script>
     // const hatLayer = document.getElementById('hatLayer');
-    const accessoryLayer = document.getElementById('accessoryLayer');
 
     function applyAvatar(name) {
       document.getElementById('avatarBase').src = `/avatars/${name}.png`;
@@ -1025,6 +1036,50 @@ window.addEventListener("DOMContentLoaded", () => {
   loadAvatar();
   fetchBalance(); // ← add this here
 });
+
+let selectedAccessories = [];
+
+const accessoryLayerClown = document.getElementById('accessoryLayerClown');
+const accessoryLayerExtra = document.getElementById('accessoryLayerExtra');
+
+function applyAccessoryState() {
+  const clown = selectedAccessories.includes("accessory-clown");
+  const other = selectedAccessories.find(id => id !== "accessory-clown");
+
+  accessoryLayerClown.src = clown ? "/accessories/clown.png" : "";
+  accessoryLayerExtra.src = other ? `/accessories/${other.split('-')[1]}.png` : "";
+}
+
+
+function markAccessory(itemId) {
+  const isClown = itemId === "accessory-clown";
+  const isOther = itemId === "accessory-sunglasses" || itemId === "accessory-mask";
+
+  if (itemId === "accessory-none") {
+    selectedAccessories = [];
+  } else if (isClown) {
+    if (selectedAccessories.includes("accessory-clown")) {
+      selectedAccessories = selectedAccessories.filter(x => x !== "accessory-clown");
+    } else {
+      selectedAccessories.push("accessory-clown");
+    }
+  } else if (isOther) {
+    // Remove sunglasses or mask if already there
+    selectedAccessories = selectedAccessories.filter(id => id !== "accessory-sunglasses" && id !== "accessory-mask");
+    if (!selectedAccessories.includes(itemId)) {
+      selectedAccessories.push(itemId);
+    }
+  }
+
+  document.querySelectorAll('.shop-item[data-id^="accessory-"]').forEach(el => el.classList.remove("selected"));
+  selectedAccessories.forEach(id => {
+    const el = document.querySelector(`.shop-item[data-id="${id}"]`);
+    if (el) el.classList.add("selected");
+  });
+
+  applyAccessoryState();
+}
+
 </script>
 
   

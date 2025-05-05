@@ -490,6 +490,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const form = document.querySelector(`#puzzle-form-${puzzle}`);
         if (form) {
           const container = form.parentElement;
+          const dropdownBtn = container.parentElement.querySelector(".puzzle-dropdown");
+          if (dropdownBtn) {
+            const check = document.createElement("span");
+            check.innerHTML = "✅";
+            check.style.color = "#28a745";
+            check.style.fontSize = "20px";
+            check.style.marginLeft = "10px";
+            dropdownBtn.appendChild(check);
+          }
           const inputs = form.querySelectorAll("input");
           inputs.forEach(inp => {
             inp.disabled = true;

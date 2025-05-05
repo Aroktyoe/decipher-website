@@ -31,17 +31,17 @@
   width: 90%;
   height: 90%;
   border-radius: 50%;
-  top: 11%;
+  top: 12%;
   left: 5%;
   object-fit: cover;
   z-index: 0;
 }
 #frameOverlay {
   position: absolute;
-  top: -5%;
-  left: -5%;
-  width: 110%;
-  height: 110%;
+  top: -3%;
+  left: -3%;
+  width: 106%;
+  height: 106%;
   pointer-events: none;
   z-index: 1;
 }
@@ -55,15 +55,15 @@
 }
 .avatar-hat { top: -10%; }
 .avatar-accessory { bottom: 5%; }
-
+.shop-section2 { margin-top: 30px; }
     .shop-section { margin-top: 30px; }
-    .shop-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .shop-grid { display: flex; flex-wrap: wrap; gap: 8px; }
     .shop-item {
       background: #2a2a2a;
       border: 2px solid #555;
-      padding: 10px;
+      padding: 5px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 5px;
       text-align: center;
       width: 100px;
       transition: 0.2s;
@@ -76,22 +76,41 @@
       border: 2px solid white;
       margin: 0 auto 5px;
     }
+
+    main {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
     .shop-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 2px;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  overflow-x: auto;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
 .shop-section {
   flex: 1;
-  min-width: 220px;
-  max-width: 300px;
+  min-width: 300px;
+  max-width: 330px;
+}
+.shop-section2 {
+  flex: 1;
+  gap: 20px;
+  min-width: 230px;
+  max-width: 240px;
 }
 
 .shop-item.selected {
-  border-color: lime;
-  box-shadow: 0 0 5px lime;
+  border-color: rgb(254, 59, 59);
+  box-shadow: 0 0 5px rgb(254, 59, 59);
 }
 
 .shop-item-content {
@@ -199,8 +218,8 @@ button.save-btn:hover {
     </ul>
   </div>
   <main>
-    <div id="balance" style="text-align:center; font-weight: bold; margin-bottom: 20px;">
-      Balance: <span id="balance-amount">...</span>
+    <div id="balance" style="text-align:center; font-weight: bold; margin-bottom: 20px; font-size: 30px;">
+      Balance: $<span id="balance-amount">...</span>
     </div>
     <h1 style="text-align:center">Your Avatar</h1>
     <div class="avatar-container" id="avatarPreview">
@@ -212,6 +231,7 @@ button.save-btn:hover {
     <div style="text-align:center; margin-top: 10px;">
       <button class="save-btn" onclick="saveAvatar()">Save</button>
     </div>
+<div class="shop-scroll-wrapper">
   <div class="shop-wrapper">
     <div class="shop-section">
       <h3>Choose Avatar</h3>
@@ -220,20 +240,184 @@ button.save-btn:hover {
           <div style="width:60px; background:#444; display:flex; align-items:center; justify-content:center; color:white; font-size:12px;"></div>
           <div class="none-label">None</div>
         </div>
-        <div class="shop-item owned" data-id="avatar-1" data-price="0">
+        <div class="shop-item" data-id="avatar-6" data-price="1000000">
           <div class="shop-item-content">
-          <img src="/avatars/avatar1.png" style="width: 60px;"><br>
-          <span>Avatar 1</span>
-          <span class="price"></span><br>
+            <img src="/avatars/avatar6.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 6</span>
+            <span class="price">$1,000,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
         </div>
-      </div>
-        <div class="shop-item owned" data-id="avatar-2" data-price="0">
+        <div class="shop-item" data-id="avatar-7" data-price="200000">
           <div class="shop-item-content">
-          <img src="/avatars/avatar2.png" style="width: 60px;"><br>
-        <span>Avatar 2</span>
-        <span class="price"></span><br>
+            <img src="/avatars/avatar7.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 7</span>
+            <span class="price">$200,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
         </div>
-      </div>
+        <div class="shop-item" data-id="avatar-14" data-price="100000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar14.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 14</span>
+            <span class="price">$100,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-1" data-price="75000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar1.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 1</span>
+            <span class="price">$75,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-13" data-price="75000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar13.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 13</span>
+            <span class="price">$75,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-9" data-price="75000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar9.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 9</span>
+            <span class="price">$75,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-2" data-price="50000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar2.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 2</span>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-8" data-price="50000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar8.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 8</span>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-15" data-price="50000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar15.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 15</span>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-3" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar3.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 3</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-4" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar4.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 4</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-5" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar5.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 5</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-10" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar10.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 10</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-11" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar11.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 11</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-12" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar12.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 12</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-16" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar16.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 16</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-17" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar17.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 17</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-18" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar18.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 18</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-19" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar19.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 19</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-20" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar20.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 20</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-21" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar21.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 21</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="avatar-22" data-price="10000">
+          <div class="shop-item-content">
+            <img src="/avatars/avatar22.png" style="width: 60px;" loading="lazy"><br>
+            <span>Avatar 22</span>
+            <span class="price">$10,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+
     </div>
     </div>
     <div class="shop-section">
@@ -254,6 +438,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-red" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:red"></div>
@@ -262,6 +447,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-blue" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:blue"></div>
@@ -270,6 +456,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-lightgreen" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:lightgreen"></div>
@@ -278,6 +465,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-rgb(255, 34, 137)" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:rgb(255, 34, 137)"></div>
@@ -286,6 +474,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-lightblue" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:lightblue"></div>
@@ -294,6 +483,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-rgb(255, 129, 129)" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:rgb(255, 129, 129)"></div>
@@ -302,6 +492,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-darkred" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:darkred"></div>
@@ -310,6 +501,7 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        
         <div class="shop-item" data-id="bg-yellow" data-price="50000">
           <div class="shop-item-content">
             <div class="shop-color" style="background:yellow"></div>
@@ -317,7 +509,116 @@ button.save-btn:hover {
             <span class="price">$50,000</span><br>
             <button class="buy-btn">Buy</button>
           </div>
-        </div>        
+        </div>
+        
+        <!-- New colors below -->
+        <div class="shop-item" data-id="bg-aqua" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:aqua"></div>
+            <span>Aqua</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-indigo" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:indigo"></div>
+            <span>Indigo</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-gold" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:gold"></div>
+            <span>Gold</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-silver" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:silver"></div>
+            <span>Silver</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-deeppink" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:deeppink"></div>
+            <span>Deep Pink</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-lavender" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:lavender"></div>
+            <span>Lavender</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-orange" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:orange"></div>
+            <span>Orange</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-cyan" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:cyan"></div>
+            <span>Cyan</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-teal" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:teal"></div>
+            <span>Teal</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-plum" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:plum"></div>
+            <span>Plum</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-firebrick" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:firebrick"></div>
+            <span>Firebrick</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        
+        <div class="shop-item" data-id="bg-midnightblue" data-price="50000">
+          <div class="shop-item-content">
+            <div class="shop-color" style="background:midnightblue"></div>
+            <span>Midnight Blue</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>                
       </div>
     </div>
     
@@ -330,19 +631,27 @@ button.save-btn:hover {
             <div class="none-label">None</div>
           </div>
         </div>
-        <div class="shop-item" data-id="frame-gold" data-price="100000">
+        <div class="shop-item" data-id="frame-premium" data-price="250000">
           <div class="shop-item-content">
-            <img src="/frames/gold.png" style="width:100%; border-radius:50%;"><br>
-            <span>Gold</span><br>
-            <span class="price">$100,000</span><br>
+            <img src="/frames/premium.png" style="width:100%; border-radius:50%;"><br>
+            <span>Premium</span><br>
+            <span class="price">$250,000</span><br>
             <button class="buy-btn">Buy</button>
           </div>
         </div>
-        <div class="shop-item" data-id="frame-bronze" data-price="50000">
+        <div class="shop-item" data-id="frame-gold" data-price="200000">
           <div class="shop-item-content">
-            <img src="/frames/bronze.png" style="width:100%; border-radius:50%;"><br>
-            <span>Bronze</span><br>
-            <span class="price">$50,000</span><br>
+            <img src="/frames/gold.png" style="width:100%; border-radius:50%;"><br>
+            <span>Gold</span><br>
+            <span class="price">$200,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="frame-firewater" data-price="100000">
+          <div class="shop-item-content">
+            <img src="/frames/firewater.png" style="width:100%; border-radius:50%;"><br>
+            <span>Elements</span><br>
+            <span class="price">$100,000</span><br>
             <button class="buy-btn">Buy</button>
           </div>
         </div>
@@ -362,10 +671,34 @@ button.save-btn:hover {
             <button class="buy-btn">Buy</button>
           </div>
         </div>
+        <div class="shop-item" data-id="frame-hightech" data-price="75000">
+          <div class="shop-item-content">
+            <img src="/frames/hightech.png" style="width:100%; border-radius:50%;"><br>
+            <span>Hightech</span><br>
+            <span class="price">$75,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="frame-silver1" data-price="75000">
+          <div class="shop-item-content">
+            <img src="/frames/silver1.png" style="width:100%; border-radius:50%;"><br>
+            <span>Silver</span><br>
+            <span class="price">$75,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="frame-bronze" data-price="50000">
+          <div class="shop-item-content">
+            <img src="/frames/bronze.png" style="width:100%; border-radius:50%;"><br>
+            <span>Bronze</span><br>
+            <span class="price">$50,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
       </div>
     </div>
     
-    <div class="shop-section">
+    <div class="shop-section2">
       <h3>Accessories</h3>
       <div class="shop-grid">
         <div class="shop-item owned" data-id="accessory-none" data-price="0">
@@ -374,17 +707,25 @@ button.save-btn:hover {
             <div class="none-label">None</div>
           </div>
         </div>
-        <div class="shop-item" data-id="accessory-sunglasses" data-price="100000">
+        <div class="shop-item" data-id="accessory-clown" data-price="1000000">
           <div class="shop-item-content">
-            <img src="/accessories/sunglasses.png" style="width: 60px;"><br>
-            Sunglasses<br>
-            <span class="price">$100,000</span><br>
+            <img src="/accessories/clown.png" style="width: 60px;" loading="lazy"><br>
+            Clown Nose<br>
+            <span class="price">$1,000,000</span><br>
+            <button class="buy-btn">Buy</button>
+          </div>
+        </div>
+        <div class="shop-item" data-id="accessory-sunglasses" data-price="250000">
+          <div class="shop-item-content">
+            <img src="/accessories/sunglasses.png" style="width: 60px;" loading="lazy"><br>
+            Glasses<br>
+            <span class="price">$250,000</span><br>
             <button class="buy-btn">Buy</button>
           </div>
         </div>
         <div class="shop-item" data-id="accessory-mask" data-price="100000">
           <div class="shop-item-content">
-            <img src="/accessories/mask.png" style="width: 60px;"><br>
+            <img src="/accessories/mask.png" style="width: 60px;" loading="lazy"><br>
             Mask<br>
             <span class="price">$100,000</span><br>
             <button class="buy-btn">Buy</button>
@@ -392,7 +733,8 @@ button.save-btn:hover {
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
   <!-- FOOTER -->
   <div id="footer-placeholder"></div>

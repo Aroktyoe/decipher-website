@@ -1,4 +1,6 @@
-// autoclaim.js – Improved version with dynamic cooldown detection
+import { getCSRFToken } from "./api.js";
+import { claimDaily } from "./utils.js";
+
 
 let autoClaimEnabled = false;
 let autoClaimTimeout = null;

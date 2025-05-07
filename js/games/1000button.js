@@ -68,64 +68,58 @@ function tryOneIn1000() {
       setTimeout(() => { msgBox.textContent = ""; }, 1000);
     });
 
-  // Dice meter logic
-  luckPercent = Math.min(luckPercent + 1, 100);
-  fill.style.width = luckPercent + "%";
+  // Secure backend-controlled increment
+  fetch("/casino/update-luck", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-TOKEN": getCSRFToken()
+    },
+    credentials: "include"
+  })
+    .then(res => res.json().catch(() => ({ success: false, msg: "Server error." })))
+    .then(data => {
+      if (!data.success) {
+        msgBox.textContent = data.msg || "Update failed.";
+        return;
+      }
 
-  if (luckPercent < 100) {
-    fetch("/casino/update-luck", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN": getCSRFToken()
-      },
-      credentials: "include",
-      body: JSON.stringify({ progress: luckPercent })
+      luckPercent = data.progress || 0;
+      fill.style.width = luckPercent + "%";
+
+      if (luckPercent === 100) {
+        setTimeout(() => {
+          diceImg.style.display = "block";
+          animateDice(diceImg, () => {
+            fetch("/casino/dice-roll", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": getCSRFToken()
+              },
+              credentials: "include"
+            })
+              .then(res => res.json())
+              .then(data => {
+                diceImg.src = `https://decipher.wiki/dice/${data.roll}.png?ts=${Date.now()}`;
+                msgBox.textContent = data.msg || `🎲 Rolled ${data.roll}. No luck this time.`;
+                fill.style.width = "0%";
+                luckPercent = 0;
+
+                if (data.reward > 0) {
+                  fetchBalance();
+                  updateLeaderboard();
+                }
+
+                setTimeout(() => {
+                  msgBox.textContent = "";
+                  diceImg.style.display = "none";
+                }, 3000);
+              });
+          });
+        }, 150);
+      }
     });
-  }
-
-  if (luckPercent === 100) {
-    fetch("/casino/update-luck", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN": getCSRFToken()
-      },
-      credentials: "include",
-      body: JSON.stringify({ progress: 100 })
-    }).then(() => {
-      setTimeout(() => {
-        diceImg.style.display = "block";
-        animateDice(diceImg, () => {
-          fetch("/casino/dice-roll", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "X-CSRF-TOKEN": getCSRFToken()
-            },
-            credentials: "include"
-          })
-            .then(res => res.json())
-            .then(data => {
-              diceImg.src = `https://decipher.wiki/dice/${data.roll}.png?ts=${Date.now()}`;
-              msgBox.textContent = data.msg || `🎲 Rolled ${data.roll}. No luck this time.`;
-              fill.style.width = "0%";
-              luckPercent = 0;
-
-              if (data.reward > 0) {
-                fetchBalance();
-                updateLeaderboard();
-              }
-
-              setTimeout(() => {
-                msgBox.textContent = "";
-                diceImg.style.display = "none";
-              }, 3000);
-            });
-        });
-      }, 150); // Short delay to ensure DB write completes
-    });
-  }
 }
 
 function disableButtonForCooldown(ms) {

@@ -1035,6 +1035,90 @@ cursor: not-allowed;
   color: #fff;
 }
 
+#wheel-wrapper {
+  position: relative;
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#wheel {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: relative;
+  border: 5px solid rgb(214, 182, 0);
+  transform: rotate(0deg);
+  transition: transform 5s cubic-bezier(0.25, 1, 0.5, 1);
+  background: conic-gradient(
+    #91dfff 0deg 36deg, #ffb3d9 36deg 72deg,
+    #91dfff 72deg 108deg, #ffb3d9 108deg 144deg,
+    #91dfff 144deg 180deg, #ffb3d9 180deg 216deg,
+    #91dfff 216deg 252deg, #ffb3d9 252deg 288deg,
+    #91dfff 288deg 324deg, #ffb3d9 324deg 360deg
+  );
+  
+}
+
+#wheel::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px; /* smaller than before */
+  height: 220px;
+  margin: -110px 0 0 -110px;
+  border-radius: 50%;
+  background: rgba(255, 215, 246, 0.51); /* slightly transparent */
+  z-index: 1;
+  pointer-events: none;
+}
+
+#wheel span {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 46%;
+  transform-origin: left center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;;
+  text-shadow: 1px 1px 2px black;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+#indicator {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: red;
+}
+
+#spin-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #91dfff, #ffb3d9);
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#spin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+
+
 .mines-tile.disabled {
   cursor: not-allowed;
   opacity: 0.5;

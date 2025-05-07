@@ -1,47 +1,200 @@
 <!DOCTYPE html>
-<html>
-  <head>
-<!-- Google Tag Manager -->
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DECIPHER Tools</title>
+  <link rel="icon" href="decipher_logo.png">
+  <link href="index2.css" rel="stylesheet" type="text/css" media="all">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
+  <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
+  <script defer src="/tools.js"></script>
+  <style>
+    #tool-output { margin-top: 20px; }
+    #canvas-output { display: block; max-width: 100%; margin-top: 15px; }
+    textarea, input[type="text"], input[type="number"] {
+      width: 100%; margin: 5px 0; padding: 6px; font-size: 16px;
+    }
+    main.container section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-          <link rel="icon" href="decipher_logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DECIPHER</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-  </head>
-  <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <div id="header-placeholder"></div>
-<script>
-  fetch("/header.html", { headers: { "X-Original-Request": "true" } })
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("header-placeholder").innerHTML = html;
-      console.log("✅ Header loaded");
-      const script = document.createElement("script");
-      script.src = "/header.js?v=" + Date.now();
-      script.onload = () => {
-        console.log("✅ Script loaded");
-        setupHeader();
-      };
-      document.body.appendChild(script);
-    });
-</script>
+main.container section button {
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(255,255,255,0.1);
+  transition: background-color 0.2s;
+}
 
-    <center>
-    <a href = "https://decipher.wiki/" class="button2" style="text-decoration:none;"><strong>Home</strong></a>
-    <a href = "window.replace('https://discord.gg/GgRAYJesyY')" style="text-decoration:none;" class="button2"><img src="/discordlogo.jpg" class="logo" style="height:22px; width:22; border:2px:solid; border-color:#fff7fe; border radius:4px; padding:0.25em 0.5em;" ><strong>  Join DECIPHER Discord here</strong></a>
-    </center>
-<p>COMING SOON</p>
-  </body>
+main.container section button:hover {
+  background-color: #333;
+} 
+
+.tool-box {
+  margin-top: 20px;
+}
+
+#tool-input {
+  width: 100%;
+  height: 120px;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#tool-output {
+  background: #111;
+  color: #eee;
+  padding: 10px;
+  min-height: 60px;
+  white-space: pre-wrap;
+  border: 1px solid #333;
+}
+
+#canvas-output {
+  display: block;
+  max-width: 100%;
+  margin-top: 15px;
+}
+#run-tool-button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#run-tool-button:hover {
+  background-color: #444;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+  <header>
+    <div class="header-container">
+      <div id="header-auth-slot"></div>
+      <div class="logo-container">
+        <a href="/">
+          <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+          <span class="logo-text">DECIPHER</span>
+        </a>
+      </div>
+      <div class="right-header">
+        <div class="merch-button">
+          <a href="https://shop.decipher.wiki" target="_blank">Merch Shop</a>
+        </div>
+        <div class="discord-button">
+          <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+            <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+            Join Discord
+          </button>
+        </div>
+        <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+        <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-container">
+    <div class="nav-inner">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/onlinetools">Tools</a></li>
+          <li><a href="/symbols-list">Symbols</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/cryptographers">Cryptographers</a></li>
+          <li><a href="/puzzles">Puzzles</a></li>
+          <li><a href="/dictionary">Dictionary</a></li>
+          <li><a href="/aes-decryption">AES</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+          <li><a href="/casino">Casino</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/onlinetools">Tools</a></li>
+      <li><a href="/symbols-list">Symbols</a></li>
+      <li><a href="/ciphers">Ciphers</a></li>
+      <li><a href="/cryptographers">Cryptographers</a></li>
+      <li><a href="/puzzles">Puzzles</a></li>
+      <li><a href="/dictionary">Dictionary</a></li>
+      <li><a href="/aes-decryption">AES</a></li>
+      <li><a href="/get-started">Get Started</a></li>
+      <li><a href="/casino">Casino</a></li>
+      <li id="mobile-account-dropdown" style="display: none;" class="dropdown">
+        <button class="dropdown-toggle">Account ▾</button>
+        <ul class="dropdown-menu">
+          <li><a href="/profile.html">Profile</a></li>
+          <li><a href="/account.html">Settings</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <main class="container">
+    <h1>🛠️ Cryptographic Tools</h1>
+    <section>
+      <button onclick="openTool('frequency')">📊 Frequency Analysis</button>
+      <button onclick="openTool('heatmap')">🎺 Keyboard Heatmap</button>
+      <button onclick="openTool('spectrogram')">📈 Spectrogram</button>
+      <button onclick="openTool('strip')">🧹 Strip Whitespace</button>
+      <button onclick="openTool('convert')">🔄 Convert Media</button>
+      <button onclick="openTool('gifframes')">🖼️ GIF to Frames</button>
+      <button onclick="openTool('enhance')">✨ Enhance Image</button>
+      <button onclick="openTool('transcribe')">🔠 Symbol Transcription</button>
+      <button onclick="openTool('ngrams')">🔡 N-Gram Transcription</button>
+    </section>
+    <div class="tool-box">
+      <textarea id="tool-input" placeholder="Enter input here..."></textarea>
+      <button id="run-tool-button">▶️ Run Tool</button>
+      <div id="tool-output" class="output">Output will appear here...</div>
+      <canvas id="canvas-output"></canvas>
+    </div>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+      <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+      <p>Terms: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+      <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script src="compiledjs.js"></script>
+</body>
 </html>
-

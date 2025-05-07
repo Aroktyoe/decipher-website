@@ -203,7 +203,23 @@
       </div>
       <div id="blackjack-result"></div>
     </section>
-
+<!-- 
+        <section class="mines-game div1">
+          <h2>💎 Mines Game</h2>
+          <p>Reveal safe tiles and avoid hitting the mines! Choose how many mines you want to play with, and try to quit with your winnings.</p>
+    
+          <div class="mines-controls">
+            <input type="number" id="mines-bet" placeholder="Bet amount" class="input-style">
+            <input type="number" id="mines-count" placeholder="Number of mines" class="input-style" min="1" max="24" value="3">
+            <button class="button6" id="minesButton">Start Game</button>
+          </div>
+    
+          <div id="mines-display" class="mines-grid"></div>
+          <p id="mines-result"></p>
+    
+          <button id="quit-button" style="display:none;">Quit Game</button>
+        </section>
+-->
     <!-- Coinflip -->
     <section class="div1">
       <h2>🪙 Create Coinflip</h2>
@@ -256,8 +272,15 @@
     </div>
   </footer>
 
+  <script>
+    document.getElementById('quit-button').addEventListener('click', () => {
+      const resultText = document.getElementById('mines-result');
+      resultText.textContent = "You quit the game with your winnings!";
+      // You can call the backend to confirm the quit and send winnings if necessary
+    });
+  </script>
+
   <script type="module" src="/js/index.js?v=15"></script>
   <script type="module" src="/js/autoclaim.js"></script>
-
 </body>
 </html>

@@ -80,5 +80,4 @@ export function displayBlackjackGame() {
     `;
   
     fetchBalance();
-    updateLeaderboard();
 }

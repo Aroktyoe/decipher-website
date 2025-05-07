@@ -1,3 +1,4 @@
+/*
 import { fetchBalance, getCSRFToken } from "../api.js";
 import { updateLeaderboard } from "../utils.js";
 
@@ -60,32 +61,15 @@ function tryOneIn1000() {
         disableButtonForCooldown(cooldownMs);
       }
 
+      if (data.progress !== undefined) {
+        luckPercent = data.progress;
+        fill.style.width = luckPercent + "%";
+      }
+
       if (data.reward > 0) {
         fetchBalance();
         updateLeaderboard();
       }
-
-      setTimeout(() => { msgBox.textContent = ""; }, 1000);
-    });
-
-  // Secure backend-controlled increment
-  fetch("/casino/update-luck", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRF-TOKEN": getCSRFToken()
-    },
-    credentials: "include"
-  })
-    .then(res => res.json().catch(() => ({ success: false, msg: "Server error." })))
-    .then(data => {
-      if (!data.success) {
-        msgBox.textContent = data.msg || "Update failed.";
-        return;
-      }
-
-      luckPercent = data.progress || 0;
-      fill.style.width = luckPercent + "%";
 
       if (luckPercent === 100) {
         setTimeout(() => {
@@ -119,6 +103,10 @@ function tryOneIn1000() {
           });
         }, 150);
       }
+
+      setTimeout(() => {
+        msgBox.textContent = "";
+      }, 1000);
     });
 }
 
@@ -146,3 +134,5 @@ function animateDice(img, callback) {
     callback();
   }, 1000);
 }
+
+*/

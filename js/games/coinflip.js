@@ -96,7 +96,6 @@ export async function removeCoinflip(id) {
   if (data.status === 'ok') {
     loadOpenCoinflips();
     fetchBalance();
-    updateLeaderboard();
   } else {
     alert(data.msg || "Error");
   }
@@ -117,7 +116,6 @@ export async function joinCoinflip(id) {
   const data = await res.json();
   if (data.status === 'ok') {
     // Server will emit 'coinflip_result' after delay
-    updateLeaderboard();
     loadOpenCoinflips();
   } else {
     alert(data.msg || "Error");

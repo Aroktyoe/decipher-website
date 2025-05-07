@@ -211,7 +211,6 @@ export function claimDaily(event) {
       if (data.success) {
         msgEl.textContent = `✅ You claimed your daily $${data.bonus.toLocaleString()}!`;
         fetchBalance();
-        updateLeaderboard();
       } else if (data.wait !== undefined) {
         const hrs = Math.floor(data.wait / 3600);
         const mins = Math.floor((data.wait % 3600) / 60);
@@ -237,7 +236,6 @@ export function delayedBalanceUpdate(delay = 0) {
         .then(data => {
           document.getElementById("balance").textContent = `$${data.balance.toLocaleString()}`;
         });
-    updateLeaderboard();
     }, delay);
 }
 

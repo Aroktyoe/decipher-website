@@ -43,7 +43,6 @@ spinBtn.addEventListener("click", () => {
       setTimeout(() => {
         msgBox.textContent = data.msg;
         fetchBalance();
-        updateLeaderboard();
         spinning = false;
       }, 5200);
     })

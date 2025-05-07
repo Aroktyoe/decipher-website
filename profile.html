@@ -808,9 +808,10 @@ function previewItem(id) {
     const img = document.getElementById("avatarBase");
     img.src = `/avatars/${id.replace("avatar-", "avatar")}.png`;
     img.style.display = "block";
+  } else if (id.startsWith("accessory-")) {
+    markAccessory(id);
   }
 }
-
 
 
     function markSelected(itemId) {

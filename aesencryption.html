@@ -92,10 +92,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <main>
   <div class="div1">
-    <div class="title">AES encryption and decryption</div>
-    <div class="left"><label for="text">Encrypt and decrypt text with AES algorithm that can only be decrypted using this webpage</label><br></div>
+    <div class="title">aesencryption.net mimic (exact same encryption and decryption)</div>
+    <div class="left"><label for="text">Encrypt and decrypt text with AES algorithm that can only be decrypted using this webpage and aesencryption.net</label><br></div>
     <div class="minibox"><textarea id="text" rows="7" placeholder="Plain or encrypted text here"></textarea><br></div>
     <input type="text" id="password" placeholder=" Key of the encryption" autocomplete="off" class="full-width"><br>
+    <select id="keysize" class="full-width">
+      <option value="16" selected>128-bit</option>
+      <option value="32">256-bit</option>
+    </select>
     <div class="button-group">
       <button onclick="encrypt()" class="button encrypt">Encrypt</button>
       <button onclick="decrypt()" class="button decrypt">Decrypt</button>
@@ -107,59 +111,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div>
   </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script>
-        function encrypt() {
-            var text = document.getElementById("text").value;
-            var password = document.getElementById("password").value;
-            var paddedPassword = padPassword(password);
-            paddedPassword = CryptoJS.enc.Utf8.parse(paddedPassword);
-            var iv = CryptoJS.enc.Hex.parse("39bae7d6c97a4789fd1c29c6f14ce10b");
-            var encrypted = CryptoJS.AES.encrypt(text, paddedPassword, { iv: iv }).toString();
-            document.getElementById("result").value = encrypted;
-            document.getElementById("result").classList.remove("unable-to-decrypt");
-            document.getElementById("result").style.opacity = 1;
-            document.getElementById("resultLabel").style.display = "block";
-            document.getElementById("result").style.display = "block";
-        }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script>
+function getPaddedKey() {
+    const password = document.getElementById("password").value;
+    const keySize = parseInt(document.getElementById("keysize").value);
+    const encoder = new TextEncoder();
+    const bytes = Array.from(encoder.encode(password));
+    const padded = bytes.slice(0, keySize);
+    while (padded.length < keySize) padded.push(0x00);
+    return CryptoJS.lib.WordArray.create(padded);
+}
 
-        function decrypt() {
-            var encryptedText = document.getElementById("text").value;
-            var password = document.getElementById("password").value;
-            var paddedPassword = padPassword(password);
-            paddedPassword = CryptoJS.enc.Utf8.parse(paddedPassword);
-            var iv = CryptoJS.enc.Hex.parse("39bae7d6c97a4789fd1c29c6f14ce10b");
-            try {
-                var decrypted = CryptoJS.AES.decrypt(encryptedText, paddedPassword, { iv: iv }).toString(CryptoJS.enc.Utf8);
-                if (decrypted === '') {
-                    throw new Error('Empty decryption result');
-                }
-                document.getElementById("result").value = decrypted;
-                document.getElementById("result").readOnly = true;
-                document.getElementById("result").style.opacity = 1;
-            } catch (error) {
-                document.getElementById("result").value = "Unable to decrypt";
-                document.getElementById("result").readOnly = false;
-                document.getElementById("result").classList.add("unable-to-decrypt");
-                document.getElementById("result").style.opacity = 0.65;
-            }
-            document.getElementById("resultLabel").style.display = "block";
-            document.getElementById("result").style.display = "block";
-        }
+function getFixedIV() {
+    // Base64 decode of "MTIzNDU2NzhiMHoyMzQ1bg=="
+    return CryptoJS.enc.Utf8.parse("12345678b0z2345n");
+}
 
-        function padPassword(password) {
-            var paddedPassword = password;
-            var padding = "DECIPHER";
-            while (paddedPassword.length < 32) {
-                paddedPassword += padding;
-                if (paddedPassword.length > 32) {
-                    paddedPassword = paddedPassword.substring(0, 32);
-                }
-            }
-            return paddedPassword;
-        }
-    </script>
+function encrypt() {
+    const plaintext = document.getElementById("text").value;
+    const key = getPaddedKey();
+    const iv = getFixedIV();
 
+    const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(plaintext), key, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+
+    const base64 = CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+    displayResult(base64, false);
+}
+
+function decrypt() {
+    const base64 = document.getElementById("text").value;
+    const key = getPaddedKey();
+    const iv = getFixedIV();
+
+    try {
+        const ciphertext = CryptoJS.enc.Base64.parse(base64);
+        const decrypted = CryptoJS.AES.decrypt({ ciphertext }, key, {
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        }).toString(CryptoJS.enc.Utf8);
+
+        if (!decrypted) throw new Error("Empty result");
+        displayResult(decrypted, false);
+    } catch (e) {
+        displayResult("Unable to decrypt", true);
+    }
+}
+
+function displayResult(msg, isError) {
+    const result = document.getElementById("result");
+    result.value = msg;
+    result.readOnly = true;
+    result.classList.toggle("unable-to-decrypt", isError);
+    result.style.opacity = isError ? 0.65 : 1;
+    document.getElementById("resultLabel").style.display = "block";
+    result.style.display = "block";
+}
+</script>
 <script src="compiledjs.js"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@ export function startNewSpin() {
 
   setTimeout(() => {
       spinInProgress = false;
-      startCountdown();
+      startCountdown(countdown);
       enableBetButtons();
   }, 2000);  // Duration of the spin animation
 }
@@ -51,6 +51,7 @@ export async function placeRouletteBet() {
   
       const data = await res.json();
       const rouletteResult = document.getElementById('roulette-result');
+      rouletteResult.textContent = '';
       if (!res.ok) {
         alert(data.msg || "Bet failed");
       } else {

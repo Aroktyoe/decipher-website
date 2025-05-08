@@ -44,6 +44,7 @@ export async function blackjackAction(action) {
   
     currentGame = await res.json();
     displayBlackjackGame();
+    fetchBalance();
   }
   
 export function displayBlackjackGame() {

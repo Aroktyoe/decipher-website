@@ -111,59 +111,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div>
   </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script>
-function getPaddedKey() {
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+  function getKey() {
     const password = document.getElementById("password").value;
     const keySize = parseInt(document.getElementById("keysize").value);
-    const encoder = new TextEncoder();
-    const bytes = Array.from(encoder.encode(password));
-    const padded = bytes.slice(0, keySize);
-    while (padded.length < keySize) padded.push(0x00);
-    return CryptoJS.lib.WordArray.create(padded);
-}
-
-function getFixedIV() {
-    // Base64 decode of "MTIzNDU2NzhiMHoyMzQ1bg=="
-    return CryptoJS.enc.Utf8.parse("12345678b0z2345n");
-}
-
-function encrypt() {
+    const keyBytes = CryptoJS.enc.Utf8.parse(password);
+    return CryptoJS.lib.WordArray.create(keyBytes.words.slice(0, keySize / 4), keySize);
+  }
+  
+  function getFixedIV() {
+    return CryptoJS.enc.Utf8.parse("1234567890123456");
+  }
+  
+  function encrypt() {
     const plaintext = document.getElementById("text").value;
-    const key = getPaddedKey();
+    const key = getKey();
     const iv = getFixedIV();
-
+  
     const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(plaintext), key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+  
+    displayResult(encrypted.toString(), false); // already base64
+  }
+  
+  function decrypt() {
+    const ciphertext = document.getElementById("text").value;
+    const key = getKey();
+    const iv = getFixedIV();
+  
+    try {
+      const decrypted = CryptoJS.AES.decrypt(ciphertext, key, {
         iv: iv,
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7
-    });
-
-    const base64 = CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
-    displayResult(base64, false);
-}
-
-function decrypt() {
-    const base64 = document.getElementById("text").value;
-    const key = getPaddedKey();
-    const iv = getFixedIV();
-
-    try {
-        const ciphertext = CryptoJS.enc.Base64.parse(base64);
-        const decrypted = CryptoJS.AES.decrypt({ ciphertext }, key, {
-            iv: iv,
-            mode: CryptoJS.mode.CBC,
-            padding: CryptoJS.pad.Pkcs7
-        }).toString(CryptoJS.enc.Utf8);
-
-        if (!decrypted) throw new Error("Empty result");
-        displayResult(decrypted, false);
-    } catch (e) {
-        displayResult("Unable to decrypt", true);
+      }).toString(CryptoJS.enc.Utf8);
+  
+      if (!decrypted) throw new Error();
+      displayResult(decrypted, false);
+    } catch {
+      displayResult("Unable to decrypt", true);
     }
-}
-
-function displayResult(msg, isError) {
+  }
+  
+  function displayResult(msg, isError) {
     const result = document.getElementById("result");
     result.value = msg;
     result.readOnly = true;
@@ -171,8 +165,8 @@ function displayResult(msg, isError) {
     result.style.opacity = isError ? 0.65 : 1;
     document.getElementById("resultLabel").style.display = "block";
     result.style.display = "block";
-}
-</script>
+  }
+  </script>  
 <script src="compiledjs.js"></script>
 </body>
 </html>

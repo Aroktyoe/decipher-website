@@ -39,7 +39,10 @@ export async function playSlots(event) {
     const data = await res.json();
     const match = data.message.match(/(🍒|🍋|🍉|⭐|🔔) (🍒|🍋|🍉|⭐|🔔) (🍒|🍋|🍉|⭐|🔔)/);
     if (!match) {
-      resultText.textContent = data.message;
+      const formattedMessage = data.message.replace(/\$([\d,]+)/, (_, num) => {
+        return '$' + parseInt(num).toLocaleString();
+      });
+      resultText.textContent = formattedMessage;
       return;
     }
   

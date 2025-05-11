@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   // removeBet(), addBetDisplay() are only needed during real interaction
 
   await fetchYourBets();
-  await placeRouletteBet();
 
   await startBlackjack();
   // blackjackAction(action) should be triggered by button click, not run automatically

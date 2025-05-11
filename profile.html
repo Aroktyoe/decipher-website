@@ -1088,23 +1088,40 @@ function markAccessory(itemId) {
   const isClown = itemId === "accessory-clown";
   const isOther = itemId === "accessory-sunglasses" || itemId === "accessory-mask";
 
+  // If "None" was selected, clear all
   if (itemId === "accessory-none") {
     selectedAccessories = [];
   } else if (isClown) {
     if (selectedAccessories.includes("accessory-clown")) {
-      selectedAccessories = selectedAccessories.filter(x => x !== "accessory-clown");
+      selectedAccessories = selectedAccessories.filter(id => id !== "accessory-clown");
     } else {
-      selectedAccessories.push("accessory-clown");
+      // Only allow clown + one other
+      if (selectedAccessories.length < 2) {
+        selectedAccessories.push("accessory-clown");
+      }
     }
   } else if (isOther) {
-    // Remove sunglasses or mask if already there
-    selectedAccessories = selectedAccessories.filter(id => id !== "accessory-sunglasses" && id !== "accessory-mask");
+    // Remove any other non-clown accessory
+    selectedAccessories = selectedAccessories.filter(id =>
+      id === "accessory-clown"
+    );
+    // Add the selected one
     if (!selectedAccessories.includes(itemId)) {
       selectedAccessories.push(itemId);
     }
   }
 
-  document.querySelectorAll('.shop-item[data-id^="accessory-"]').forEach(el => el.classList.remove("selected"));
+  // Block invalid: mask + sunglasses without clown
+  const others = selectedAccessories.filter(id => id !== "accessory-clown");
+  if (others.length > 1) {
+    // Keep only the latest selected one
+    selectedAccessories = selectedAccessories.filter(id => id === "accessory-clown" || id === itemId);
+  }
+
+  // Update selected classes
+  document.querySelectorAll('.shop-item[data-id^="accessory-"]').forEach(el =>
+    el.classList.remove("selected")
+  );
   selectedAccessories.forEach(id => {
     const el = document.querySelector(`.shop-item[data-id="${id}"]`);
     if (el) el.classList.add("selected");
@@ -1112,6 +1129,7 @@ function markAccessory(itemId) {
 
   applyAccessoryState();
 }
+
 
 </script>
 

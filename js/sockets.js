@@ -3,6 +3,7 @@ import { updateBalance, delayedBalanceUpdate } from "./utils.js";
 import { fetchYourBets, updateHistory, startNewSpin, updateRouletteTimer } from "./games/roulette.js";
 import { updateLeaderboard } from './utils.js';
 import { loadOpenCoinflips } from './games/coinflip.js';
+import { showRouletteMessage, userBetColors } from './games/roulette.js';
 
 let suppressImmediateBalanceUpdate = false;
 
@@ -47,109 +48,129 @@ export function socketEvents() {
     delayedBalanceUpdate(0); // default instant update
     });
     
-    socket.on("roulette_result", data => {
-      const strip = document.getElementById('roulette-row');
-      const resultText = document.getElementById('roulette-result');
-      
-      // if a spin is happening, start animation
-    
-      if (data.result && !data.just_spun) {
-      const strip = document.getElementById('roulette-row');
-      const slotWidth = 35;
-      const visibleSlots = 11;
-      const bufferSlots = 20;
-      const totalSlots = visibleSlots + bufferSlots * 2;
-      const result = data.result;
-      const symbols = ['🔴', '⚫'];
-      const finalSymbol = result === 'green' ? '🟢' : (result === 'red' ? '🔴' : '⚫');
-      const startIndex = result === 'red' ? 1 : 0;
-      const finalPosition = bufferSlots + Math.floor((visibleSlots - 1) / 2);
-    
-      strip.style.transition = 'none';
-      strip.style.transform = 'translateX(0)';
-      strip.innerHTML = '';
-      const spanValues = [];
-    
-      for (let i = 0; i < totalSlots; i++) {
-        // Centered green if needed
-        if (i === finalPosition && result === 'green') {
-          spanValues.push('🟢');
-        } else {
-          spanValues.push(symbols[(i + startIndex) % 2]);
-        }
+// Track the user's active bets this round
+socket.on("roulette_result", data => {
+  const strip = document.getElementById('roulette-row');
+
+  if (data.result && !data.just_spun) {
+    const slotWidth = 35;
+    const visibleSlots = 11;
+    const bufferSlots = 20;
+    const totalSlots = visibleSlots + bufferSlots * 2;
+    const result = data.result;
+    const symbols = ['🔴', '⚫'];
+    const finalSymbol = result === 'green' ? '🟢' : (result === 'red' ? '🔴' : '⚫');
+    const startIndex = result === 'red' ? 1 : 0;
+    const finalPosition = bufferSlots + Math.floor((visibleSlots - 1) / 2);
+
+    strip.style.transition = 'none';
+    strip.style.transform = 'translateX(0)';
+    strip.innerHTML = '';
+    const spanValues = [];
+
+    for (let i = 0; i < totalSlots; i++) {
+      if (i === finalPosition && result === 'green') {
+        spanValues.push('🟢');
+      } else {
+        spanValues.push(symbols[(i + startIndex) % 2]);
       }
-    
-      // Replace one random red or black with green if green is not at center (for realism)
-      if (result === 'green' && !spanValues.includes('🟢')) {
-        spanValues[Math.floor(Math.random() * spanValues.length)] = '🟢';
+    }
+
+    if (result === 'green' && !spanValues.includes('🟢')) {
+      spanValues[Math.floor(Math.random() * spanValues.length)] = '🟢';
+    }
+
+    strip.innerHTML = spanValues.map(v => `<span>${v}</span>`).join('');
+
+    const centerOffset = (strip.getBoundingClientRect().width / 2) - (slotWidth / 2);
+    const targetOffset = -(finalPosition * slotWidth) + centerOffset;
+
+    strip.style.transform = `translateX(${targetOffset}px)`;
+    strip.style.transition = 'none';
+  }
+
+  if (data.result) {
+    startNewSpin();
+    const slotWidth = 40;
+    const visibleSlots = 11;
+    const bufferSlots = 20;
+    const totalSlots = visibleSlots + bufferSlots * 2;
+    const result = data.result;
+    const symbols = ['🔴', '⚫'];
+    const finalSymbol = result === 'green' ? '🟢' : (result === 'red' ? '🔴' : '⚫');
+    const startIndex = result === 'red' ? 1 : 0;
+    const finalPosition = bufferSlots + Math.floor(visibleSlots / 2);
+
+    strip.style.transition = 'none';
+    strip.style.transform = 'translateX(0)';
+    strip.innerHTML = '';
+    const spanValues = [];
+
+    for (let i = 0; i < totalSlots; i++) {
+      if (i === finalPosition && result === 'green') {
+        spanValues.push('🟢');
+      } else {
+        spanValues.push(symbols[(i + startIndex) % 2]);
       }
-    
-      strip.innerHTML = spanValues.map(v => `<span>${v}</span>`).join('');
-    
-      const centerOffset = (strip.getBoundingClientRect().width / 2) - (slotWidth / 2);
-      const targetOffset = -(finalPosition * slotWidth) + centerOffset;
-    
-      strip.style.transform = `translateX(${targetOffset}px)`;
-      strip.style.transition = 'none';
-      }
-    
-    
-      if (data.result) {
-        startNewSpin();
-        const slotWidth = 40;
-        const visibleSlots = 11;
-        const bufferSlots = 20;
-        const totalSlots = visibleSlots + bufferSlots * 2;
-        const result = data.result;
-        const symbols = ['🔴', '⚫'];
-        const finalSymbol = result === 'green' ? '🟢' : (result === 'red' ? '🔴' : '⚫');
-        const startIndex = result === 'red' ? 1 : 0;
-        const finalPosition = bufferSlots + Math.floor(visibleSlots / 2);
-    
-        strip.style.transition = 'none';
-        strip.style.transform = 'translateX(0)';
-        strip.innerHTML = '';
-        const spanValues = [];
-    
-        for (let i = 0; i < totalSlots; i++) {
-          // Centered green if needed
-          if (i === finalPosition && result === 'green') {
-            spanValues.push('🟢');
-          } else {
-            spanValues.push(symbols[(i + startIndex) % 2]);
+    }
+
+    if (result === 'green' && !spanValues.includes('🟢')) {
+      spanValues[Math.floor(Math.random() * spanValues.length)] = '🟢';
+    }
+
+    strip.innerHTML = spanValues.map(v => `<span>${v}</span>`).join('');
+
+    setTimeout(() => {
+      const centerOffset = (strip.offsetWidth / 2) - (slotWidth / 2);
+      const offsetFix = window.innerWidth > 576 ? 128 : -588;
+      strip.style.transform = `translateX(${-finalPosition * slotWidth + centerOffset + offsetFix}px)`;
+
+      strip.style.transition = 'transform 2s cubic-bezier(0.25, 1, 0.5, 1)';
+
+      setTimeout(() => {
+        let message = `It landed on ${finalSymbol}`;
+        let foundMatch = false;
+
+        if (data.winners && Array.isArray(data.winners)) {
+          for (const w of data.winners) {
+            if (w.user === window.currentUserId) {
+              foundMatch = true;
+              if (w.type === "win") {
+                message += ` — You won $${w.amount.toLocaleString()} on ${w.color}.`;
+              } else if (w.type === "refund") {
+                message += ` — Your bet on ${w.color} was refunded (landed green).`;
+              }
+            }
           }
         }
-    
-        // Replace one random red or black with green if green is not at center (for realism)
-        if (result === 'green' && !spanValues.includes('🟢')) {
-          spanValues[Math.floor(Math.random() * spanValues.length)] = '🟢';
+
+        if (!foundMatch && userBetColors.size > 0) {
+          // Lost, but user had bet
+          if (!userBetColors.has(result)) {
+            message += " — ❌ You lost this round.";
+            foundMatch = true;
+          }
         }
-    
-        strip.innerHTML = spanValues.map(v => `<span>${v}</span>`).join('');
-    
-        setTimeout(() => {
-          const centerOffset = (strip.offsetWidth / 2) - (slotWidth / 2);
-          const offsetFix = window.innerWidth > 576 ? 128 : -588;
-          strip.style.transform = `translateX(${-finalPosition * slotWidth + centerOffset + offsetFix}px)`;
-    
-          strip.style.transition = 'transform 2s cubic-bezier(0.25, 1, 0.5, 1)';
-          setTimeout(() => {
-            resultText.textContent = `It landed on ${finalSymbol}`;
-          }, 2000);
-          delayedBalanceUpdate(2000);
-          updateHistory(data.history);
-    
-          document.getElementById("your-bets").innerHTML = "";
-        }, 50);
-    
-      } else {
-        // if no spin yet (page just loaded), just update history
-        updateHistory(data.history);
-      }
-    
-      // Always update timer if available
-      if (typeof data.next_spin_in !== 'undefined') {
-        updateRouletteTimer(data.next_spin_in);
-      }
-    });
+
+        if (foundMatch) {
+          showRouletteMessage(message);
+        } else {
+          showRouletteMessage(""); // Clear message if user didn't bet
+        }
+
+        userBetColors.clear(); // Reset for next round
+      }, 2000);
+
+      delayedBalanceUpdate(2000);
+      updateHistory(data.history);
+      document.getElementById("your-bets").innerHTML = "";
+    }, 50);
+  } else {
+    updateHistory(data.history);
+  }
+
+  if (typeof data.next_spin_in !== 'undefined') {
+    updateRouletteTimer(data.next_spin_in);
+  }
+});
 }

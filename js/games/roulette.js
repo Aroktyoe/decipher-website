@@ -4,8 +4,8 @@ import { getCSRFToken } from "../api.js";
 let countdownInterval;
 let spinInProgress = false;
 let countdown = 0;
+export const userBetColors = new Set();
 window.removeBet = removeBet;
-
 
 
 export function startNewSpin() {
@@ -57,6 +57,7 @@ export async function placeRouletteBet() {
       } else {
         rouletteResult.textContent = `✅ Bet placed on ${color}`;
         addBetDisplay(color, bet); // NEW FUNCTION to update bets live
+        userBetColors.add(color);
       }
     } finally {
     }
@@ -133,6 +134,7 @@ export async function removeBet(color) {
       // Remove bet from display
       const betDiv = document.getElementById(`bet-${color}`);
       if (betDiv) betDiv.remove();
+      userBetColors.delete(color);
   });
 }
 
@@ -153,3 +155,17 @@ export function addBetDisplay(color, amount, username = window.currentUsername) 
     document.getElementById("your-bets").appendChild(betDiv);
   }
 }
+
+function showRouletteMessage(msg) {
+  const box = document.getElementById("roulette-result");
+  box.innerHTML = ""; // Clear old messages
+
+  if (!msg) return; // Don't show anything if message is null/empty
+
+  const div = document.createElement("div");
+  div.textContent = msg;
+  box.appendChild(div);
+}
+
+
+export { showRouletteMessage };

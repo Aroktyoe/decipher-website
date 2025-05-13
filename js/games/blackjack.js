@@ -51,13 +51,9 @@ export function displayBlackjackGame() {
     const container = document.getElementById('blackjack-result');
     if (!currentGame) return;
   
-    const isPair =
-      currentGame.player_cards.length === 2 &&
-      currentGame.player_cards[0] === currentGame.player_cards[1];
-  
-    const canSplit = isPair && !currentGame.game_over && !currentGame.has_split;
-    const canDouble = currentGame.player_cards.length === 2 && !currentGame.game_over && !currentGame.has_doubled;
-  
+    const canSplit = currentGame.can_split;
+    const canDouble = currentGame.can_double;
+
     container.innerHTML = `
       <div>Your cards: ${currentGame.player_cards.join(", ")} (Total: ${currentGame.player_total})</div>
       <div>Dealer's cards: ${

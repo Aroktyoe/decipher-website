@@ -17,11 +17,12 @@ import {
 } from "./games/blackjack.js";
 import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
 import { loadDailyInfo } from './utils.js';
-import { playMines } from "./games/mines.js";
+// import { playMines } from "./games/mines.js";
 
 
 
 window.socket = io("https://decipher.wiki", {
+  transports: ["polling"],
   withCredentials: true
 });
 
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   displayBlackjackGame();
   delayedBalanceUpdate();
   socketEvents();
-
+/*
   document.getElementById('minesButton').addEventListener('click', playMines);
 
   document.getElementById("buy-balance-button")?.addEventListener("click", async () => {
@@ -81,4 +82,5 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("buy-status").innerText = "❌ Failed to start payment.";
     }
   });
+  */
 });

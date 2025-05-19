@@ -121,11 +121,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
     <!--#include virtual="/header.html" -->
 
-    <h2>Sign in with Google</h2>
+    <h2>Sign in or register with Google</h2>
     <button onclick="startGoogleLogin()">Continue with Google</button>
 
     <hr>
-
+<!--
     <form id="register-form" onsubmit="register(); return false;">
       <h3>Register</h3>
       <input id="reg-user" placeholder="Username" required />
@@ -135,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </form>
 
     <button id="resend-btn" style="display:none;">Resend Verification Email</button>
-
+-->
     <form id="login-form" onsubmit="login(); return false;">
       <h3>Login</h3>
       <input id="log-id" placeholder="Username or Email" required />
@@ -186,6 +186,8 @@ function startGoogleLogin() {
     }
 
 async function register() {
+  const errorMsg = document.getElementById("error-msg");
+
   const res = await fetch("/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -196,17 +198,20 @@ async function register() {
     })
   });
 
+  const data = await res.json();
+
   if (res.ok) {
-  errorMsg.style.display = "none";
-  alert(data.msg || "Registered! Check your inbox to verify.");
-  const redirect = sessionStorage.getItem("postLoginRedirect") || "/";
-  sessionStorage.removeItem("postLoginRedirect");
-  setTimeout(() => window.location.href = redirect, 800);
-} else {
-  errorMsg.innerText = data.msg || "Registration failed";
-  errorMsg.style.display = "block";
+    errorMsg.style.display = "none";
+    alert(data.msg || "Registered! Check your inbox to verify.");
+    const redirect = sessionStorage.getItem("postLoginRedirect") || "/";
+    sessionStorage.removeItem("postLoginRedirect");
+    setTimeout(() => window.location.href = redirect, 800);
+  } else {
+    errorMsg.innerText = data.msg || "Registration failed";
+    errorMsg.style.display = "block";
+  }
 }
-}
+
 
     async function login() {
       const res = await fetch("/login", {

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Temperature</h2>
+  <canvas id="tempChart"></canvas>
+  <h2>Humidity</h2>
+  <canvas id="humChart"></canvas>
+
+  <script>
+    const tempCtx = document.getElementById("tempChart").getContext("2d");
+    const humCtx = document.getElementById("humChart").getContext("2d");
+
+    const tempChart = new Chart(tempCtx, {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Temp (°C)', data: [] }] }
+    });
+
+    const humChart = new Chart(humCtx, {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Humidity (%)', data: [] }] }
+    });
+
+    async function fetchData() {
+      const res = await fetch("/lab-data");
+      const data = await res.json();
+      if (data.timestamps) {
+        tempChart.data.labels = data.timestamps;
+        tempChart.data.datasets[0].data = data.temps;
+        humChart.data.labels = data.timestamps;
+        humChart.data.datasets[0].data = data.hums;
+        tempChart.update();
+        humChart.update();
+      }
+    }
+
+    fetchData();
+    setInterval(fetchData, 5000); // refresh every 5s
+  </script>
+</body>
+</html>

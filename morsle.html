@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" href="decipher_logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-5556863026084584">
+<title>DECIPHER - Morsle</title>
+<meta name="description" content="Morsle - Morse-based Wordle Game">
+<meta name="keywords" content="morse wordle, morse game, morsle, morse puzzle, decipher, morse code, code breaking, decoding, daily game, daily morsle"> 
+<link href="index2.css" rel="stylesheet" type="text/css" media="all">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+.morse-alphabet {
+  background: #111;
+  padding: 10px;
+  font-size: 25px;
+  line-height: 1.6;
+  color: white;
+  border: 1px solid #444;
+  max-height: 80vh;
+  overflow-y: auto;
+  column-count: 2;
+  column-gap: 30px;
+  width: 300px;
+  flex-shrink: 0;
+  margin-right: -100px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 5px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.game-container {
+  flex-grow: 1;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0px;
+  margin-top: -50px;
+}
+
+.guess-row {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+.guess-cell {
+  width: 60px;
+  height: 60px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #888;
+}
+
+.guess-cell.correct { background: #6aaa64; color: white; }
+.guess-cell.present { background: #c9b458; color: white; }
+.guess-cell.absent  { background: #787c7e; color: white; }
+
+.morse-line.correct,
+.morse-line.present,
+.morse-line.absent {
+  background: #6aaa64;
+  color: white;
+  padding: 4px 6px;
+  margin: 2px 0;
+  border-radius: 4px;
+}
+.morse-line.present { background: #c9b458; }
+.morse-line.absent  { background: #787c7e; }
+
+#input-area {
+  margin-top: 20px;
+}
+
+#input-area button {
+  font-size: 27px;
+  padding: 8px 14px;
+  margin: 5px 8px 5px 0;
+  border: none;
+  border-radius: 5px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+#input-area button:hover {
+  background: #555;
+}
+
+#copy-button {
+  margin-top: 10px;
+  display: none;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+#copy-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  left: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+#copy-button:hover {
+  background-color: #555;
+}
+
+@media (min-width: 601px) {
+  .game-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: -75px;
+  }
+
+  .morse-alphabet {
+    order: -1;
+    margin-left: -50px;
+    margin-right: -100px;
+  }
+
+  .game-container {
+    margin-left: 0; /* undo mobile offset if needed */
+  }
+}
+
+@media (max-width: 600px) {
+  .game-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .morse-alphabet {
+    column-count: 3;
+    font-size: 18px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    margin-left: -30%;
+    order: 1;
+  }
+
+  .game-container {
+    margin: 0 auto;
+    order: 0;
+  }
+
+  .guess-cell {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  #input-area button {
+    width: 48%;
+    font-size: 22px;
+    margin: 5px 5px 5px 0;
+  }
+}
+</style>
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="loader"><div class="loader-spinner"></div></div>
+<div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+<header>
+  <div class="header-container">
+    <div id="header-auth-slot"></div>
+    <div class="logo-container">
+      <a href="/">
+        <img src="decipher_logo.png" alt="DECIPHER Logo" class="logo-icon">
+        <span class="logo-text">DECIPHER</span>
+      </a>
+    </div>
+    <div class="right-header">
+      <div class="merch-button">
+        <a href="https://shop.decipher.wiki" target="_blank">Merch Shop</a>
+      </div>
+      <div class="discord-button">
+        <button onclick="window.location.href='https://discord.gg/GgRAYJesyY'">
+          <img src="https://decipher.wiki/discordlogo.jpg" alt="Discord" width="20">
+          Join Discord
+        </button>
+      </div>
+      <div class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></div>
+      <div class="hamburger-menu" id="hamburger-menu"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-container">
+  <div class="nav-inner">
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/onlinetools">Tools</a></li>
+        <li><a href="/symbols-list">Symbols</a></li>
+        <li><a href="/ciphers">Ciphers</a></li>
+        <li><a href="/cryptographers">Cryptographers</a></li>
+        <li><a href="/puzzles">Puzzles</a></li>
+        <li><a href="/dictionary">Dictionary</a></li>
+        <li><a href="/aes-decryption">AES</a></li>
+        <li><a href="/get-started">Get Started</a></li>
+        <li><a href="/casino">Casino</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <ul>
+    <button id="close-nav" style="margin: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
+    <li><a href="/">Home</a></li>
+    <li><a href="/onlinetools">Tools</a></li>
+    <li><a href="/symbols-list">Symbols</a></li>
+    <li><a href="/ciphers">Ciphers</a></li>
+    <li><a href="/cryptographers">Cryptographers</a></li>
+    <li><a href="/puzzles">Puzzles</a></li>
+    <li><a href="/dictionary">Dictionary</a></li>
+    <li><a href="/aes-decryption">AES</a></li>
+    <li><a href="/get-started">Get Started</a></li>
+    <li><a href="/casino">Casino</a></li>
+  </ul>
+</div>
+
+<main>
+  <div class="game-wrapper">
+    <div class="morse-alphabet" id="morse-alphabet"></div>
+    <div class="game-container">
+      <h1>Today's Morsle</h1>
+      <div id="board"></div>
+      <div id="input-area" style="margin-top: 20px;">
+        <button onclick="addMorse('.')">.</button>
+        <button onclick="addMorse('-')">-</button>
+        <button onclick="addMorse(' ')">Space</button>
+        <button onclick="removeMorse()">←</button>
+        <button onclick="submitGuess()">Enter</button>
+      </div>
+      <p id="status"></p>
+      <p id="average"></p>
+      <p id="user-stats"></p>
+      <button id="copy-button" onclick="copyResults()" style="display:none; margin-top:10px;">Copy Results</button>
+      <span id="copy-msg" style="display:block; margin-top:5px; color:lightgreen;"></span>
+    </div>
+  </div>
+</main>
+
+
+
+<script src="morsle.js"></script>
+<script src="compiledjs.js"></script>
+</body>
+</html>

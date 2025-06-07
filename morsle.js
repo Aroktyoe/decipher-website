@@ -224,9 +224,21 @@ function sendStats(n) {
     },
     credentials: 'include',
     body: JSON.stringify(data)
+  }).then(res => {
+    if (!res.ok) {
+      console.log("Falling back to /morsle/stats-anon", data);
+      return fetch('/morsle/stats-anon', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(res => res.json()).then(console.log);
+    }
+
   }).catch(() => {
-    // fallback for anonymous users
-    fetch('/morsle/stats-anon', {
+    // fallback for network errors
+    return fetch('/morsle/stats-anon', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -235,6 +247,7 @@ function sendStats(n) {
     });
   });
 }
+
 
 
 function shakeBoard() {

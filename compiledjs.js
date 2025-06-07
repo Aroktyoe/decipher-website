@@ -79,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
           const href = link.getAttribute("href").replace(/\/$/, "");
 
           if (
-            (href === "/" && path === "/") || // home active only on homepage
+            (href === "/" && path === "/") || 
             (href !== "/" && (path === href || path.startsWith(href + "/")))
           ) {
             link.classList.add("active");
@@ -108,22 +108,28 @@ fetch("mobile-nav.html")
   .then(html => {
     document.getElementById("mobile-nav-placeholder").innerHTML = html;
 
-    const closeNavBtn = document.getElementById('close-nav');
-    const mobileNav = document.getElementById('mobile-nav');
-    const hamburgerMenu = document.getElementById('hamburger-menu');
+    // Wait for both mobile-nav and hamburger to exist before attaching
+    const tryAttach = () => {
+      const closeNavBtn = document.getElementById('close-nav');
+      const mobileNav = document.getElementById('mobile-nav');
+      const hamburgerMenu = document.getElementById('hamburger-menu');
 
-    if (closeNavBtn && mobileNav) {
-      closeNavBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
-      });
-    }
+      if (closeNavBtn && mobileNav) {
+        closeNavBtn.addEventListener('click', () => {
+          mobileNav.classList.remove('open');
+        });
+      }
 
-    if (hamburgerMenu && mobileNav) {
-      hamburgerMenu.addEventListener('click', () => {
-        mobileNav.classList.toggle('open');
-      });
-    }
+      if (hamburgerMenu && mobileNav) {
+        hamburgerMenu.addEventListener('click', () => {
+          mobileNav.classList.toggle('open');
+        });
+      }
+    };
+
+    setTimeout(tryAttach, 100); // slight delay ensures DOM update
   });
+
 
   // Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
@@ -188,9 +194,13 @@ if (themeToggle) {
   }
 
 
-    document.getElementById('close-nav').addEventListener('click', () => {
-      document.getElementById('mobile-nav').classList.remove('open');
-    });
+    const closeNavBtn = document.getElementById('close-nav');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (closeNavBtn && mobileNav) {
+      closeNavBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+      });
+    }
 
   // Make collapsible buttons work
   document.querySelectorAll(".collapsible").forEach(button => {

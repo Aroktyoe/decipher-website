@@ -7,7 +7,7 @@ const morseToLetter = {
 
 const morseDiv = document.getElementById("morse-alphabet");
 for (let [code, letter] of Object.entries(morseToLetter)) {
-  morseDiv.innerHTML += `<div class="morse-line"><strong id="morse-${letter}" class="morse-letter">${letter}</strong>:&nbsp;&nbsp;${code}</div>`;
+  morseDiv.innerHTML += `<div class="morse-line" data-code="${code}"><strong id="morse-${letter}" class="morse-letter">${letter}</strong>:&nbsp;&nbsp;${code}</div>`;
 }
 
 let word = null;
@@ -200,9 +200,22 @@ async function checkGameOver(guessWord) {
   }
 }
 
-
+function getAnonId() {
+  let id = localStorage.getItem("anon-id");
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem("anon-id", id);
+  }
+  return id;
+}
 
 function sendStats(n) {
+  const data = {
+    guesses: n,
+    date: localDate(),
+    anon_id: getAnonId()
+  };
+
   return fetch('/morsle/stats', {
     method: 'POST',
     headers: {
@@ -210,12 +223,19 @@ function sendStats(n) {
       'X-CSRF-TOKEN': getCSRFToken()
     },
     credentials: 'include',
-    body: JSON.stringify({
-      guesses: n,
-      date: localDate()
-    })
+    body: JSON.stringify(data)
+  }).catch(() => {
+    // fallback for anonymous users
+    fetch('/morsle/stats-anon', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
   });
 }
+
 
 function shakeBoard() {
   const board = document.getElementById('board');
@@ -333,7 +353,7 @@ function handleInput(ch) {
       currentLetters = currentLetters.slice(0, -1);
     }
 
-  } else if (ch === '.' || ch === '-') {
+  } else if ((ch === '.' || ch === '-') && morseBuffer.length < 4) {
     morseBuffer += ch;
 
   } else if (ch === ' ' || ch === 'ENTER') {
@@ -352,6 +372,7 @@ function handleInput(ch) {
 
   renderBoard();
 }
+
 
 function addMorse(symbol, event) {
   event.preventDefault();
@@ -380,7 +401,6 @@ document.addEventListener('keydown', e => {
 document.getElementById('input-area').innerHTML = `
   <button onclick="addMorse('.', event)">.</button>
   <button onclick="addMorse('-', event)">-</button>
-  <button onclick="addMorse(' ', event)">space</button>
   <button onclick="removeMorse(event)">&larr;</button>
   <button onclick="submitGuess(event)">Enter</button>
 `;
@@ -400,12 +420,34 @@ function copyResults() {
   const formattedDate = `${date[2]}/${date[1]}/${date[0]}`;
 
   let grid = guesses.map(g => {
-    return [...g.word].map((ch, i) => {
-      if (word[i] === ch) return '🟩';
-      else if (word.includes(ch)) return '🟨';
-      else return '⬜';
-    }).join('');
+    const guess = g.word;
+    const target = word;
+    const colors = Array(guess.length).fill('⬜');
+    const used = Array(target.length).fill(false);
+
+    // First pass – green squares
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] === target[i]) {
+        colors[i] = '🟩';
+        used[i] = true;
+      }
+    }
+
+    // Second pass – yellow squares
+    for (let i = 0; i < guess.length; i++) {
+      if (colors[i] === '🟩') continue;
+      for (let j = 0; j < target.length; j++) {
+        if (!used[j] && guess[i] === target[j]) {
+          colors[i] = '🟨';
+          used[j] = true;
+          break;
+        }
+      }
+    }
+
+    return colors.join('');
   }).join('\n');
+
 
   const shareText = `${finalResult}\n${grid}\nCan you beat todays Morsle? https://decipher.wiki/morsle`;
 
@@ -421,3 +463,33 @@ function copyResults() {
 
 
 loadGame();
+
+window.addEventListener('load', () => {
+  const toggleBtn = document.getElementById("toggle-morse");
+
+  function applyMorseVisibility(hidden) {
+    document.querySelectorAll(".morse-line").forEach(el => {
+      const strong = el.querySelector("strong");
+      const code = el.getAttribute("data-code");
+      el.innerHTML = hidden
+        ? `${strong.outerHTML}:`
+        : `${strong.outerHTML}:&nbsp;&nbsp;${code}`;
+    });
+  }
+
+  function toggleMorse() {
+    const isHidden = localStorage.getItem("hideMorse") === "true";
+    const newHidden = !isHidden;
+    localStorage.setItem("hideMorse", newHidden);
+    toggleBtn.textContent = newHidden ? "Reveal Morse Translation" : "Hide Morse Translation";
+    applyMorseVisibility(newHidden);
+  }
+
+  toggleBtn.addEventListener("click", toggleMorse);
+
+  if (localStorage.getItem("hideMorse") === "true") {
+    toggleBtn.textContent = "Reveal Morse Translation";
+    applyMorseVisibility(true);
+  }
+});
+

@@ -10,18 +10,26 @@
 
   @media (max-width: 768px) {
   .header-container {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 10px;
-    padding: 10px 10px;
-    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    flex-wrap: nowrap;
   }
 
+  @media (max-width: 768px) {
+  .merch-button,
+  .discord-button,
+  #login-link {
+    display: none !important;
+  }
+}
+
   .left-header,
-  .right-header {
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
+  .right-header,
+  .center-header {
+    width: auto;
+    margin: 0;
   }
 
   .discord-button {
@@ -29,13 +37,17 @@
   }
 
   .center-header {
-    position: static;
-    transform: none;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-right: -20px;
   }
 
   .logo-container {
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .user-actions {
@@ -90,6 +102,7 @@
 }
 
   @media (max-width: 768px) {
+
   .user-actions #account-link,
   .user-actions #logout-btn {
     display: none !important;
@@ -139,7 +152,7 @@
 .dropdown-menu a:hover {
   background-color: #3a3a3a;
 }
-}
+
 </style>
 
 

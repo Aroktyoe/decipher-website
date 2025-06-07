@@ -62,19 +62,68 @@
       });
     });
   });
-  
-  
-  
 
-  // Mobile menu toggle
-  const hamburgerMenu = document.getElementById('hamburger-menu');
-  const mobileNav = document.getElementById('mobile-nav');
-  
-  if (hamburgerMenu && mobileNav) {
-    hamburgerMenu.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+window.addEventListener("DOMContentLoaded", () => {
+  // Load the full navbar
+    fetch("/pc-navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        const container = document.getElementById("header-placeholder");
+        container.innerHTML = html;
+
+        // After navbar is loaded, mark current page as active
+        const links = container.querySelectorAll("nav.main-nav a");
+        const path = window.location.pathname.replace(/\/$/, "");
+
+        links.forEach(link => {
+          const href = link.getAttribute("href").replace(/\/$/, "");
+
+          if (
+            (href === "/" && path === "/") || // home active only on homepage
+            (href !== "/" && (path === href || path.startsWith(href + "/")))
+          ) {
+            link.classList.add("active");
+          }
+        });
+
+      // Load header auth slot *after* navbar is injected
+      fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+        .then(res => res.text())
+        .then(html => {
+          const slot = document.getElementById("header-auth-slot");
+          if (slot) {
+            slot.innerHTML = html;
+            const script = document.createElement("script");
+            script.src = "/header.js?v=" + Date.now();
+            script.onload = () => setupHeader();
+            document.body.appendChild(script);
+          }
+        });
     });
-  }
+});
+
+
+fetch("mobile-nav.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("mobile-nav-placeholder").innerHTML = html;
+
+    const closeNavBtn = document.getElementById('close-nav');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    if (closeNavBtn && mobileNav) {
+      closeNavBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+      });
+    }
+
+    if (hamburgerMenu && mobileNav) {
+      hamburgerMenu.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+      });
+    }
+  });
 
   // Theme toggle
 const themeToggle = document.getElementById('theme-toggle');
@@ -138,15 +187,6 @@ if (themeToggle) {
     });
   }
 
-  fetch("/header.html", { headers: { "X-Original-Request": "true" } })
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("header-auth-slot").innerHTML = html;
-      const script = document.createElement("script");
-      script.src = "/header.js?v=" + Date.now();
-      script.onload = () => setupHeader();
-      document.body.appendChild(script);
-    });
 
     document.getElementById('close-nav').addEventListener('click', () => {
       document.getElementById('mobile-nav').classList.remove('open');

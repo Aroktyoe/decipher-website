@@ -4,11 +4,11 @@ async function setupHeader() {
   const logoutBtn = document.getElementById("logout-btn");
   const userInfo = document.getElementById("header-user-info");
 
-  // 🔽 Add these for mobile menu
+  const mobileLoginLink = document.getElementById("mobile-login-link");
   const mobileAccountDropdown = document.getElementById("mobile-account-dropdown");
+  const mobileLogoutBtn = document.getElementById("mobile-logout-btn");
 
   if (!loginLink || !userInfo || !document.getElementById("account-dropdown")) return;
-
 
   const logout = async () => {
     await fetch("/logout", {
@@ -17,6 +17,9 @@ async function setupHeader() {
     });
     location.reload();
   };
+
+  logoutBtn?.addEventListener("click", logout);
+  mobileLogoutBtn?.addEventListener("click", logout);
 
   try {
     const res = await fetch("/me", {
@@ -32,6 +35,7 @@ async function setupHeader() {
 
     loginLink.style.display = "none";
     document.getElementById("account-dropdown").style.display = "inline-block";
+
     const dropdownToggle = document.querySelector("#account-dropdown .dropdown-toggle");
     const dropdown = document.getElementById("account-dropdown");
 
@@ -41,7 +45,6 @@ async function setupHeader() {
         dropdown.classList.toggle("open");
       });
 
-      // Close dropdown if clicking outside
       document.addEventListener("click", (e) => {
         if (!dropdown.contains(e.target)) {
           dropdown.classList.remove("open");
@@ -49,12 +52,8 @@ async function setupHeader() {
       });
     }
 
-
-
-
-    // 🔽 Show + connect mobile account/logout
+    if (mobileLoginLink) mobileLoginLink.style.display = "none";
     if (mobileAccountDropdown) mobileAccountDropdown.style.display = "list-item";
-
 
   } catch (e) {
     userInfo.innerHTML = "";
@@ -62,11 +61,9 @@ async function setupHeader() {
     accountLink.style.display = "none";
     logoutBtn.style.display = "none";
 
-    // 🔽 Hide mobile account/logout on failure
+    if (mobileLoginLink) mobileLoginLink.style.display = "list-item";
     if (mobileAccountDropdown) mobileAccountDropdown.style.display = "none";
-
   }
 }
-
 
 window.setupHeader = setupHeader;

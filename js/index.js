@@ -19,8 +19,6 @@ import { io } from "https://cdn.socket.io/4.5.4/socket.io.esm.min.js";
 import { loadDailyInfo } from './utils.js';
 // import { playMines } from "./games/mines.js";
 
-
-
 window.socket = io("https://decipher.wiki", {
   transports: ["polling"],
   withCredentials: true
@@ -46,21 +44,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   await fetchBalance();
   getCSRFToken();
 
-
-  await loadOpenCoinflips(); // This loads available coinflips
-
+  await loadOpenCoinflips();
   updateHistory();
-  // removeBet(), addBetDisplay() are only needed during real interaction
-
   await fetchYourBets();
-
   await startBlackjack();
-  // blackjackAction(action) should be triggered by button click, not run automatically
-
   displayBlackjackGame();
   delayedBalanceUpdate();
   socketEvents();
-/*
+
+  /*
   document.getElementById('minesButton').addEventListener('click', playMines);
 
   document.getElementById("buy-balance-button")?.addEventListener("click", async () => {
@@ -84,3 +76,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   */
 });
+
+fetch("mobile-nav.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("mobile-nav-placeholder").innerHTML = html;
+
+    const closeNavBtn = document.getElementById('close-nav');
+    const mobileNav = document.getElementById('mobile-nav');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    if (closeNavBtn && mobileNav) {
+      closeNavBtn.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+      });
+    }
+
+    if (hamburgerMenu && mobileNav) {
+      hamburgerMenu.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+      });
+    }
+  });

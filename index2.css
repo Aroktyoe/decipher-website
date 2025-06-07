@@ -22,6 +22,7 @@ body {
   padding: 0;
   min-height: 100vh;
   display: flex;
+  overflow-x: hidden;
   flex-direction: column;}
 a {
   color: var(--accent-color);
@@ -55,7 +56,7 @@ color: var(--text-light);}
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin-right: 20px;}
+  margin-right: 0px;}
 .left-header {
   display: flex;
   align-items: center;
@@ -438,7 +439,7 @@ footer {
   cursor: pointer;
   margin-right: 20px;}
 .hamburger-menu span {
-  width: 100%;
+  width: 80%;
   height: 2px;
   background-color: var(--text-light);
   border-radius: 3px;
@@ -447,12 +448,12 @@ footer {
   display: none;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.95);
   z-index: 100;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: transform 0.3s ease;
   overflow-y: auto;
   padding-bottom: 60px;}
@@ -890,6 +891,9 @@ box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);}
 @media (max-width: 768px) {
 .merch-button {
 margin-right: 0;}
+.theme-toggle {
+  width: 30px;
+  height: 30px;}
 body.light-theme .tool-item {
   background-color: #ffffff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -1003,3 +1007,4 @@ h1 {
 #header-auth-slot a:hover,
 #header-auth-slot button:hover {
   background-color: #a46bf9;}
+}}}}

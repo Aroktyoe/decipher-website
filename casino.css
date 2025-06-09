@@ -28,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow-x: hidden;
 }
 
 a {
@@ -1398,6 +1399,58 @@ background-color: rgba(60, 60, 60, 0.9);
   .mobile-nav {
     display: block;
   }
+
+  .mobile-nav .dropdown {
+    position: relative;
+  }
+
+
+.mobile-nav .dropdown-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.mobile-nav .dropdown-menu {
+  display: none;
+  list-style: none;
+  padding-left: 0;
+  background-color: #222;
+}
+
+.mobile-nav .dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.5;
+  pointer-events: none;
+  display: block;
+  overflow: hidden;
+}
+
+
+.mobile-nav .dropdown.open .dropdown-menu {
+  display: block;
+}
+
   
   .tools-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1583,6 +1636,18 @@ text-align: center;
 font-size: 1rem;
 color: #ccc;
 }
+
+
+#close-nav {
+position: absolute;
+top: 10px;
+right: 15px;
+font-size: 28px;
+background: none;
+color: white;
+border: none;
+cursor: pointer;
+z-index: 101;}
 
 .slot-controls {
 display: flex;

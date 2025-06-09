@@ -195,10 +195,19 @@ async function checkGameOver(guessWord) {
     document.getElementById('copy-button').style.display = "block";
     document.getElementById("copy-button").onclick = copyResults;
   } else if (guesses.length >= maxGuesses) {
-    document.getElementById('status').textContent = "The word was: " + word;
-    gameOver = true;
+      gameOver = true;
+      document.getElementById('status').textContent = "The word was: " + word;
+      const copyBtn = document.getElementById('copy-button');
+      copyBtn.style.display = "block";
+      copyBtn.onclick = copyResults;
+
+      finalResult = `Morsle ${localDate()}: X/6`;
+      updateMorseColors();
+
+      await sendStats(6);
+      userStats = await refreshStats();
+    }
   }
-}
 
 function getAnonId() {
   let id = localStorage.getItem("anon-id");
@@ -327,6 +336,9 @@ async function loadGame() {
     localStorage.setItem(localKey, todayLocal);
     renderBoard(); // fresh start allowed
   }
+  if (gameOver) {
+  document.getElementById('copy-button').style.display = "block";
+  }
 }
 
 
@@ -427,13 +439,12 @@ function showTempMessage(msg) {
 }
 
 function copyResults() {
-  if (!finalResult) return;
-
   const date = localDate().split('-');
   const formattedDate = `${date[2]}/${date[1]}/${date[0]}`;
 
   let grid = guesses.map(g => {
     const guess = g.word;
+    if (!word) return '⬜⬜⬜⬜⬜';  // fallback if word is null
     const target = word;
     const colors = Array(guess.length).fill('⬜');
     const used = Array(target.length).fill(false);
@@ -461,10 +472,9 @@ function copyResults() {
     return colors.join('');
   }).join('\n');
 
+  const fallbackResult = `Morsle ${localDate()}: ${guesses.length}/6`;
+  const shareText = `${finalResult || fallbackResult}\n${grid}\nCan you beat todays Morsle? https://decipher.wiki/morsle`;
 
-  const shareText = `${finalResult}\n${grid}\nCan you beat todays Morsle? https://decipher.wiki/morsle`;
-
-  // Clipboard fallback
   navigator.clipboard.writeText(shareText)
     .then(() => {
       document.getElementById("copy-msg").textContent = "Copied to clipboard!";
@@ -472,7 +482,8 @@ function copyResults() {
     .catch(() => {
       document.getElementById("copy-msg").textContent = "Copy failed.";
     });
-  }
+}
+
 
 
 loadGame();

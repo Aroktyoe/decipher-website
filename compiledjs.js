@@ -71,7 +71,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("header-placeholder");
         container.innerHTML = html;
 
-        // After navbar is loaded, mark current page as active
         const links = container.querySelectorAll("nav.main-nav a");
         const path = window.location.pathname.replace(/\/$/, "");
 
@@ -79,8 +78,8 @@ window.addEventListener("DOMContentLoaded", () => {
           const href = link.getAttribute("href").replace(/\/$/, "");
 
           if (
-            (href === "/" && path === "/") || 
-            (href !== "/" && (path === href || path.startsWith(href + "/")))
+            (href === "" && path === "") || // exact match for "/"
+            (href !== "" && (path === href || path.startsWith(href + "/")))
           ) {
             link.classList.add("active");
           }
@@ -101,6 +100,36 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Add the path you want to skip (e.g., "/no-snow.html")
+  const skipVideoPaths = ["/account.html", "/login-page.html", "/casino"];
+
+  if (skipVideoPaths.includes(window.location.pathname)) {
+    console.log("Skipping snow video on this page.");
+    return;
+  }
+
+  const video = document.createElement("video");
+  video.id = "bg-video";
+  video.autoplay = true;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+
+  const source = document.createElement("source");
+  source.src = "https://decipher.wiki/effects.mp4";
+  source.type = "video/mp4";
+
+  video.appendChild(source);
+  document.body.prepend(video);
+
+  video.addEventListener("loadeddata", () => {
+    video.playbackRate = 0.75;
+    console.log("snow video added at 75% speed");
+  });
+});
+
 
 
 fetch("mobile-nav.html")

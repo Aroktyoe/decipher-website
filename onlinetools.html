@@ -21,6 +21,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>-->
 </head>
+<style>
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px; /* add space below buttons */
+}
+
+.content {
+  display: none;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #9191915b;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.button-row > div {
+  flex: 1 1 250px; /* adjust width as needed */
+  max-width: 300px;
+}
+
+.collapsible {
+  position: relative !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  width: 200px !important;
+  border: 1px solid transparent !important;
+  transition: all 0.1s ease-in-out !important;
+}
+
+
+</style>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
@@ -32,12 +71,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="header-placeholder"></div>
 
 <div id="mobile-nav-placeholder"></div>
-  <main>
+  <main class="tools-container">
     <h1>Online Tools</h1>
     <p class="subtitle">Collection of external cipher solvers, editors, and decoders</p>
-        <button class="collapsible">Text</button>
-        <div class="content">
-        <p><strong>Monoalphabetic Substitution:</strong><p>
+    <div class="button-row">
+      <button class="collapsible" data-target="text">Text</button>
+      <button class="collapsible" data-target="audio">Audio</button>
+      <button class="collapsible" data-target="image">Image</button>
+      <button class="collapsible" data-target="others">Others</button>
+      <button class="collapsible" data-target="hash">Hash</button>
+    </div>
+        <div id="text" class="content">
+        <p><strong>Monoalphabetic Substitution:</strong></p>
         <p>Quipqiup</p>
         <a style="color:#0070E0" href="https://quipqiup.com/">https://quipqiup.com/</a> auto solver
         <br>
@@ -48,7 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://www.guballa.de/substitution-solver">https://www.guballa.de/substitution-solver</a> auto solver in English, German, Spanish, French, Dutch & Portuguese
         <br>
         <br>
-        <p><strong>Polyalphabetic substitution:</strong><p>
+        <p><strong>Polyalphabetic substitution:</strong></p>
         <p>Boxentriq</p>
         <a style="color:#0070E0" href="https://www.boxentriq.com/code-breaking/vigenere-cipher">https://www.boxentriq.com/code-breaking/vigenere-cipher</a> (best vigenere with no key solver)
         <br>
@@ -59,7 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://f00l.de/hacking/vigenere.php">https://f00l.de/hacking/vigenere.php</a> (vigenére key length calculator)
         <br>
         <br>
-        <p><strong>Caesar:</strong><p>
+        <p><strong>Caesar:</strong></p>
         <p>Regular Caesar</p>
         <a style="color:#0070E0" href="https://a4x.me/tools/text/">https://a4x.me/tools/text/</a> (easy atbash/reverse/rot testing)
         <br>
@@ -70,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://planetcalc.com/1434/">https://planetcalc.com/1434/</a> (alphabets for English, French Portuguese, Russian & Spanish)
         <br>
         <br>
-        <p><strong>Cipher Identifiers:</strong><p>
+        <p><strong>Cipher Identifiers:</strong></p>
         <p>dCode Cipher Identifier</p>
         <a style="color:#0070E0" href="https://www.dcode.fr/cipher-identifier">https://www.dcode.fr/cipher-identifier</a>(best one)
         <br>
@@ -81,7 +126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://www.boxentriq.com/code-breaking/cipher-identifier">https://www.boxentriq.com/code-breaking/cipher-identifier</a>
         <br>
         <br>
-        <p><strong>base64 Looking Text:</strong><p>
+        <p><strong>base64 Looking Text:</strong></p>
         <p>Dumpster Diver (random b64 looking text brute forcer)</p>
         <a style="color:#0070E0" href="https://corgi.rip/dive">https://corgi.rip/dive</a>
         <br>
@@ -131,7 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://web.archive.org/web/20220915201921/https://cryptoji.com/">https://web.archive.org/web/20220915201921/https://cryptoji.com/</a>
         <br>
         <br>
-        <p><strong>Others:</strong><p>
+        <p><strong>Others:</strong></p>
         <p>n-gram transcription</p>
         <a style="color:#0070E0" href="https://www.dcode.fr/alphabetic-transcription">https://www.dcode.fr/alphabetic-transcription</a> (transcribes text in any group length)
         <br>
@@ -173,10 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <br>
         <br>
         </div>
-        <br>
-        <br>
-        <button class="collapsible">Audio</button>
-        <div class="content">
+        <div id="audio" class="content">
         <p>Audio Morse</p>
         <a style="color:#0070E0" href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">https://morsecode.world/international/decoder/audio-decoder-adaptive.html</a>
         <br>
@@ -185,10 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <br>
         <br>
         </div>
-        <br>
-        <br>
-        <button class="collapsible">Image</button>
-        <div class="content">
+        <div id="image" class="content">
         <p>Free photoshop online</p>
         <a style="color:#0070E0" href="https://www.photopea.com/">https://www.photopea.com/</a>
         <br>
@@ -255,11 +294,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://sourceforge.net/projects/silenteye/">https://sourceforge.net/projects/silenteye/</a>
         <br>
         <br>
-        </div>
-        <br>
-        <br>
-        <button class="collapsible">Others</button>
-        <div class="content">
+</div>
+        <div id="others" class="content">
         <br>
         <p>Youtube video tag extractor</p>
         <a style="color:#0070E0" href="https://online-free-tools.com/en/youtube_video_tags_extract_url">https://online-free-tools.com/en/youtube_video_tags_extract_url</a>
@@ -271,11 +307,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a style="color:#0070E0" href="https://merricx.github.io/qrazybox/">https://merricx.github.io/qrazybox/</a>
         <br>
         <br>
-        </div>
-        <br>
-        <br>
-        <button class="collapsible">Hash</button>
-        <div class="content">
+</div>
+        <div id="hash" class="content">
         <br>
         <p>Hash identifier</p>
         <a style="color:#0070E0" href="https://hashes.com/en/tools/hash_identifier">https://hashes.com/en/tools/hash_identifier</a>
@@ -285,7 +318,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <br>
         <p>Zip/Rar file hash extractor</p>
         <a style="color:#0070E0" href="https://hashes.com/en/johntheripper/zip2john">https://hashes.com/en/johntheripper/zip2john</a>
-      </div>
     </div>
   </main>
 
@@ -297,6 +329,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
     </div>
   </footer>
+<script>document.querySelectorAll(".collapsible").forEach(button => {
+  button.addEventListener("click", () => {
+    const targetId = button.dataset.target;
+    const content = document.getElementById(targetId);
+    const isVisible = content.style.display === "block";
+
+    // Hide all content and remove active state from all buttons
+    document.querySelectorAll(".content").forEach(c => c.style.display = "none");
+    document.querySelectorAll(".collapsible").forEach(btn => btn.classList.remove("active"));
+
+    if (!isVisible) {
+      content.style.display = "block";
+    } else {
+      button.classList.add("active");
+    }
+    // else: do nothing – it stays hidden and no button is active
+  });
+});
+
+
+
+</script>
+
 <script src="compiledjs.js"></script>
 </body>
 </html>

@@ -1,50 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <link rel="icon" href="decipher_logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DECIPHER - Leaderboard</title>
+  <link href="index2.css" rel="stylesheet" type="text/css" media="all">
   <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
-  <title>Leaderboard - DECIPHER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+   crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --></body>
+<div class="loader"><div class="loader-spinner"></div></div>
+<div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
   <style>
     body {
       font-family: "Exo 2", sans-serif;
-      background-color: #49698C;
-      color: black;
-      padding: 20px;
+      background-color: #000000;
+      color: rgb(255, 255, 255);
     }
 
     .container {
-      width: 80%;
+      width: 65%;
       margin: 0 auto;
-      background: #E6F2FF;
+      background: #00000012;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      color: black;
+      color: rgba(235, 175, 237, 0.883);
     }
 
     h1 {
       text-align: center;
-      color: #263443;
+      color: rgba(235, 175, 237, 0.883);
     }
 
     table {
       width: 100%;
       margin-top: 20px;
       border-collapse: collapse;
-      color: black;
+      color: rgba(255, 255, 255, 0.45);
     }
 
     th, td {
       padding: 12px;
       text-align: left;
       border-bottom: 1px solid #ddd;
-      color: black !important;
+      color: rgba(255, 255, 255, 0.493) !important;
     }
 
     th {
-      background-color: #49698C;
-      color: black !important;
+      background-color: #535353;
+      color: rgba(255, 255, 255, 0.863) !important;
     }
 
     tr {
@@ -52,8 +74,8 @@
     }
 
     td {
-      background-color: #f2f8ff;
-      color: black !important;
+      background-color: #ffffff4f;
+      color: rgba(199, 199, 199, 0.566) !important;
     }
 
     .button2 {
@@ -61,8 +83,8 @@
       font-size: 16px;
       letter-spacing: 2px;
       text-transform: capitalize;
-      background-color: #E6F2FF;
-      color: #263443;
+      background-color: #717171;
+      color: #fdfdfdc3;
       border: 2px solid;
       border-color: #263443;
       padding: 0.25em 0.5em;
@@ -82,8 +104,12 @@
   </style>
 </head>
 <body>
+<div id="header-placeholder"></div>
+
+<div id="mobile-nav-placeholder"></div>
+
   <div class="container">
-    <h1>Leaderboard</h1>
+    <h1>Leaderboard (top 50)</h1>
     <table>
       <thead>
         <tr>
@@ -107,15 +133,15 @@
       const res = await fetch("/leaderboard");
       if (res.ok) {
         const data = await res.json();
-        const leaderboard = data.leaderboard;
+        const leaderboard = data.leaderboard.slice(0, 50);
         const leaderboardList = document.getElementById("leaderboard-list");
 
         leaderboard.forEach((entry, index) => {
           const row = document.createElement("tr");
           row.innerHTML = `
-          <td style="color: black !important;">${index + 1}</td>
-          <td style="color: black !important;">${entry.username}</td>
-          <td style="color: black !important;">${entry.completed_puzzles}</td>
+          <td style="color: white !important;">${index + 1}</td>
+          <td style="color: white !important;">${entry.username}</td>
+          <td style="color: white !important;">${entry.completed_puzzles}</td>
          `;
 
           leaderboardList.appendChild(row);
@@ -127,5 +153,6 @@
 
     window.onload = fetchLeaderboard;
   </script>
+      <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

@@ -66,4 +66,13 @@ async function setupHeader() {
   }
 }
 
-window.setupHeader = setupHeader;
+ document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    document.querySelectorAll(".main-nav a").forEach(link => {
+      const linkPath = link.getAttribute("href").replace(/\/$/, "");
+      if (linkPath === currentPath) {
+        link.classList.add("active");
+      }
+    });
+    setupHeader();
+  });

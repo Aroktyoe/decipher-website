@@ -14,16 +14,38 @@
   padding: 0;
   box-sizing: border-box;}
 body {
-  background-color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.95);
+  background-image: url("https://decipher.wiki/decipher_logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-blend-mode: overlay;
   color: var(--text-light);
   font-family: 'Exo 2', sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   min-height: 100vh;
   display: flex;
   overflow-x: hidden;
-  flex-direction: column;}
+  flex-direction: column;
+  z-index: 0;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 a {
   color: var(--accent-color);
   text-decoration: none;

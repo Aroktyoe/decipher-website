@@ -86,7 +86,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById("header-placeholder");
         container.innerHTML = html;
 
-        // After navbar is loaded, mark current page as active
         const links = container.querySelectorAll("nav.main-nav a");
         const path = window.location.pathname.replace(/\/$/, "");
 
@@ -94,12 +93,13 @@ window.addEventListener("DOMContentLoaded", () => {
           const href = link.getAttribute("href").replace(/\/$/, "");
 
           if (
-            (href === "/" && path === "/") || 
-            (href !== "/" && (path === href || path.startsWith(href + "/")))
+            (href === "" && path === "") || // exact match for "/"
+            (href !== "" && (path === href || path.startsWith(href + "/")))
           ) {
             link.classList.add("active");
           }
         });
+
 
       // Load header auth slot *after* navbar is injected
       fetch("/header.html", { headers: { "X-Original-Request": "true" } })
@@ -123,7 +123,6 @@ fetch("mobile-nav.html")
   .then(html => {
     document.getElementById("mobile-nav-placeholder").innerHTML = html;
 
-    // Wait for both mobile-nav and hamburger to exist before attaching
     const tryAttach = () => {
       const closeNavBtn = document.getElementById('close-nav');
       const mobileNav = document.getElementById('mobile-nav');
@@ -142,8 +141,5 @@ fetch("mobile-nav.html")
       }
     };
 
-    setTimeout(tryAttach, 100); // slight delay ensures DOM update
+    window.addEventListener("load", tryAttach);
   });
-
-
-  // Theme toggle

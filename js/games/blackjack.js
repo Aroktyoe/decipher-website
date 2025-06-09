@@ -7,28 +7,30 @@ window.blackjackAction = blackjackAction;
 
 
 export async function startBlackjack(event) {
+    if (!event?.isTrusted) return; // Don't allow auto-triggering
     startCooldown(document.getElementById("blackjack-button"));
-  
+
     const bet = parseInt(document.getElementById('blackjack-bet').value);
     if (!bet || isNaN(bet) || bet <= 0) {
-      console.warn("Ignored invalid bet attempt on load");
-      return;
+        console.warn("Ignored invalid bet attempt on load");
+        return;
     }
-  
+
     const token = getCSRFToken();
     const res = await fetch('/casino/play/blackjack/start', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': token
-      },
-      credentials: 'include',
-      body: JSON.stringify({ bet })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        credentials: 'include',
+        body: JSON.stringify({ bet })
     });
-    
+
     currentGame = await res.json();
     displayBlackjackGame();
 }
+
   
 export async function blackjackAction(action) {
     const token = getCSRFToken();

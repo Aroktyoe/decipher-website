@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<!-- End Google Tag Manager -->
+  <link rel="icon" href="decipher_logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <title>DECIPHER - Hashes</title>
+  <link href="index2.css" rel="stylesheet" type="text/css" media="all">
+  <meta name="description" content="A Simple How-To Guide for Cracking Hashes using Hashcat">
+  <meta name="keywords" content="hashcat, dictionary, cryptography, hash cracking, md5, sha512, sha256, rockyou, hash decoder, hash decryption, online tool, bcrypt, zip file cracker, zip password, password cracker, sha cracker, hash cracker, md5 cracker, how to crack hashes, how to hashcat"> 
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>-->
+</head>
+<style>
+  section {
+  margin-bottom: 2em;
+  padding: 1em;
+  border: 1px solid #a61690;
+  border-radius: 8px;
+  background-color: #01010125;
+}
+
+section h2,
+section h3 {
+  margin-top: 0;
+}
+
+section img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.5em 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+</style>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="loader"><div class="loader-spinner"></div></div>
+    <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+  
+<div id="header-placeholder"></div>
+
+<div id="mobile-nav-placeholder"></div>
+<main>
+  <div class="div1">
+   <h1>How to Crack Hashes using Hashcat (windows)</h1>
+    <section>
+      <h2>Downloading Hashcat and RockYou</h2>
+      <p><a href="https://hashcat.net/files/hashcat-6.2.6.tar.gz">Hashcat Download</a></p>
+      <p><a href="https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt">RockYou Download</a></p>
+    </section>
+
+    <section>
+      <h2>Opening Hashcat</h2>
+      <p>Extract the zip file and open it, then open the folder inside</p>
+      <img src="/hashcat/open.png" alt="Opening Hashcat">
+      <p>Make a "wordlists" folder here, and put rockyou.txt inside</p>
+      <p>Make a "hashes" folder here, and make a "hash.txt" file or with whatever name you want, and put your hash inside</p>
+      <img src="/hashcat/hash.png" alt="Hash File Location" style="width: 600px;">
+      <p>Replace the directory field with "cmd" and click enter</p>
+      <img src="/hashcat/cmd1.png" alt="CMD in Directory Bar" style="width: 600px;">
+      <img src="/hashcat/cmd2.png" alt="CMD in Directory Bar" style="width: 600px;">
+    </section>
+
+    <section>
+      <h2>What hash-mode is your hash?</h2>
+      <p>If you don't know what type of hash yours is, visit <a href="https://hashcat.net/wiki/doku.php?id=example_hashes">example_hashes</a> or try a hash identifier: <a href="https://md5hashing.net/hash_type_checker">md5hashing.net</a></p>
+      <p>Once you know what hash type yours is, find its "Hash-Mode" on the same page</p>
+      <img src="/hashcat/mode.png" alt="Finding Hash Mode" style="width: 700px;">
+    </section>
+
+    <section>
+      <h2>Using Hashcat</h2>
+
+      <h3>Option 1: pure brute force (mode 3, not optimal)</h3>
+      <p>In the terminal you get to after typing "cmd" in the directory field, enter:</p>
+      <code>hashcat.exe -m &lt;your hash-mode&gt; -a 3 hashes\hash.txt</code>
+      <p>It will now try to brute force all lowercase, uppercase, digits, and special characters starting from 1-character combinations and up.</p>
+      <p>Press S to view current status. Press Q to quit brute forcing.</p>
+      <img src="/hashcat/options1.png" alt="Brute Force Example" style="width: 750px;">
+      <p>If you cracked your hash, move to section "I cracked my hash - where is the cracked password?"</p>
+
+      <h3>Option 2: using wordlists (mode 0, more optimal)</h3>
+      <p>In the terminal, enter:</p>
+      <code>hashcat.exe -m &lt;your hash-mode&gt; -a 0 hashes\hash.txt wordlists\rockyou.txt</code>
+      <p>It will now try every password in rockyou.txt wordlist.</p>
+      <p>Press S to view current status like how long it will take to run through the entire wordlist. Press Q to quit cracking.</p>
+      <img src="/hashcat/option2.png" alt="Wordlist Attack" style="width: 750px;">
+      <p>If you cracked your hash, move to section "I cracked my hash - where is the cracked password?"</p>
+    </section>
+
+    <section>
+      <h2>I cracked my hash - where is the cracked password?</h2>
+      <img src="/hashcat/cracked.png" alt="Cracked Output" style="width: 750px;">
+      <p>In the hashcat folder, search for "hashcat.potfile"</p>
+      <img src="/hashcat/potfile.png" alt="Potfile Location">
+      <p>Open it with a text editor like Notepad. Your hash + the cracked password will be in there.</p>
+      <img src="/hashcat/potfile-inside.png" alt="Potfile Contents">
+    </section>
+
+    <section>
+      <h2>I'm trying to crack a zip or rar file, how do I get the hash out from it?</h2>
+      <p>Upload the file to <a href="https://hashes.com/en/johntheripper/zip2john">https://hashes.com/en/johntheripper/zip2john</a> and save the hash in a file</p>
+    </section>
+
+    <section>
+      <h2>Is this all I can do to crack my hash?</h2>
+      <p>Not at all. If this did not crack your hash, try more extensive wordlists. You can also try:</p>
+      <ul>
+        <a href="https://hashcat.net/wiki/doku.php?id=mask_attack">Mask Attacks</a> or <a href="https://hashcat.net/wiki/doku.php?id=rule_based_attack">Rule Attacks</a>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Isn't there some online tool that can crack it for me?</h2>
+      <p>Most likely not — but you can try:</p>
+      <ul>
+        <a href="https://hashmob.net/search">hashmob.net</a> or <a href="https://crackstation.net/">crackstation.net</a>
+      </ul>
+    </section>
+
+  </div>
+</main>
+<script src="compiledjs.js"></script>
+</body>
+</html>
+

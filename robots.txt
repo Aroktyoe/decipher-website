@@ -7,6 +7,7 @@ Disallow: /4k/
 Disallow: /*.db$
 
 User-agent: ia_archiver
+Allow: /2k/info
 Disallow: /2k/
 Disallow: /3k/
 Disallow: /4k/

@@ -22,6 +22,41 @@
     </div>
   </div>
 </header>
+<style>
+  .main-nav .dropdown {
+  position: relative;
+}
+
+.main-nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #212020eb;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 160px;
+  border-radius: 0 0 12px 12px; /* Only bottom corners rounded */
+  overflow: hidden; /* Ensures hover background doesn't poke outside */
+  z-index: 1000;
+}
+
+.main-nav .dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.main-nav .dropdown-menu li a:hover {
+  background-color: #333;
+}
+
+.main-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
 </style>
 <div class="nav-container">
   <div class="nav-inner">
@@ -35,9 +70,15 @@
         <li><a href="/puzzles">Puzzles</a></li>
         <li><a href="/dictionary">Dictionary</a></li>
         <li><a href="/aes-decryption">AES</a></li>
+        <li><a href="/hashes">Hashes</a></li>
         <li><a href="/get-started">Get Started</a></li>
-        <li><a href="/casino">Casino</a></li>
-        <li><a href="/morsle">Morsle</a></li>
+        <li class="dropdown">
+          <a href="#">Games ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="/casino">Casino</a></li>
+            <li><a href="/morsle">Morsle</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>

@@ -65,14 +65,31 @@ async function setupHeader() {
     if (mobileAccountDropdown) mobileAccountDropdown.style.display = "none";
   }
 }
-
- document.addEventListener("DOMContentLoaded", () => {
-    const currentPath = window.location.pathname.replace(/\/$/, "");
-    document.querySelectorAll(".main-nav a").forEach(link => {
-      const linkPath = link.getAttribute("href").replace(/\/$/, "");
-      if (linkPath === currentPath) {
-        link.classList.add("active");
-      }
-    });
-    setupHeader();
+document.addEventListener("DOMContentLoaded", async () => {
+  const currentPath = window.location.pathname.replace(/\/$/, "");
+  document.querySelectorAll(".main-nav a").forEach(link => {
+    const linkPath = link.getAttribute("href").replace(/\/$/, "");
+    if (linkPath === currentPath) {
+      link.classList.add("active");
+    }
   });
+
+  await setupHeader();
+
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    const icon = themeToggle.querySelector('i');
+
+    function updateTheme() {
+      const isLight = document.body.classList.contains('light-mode');
+      icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      updateTheme();
+    });
+
+    updateTheme(); // apply correct icon
+  }
+});

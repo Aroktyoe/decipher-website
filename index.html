@@ -164,5 +164,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </footer>
     <script src="compiledjs.js"></script>
+    <script>
+      const searchInput = document.getElementById('search-input');
+      const searchIcon = document.querySelector('.search-icon');
+
+      function triggerSearch() {
+        const q = searchInput.value.trim();
+        if (q) {
+          window.location.href = `/search.html?q=${encodeURIComponent(q)}`;
+        }
+      }
+
+      searchInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') triggerSearch();
+      });
+
+      searchIcon.addEventListener('click', triggerSearch);
+    </script>
   </body>
 </html>

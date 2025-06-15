@@ -57,6 +57,32 @@
   display: block;
 }
 
+
+
+.nav-container {
+  width: 100%;
+  overflow: visible; /* optional: scroll if still too long */
+  background: #191919; /* adjust to match your header */
+}
+
+.nav-inner {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  white-space: nowrap;
+}
+
+
 </style>
 <div class="nav-container">
   <div class="nav-inner">
@@ -79,6 +105,7 @@
             <li><a href="/morsle">Morsle</a></li>
           </ul>
         </li>
+        <li><a href="/about">About Us</a></li>
       </ul>
     </nav>
   </div>

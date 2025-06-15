@@ -308,7 +308,7 @@ button.button6:hover {
   transform: translateY(-50%);
   color: var(--accent-color);
   font-size: 18px;
-  pointer-events: none;}
+  pointer-events: auto;}
 /* Categories */
 .tool-categories {
   display: flex;

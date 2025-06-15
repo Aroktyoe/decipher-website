@@ -94,7 +94,27 @@ window.addEventListener("DOMContentLoaded", () => {
             slot.innerHTML = html;
             const script = document.createElement("script");
             script.src = "/header.js?v=" + Date.now();
-            script.onload = () => setupHeader();
+            script.onload = () => {
+              setupHeader();
+
+              const themeToggle = document.getElementById('theme-toggle');
+              if (themeToggle) {
+                const themeIcon = themeToggle.querySelector('i');
+                const savedTheme = localStorage.getItem('theme');
+
+                if (savedTheme === 'light') {
+                  document.body.classList.add('light-theme');
+                  themeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+
+                themeToggle.addEventListener('click', () => {
+                  const isLight = document.body.classList.toggle('light-theme');
+                  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                  themeIcon.classList.toggle('fa-moon', !isLight);
+                  themeIcon.classList.toggle('fa-sun', isLight);
+                });
+              }
+            };
             document.body.appendChild(script);
           }
         });
@@ -102,32 +122,47 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  // Add the path you want to skip (e.g., "/no-snow.html")
   const skipVideoPaths = ["/account.html", "/login-page.html", "/casino"];
-
-  if (skipVideoPaths.includes(window.location.pathname)) {
-    console.log("Skipping snow video on this page.");
-    return;
-  }
+  if (skipVideoPaths.includes(window.location.pathname)) return;
 
   const video = document.createElement("video");
   video.id = "bg-video";
   video.autoplay = true;
   video.muted = true;
   video.loop = true;
+  video.setAttribute("playsinline", "");
   video.playsInline = true;
 
   const source = document.createElement("source");
   source.src = "https://decipher.wiki/effects.mp4";
   source.type = "video/mp4";
-
   video.appendChild(source);
   document.body.prepend(video);
 
   video.addEventListener("loadeddata", () => {
     video.playbackRate = 0.75;
-    console.log("snow video added at 75% speed");
+    if (localStorage.getItem("bg-video-paused") === "true") {
+      video.pause();
+    }
   });
+
+  const togglePlaybackIfBackground = (e) => {
+    const target = e.target;
+    const isBackground = !target.closest("a, button, input, textarea, video");
+
+    if (isBackground) {
+      if (video.paused) {
+        video.play();
+        localStorage.setItem("bg-video-paused", "false");
+      } else {
+        video.pause();
+        localStorage.setItem("bg-video-paused", "true");
+      }
+    }
+  };
+
+  document.body.addEventListener("click", togglePlaybackIfBackground);
+  document.body.addEventListener("touchstart", togglePlaybackIfBackground);
 });
 
 

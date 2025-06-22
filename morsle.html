@@ -25,6 +25,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="index2.css" rel="stylesheet" type="text/css" media="all">
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
 .morse-alphabet {
   background: #111;
@@ -199,14 +200,15 @@ main {
     margin-left: -27%;
     order: 1;
   }
-.morse-column {
-  width: 100%;
-}
+  .morse-column {
+    width: 100%;
+  }
 
   .game-container {
     margin: 0 auto;
     order: 0;
   }
+}
 
 @media (max-width: 600px) {
   #toggle-morse {
@@ -257,7 +259,7 @@ main {
   margin: 5px;
 }
 
-#toggle-morse {
+/* #toggle-morse {
   padding: 6px 12px;
   margin-top: 10px;
   font-size: 14px;
@@ -267,22 +269,24 @@ main {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
+} */
 
 #toggle-morse:hover {
   background-color: #666;
 }
 
 .morse-column {
+  padding-left: 50px;
   position: relative;
-  width: fit-content;
+  width: 300px;
 }
 
 #toggle-morse {
+  display: inline-block;
   position: absolute;
-  top: -45px;
-  margin-left: -30px;
-  left: -20px;
+  top: -30px;
+  /* margin-left: -30px; */
+  /* left: -20px; */
   padding: 6px 12px;
   font-size: 14px;
   background-color: #282828;
@@ -292,14 +296,63 @@ main {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-#toggle-morse:hover {
+#toggle-morse:hover, #rules:hover {
   background-color: #666;
 }
 
+#rules {
+  display: inline-block;
+  height: 25px;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  /* margin-left: 100%; */
+  font-size: 14px;
+  background-color: #282828;
+  color: rgb(190, 190, 190);
+  border: none;
+  border-radius: 6px;
+}
+
+.hide {
+  display: none;
+}
+
+#rules:hover + .hide {
+  display: block;
+  color: red;
+}
+
+#rules-div {
+  float: right;
+  position:absolute;
+  visibility: hidden;
+
+  background: #111;
+  padding: 10px;
+  font-size: 25px;
+  color: white;
+  border: 1px solid #444;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  width: 300px;
+  margin-right: -90vw;
+  
+  /* margin-left: 80vw; */
+}
+
+#rules-title {
+  text-align: center;
+}
+
+.rules-text {
+  font-size: 17px;
+}
+
 </style>
-
-
 </head>
+
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
@@ -316,9 +369,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main>
   <div class="game-wrapper">
     <div class="morse-column">
-    <button id="toggle-morse">Hide Morse Translation</button>
-    <div class="morse-alphabet" id="morse-alphabet"></div>
-  </div>
+      <button id="toggle-morse">Hide Morse Translation</button>
+      <button id="rules" onclick="toggleRules()">?</button>
+      <div class="morse-alphabet" id="morse-alphabet"></div>
+    </div>
+
+    <div id="rules-div">
+      <h3 id="rules-title">Rules</h3>
+      <p class="rules-text">Use the . and - keys or buttons to type morse, and press the Enter key to input the letter equivalent.</p><br>
+      <p class="rules-text">Try to guess the target word in as few tries as possible.</p><br>
+      <p class="rules-text"><b style="color: #6aaa64">Green</b>: the letter guessed is in the word at the correct place.</p>
+      <p class="rules-text"><b style="color: #c9b458">Yellow</b>: the letter guessed is in the word at the wrong place.</p>
+      <p class="rules-text"><b style="color: #787c7e">Gray</b>: the letter guessed is not in the word at all.</p><br>
+      <p class="rules-text"><b style="color: red">Advanced</b> users can hide the morse translations for another challenge!</p>
+    </div>
+    
     <div class="game-container">
       <h1>Today's Morsle</h1>
       <div id="board"></div>

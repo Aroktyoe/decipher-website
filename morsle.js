@@ -20,6 +20,12 @@ let currentInput = "";
 let morseBuffer = "";
 let currentLetters = "";
 let validWords = [];
+let displaying = false
+
+function toggleRules() {
+  displaying = !displaying
+  document.getElementById("rules-div").style.visibility = (displaying ? "visible" : "hidden")
+}
 
 function localDate() {
   const now = new Date();

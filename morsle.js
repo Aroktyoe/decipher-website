@@ -20,6 +20,12 @@ let currentInput = "";
 let morseBuffer = "";
 let currentLetters = "";
 let validWords = [];
+let displaying = false
+
+function toggleRules() {
+  displaying = !displaying
+  document.getElementById("rules-div").style.visibility = (displaying ? "visible" : "hidden")
+}
 
 function localDate() {
   const now = new Date();
@@ -32,8 +38,16 @@ async function fetchWord() {
   const res = await fetch('morsle.txt');
   const words = (await res.text()).trim().split(/\r?\n/);
   const today = localDate();
-  const seed = [...today].reduce((a, c) => a + c.charCodeAt(0), 0);
+  const seed = hashDate(today);
   word = words[seed % words.length].toUpperCase();
+}
+
+function hashDate(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+  }
+  return hash;
 }
 
 function updateMorseColors() {
@@ -288,7 +302,8 @@ async function loadGame() {
     }
   } catch {}
 
-  const dateKey = localDate();
+  const version = 'v2';
+  const dateKey = localDate() + '-' + version;
   const localKey = 'morsle-last-played';
   const todayLocal = localDate();
 

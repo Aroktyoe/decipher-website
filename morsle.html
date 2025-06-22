@@ -365,9 +365,25 @@ main {
   overflow-y: auto;
 
   width: 300px;
-  margin-right: -59vw;
   
   /* margin-left: 80vw; */
+}
+
+@media (min-width: 601px) {
+  #rules-div {
+    position: absolute;
+    visibility: hidden;
+    left: calc(50% + 280px); /* 600px game width / 2 + 40px */
+    background: #111;
+    padding: 10px;
+    font-size: 25px;
+    color: white;
+    border: 1px solid #444;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 300px;
+    z-index: 999;
+  }
 }
 
 @media (max-width: 600px) {

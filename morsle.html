@@ -297,30 +297,58 @@ main {
   transition: background-color 0.2s ease;
 }
 #toggle-morse:hover, #rules:hover {
-  background-color: #666;
+  background-color: rgba(96, 0, 160, 0.671);
 }
 
 #rules {
   display: inline-block;
-  height: 25px;
-  width: 50px;
+  width: 35px;
+  height: 35px;
   text-align: center;
   vertical-align: middle;
-  /* margin-left: 100%; */
-  font-size: 14px;
-  background-color: #282828;
-  color: rgb(190, 190, 190);
+  font-size: 25px;
+  background-color: rgba(153, 0, 255, 0.671);
+  color: black;
   border: none;
-  border-radius: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  right: -550px;
+  top: 10px;
 }
 
 .hide {
   display: none;
 }
 
+@media (max-width: 600px) {
+  #rules-div {
+    position: fixed;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background: #111;
+    border-radius: 10px;
+    border: 2px solid #999;
+    width: 90vw;
+    max-height: 80vh;
+    padding: 20px;
+    box-shadow: 0 0 20px black;
+    z-index: 9999;
+    font-size: 13px;
+  }
+
+  #rules-div.show {
+    visibility: visible;
+  }
+}
+
 #rules:hover + .hide {
   display: block;
-  color: red;
+  color: rgba(255, 255, 255, 0.61);
 }
 
 #rules-div {
@@ -337,17 +365,58 @@ main {
   overflow-y: auto;
 
   width: 300px;
-  margin-right: -90vw;
+  margin-right: -59vw;
   
   /* margin-left: 80vw; */
 }
 
+@media (max-width: 600px) {
+  #rules {
+    position: static;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .rules-text {
+    font-size: 15px;
+    margin: 7px 0;
+    line-height: 1.2;
+  }
+}
+
 #rules-title {
   text-align: center;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 5px;
+  font-size: 22px;
+  margin-bottom: 0;
 }
 
 .rules-text {
   font-size: 17px;
+}
+
+#rules-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-right: 8px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+#rules-close:hover {
+  color: rgba(255, 255, 255, 0.534);
+}
+
+.rules-text {
+  font-size: 17px;
+  margin: 0 0 10px;
+  line-height: 1.4;
 }
 
 </style>
@@ -368,21 +437,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <main>
   <div class="game-wrapper">
-    <div class="morse-column">
+    <div class="morse-column" style="position: relative;">
       <button id="toggle-morse">Hide Morse Translation</button>
       <button id="rules" onclick="toggleRules()">?</button>
       <div class="morse-alphabet" id="morse-alphabet"></div>
     </div>
 
-    <div id="rules-div">
-      <h3 id="rules-title">Rules</h3>
-      <p class="rules-text">Use the . and - keys or buttons to type morse, and press the Enter key to input the letter equivalent.</p><br>
-      <p class="rules-text">Try to guess the target word in as few tries as possible.</p><br>
-      <p class="rules-text"><b style="color: #6aaa64">Green</b>: the letter guessed is in the word at the correct place.</p>
-      <p class="rules-text"><b style="color: #c9b458">Yellow</b>: the letter guessed is in the word at the wrong place.</p>
-      <p class="rules-text"><b style="color: #787c7e">Gray</b>: the letter guessed is not in the word at all.</p><br>
-      <p class="rules-text"><b style="color: red">Advanced</b> users can hide the morse translations for another challenge!</p>
-    </div>
+<div id="rules-div">
+  <button onclick="toggleRules()" id="rules-close">✖</button>
+  <h3 id="rules-title">Rules</h3>
+  <p class="rules-text">Use the . and - keys or buttons to type morse, and press the Enter key to input the letter equivalent.</p>
+  <p class="rules-text">All guesses must be valid 5 letter english words.</p>
+  <p class="rules-text">Try to guess the target word in as few tries as possible.</p>
+  <p class="rules-text"><b style="color: #6aaa64">Green</b>: the letter guessed is in the word at the correct place.</p>
+  <p class="rules-text"><b style="color: #c9b458">Yellow</b>: the letter guessed is in the word at the wrong place.</p>
+  <p class="rules-text"><b style="color: #787c7e">Gray</b>: the letter guessed is not in the word at all.</p>
+  <p class="rules-text"><b style="color: red">Advanced</b> users can hide the morse translations for another challenge!</p>
+</div>
+
     
     <div class="game-container">
       <h1>Today's Morsle</h1>

@@ -82,6 +82,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     button:hover {
       background-color: #a46bf9;
     }
+
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 1em;
+}
+
+.setting-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #bb86fc;
+  cursor: pointer;
+}
+
   
     #user-info {
       margin-bottom: 25px;
@@ -131,6 +147,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button onclick="startDiscordOAuth()">Link Discord</button>
     <div id="discord-status">
       <div id="sync-status" style="margin-top: 10px;"></div>
+    </div>
+
+    <div class="setting-toggle">
+      <input type="checkbox" id="link-toggle" />
+      <label for="link-toggle">Open links in new tab</label>
     </div>
 
     <form id="change-password-form" onsubmit="changePassword(); return false;">
@@ -302,6 +323,7 @@ async function logout() {
   window.location.href = "/";
 }
   </script>
+<script src="compiledjs.js"></script>
 
 </body>
 </html>

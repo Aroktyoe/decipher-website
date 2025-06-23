@@ -150,7 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const target = e.target;
     const isBackground = !target.closest("a, button, input, textarea, video");
 
-    if (isBackground) {
+    if (isBackground && (target.nodeName === "MAIN" || target.nodeName === "BODY")) {
       if (video.paused) {
         video.play();
         localStorage.setItem("bg-video-paused", "false");
@@ -288,3 +288,33 @@ if (themeToggle) {
     const match = document.cookie.match(/csrf_access_token=([^;]+)/);
     return match ? match[1] : '';
   }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const settingKey = "openLinksInNewTab";
+  const toggle = document.getElementById("link-toggle");
+
+  // If toggle exists (only on settings page), apply state and listen to changes
+  if (toggle) {
+    const savedSetting = localStorage.getItem(settingKey);
+
+    // Explicitly set true/false
+    if (savedSetting === "false") {
+      toggle.checked = false;
+    } else {
+      toggle.checked = true; // default if missing or "true"
+    }
+
+    toggle.addEventListener("change", () => {
+      localStorage.setItem(settingKey, toggle.checked ? "true" : "false");
+    });
+  }
+
+  // Set target on all links
+  const shouldOpenInNewTab = localStorage.getItem(settingKey) !== "false";
+  document.querySelectorAll("a[href]").forEach(link => {
+    if (!link.hasAttribute("target")) {
+      link.setAttribute("target", shouldOpenInNewTab ? "_blank" : "_self");
+      link.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+});

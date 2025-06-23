@@ -78,25 +78,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="team-grid">
     <div class="team-member">
       <div class="image-container">
-        <img src="/aroktyoe/aroktyoe.png" alt="Team Member 1">
+        <img src="/aroktyoe/aroktyoe.png" alt="Team Member 1" class="zoomed">
       </div>
       <h3>Lucas Fryhl (Aroktyoe)</h3>
-      <p>Author, Puzzle designer & developer</p>
+      <p>Author, Puzzle Designer & Developer</p>
       <p><a href="https://www.linkedin.com/in/lucas-fryhl" target="_blank">Linkedin</a></p>
     </div>
     <div class="team-member">
       <div class="image-container">
-        <img src="decipher_logo.png" alt="Team Member 2">
+        <img src="bluesk.png" alt="Team Member 2">
       </div>
-      <h3>--Open For Voulenteer--</h3>
-      <p>Researcher & Information curator</p>
+      <h3>Bluesk</h3>
+      <p>Developer, Researcher & Information Manager</p>
     </div>
     <div class="team-member">
       <div class="image-container">
-        <img src="decipher_logo.png" alt="Team Member 3">
+        <img src="lolmenow.png" alt="Team Member 1">
       </div>
-      <h3>--Open For Voulenteer--</h3>
-      <p>Researcher & Information curator</p>
+      <h3>lolmenow</h3>
+      <p>Developer, Researcher & Information Manager</p>
+      <p><a href="https://www.linkedin.com/in/adam-sakouk-608793359/" target="_blank">Linkedin</a></p>
     </div>
   </div>
 </section>
@@ -201,13 +202,17 @@ a {
   width: 160px;
   height: 160px;
   object-fit: cover;
-  transform: scale(1.5); /* 50% zoom */
   transform-origin: center;
-  border-radius: 50%;
-  border: 2px solid #a61690;
+  object-position: center center;
   overflow: hidden;
   clip-path: circle(50% at 50% 50%);
-  display: block;
+  display: relative;
+  margin-top: 0px;
+}
+
+
+.zoomed {
+  transform: scale(1.5);
 }
 
 .image-container {

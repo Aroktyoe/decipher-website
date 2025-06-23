@@ -279,7 +279,7 @@ if (themeToggle) {
           btn.style.marginTop = "0px";
         });
         button.style.maxHeight = button.scrollHeight + "px";
-        button.style.marginTop = "15px";
+        button.style.marginTop = "3px";
       }
     });
   });

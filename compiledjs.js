@@ -266,17 +266,20 @@ if (themeToggle) {
       });
     }
 
-  // Make collapsible buttons work
   document.querySelectorAll(".collapsible").forEach(button => {
     button.addEventListener("click", () => {
       button.classList.toggle("active");
-      const content = button.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-        content.style.marginTop = "0px";
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        content.style.marginTop = "15px";
+      
+      if (button.style.maxHeight) { // turn off
+        button.style.maxHeight = null;
+        button.style.marginTop = "0px";
+      } else { // turn on
+        document.querySelectorAll(".collapsible").forEach(btn => {
+          btn.style.maxHeight = null; // turns everything off
+          btn.style.marginTop = "0px";
+        });
+        button.style.maxHeight = button.scrollHeight + "px";
+        button.style.marginTop = "15px";
       }
     });
   });

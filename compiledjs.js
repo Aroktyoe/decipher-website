@@ -1,67 +1,66 @@
-
-  // Force hide loader even if load event fails
-  document.addEventListener('DOMContentLoaded', function() {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-      setTimeout(() => {
-        loader.classList.add('hidden');
-      }, 500);
-    }
-  });
-
-  // Fallback to hide loader after fixed time
-  setTimeout(() => {
-    const loader = document.querySelector('.loader');
-    if (loader) {
+// Force hide loader even if load event fails
+document.addEventListener('DOMContentLoaded', function() {
+  const loader = document.querySelector('.loader');
+  if (loader) {
+    setTimeout(() => {
       loader.classList.add('hidden');
-    }
-  }, 2000);
-
-  // Loading spinner
-  window.addEventListener('load', function() {
-    const loader = document.querySelector('.loader');
-    if (loader) {
-      loader.classList.add('hidden');
-    }
-  });
-
-  // Back to top button
-  const backToTopButton = document.getElementById('back-to-top');
-  
-  if (backToTopButton) {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('visible');
-      } else {
-        backToTopButton.classList.remove('visible');
-      }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+    }, 500);
   }
+});
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Dropdown toggle (fixed)
-    document.querySelectorAll('.mobile-nav .dropdown-toggle').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const parent = button.closest('.dropdown');
-        parent.classList.toggle('open');
-      });
-    });
+// Fallback to hide loader after fixed time
+setTimeout(() => {
+  const loader = document.querySelector('.loader');
+  if (loader) {
+    loader.classList.add('hidden');
+  }
+}, 2000);
+
+// Loading spinner
+window.addEventListener('load', function() {
+  const loader = document.querySelector('.loader');
+  if (loader) {
+    loader.classList.add('hidden');
+  }
+});
+
+// Back to top button
+const backToTopButton = document.getElementById('back-to-top');
+
+if (backToTopButton) {
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  });
   
-    // Close if clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.mobile-nav .dropdown.open').forEach(drop => {
-        drop.classList.remove('open');
-      });
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Dropdown toggle (fixed)
+  document.querySelectorAll('.mobile-nav .dropdown-toggle').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = button.closest('.dropdown');
+      parent.classList.toggle('open');
+    });
+  });
+
+  // Close if clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.mobile-nav .dropdown.open').forEach(drop => {
+      drop.classList.remove('open');
+    });
+  });
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   // Load the full navbar

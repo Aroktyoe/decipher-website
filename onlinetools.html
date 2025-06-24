@@ -31,17 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   margin-bottom: 20px; /* add space below buttons */
 }
 
-.content {
-  display: none;
-  max-width: 1000px;
-  margin: 0 auto 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  background: #9191915b;
-  max-height: none !important;
-  overflow: visible !important;
-}
-
 .button-row > div {
   flex: 1 1 250px; /* adjust width as needed */
   max-width: 300px;
@@ -59,7 +48,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   transition: all 0.1s ease-in-out !important;
 }
 
+.content {
+  display: none;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border: 1px solid #444;
+  background: rgba(17, 17, 17, 0.85);
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 10px black;
+  max-height: none !important;
+  overflow: visible !important;
+}
 
+.best {
+  background-color: #AB9331;
+}
+
+.best:hover {
+  background-color: #CAAD3D;
+}
+
+.tool-link {
+  margin: 5px;
+  /* background-color: transparent !important;
+  box-shadow: none !important;
+  color: #0070E0;
+  padding: 0px;  */
+}
+
+.tool-section, h4 {
+  text-align: center;
+}
+
+body {
+  background-image: none;
+}
 
 </style>
 <body>
@@ -75,252 +99,263 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="mobile-nav-placeholder"></div>
   <main class="tools-container">
     <h1>Online Tools</h1>
-    <p class="subtitle">Collection of external cipher solvers, editors, and decoders</p>
+    <p class="subtitle">A collection of external cipher solvers, editors, and decoders. <br>This is not an exhaustive list, so feel free to use your own tools, or recommend some to us on our Discord!</p>
+    <p class="subtitle">The best tools are highlighted in <b style="color: #AB9331">gold</b>.</p>
     <div class="button-row">
-      <button class="collapsible" data-target="text">Text</button>
-      <button class="collapsible" data-target="audio">Audio</button>
-      <button class="collapsible" data-target="image">Image</button>
-      <button class="collapsible" data-target="others">Others</button>
-      <button class="collapsible" data-target="hash">Hash</button>
+      <button id="text-button" class="collapsible" data-target="text">Text</button>
+      <button id="audio-button" class="collapsible" data-target="audio">Audio</button>
+      <button id="image-button" class="collapsible" data-target="image">Image</button>
+      <!-- <button id="others-button" class="collapsible" data-target="others">Others</button> -->
+      <button id="hash-button" class="collapsible" data-target="hash">Hash</button>
     </div>
         <div id="text" class="content">
-        <p><strong>Monoalphabetic Substitution:</strong></p>
-        <p>Quipqiup</p>
-        <a style="color:#0070E0" href="https://quipqiup.com/">https://quipqiup.com/</a> auto solver
+        <h1>Text</h1>
+        <h2 class="tool-section">Cipher Identifiers</h2>
+        <h4>These websites can help you identify the type of cipher in an unknown text. They are not always 100% accurate, and you may have to test some of the top recommendations.</h4><br>
+        <a class="best tool-link" href="https://www.dcode.fr/cipher-identifier">https://www.dcode.fr/cipher-identifier</a>
         <br>
-        <p>Boxentriq</p>
-        <a style="color:#0070E0" href="https://www.boxentriq.com/code-breaking/cryptogram">https://www.boxentriq.com/code-breaking/cryptogram</a> auto solver
+        <a class="tool-link" href="https://bionsgadgets.appspot.com/gadget_forms/refscore_extended.html">https://bionsgadgets.appspot.com/gadget_forms/refscore_extended.html</a>
         <br>
-        <p>Guballa</p>
-        <a style="color:#0070E0" href="https://www.guballa.de/substitution-solver">https://www.guballa.de/substitution-solver</a> auto solver in English, German, Spanish, French, Dutch & Portuguese
-        <br>
-        <br>
-        <p><strong>Polyalphabetic substitution:</strong></p>
-        <p>Boxentriq</p>
-        <a style="color:#0070E0" href="https://www.boxentriq.com/code-breaking/vigenere-cipher">https://www.boxentriq.com/code-breaking/vigenere-cipher</a> (best vigenere with no key solver)
-        <br>
-        <p>Guballa</p>
-        <a style="color:#0070E0" href="https://www.guballa.de/vigenere-solver">https://www.guballa.de/vigenere-solver</a> (autokey vigenére & beaufort decoder in English, German, Spanish, French, Dutch & Portuguese)
-        <br>
-        <p>F00l</p>
-        <a style="color:#0070E0" href="https://f00l.de/hacking/vigenere.php">https://f00l.de/hacking/vigenere.php</a> (vigenére key length calculator)
+        <a class="tool-link" href="https://www.boxentriq.com/code-breaking/cipher-identifier">https://www.boxentriq.com/code-breaking/cipher-identifier</a>
         <br>
         <br>
-        <p><strong>Caesar:</strong></p>
-        <p>Regular Caesar</p>
-        <a style="color:#0070E0" href="https://a4x.me/tools/text/">https://a4x.me/tools/text/</a> (easy atbash/reverse/rot testing)
+
+        <h2 class="tool-section">Multitool</h2>
+        <h4>These sites have a variety of tools to handle multiple different ciphers.</h4><br>
+        <a class="best tool-link" href="https://www.dcode.fr/en">https://www.dcode.fr/en</a>
+        <br><p>Easier for beginners, as most tools have a method to work out the key automatically.</p>
+        <a class="best tool-link" href="https://cyberchef.org/">https://cyberchef.org/</a>
+        <br><p>Most tools require you to input the valid key, rather that being able to do it automatically. This requires more practice to use, but is better at chaining together ciphers in long cipherstacks.</p><br>
         <br>
-        <p>Caesar with numbers as well</p>
-        <a style="color:#0070E0" href="http://theblob.org/rot.cgi">http://theblob.org/rot.cgi</a>
-        <br>
-        <p>Caesar with other language alphabets</p>
-        <a style="color:#0070E0" href="https://planetcalc.com/1434/">https://planetcalc.com/1434/</a> (alphabets for English, French Portuguese, Russian & Spanish)
-        <br>
-        <br>
-        <p><strong>Cipher Identifiers:</strong></p>
-        <p>dCode Cipher Identifier</p>
-        <a style="color:#0070E0" href="https://www.dcode.fr/cipher-identifier">https://www.dcode.fr/cipher-identifier</a>(best one)
-        <br>
-        <p>bionsgadgets Cipher Identifier</p>
-        <a style="color:#0070E0" href="https://bionsgadgets.appspot.com/gadget_forms/refscore_extended.html">https://bionsgadgets.appspot.com/gadget_forms/refscore_extended.html</a>
-        <br>
-        <p>Boxentriq Cipher Identifier</p>
-        <a style="color:#0070E0" href="https://www.boxentriq.com/code-breaking/cipher-identifier">https://www.boxentriq.com/code-breaking/cipher-identifier</a>
+
+        <h2>File Hex Editors</h2>
+        <h4>The following can be used to view and manually edit the raw contents of a file.</h4><br>
+        <a class="best tool-link" href="https://hexed.it/">https://hexed.it/</a><br>
+        <a class="tool-link" href="https://www.onlinehexeditor.com/">https://www.onlinehexeditor.com/</a>
         <br>
         <br>
-        <p><strong>base64 Looking Text:</strong></p>
+
+        <h2 class="tool-section">Monoalphabetic Substitution</h2>
+        <h4>These pages are useful for decoding standard substitution ciphers, also known as cryptograms.</h4><br>
+        <a class="best tool-link" href="https://quipqiup.com/">https://quipqiup.com/</a>
+        <br><p>Has various modes of solving a substitution.</p>
+        <a class="tool-link" href="https://www.boxentriq.com/code-breaking/cryptogram">https://www.boxentriq.com/code-breaking/cryptogram</a>
+        <br><p>Contains explanation of the cipher and allows manual solving.</p>
+        <a class="tool-link" href="https://www.guballa.de/substitution-solver">https://www.guballa.de/substitution-solver</a>
+        <br><p>Multi-language: supports English, German, Spanish, French, Dutch & Portuguese.</p><br>
+        <br>
+        
+        <h2 class="tool-section">Vigenère</h2>
+        <h4>The following websites are useful at decoding polyalphabetic Vigenère ciphers automatically. A tabula recta can be useful if you want to understand the process.</h4><br>
+        <a class="best tool-link" href="https://www.boxentriq.com/code-breaking/vigenere-cipher">https://www.boxentriq.com/code-breaking/vigenere-cipher</a>
+        <br><p>Uses a dictionary attack, which can help if the key is a word.</p>
+        <a class="tool-link" href="https://www.guballa.de/vigenere-solver">https://www.guballa.de/vigenere-solver</a>
+        <br><p>Multi-language: supports English, German, Spanish, French, Dutch & Portuguese.</p>
+        <a class="tool-link" href="https://f00l.de/hacking/vigenere.php">https://f00l.de/hacking/vigenere.php</a>
+        <br><p>Can calculate the period of the key.</p><br>
+        <br>
+        
+        <h2 class="tool-section">Caesar</h2>
+        <h4>The links below are useful for solving Caesar and other rotation-based ciphers.</h4><br>
+        <a class="best tool-link" href="https://a4x.me/tools/text/">https://a4x.me/tools/text/</a>
+        <br>
+        <a class="tool-link" href="http://theblob.org/rot.cgi">http://theblob.org/rot.cgi</a>
+        <br>
+        <a class="tool-link" href="https://multidec.web-lab.at/mr.php">https://multidec.web-lab.at/mr.php</a>
+        <br>
+        <a class="tool-link" href="https://planetcalc.com/1434/">https://planetcalc.com/1434/</a>
+        <br><p>Multi-language: supports English, French, Portuguese, Russian & Spanish.</p><br>
+        <br>
+
+        <h2 class="tool-section">Base64 & Variants</h2>
+        <h4>These are useful for decoding base64-like texts, and include modern symmetric encryption capabilities, such as with AES.</h4><br>
+        <a class="tool-link" href="https://corgi.rip/dive">https://corgi.rip/dive</a>
         <p>Dumpster Diver (random b64 looking text brute forcer)</p>
-        <a style="color:#0070E0" href="https://corgi.rip/dive">https://corgi.rip/dive</a>
-        <br>
+        <a class="tool-link" href="https://aesencryption.net/">https://aesencryption.net/</a>
         <p>Aesencryption.net (AES)</p>
-        <a style="color:#0070E0" href="https://aesencryption.net/">https://aesencryption.net/</a>
-        <br>
+        <a class="tool-link" href="https://www.online-toolz.com/tools/text-encryption-decryption.php/">https://www.online-toolz.com/tools/text-encryption-decryption.php/</a>
         <p>Stupid Base64 aka SB64 (AES)</p>
-        <a style="color:#0070E0" href="https://www.online-toolz.com/tools/text-encryption-decryption.php/">https://www.online-toolz.com/tools/text-encryption-decryption.php/</a>
-        <br>
+        <a class="tool-link" href="https://codebeautify.org/encrypt-decrypt">https://codebeautify.org/encrypt-decrypt</a>
         <p>Codebautify (Arcfour)</p>
-        <a style="color:#0070E0" href="https://codebeautify.org/encrypt-decrypt">https://codebeautify.org/encrypt-decrypt</a>
-        <br>
+        <a class="tool-link" href="https://encipher.it/">https://encipher.it/</a>
         <p>encipher.it (AES PGP)</p>
-        <a style="color:#0070E0" href="https://encipher.it/">https://encipher.it/</a>
-        <br>
+        <a class="tool-link" href="https://pteo.paranoiaworks.mobi/">https://pteo.paranoiaworks.mobi/</a>
         <p>Paranoiaworks (AES EAX)</p>
-        <a style="color:#0070E0" href="https://pteo.paranoiaworks.mobi/">https://pteo.paranoiaworks.mobi/</a>
-        <br>
+        <a class="tool-link" href="https://www.samltool.com/decode.php">https://www.samltool.com/decode.php</a>
         <p>samltool (XML)</p>
-        <a style="color:#0070E0" href="https://www.samltool.com/decode.php">https://www.samltool.com/decode.php</a>
-        <br>
+        <a class="tool-link" href="https://decipher.wiki/aes-decryption">https://decipher.wiki/aes-decryption</a>
         <p>aesdecryption (AES)</p>
-        <a style="color:#0070E0" href="https://decipher.wiki/aes-decryption">https://decipher.wiki/aes-decryption</a>
-        <br>
+        <a class="tool-link" href="https://www.samltool.com/decode.php">https://www.samltool.com/decode.php</a>
         <p>samltool (base64 + decompression)</p>
-        <a style="color:#0070E0" href="https://www.samltool.com/decode.php">https://www.samltool.com/decode.php</a>
-        <br>
+        <a class="tool-link" href="https://asecuritysite.com/encryption/ferdecode">https://asecuritysite.com/encryption/ferdecode</a>
         <p>gAAAAA AES, aka Ferdecode</p>
-        <a style="color:#0070E0" href="https://asecuritysite.com/encryption/ferdecode">https://asecuritysite.com/encryption/ferdecode</a>
-        <br>
+        <a class="tool-link" href="https://www.browserling.com/tools/aes-encrypt">https://www.browserling.com/tools/aes-encrypt</a>
         <p>browserling (salted openssl)</p>
-        <a style="color:#0070E0" href="https://www.browserling.com/tools/aes-encrypt">https://www.browserling.com/tools/aes-encrypt</a>
-        <br>
+        <a class="tool-link" href="https://www.devglan.com/online-tools/text-encryption-decryption">https://www.devglan.com/online-tools/text-encryption-decryption</a>
         <p>Devglan (AES)</p>
-        <a style="color:#0070E0" href="https://www.devglan.com/online-tools/text-encryption-decryption">https://www.devglan.com/online-tools/text-encryption-decryption</a>
-        <br>
+        <a class="tool-link" href="https://www.invertexto.com/">https://www.invertexto.com/texto-criptografado</a>
         <p>invertexto (AES)</p>
-        <a style="color:#0070E0" href="https://www.invertexto.com/">https://www.invertexto.com/texto-criptografado</a>
-        <br>
+        <a class="tool-link" href="https://encode-decode.com/aes256-encrypt-online/">https://encode-decode.com/aes256-encrypt-online/</a>
         <p>encode-decode (AES)</p>
-        <a style="color:#0070E0" href="https://encode-decode.com/aes256-encrypt-online/">https://encode-decode.com/aes256-encrypt-online/</a>
-        <br>
+        <a class="tool-link" href="https://anycript.com/">https://anycript.com/</a>
         <p>anycript (AES)</p>
-        <a style="color:#0070E0" href="https://anycript.com/">https://anycript.com/</a>
+        <a class="tool-link" href="https://web.archive.org/web/20220915201921/https://cryptoji.com/">https://web.archive.org/web/20220915201921/https://cryptoji.com/</a>
+        <p>cryptoi (AES presented in emojis)</p><br>
         <br>
-        <p>cryptoi (AES presented in emojis)</p>
-        <a style="color:#0070E0" href="https://web.archive.org/web/20220915201921/https://cryptoji.com/">https://web.archive.org/web/20220915201921/https://cryptoji.com/</a>
-        <br>
-        <br>
-        <p><strong>Others:</strong></p>
-        <p>n-gram transcription</p>
-        <a style="color:#0070E0" href="https://www.dcode.fr/alphabetic-transcription">https://www.dcode.fr/alphabetic-transcription</a> (transcribes text in any group length)
-        <br>
-        <p>View non-printables</p>
-        <a style="color:#0070E0" href="https://www.soscisurvey.de/tools/view-chars.php">https://www.soscisurvey.de/tools/view-chars.php</a>
-        <br>
-        <p>Word completer</p>
-        <a style="color:#0070E0" href="https://www.onelook.com/">https://www.onelook.com/</a> (search ??i???n??e and get CHIMPANZEE for example)
-        <br>
-        <p>Link identifier</p>
-        <a style="color:#0070E0" href="https://a4x.me/tools/link/">https://a4x.me/tools/link/</a> (oHg5SJYRHA0 for example)
-        <br>
-        <p>Byte shift</p>
-        <a style="color:#0070E0" href="https://cyber.meme.tips/xlate/shifts.html">https://cyber.meme.tips/xlate/shifts.html</a> (View all byte shifts and all constant XOR’s)
-        <br>
-        <p>Casing inverter</p>
-        <a style="color:#0070E0" href="https://www.browserling.com/tools/text-invert-case">https://www.browserling.com/tools/text-invert-case</a>
-        <br>
-        <p>English language frequencies 1</p>
-        <a style="color:#0070E0" href="https://www3.nd.edu/~busiforc/handouts/cryptography/cryptography%20hints.html">https://www3.nd.edu/~busiforc/handouts/cryptography/cryptography%20hints.html</a>
-        <br>
-        <p>English language frequencies 2</p>
-        <a style="color:#0070E0" href="https://norvig.com/mayzner.html">https://norvig.com/mayzner.html</a>
-        <br>
-        <p>Esolangs decoder</p>
-        <a style="color:#0070E0" href="https://tio.run/#">https://tio.run/#</a>
-        <br>
-        <p>Large number converter</p>
-        <a style="color:#0070E0" href="https://www.mobilefish.com/services/big_number/big_number.php">https://www.mobilefish.com/services/big_number/big_number.php</a> (Binary, hex, decimal & base64 conversion)
-        <br>
-        <p>invisible characters in text decoder</p>
-        <a style="color:#0070E0" href="https://330k.github.io/misc_tools/unicode_steganography.html">https://330k.github.io/misc_tools/unicode_steganography.html</a>
-        <br>
-        <p>Dork search tool</p>
-        <a style="color:#0070E0" href="https://www.dorksearch.com/">https://www.dorksearch.com/</a>
-        <br>
-        <p>Osint framework</p>
-        <a style="color:#0070E0" href="https://osintframework.com/">https://osintframework.com/</a>
-        <br>
-        <br>
+
+        <h2 class="tool-section">Miscellaneous</h2>
+        <h4>These tools have a variety of purposes, and their capabilities are listed in the description below each link.</h4><br>
+        <a class="tool-link" href="https://www.dcode.fr/alphabetic-transcription">https://www.dcode.fr/alphabetic-transcription</a>
+        <p>N-gram transcription: transcribes text in any group length or from unicode symbols.</p>
+        <a class="tool-link" href="https://www.soscisurvey.de/tools/view-chars.php">https://www.soscisurvey.de/tools/view-chars.php</a>
+        <p>Allows you to view non-printable characters.</p>
+        <a class="tool-link" href="https://www.onelook.com/">https://www.onelook.com/</a>
+        <p>Word finder: for example, ??i???n??e => chimpanzee.</p>
+        <a class="tool-link" href="https://a4x.me/tools/link/">https://a4x.me/tools/link/</a>
+        <p>Link identifier: for example, oHg5SJYRHA0 => https://www.youtube.com/watch?v=oHg5SJYRHA0.</p>
+        <a class="tool-link" href="https://cyber.meme.tips/xlate/shifts.html">https://cyber.meme.tips/xlate/shifts.html</a>
+        <p>Byte shift: allows you to view all byte shifts and all constant XOR’s.</p>
+        <a class="tool-link" href="https://www.browserling.com/tools/text-invert-case">https://www.browserling.com/tools/text-invert-case</a>
+        <p>Casing inverter.</p>
+        <a class="tool-link" href="https://onlinetexttools.com/remove-all-whitespace-from-text">https://onlinetexttools.com/remove-all-whitespace-from-text</a>
+        <p>Removes spaces and other whitespaces from text.</p>
+        <a class="tool-link" href="https://norvig.com/mayzner.html">https://norvig.com/mayzner.html</a>
+        <p>English monogram language frequencies.</p>
+        <a class="tool-link" href="https://tio.run/#">https://tio.run/#</a>
+        <p>Esolangs decoder.</p>
+        <a class="tool-link" href="https://www.mobilefish.com/services/big_number/big_number.php">https://www.mobilefish.com/services/big_number/big_number.php</a>
+        <p>Large number converter: allows binary, hex, decimal & base64 conversion.</p>
+        <a class="tool-link" href="https://330k.github.io/misc_tools/unicode_steganography.html">https://330k.github.io/misc_tools/unicode_steganography.html</a>
+        <p>Invisible characters in text decoder.</p>
+        <a class="tool-link" href="https://www.dorksearch.com/">https://www.dorksearch.com/</a>
+        <p>Dork search tool.</p>
+        <a class="tool-link" href="https://osintframework.com/">https://osintframework.com/</a>
+        <p>Osint framework.</p>
+        <a class="tool-link" href="https://online-free-tools.com/en/youtube_video_tags_extract_url">https://online-free-tools.com/en/youtube_video_tags_extract_url</a>
+        <p>Youtube video tag extractor.</p>
         </div>
+
+
+
         <div id="audio" class="content">
-        <p>Audio Morse</p>
-        <a style="color:#0070E0" href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">https://morsecode.world/international/decoder/audio-decoder-adaptive.html</a>
+        <h1>Audio</h1>
+        <h4>These sites can help you analyse or decode audio from a file.</h4><br>
+        <a class="best tool-link" href="https://morsecode.world/international/decoder/audio-decoder-adaptive.html">https://morsecode.world/international/decoder/audio-decoder-adaptive.html</a>
+        <p>Allows you to decode morse into text from an audio file.</p>
+        <a class="tool-link" href="https://spectrogram.sciencemusic.org/">https://spectrogram.sciencemusic.org/</a>
+        <p>Allows you to analyse the frequency components of an audio file.</p>
+        <a class="tool-link" href="https://dood.al/oscilloscope/">https://dood.al/oscilloscope/</a>
+        <p>Allows you to view an audio file through an oscilloscope.</p>
+        </div>
+
+
+
+        <div id="image" class="content">
+        <h1>Image</h1>
+        <h2 class="tool-section">Editors</h2>
+        <h4>These sites can help you view or edit an image.</h4><br>
+        <a class="best tool-link" href="https://www.photopea.com/">https://www.photopea.com/</a>
         <br>
-        <p>Spectrogram creator</p>
-        <a style="color:#0070E0" href="https://nsspot.herokuapp.com/imagetoaudio/">https://nsspot.herokuapp.com/imagetoaudio/</a>
+        <a class="tool-link" href="https://www.pixilart.com/">https://www.pixilart.com/</a>
+        <br>
+        <a class="tool-link" href="https://www.canva.com/photo-editor/">https://www.canva.com/photo-editor/</a>
+        <br>
+        <br>
+
+        <h2 class="tool-section">Manual Identification Lists</h2>
+        <h4>These lists identify common types of groups and their classifications, and common elements to watch out for.</h4><br>
+        <a class="best tool-link" href="https://docs.google.com/spreadsheets/d/1R1Lx46fIdX9LeZatuh0L6e-lLuNp4k1dqM4PBmMXQ7E/edit#gid=0">https://docs.google.com/spreadsheets/d/1R1Lx46fIdX9LeZatuh0L6e-lLuNp4k1dqM4PBmMXQ7E/edit#gid=0</a>
+        <p>Allows you to identify common characteristics of many steganography programs.</p>
+        <a class="tool-link" href="https://decipher.wiki/symbols">https://decipher.wiki/symbols</a>
+        <p>This is a list of common symbols used to encode texts.</p>
+        <a class="tool-link" href="https://decipher.wiki/cryptographers">https://decipher.wiki/cryptographers</a>
+        <p>This shows famous cryptographers, along with their portrait for identification.</p>
+        <br>
+        <br>
+
+        <h2 class="tool-section">Image Forensics</h2>
+        <h4>These tools can be used to find out more data about a specific image.</h4><br>
+        <a class="best tool-link" href="https://www.metadata2go.com/">https://www.metadata2go.com/</a><br>
+        <a class="tool-link" href="https://rawpixels.net/">https://rawpixels.net/</a><br>
+        <a class="tool-link" href="https://29a.ch/photo-forensics/#forensic-magnifier">https://29a.ch/photo-forensics/#forensic-magnifier</a>
+        <br>
+        <br>
+
+        <h2 class="tool-section">Steganography</h2>
+        <h4>Steganography is a method of hiding data in plain sight. These tools can help to detect and decode such data if it exists.</h4><br>
+        <a class="best tool-link" href="https://aperisolve.fr/">https://aperisolve.fr/</a>
+        <p>Has a variety of built-in tools, such as Binwalk, Steghide, Outguess, Foremost, Strings, Exiftool & Zteg.</p>   
+        <a class="tool-link" href="https://www.georgeom.net/StegOnline/upload/">https://www.georgeom.net/StegOnline/upload/</a><br>
+        <a class="tool-link" href="https://www.mobilefish.com/services/steganography/steganography.php">https://www.mobilefish.com/services/steganography/steganography.php</a><br>
+        <a class="tool-link" href="https://www.pelock.com/products/steganography-online-codec">https://www.pelock.com/products/steganography-online-codec</a><br>
+        <a class="tool-link" href="https://www.peter-eigenschink.at/projects/steganographyjs/showcase/">https://www.peter-eigenschink.at/projects/steganographyjs/showcase/</a><br>
+        <a class="tool-link" href="https://encrypt.imageonline.co/">https://encrypt.imageonline.co/</a><br>
+        <a class="tool-link" href="https://manytools.org/hacker-tools/steganography-encode-text-into-image/">https://manytools.org/hacker-tools/steganography-encode-text-into-image/</a>[PNG only]<br>
+        <a class="tool-link" href="https://futureboy.us/stegano/decinput.html">https://futureboy.us/stegano/decinput.html</a> [JPG only]<br>
+
+        <br>
+        <br>
+
+        <h2 class="tool-section">Steganography Programs</h2>
+        <h4>These tools are also useful for steganography, but require a download to be used.</h4><br>
+        <a class="best tool-link" href="https://sourceforge.net/projects/silenteye/">https://sourceforge.net/projects/silenteye/</a><br>
+        <a class="tool-link" href="https://openpuff.en.lo4d.com/windows">https://openpuff.en.lo4d.com/windows</a><br>
+        <a class="tool-link" href="https://steganpeg.apponic.com/">https://steganpeg.apponic.com/</a> [JPGs only]<br>
+        <a class="tool-link" href="https://www.rbcafe.com/software/outguess/">https://www.rbcafe.com/software/outguess/</a> [JPGs only]
+        <br>
+        <br>
+
+        <h2 class="tool-section">Miscellaneous</h2>
+        <h4>These tools don't fit nicely into the other categories, but are still useful for the specific purpose written in their respective description.</h4><br>
+        <a class="tool-link" href="https://stegonline.georgeom.net/image">https://stegonline.georgeom.net/image</a>
+        <p>Can extract the RGB value of a pixel from an image.</p>
+        <a class="tool-link" href="https://merricx.github.io/qrazybox/">https://merricx.github.io/qrazybox/</a>
+        <p>Allows you to build or recover QR codes.</p>
+        <a class="tool-link" href="http://laighside.com/punchcard.htm">http://laighside.com/punchcard.htm</a>
+        <p>Used for decoding punch cards.</p>
+        </div>
+
+
+
+        <div id="others" class="content">
+        <h1>Others</h1>
+        <p>Youtube video tag extractor</p>
+        <a class="tool-link" href="https://online-free-tools.com/en/youtube_video_tags_extract_url">https://online-free-tools.com/en/youtube_video_tags_extract_url</a>
+        <p>File hex viewer/editor</p>
+        <a class="tool-link" href="https://hexed.it/">https://hexed.it/</a>
+        <p>Allows you to build or recover QR codes.</p>
+        <a class="tool-link" href="https://merricx.github.io/qrazybox/">https://merricx.github.io/qrazybox/</a>
+        <br>
         <br>
         <br>
         </div>
-        <div id="image" class="content">
-        <p>Free photoshop online</p>
-        <a style="color:#0070E0" href="https://www.photopea.com/">https://www.photopea.com/</a>
-        <br>
-        <p>Symbol cipher identifier</p>
-        <a style="color:#0070E0" href="https://decipher.wiki/symbols">https://decipher.wiki/symbols</a>
-        <br>
-        <p>Cryptographers portrait identifier</p>
-        <a style="color:#0070E0" href="https://decipher.wiki/cryptographers">https://decipher.wiki/cryptographers</a>
-        <br>
-        <p>Steganography identifier</p>
-        <a style="color:#0070E0" href="https://docs.google.com/spreadsheets/d/1R1Lx46fIdX9LeZatuh0L6e-lLuNp4k1dqM4PBmMXQ7E/edit#gid=0">https://docs.google.com/spreadsheets/d/1R1Lx46fIdX9LeZatuh0L6e-lLuNp4k1dqM4PBmMXQ7E/edit#gid=0</a>
-        <br>
-        <p>RGB value extractor</p>
-        <a style="color:#0070E0" href="https://stegonline.georgeom.net/image">https://stegonline.georgeom.net/image</a>
-        <br>
-        <p>AperiSolve</p>
-        <a style="color:#0070E0" href="https://aperisolve.fr/">https://aperisolve.fr/</a> (Image analysis: uses Binwalk, Steghide, Outguess, Foremost, Strings, Exiftool & Zteg)
-        <br>
-        <p>Metadata viewer</p>
-        <a style="color:#0070E0" href="https://www.metadata2go.com/">https://www.metadata2go.com/</a>
-        <br>
-        <p>RAW pixels viewer (zooms on images while showing data)</p>
-        <a style="color:#0070E0" href="https://rawpixels.net/">https://rawpixels.net/</a>
-        <br>
-        <p>Image forensics</p>
-        <a style="color:#0070E0" href="https://29a.ch/photo-forensics/#forensic-magnifier">https://29a.ch/photo-forensics/#forensic-magnifier</a>
-        <br>
-        <p>Punch Card decoder</p>
-        <a style="color:#0070E0" href="http://laighside.com/punchcard.htm">http://laighside.com/punchcard.htm</a>
-        <br>
-        <br>
-        <p><strong>Random steg websites:</strong></p>
-        <br>
-        <p>Futureboy</p>
-        <a style="color:#0070E0" href="https://futureboy.us/stegano/decinput.html">https://futureboy.us/stegano/decinput.html</a> (JPGs only)
-        <br>
-        <p>Mobilefish</p>
-        <a style="color:#0070E0" href="https://www.mobilefish.com/services/steganography/steganography.php">https://www.mobilefish.com/services/steganography/steganography.php</a>
-        <br>
-        <p>Manytools</p>
-        <a style="color:#0070E0" href="https://manytools.org/hacker-tools/steganography-encode-text-into-image/">https://manytools.org/hacker-tools/steganography-encode-text-into-image/</a>(png only)
-        <br>
-        <p>Pelock</p>
-        <a style="color:#0070E0" href="https://www.pelock.com/products/steganography-online-codec">https://www.pelock.com/products/steganography-online-codec</a>
-        <br>
-        <p>Peter Eigenchink steg</p>
-        <a style="color:#0070E0" href="https://www.peter-eigenschink.at/projects/steganographyjs/showcase/">https://www.peter-eigenschink.at/projects/steganographyjs/showcase/</a>
-        <br>
-        <p>ImageOnline</p>
-        <a style="color:#0070E0" href="https://encrypt.imageonline.co/">https://encrypt.imageonline.co/</a>
-        <br>
-        <br>
-        <p><strong>Random steg programs:</strong></p>
-        <p>Steganpeg</p>
-        <a style="color:#0070E0" href="https://steganpeg.apponic.com/">https://steganpeg.apponic.com/</a> (JPGs only)
-        <br>
-        <p>Outguess</p>
-        <a style="color:#0070E0" href="https://www.rbcafe.com/software/outguess/">https://www.rbcafe.com/software/outguess/</a> (JPGs only)
-        <br>
-        <p>Openpuff</p>
-        <a style="color:#0070E0" href="https://openpuff.en.lo4d.com/windows">https://openpuff.en.lo4d.com/windows</a>
-        <br>
-        <p>Silenteye</p>
-        <a style="color:#0070E0" href="https://sourceforge.net/projects/silenteye/">https://sourceforge.net/projects/silenteye/</a>
-        <br>
-        <br>
-</div>
-        <div id="others" class="content">
-        <br>
-        <p>Youtube video tag extractor</p>
-        <a style="color:#0070E0" href="https://online-free-tools.com/en/youtube_video_tags_extract_url">https://online-free-tools.com/en/youtube_video_tags_extract_url</a>
-        <br>
-        <p>File hex viewer/editor</p>
-        <a style="color:#0070E0" href="https://hexed.it/">https://hexed.it/</a>
-        <br>
-        <p>QR code recovery/building:</p>
-        <a style="color:#0070E0" href="https://merricx.github.io/qrazybox/">https://merricx.github.io/qrazybox/</a>
-        <br>
-        <br>
-</div>
+
+
+
         <div id="hash" class="content">
+        <h1>Hash</h1>
+        <h2 class="tool-section">Hash Identifiers</h2>
+        <h4>These tools can be used to identify the hashing algorithm used to map an input into a fixed-size output.</h4><br>
+        <a class="best tool-link" href="https://hashes.com/en/tools/hash_identifier">https://hashes.com/en/tools/hash_identifier</a><br>
+        <a class="tool-link" href="https://www.dcode.fr/hash-identifier">https://www.dcode.fr/hash-identifier</a><br>
+        <a class="tool-link" href="https://www.tunnelsup.com/hash-analyzer/">https://www.tunnelsup.com/hash-analyzer/</a>
         <br>
-        <p>Hash identifier</p>
-        <a style="color:#0070E0" href="https://hashes.com/en/tools/hash_identifier">https://hashes.com/en/tools/hash_identifier</a>
         <br>
-        <p>Online hash cracker</p>
-        <a style="color:#0070E0" href="https://hashmob.net/search">https://hashmob.net/search</a>
+
+        <h2 class="tool-section">Hash Crackers</h2>
+        <h4>The following sites can help to find the input used to generate a hash. Note that a hash is a many-to-one function, so it may be difficult to find the input. Installing hashcat requires more technical knowledge, but may facilitate greater success.</h4><br>
+        <a class="best tool-link" href="https://hashes.com/en/decrypt/hash">https://hashes.com/en/decrypt/hash</a><br>
+        <a class="tool-link" href="https://crackstation.net/">https://crackstation.net/</a><br>
+        <a class="tool-link" href="https://hashmob.net/search">https://hashmob.net/search</a><br>
+        <!-- <a class="tool-link" href="https://iotools.cloud/tool/md5-decrypt/">https://iotools.cloud/tool/md5-decrypt/</a>
+        <p>This is MD5 only, the rest are general purpose.</p> -->
         <br>
-        <p>Zip/Rar file hash extractor</p>
-        <a style="color:#0070E0" href="https://hashes.com/en/johntheripper/zip2john">https://hashes.com/en/johntheripper/zip2john</a>
-    </div>
+        <br>
+
+        <h2 class="tool-section">Miscellaneous</h2>
+        <a class="tool-link" href="https://hashes.com/en/johntheripper/zip2john">https://hashes.com/en/johntheripper/zip2john</a>
+        <p>Zip/Rar file hash extractor.</p>
+        </div>
   </main>
 
   <footer>
@@ -333,6 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </footer>
 <script>document.querySelectorAll(".collapsible").forEach(button => {
   button.addEventListener("click", () => {
+    //console.log("hullo")
     const targetId = button.dataset.target;
     const content = document.getElementById(targetId);
     const isVisible = content.style.display === "block";

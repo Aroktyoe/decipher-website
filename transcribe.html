@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
 <!-- End Google Tag Manager -->
   <link rel="icon" href="decipher_logo.png">
-  <meta property="og:image" content="https://decipher.wiki/hashcat/preview.png">
+  <meta property="og:image" content="https://decipher.wiki/transcribe_preview.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-5556863026084584">
@@ -50,6 +50,40 @@ ul {
 a {
   word-break: break-word;
   overflow-wrap: anywhere;
+}
+
+.hexadecimal, code {
+  user-select: text;
+  -webkit-touch-callout: none;
+  -webkit-user-select: text;
+  pointer-events: auto;
+  color: inherit;
+  font-family: monospace;
+  font-size: 1em;
+  text-decoration: none;
+}
+a[href^="tel:"], a[href^="sms:"] {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: inherit;
+}
+
+.transcription {
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: monospace;
+  font-size: 1.1em;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .transcription {
+    white-space: pre;
+    word-break: normal;
+  }
 }
 
 
@@ -99,8 +133,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section>
   <h2>Can I only transcribe and substitute symbol ciphers?</h2>
-  <p>No, you can do this for any substitution cipher, for example if I transcribe each <a href="https://decipher.wiki/dictionary">bigram</a> in this hexadecimal: 62 77 63 69 61 67 68 70 6c 6b 63 70 6b 63 77 63 6c 77 63 7a 6b 73 77 63 6f 6b 64 64 69 6b 68 6b 63 75 69 6b 68 69 6c 69 6a 70 67 71 6b 6c 6c 67 75 77 6b 73 69 70 61 77 73 78 73 68 7a 69 79 77 68 73 7a 69 75 67 63 62 7a 75 77 7a 6c</p>
-  <p>Transcription: ABCDEFGHIJCHJCBCIBCKJLBCMJNNDJGJCODJGDIDPHFQJIIFOBJLDHEBLRLGKDSBGLKDOFCAKOBKI</p>
+  <p>No, you can do this for any substitution cipher, for example if I transcribe each <a href="https://decipher.wiki/dictionary">bigram</a> in this hexadecimal: <span class="hexadecimal">62 77 63 69 61 67 68 70 6c 6b 63 70 6b 63 77 63 6c 77 63 7a 6b 73 77 63 6f 6b 64 64 69 6b 68 6b 63 75 69 6b 68 69 6c 69 6a 70 67 71 6b 6c 6c 67 75 77 6b 73 69 70 61 77 73 78 73 68 7a 69 79 77 68 73 7a 69 75 67 63 62 7a 75 77 7a 6c</span>
+  <p>Trnscription: <pre class="transcription">ABCDEFGHIJCHJCBCIBCKJLBCMJNNDJGJCODJGDIDPHFQJIIFOBJLDHEBLRLGKDSBGLKDOFCAKOBKI</pre></p>
+
   <img src="quip_hex.png" alt="Improving Quipqiup Results">
 </section>
 

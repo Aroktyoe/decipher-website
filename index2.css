@@ -402,7 +402,7 @@ padding: 10px;}
 .symbol {
 width: 100%;
 height: auto;
-object-fit: contain;}
+object-fit: none;}
 .tool-badge {
   background-color: var(--accent-color);
   color: var(--primary-color);

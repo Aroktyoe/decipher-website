@@ -400,6 +400,7 @@ background: #1e1e1e;
 border-radius: 12px;
 padding: 10px;}
 .symbol {
+min-width: 250px;
 width: 100%;
 height: auto;
 object-fit: contain;}

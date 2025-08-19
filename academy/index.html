@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
   <title>DECIPHER — Academy</title>
-  <meta name="description" content="Progress through Beginner → Mediocre → Expert by solving 10 challenges per tier. Sign in to start." />
+  <meta name="description" content="Progress and learn decoding through Beginner → Medium → Expert by solving 9-11 challenges per tier. Sign in to start." />
 
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -51,7 +51,7 @@
 
   <main>
     <h1 class="page-title">DECIPHER Academy</h1>
-    <p class="subtitle">Beat 10 challenges per tier to unlock the next. Signed-in only.</p>
+    <p class="subtitle">Beat 9-11 challenges per tier to unlock the next. Signed-in only.</p>
 
     <div id="signin-note" class="notice hidden">
       <strong><i class="fa-solid fa-circle-exclamation"></i> You must be signed in.</strong>
@@ -64,10 +64,10 @@
           <div class="tier-icon"><i class="fa-solid fa-seedling"></i></div>
           <h2 class="tier-title">Beginner</h2>
         </div>
-        <p class="tier-desc">Start with fundamentals. 10 warm-ups to build confidence.</p>
+        <p class="tier-desc">Start with the basics, learn this to be prepared for the next tier!</p>
         <div class="progress-wrap">
           <div class="progress-bar"><span></span></div>
-          <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
+          <div class="progress-text"><span>0 / 9 solved</span><span class="status">Locked</span></div>
         </div>
         <div class="cta-row">
           <a class="btn primary start-btn" href="/academy/beginner/1"><i class="fa-solid fa-play"></i> Start</a>
@@ -77,12 +77,12 @@
       <article class="tier-card locked" data-tier="mediocre">
         <div class="tier-head">
           <div class="tier-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
-          <h2 class="tier-title">Mediocre</h2>
+          <h2 class="tier-title">Medium</h2>
         </div>
-        <p class="tier-desc">Up the difficulty. Creative twists and deeper reasoning.</p>
+        <p class="tier-desc">Up the difficulty. Now you'll start learning the real deal</p>
         <div class="progress-wrap">
           <div class="progress-bar"><span></span></div>
-          <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
+          <div class="progress-text"><span>0 / 11 solved</span><span class="status">Locked</span></div>
         </div>
         <div class="cta-row">
           <a class="btn primary start-btn" href="/academy/mediocre/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
@@ -94,7 +94,7 @@
           <div class="tier-icon"><i class="fa-solid fa-skull"></i></div>
           <h2 class="tier-title">Expert</h2>
         </div>
-        <p class="tier-desc">Brutal, satisfying, and occasionally evil. You’ve been warned.</p>
+        <p class="tier-desc">Complete this and you'll be ready to solve all of our extremely hard puzzles at https://decipher.wiki/puzzles</p>
         <div class="progress-wrap">
           <div class="progress-bar"><span></span></div>
           <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
@@ -122,8 +122,8 @@ function updateStartLinks(prog) {
   const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
   const expertBtn = document.querySelector('[data-tier="expert"] .start-btn');
 
-  if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + (Math.min(prog.beginner + 1, 10));
-  if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + (Math.min(prog.mediocre + 1, 10));
+  if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + (Math.min(prog.beginner + 1, 9));
+  if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + (Math.min(prog.mediocre + 1, 11));
   if (expertBtn) expertBtn.href = "/academy/expert/" + (Math.min(prog.expert + 1, 10));
 }
 
@@ -154,17 +154,17 @@ async function initAcademy() {
     } else {
       const prog = user.academy_progress || { beginner: 0, mediocre: 0, expert: 0 };
 
-      applyCardState(document.querySelector('[data-tier="beginner"]'), prog.beginner || 0, 10, true);
-      applyCardState(document.querySelector('[data-tier="mediocre"]'), prog.mediocre || 0, 10, (prog.beginner||0) >= 10);
-      applyCardState(document.querySelector('[data-tier="expert"]'), prog.expert || 0, 10, (prog.mediocre||0) >= 10);
+      applyCardState(document.querySelector('[data-tier="beginner"]'), prog.beginner || 0, 9, true);
+      applyCardState(document.querySelector('[data-tier="mediocre"]'), prog.mediocre || 0, 11, (prog.beginner||0) >= 9);
+      applyCardState(document.querySelector('[data-tier="expert"]'), prog.expert || 0, 10, (prog.mediocre||0) >= 11);
 
       // update Start buttons to the current level
       const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
       const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
       const expertBtn   = document.querySelector('[data-tier="expert"] .start-btn');
 
-      if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + Math.min((prog.beginner || 0) + 1, 10);
-      if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + Math.min((prog.mediocre || 0) + 1, 10);
+      if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + Math.min((prog.beginner || 0) + 1, 9);
+      if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + Math.min((prog.mediocre || 0) + 1, 11);
       if (expertBtn)   expertBtn.href   = "/academy/expert/"   + Math.min((prog.expert   || 0) + 1, 10);
     }
   } catch {

@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
-  <title>DECIPHER — Academy • Beginner 4</title>
-  <meta name="description" content="Decipher Academy Beginner • Challenge 4" />
+  <title>DECIPHER — Academy • Beginner 5</title>
+  <meta name="description" content="Decipher Academy Beginner • Challenge 5" />
 
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -66,18 +66,19 @@
   <main>
     <div class="div1">
       <div class="crumbs"><a href="/academy">← Back to Academy</a></div>
-      <h1>Beginner — Challenge 4</h1>
+      <h1>Beginner — Challenge 5</h1>
 
       <div id="signin-note" class="notice hidden">
         <strong><i class="fa-solid fa-circle-exclamation"></i> Sign in required.</strong>
-        <span> <a href="/login-page.html?redirect=/academy/beginner/4">Log in register</a> to continue.</span>
+        <span> <a href="/login-page.html?redirect=/academy/beginner/5">Log in register</a> to continue.</span>
       </div>
 
       <section class="challenge-card">
         <p class="prompt">
-Substitution ciphers, more generally, use any particular alphabet mapped onto a plaintext alphabet as their method of encryption.
-The following phrase uses this alphabet: UTBOHFVEAGMCNKYXDLIRJQWZPS. Can you decode it?
-Ijtirarjrayk ai byyc!
+What about something that uses two alphabets? These are known as polyalphabetic  ciphers, poly from the Greek meaning “many”. The most classic example of a polyalphabetic cipher is the Vigenere cipher.
+Vigenere uses a key and two alphabets to create an encrypted phrase. A tabula recta can be used to understand how the encryption process works!
+The following phrase is encoded with the key “Hello” What does it decode to?
+Cmrpblvp zfpktyoaio qfvq 16es qlrefff Jclbji
         </p>
 
         <form id="answer-form" class="answer-row" autocomplete="off">
@@ -93,7 +94,7 @@ Ijtirarjrayk ai byyc!
   <script>
     // -------- SETTINGS: only change these for new levels --------
     const TIER = "beginner";
-    const LEVEL = 4;
+    const LEVEL = 5;
     const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 

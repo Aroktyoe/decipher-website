@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
-  <title>DECIPHER — Academy • Beginner 2</title>
-  <meta name="description" content="Decipher Academy Beginner • Challenge 2" />
+  <title>DECIPHER — Academy • Beginner 3</title>
+  <meta name="description" content="Decipher Academy Beginner • Challenge 3" />
 
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -66,18 +66,17 @@
   <main>
     <div class="div1">
       <div class="crumbs"><a href="/academy">← Back to Academy</a></div>
-      <h1>Beginner — Challenge 2</h1>
+      <h1>Beginner — Challenge 3</h1>
 
       <div id="signin-note" class="notice hidden">
         <strong><i class="fa-solid fa-circle-exclamation"></i> Sign in required.</strong>
-        <span> <a href="/login-page.html?redirect=/academy/beginner/2">Log in register</a> to continue.</span>
+        <span> <a href="/login-page.html?redirect=/academy/beginner/3">Log in register</a> to continue.</span>
       </div>
 
       <section class="challenge-card">
         <p class="prompt">
-(big word warning) A monoalphabetic cipher means “mono” single “alphabetic” alphabet, AKA a single alphabet as the entire “password” or key to decoding the cipher.
-For example the Atbash cipher is a monoalphabetic cipher due to it simply replacing all letters in the alphabet with a backwards alphabet. So A becomes Z and B becomes Y and so on. 
-Decode me to move on: Gsrh xrksvi dzh lirtrmzoob xivzgvw gl vmxlwv gsv Svyivd zokszyvg.
+Caesar cipher is a monoalphabetic cipher that shifts the normal alphabet x amount of positions to the right as the substitution alphabet. For example a caesar shift of 1 would make A -> B, and B -> C and a shift of 3 would make A -> D and B -> E.
+And when you need to shift something that ends up running out of alphabet, like shifting Z once will simply loop back around and become A. Use your new knowledge to decode the following text: O fsuizof qosgof qwdvsf cbzm vog 25 dcggwpzs fchohwcbg.
         </p>
 
         <form id="answer-form" class="answer-row" autocomplete="off">
@@ -93,7 +92,7 @@ Decode me to move on: Gsrh xrksvi dzh lirtrmzoob xivzgvw gl vmxlwv gsv Svyivd zo
   <script>
     // -------- SETTINGS: only change these for new levels --------
     const TIER = "beginner";
-    const LEVEL = 2;
+    const LEVEL = 3;
     const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 

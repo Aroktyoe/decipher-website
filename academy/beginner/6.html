@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
-  <title>DECIPHER — Academy • Beginner 4</title>
-  <meta name="description" content="Decipher Academy Beginner • Challenge 4" />
+  <title>DECIPHER — Academy • Beginner 6</title>
+  <meta name="description" content="Decipher Academy Beginner • Challenge 6" />
 
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -66,18 +66,25 @@
   <main>
     <div class="div1">
       <div class="crumbs"><a href="/academy">← Back to Academy</a></div>
-      <h1>Beginner — Challenge 4</h1>
+      <h1>Beginner — Challenge 6</h1>
 
       <div id="signin-note" class="notice hidden">
         <strong><i class="fa-solid fa-circle-exclamation"></i> Sign in required.</strong>
-        <span> <a href="/login-page.html?redirect=/academy/beginner/4">Log in register</a> to continue.</span>
+        <span> <a href="/login-page.html?redirect=/academy/beginner/6">Log in register</a> to continue.</span>
       </div>
 
       <section class="challenge-card">
         <p class="prompt">
-Substitution ciphers, more generally, use any particular alphabet mapped onto a plaintext alphabet as their method of encryption.
-The following phrase uses this alphabet: UTBOHFVEAGMCNKYXDLIRJQWZPS. Can you decode it?
-Ijtirarjrayk ai byyc!
+This puzzle has two parts, decode both of them, and separate both answers with " - " (space dash space) in the answer box!
+
+We’ll now be looking into encodings, and no encodings are not the same as encryptions or ciphers. A cipher hides a message by using a key(s) like an alphabet or a password.
+And an encoding changes how the message is formatted. An example of an encoding is binary, aka base 2. Binary transforms the characters in the message into base 2, meaning it only uses 2 characters 0 and 1.
+Encodings are usually made for computers to read data but are also commonly found in decoding puzzles. Convert the following base64 encoded text to UTF8 (human text) to complete this task:
+VGhlIGxlbmd0aCBvZiB0aGlzIGVuY29kaW5nIHdpbGwgYWx3YXlzIGJlIGEgbXVsdGlwbGUgb2YgNCBieSBwYWRkaW5nIHVzaW5nID0gc3ltYm9scyBpbiB0aGUgZW5kIG9mIHRoZSBiYXNlNjQgaWYgbmVlZGVkLg==
+
+The following phrase is another example of a different encoding format. It’s fairly popular, do you recognize it? Decode the following sentence: 
+01001001 01110100 00100111 01110011 00100000 01110100 01101000 01100101 00100000 01101100 01100001 01101110 01100111 01110101 01100001 01100111 01100101 00100000 01101111 01100110 00100000 01100011 01101111 01101101 01110000 01110101 01110100 01100101 01110010 01110011 00100001 00100000 01100010 01100101 01100101 01110000 00100000 01100010 01101111 01101111 01110000 00101110
+
         </p>
 
         <form id="answer-form" class="answer-row" autocomplete="off">
@@ -93,7 +100,7 @@ Ijtirarjrayk ai byyc!
   <script>
     // -------- SETTINGS: only change these for new levels --------
     const TIER = "beginner";
-    const LEVEL = 4;
+    const LEVEL = 6;
     const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 

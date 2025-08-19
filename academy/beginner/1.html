@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
+  <title>DECIPHER — Academy • Beginner 1</title>
+  <meta name="description" content="Decipher Academy Beginner • Challenge 1" />
+
+  <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+
+  <style>
+    :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
+    main { padding-bottom: 4rem; }
+    .challenge-card{
+      border:1px solid var(--card-border);
+      background:var(--card-bg);
+      border-radius:14px;
+      padding:1.25rem;
+    }
+    .crumbs{margin-bottom:1rem;font-size:.95rem}
+    .crumbs a{color:#fff;text-decoration:underline}
+    .prompt{white-space:pre-wrap; line-height:1.6; color:#eaeaea}
+    .answer-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem}
+    .answer-row input{
+      flex:1 1 320px; min-width:260px;
+      padding:.7rem .8rem; border-radius:10px; border:1px solid #444; background:#141414; color:#fff;
+    }
+    .answer-row button{
+      padding:.7rem 1rem; border-radius:10px; border:1px solid transparent;
+      background: linear-gradient(90deg, var(--accent), #ff3c9b); color:#fff; cursor:pointer;
+    }
+    .help{color:#cfcfcf; font-size:.9rem; margin-top:.5rem}
+    .notice{
+      margin: 1rem 0 1.25rem; padding:.9rem; border:1px dashed var(--card-border);
+      border-radius:12px; background:#0b0b0b; color:#ddd;
+    }
+    .hidden{display:none !important}
+    .status-line{margin-top:.75rem; font-weight:600}
+    .ok{color:#38d995}
+    .err{color:#ff6b6b}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+  <div id="header-placeholder"></div>
+  <div id="mobile-nav-placeholder"></div>
+
+  <main>
+    <div class="div1">
+      <div class="crumbs"><a href="/academy">← Back to Academy</a></div>
+      <h1>Beginner — Challenge 1</h1>
+
+      <div id="signin-note" class="notice hidden">
+        <strong><i class="fa-solid fa-circle-exclamation"></i> Sign in required.</strong>
+        <span> <a href="/login-page.shtml?redirect=/academy/beginner/1">Log in</a> or <a href="/register.shtml">create an account</a> to continue.</span>
+      </div>
+
+      <section class="challenge-card">
+        <p class="prompt">
+Welcome to Decipher Academy! On this level you will learn about the world of ciphers and codebreaking. Ciphers have been around for thousands of years. From the Roman Empire to the modern day!
+
+These levels will get increasingly more difficult as you progress. You may use any online tool, program or scripts to complete the challenges ahead.
+
+Type “I understand” in the box below to begin Decipher Academy.
+        </p>
+
+        <form id="answer-form" class="answer-row" autocomplete="off">
+          <input id="answer" type="text" placeholder='Type: I understand' required />
+          <button id="submit-btn" type="submit"><i class="fa-solid fa-unlock"></i> Unlock Next</button>
+        </form>
+        <div class="help">Answer is not case-sensitive.</div>
+        <div id="status" class="status-line"></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // -------- SETTINGS: only change these for new levels --------
+    const TIER = "beginner";
+    const LEVEL = 1;
+    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    // ------------------------------------------------------------
+
+    function getCSRFToken() {
+      const m = document.cookie.match(/csrf_access_token=([^;]+)/);
+      return m ? m[1] : '';
+    }
+
+    async function saveProgress(answer){
+      try{
+        const r = await fetch('/api/academy/submit', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json', 'X-CSRF-TOKEN': getCSRFToken() },
+          credentials: 'include',
+          body: JSON.stringify({ tier: TIER, challenge: LEVEL, answer })
+        });
+        const data = await r.json().catch(()=> ({}));
+        if (r.ok && data && data.ok){
+          // also mirror locally
+          const key = 'academy-progress';
+          const cur = JSON.parse(localStorage.getItem(key) || '{}');
+          const next = {...cur};
+          const prev = Math.max(0, +(next[TIER]||0));
+          next[TIER] = Math.max(prev, LEVEL);
+          localStorage.setItem(key, JSON.stringify(next));
+          return true;
+        }
+      }catch(e){}
+      return false;
+    }
+
+    async function init(){
+      const status = document.getElementById('status');
+      const form = document.getElementById('answer-form');
+      const input = document.getElementById('answer');
+      const submitBtn = document.getElementById('submit-btn');
+
+      // gate by login
+      let signedIn = false;
+      try{
+        const me = await fetch('/me', { credentials:'include', cache:'no-store' }).then(r => r.ok ? r.json() : null);
+        signedIn = !!(me && (me.username || me.user || me.email));
+      }catch(e){}
+      if(!signedIn){
+        document.getElementById('signin-note').classList.remove('hidden');
+        form.querySelectorAll('input,button').forEach(el => el.disabled = true);
+      }
+
+      // Prefill "already complete" using /me; fallback to localStorage
+      try {
+        const r = await fetch('/me', {credentials:'include', cache:'no-store'});
+        if (r.ok) {
+          const me = await r.json();
+          const solvedFromDB = (me.academy_progress && me.academy_progress[TIER]) ? me.academy_progress[TIER] : 0;
+          if (solvedFromDB >= LEVEL) {
+            input.disabled = true;
+            submitBtn.disabled = true;
+            status.className = 'status-line ok';
+            status.textContent = '✅ Already complete!';
+          } else {
+            const cur = JSON.parse(localStorage.getItem('academy-progress') || '{}');
+            if ((cur[TIER] || 0) >= LEVEL) {
+              input.disabled = true;
+              submitBtn.disabled = true;
+              status.className = 'status-line ok';
+              status.textContent = '✅ Already complete!';
+            }
+          }
+        }
+      } catch(e){}
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = '';
+        const raw = input.value;
+
+        const ok = await saveProgress(raw);
+        if (ok){
+          input.disabled = true;
+          submitBtn.disabled = false;
+          status.className = 'status-line ok';
+          status.textContent = '✅ Correct!';
+          submitBtn.textContent = '➡️ Go to Next Level';
+          submitBtn.onclick = () => { window.location.href = NEXT_LEVEL_URL; };
+        } else {
+          status.className = 'status-line err';
+          status.textContent = '❌ That’s not quite right.';
+        }
+      });
+
+      input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') form.requestSubmit(); });
+
+      document.querySelector('.loader')?.remove();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+  <script src="https://decipher.wiki/compiledjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://decipher.wiki/decipher_logo.png" />
+  <title>DECIPHER — Academy</title>
+  <meta name="description" content="Progress through Beginner → Mediocre → Expert by solving 10 challenges per tier. Sign in to start." />
+
+  <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    .tiers-grid { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; flex-wrap: wrap; }
+    .tier-card { flex: 1 1 280px; max-width: 320px; background: #1a1a1a; color: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); text-align: center; transition: transform .2s ease; }
+    .tier-card:hover { transform: translateY(-6px); }
+    .tier-card.locked { opacity: 0.7; }
+    .tier-head { margin-bottom: 1rem; }
+    .tier-icon { font-size: 2.5rem; margin-bottom: 0.5rem; color: #a61690; }
+    .progress-wrap { margin-top: 1rem; }
+    .progress-bar { background: #333; border-radius: 8px; height: 10px; overflow: hidden; margin-bottom: 0.5rem; }
+    .progress-bar span { display: block; height: 100%; background: linear-gradient(90deg, #a61690, #ff007f); width: 0%; transition: width 0.3s ease; }
+    .progress-text { font-size: 0.9rem; display: flex; justify-content: space-between; }
+    .btn.primary { display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background: #a61690; color: white; border-radius: 8px; text-decoration: none; transition: background 0.3s ease; }
+    .btn.primary:hover { background: #861171; }
+    .btn[disabled] { pointer-events: none; background: #444; }
+    .notice { background: #2a2a2a; border: 1px solid #a61690; padding: 1rem; border-radius: 8px; margin: 1rem auto; text-align: center; max-width: 600px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="loader"><div class="loader-spinner"></div></div>
+  <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+  <div id="header-placeholder"></div>
+  <div id="mobile-nav-placeholder"></div>
+
+  <main>
+    <h1 class="page-title">DECIPHER Academy</h1>
+    <p class="subtitle">Beat 10 challenges per tier to unlock the next. Signed-in only.</p>
+
+    <div id="signin-note" class="notice hidden">
+      <strong><i class="fa-solid fa-circle-exclamation"></i> You must be signed in.</strong>
+      <span> <a href="/login-page.shtml?redirect=/academy">Log in</a> or <a href="/register.shtml">create an account</a> to start the Academy.</span>
+    </div>
+
+    <section class="tiers-grid" id="tiers">
+      <article class="tier-card" data-tier="beginner">
+        <div class="tier-head">
+          <div class="tier-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h2 class="tier-title">Beginner</h2>
+        </div>
+        <p class="tier-desc">Start with fundamentals. 10 warm-ups to build confidence.</p>
+        <div class="progress-wrap">
+          <div class="progress-bar"><span></span></div>
+          <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary start-btn" href="/academy/beginner/1"><i class="fa-solid fa-play"></i> Start</a>
+        </div>
+      </article>
+
+      <article class="tier-card locked" data-tier="mediocre">
+        <div class="tier-head">
+          <div class="tier-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+          <h2 class="tier-title">Mediocre</h2>
+        </div>
+        <p class="tier-desc">Up the difficulty. Creative twists and deeper reasoning.</p>
+        <div class="progress-wrap">
+          <div class="progress-bar"><span></span></div>
+          <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary start-btn" href="/academy/mediocre/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
+        </div>
+      </article>
+
+      <article class="tier-card locked" data-tier="expert">
+        <div class="tier-head">
+          <div class="tier-icon"><i class="fa-solid fa-skull"></i></div>
+          <h2 class="tier-title">Expert</h2>
+        </div>
+        <p class="tier-desc">Brutal, satisfying, and occasionally evil. You’ve been warned.</p>
+        <div class="progress-wrap">
+          <div class="progress-bar"><span></span></div>
+          <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary start-btn" href="/academy/expert/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contact-info">
+      <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+      <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+      <p>Terms: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+      <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script>
+
+function updateStartLinks(prog) {
+  const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
+  const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
+  const expertBtn = document.querySelector('[data-tier="expert"] .start-btn');
+
+  if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + (Math.min(prog.beginner + 1, 10));
+  if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + (Math.min(prog.mediocre + 1, 10));
+  if (expertBtn) expertBtn.href = "/academy/expert/" + (Math.min(prog.expert + 1, 10));
+}
+
+    function applyCardState(card, solved, total, unlocked) {
+      const bar = card.querySelector('.progress-bar span');
+      const txt = card.querySelector('.progress-text span');
+      const status = card.querySelector('.status');
+      solved = Math.max(0, Math.min(total, solved|0));
+      bar.style.width = (solved/total*100) + '%';
+      txt.textContent = solved + " / " + total + " solved";
+      if (unlocked) {
+        card.classList.remove("locked");
+        status.textContent = solved >= total ? "Completed" : "Unlocked";
+      } else {
+        card.classList.add("locked");
+        status.textContent = "Locked";
+      }
+    }
+
+async function initAcademy() {
+  try {
+    const res = await fetch("/me", { credentials: "include" });
+    if (!res.ok) throw new Error("Not logged in");
+    const user = await res.json();
+
+    if (!user || !user.username) {
+      document.getElementById("signin-note").classList.remove("hidden");
+    } else {
+      const prog = user.academy_progress || { beginner: 0, mediocre: 0, expert: 0 };
+
+      applyCardState(document.querySelector('[data-tier="beginner"]'), prog.beginner || 0, 10, true);
+      applyCardState(document.querySelector('[data-tier="mediocre"]'), prog.mediocre || 0, 10, (prog.beginner||0) >= 10);
+      applyCardState(document.querySelector('[data-tier="expert"]'), prog.expert || 0, 10, (prog.mediocre||0) >= 10);
+
+      // update Start buttons to the current level
+      const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
+      const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
+      const expertBtn   = document.querySelector('[data-tier="expert"] .start-btn');
+
+      if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + Math.min((prog.beginner || 0) + 1, 10);
+      if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + Math.min((prog.mediocre || 0) + 1, 10);
+      if (expertBtn)   expertBtn.href   = "/academy/expert/"   + Math.min((prog.expert   || 0) + 1, 10);
+    }
+  } catch {
+    document.getElementById("signin-note").classList.remove("hidden");
+  } finally {
+    document.querySelector('.loader')?.remove();
+  }
+}
+
+    document.addEventListener("DOMContentLoaded", initAcademy);
+  </script>
+
+  <script src="https://decipher.wiki/compiledjs.js"></script>
+</body>
+</html>

@@ -85,7 +85,7 @@
           <div class="progress-text"><span>0 / 11 solved</span><span class="status">Locked</span></div>
         </div>
         <div class="cta-row">
-          <a class="btn primary start-btn" href="/academy/mediocre/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
+          <a class="btn primary start-btn" href="/academy/medium/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
         </div>
       </article>
 
@@ -127,21 +127,38 @@ function updateStartLinks(prog) {
   if (expertBtn) expertBtn.href = "/academy/expert/" + (Math.min(prog.expert + 1, 10));
 }
 
-    function applyCardState(card, solved, total, unlocked) {
-      const bar = card.querySelector('.progress-bar span');
-      const txt = card.querySelector('.progress-text span');
-      const status = card.querySelector('.status');
-      solved = Math.max(0, Math.min(total, solved|0));
-      bar.style.width = (solved/total*100) + '%';
-      txt.textContent = solved + " / " + total + " solved";
-      if (unlocked) {
-        card.classList.remove("locked");
-        status.textContent = solved >= total ? "Completed" : "Unlocked";
-      } else {
-        card.classList.add("locked");
-        status.textContent = "Locked";
-      }
+function applyCardState(card, solved, total, unlocked) {
+  const bar = card.querySelector('.progress-bar span');
+  const txt = card.querySelector('.progress-text span');
+  const status = card.querySelector('.status');
+  const btn = card.querySelector('.start-btn');
+
+  solved = Math.max(0, Math.min(total, solved|0));
+  bar.style.width = (solved/total*100) + '%';
+  txt.textContent = solved + " / " + total + " solved";
+
+  if (unlocked) {
+    card.classList.remove("locked");
+    status.textContent = solved >= total ? "Completed" : "Unlocked";
+
+    if (btn) {
+      btn.removeAttribute('disabled');
+      btn.style.pointerEvents = '';
+      const label = solved >= total ? 'Review' : (solved > 0 ? 'Continue' : 'Start');
+      btn.innerHTML = `<i class="fa-solid ${solved >= total ? 'fa-check' : 'fa-play'}"></i> ${label}`;
     }
+  } else {
+    card.classList.add("locked");
+    status.textContent = "Locked";
+
+    if (btn) {
+      btn.setAttribute('disabled', '');
+      btn.style.pointerEvents = 'none';
+      btn.innerHTML = `<i class="fa-solid fa-lock"></i> Start`;
+    }
+  }
+}
+
 
 async function initAcademy() {
   try {
@@ -164,7 +181,7 @@ async function initAcademy() {
       const expertBtn   = document.querySelector('[data-tier="expert"] .start-btn');
 
       if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + Math.min((prog.beginner || 0) + 1, 9);
-      if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + Math.min((prog.mediocre || 0) + 1, 11);
+      if (mediocreBtn) mediocreBtn.href = "/academy/medium/" + Math.min((prog.mediocre || 0) + 1, 11);
       if (expertBtn)   expertBtn.href   = "/academy/expert/"   + Math.min((prog.expert   || 0) + 1, 10);
     }
   } catch {

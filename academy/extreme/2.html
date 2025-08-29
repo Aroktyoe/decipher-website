@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -81,7 +82,7 @@ For this you’ll need to know about ⭐entropy⭐ which is a scale of how rando
 Ciphertext: 
 Nwu8+BJ0DmmX4NgLVsZ+McFQ3Zj1YH7XQN60LVPZSr0lE4M/krfIOhg7348UAVtvtrawRGP3ynLYNVyt98miwtTU6XDRV5paObBg4lvf7PC3RBRJOndmOrMXhBS04uDcleFwWOE/1NVEwkjZm5L3ByjcznrRk+5sJ+Uqdeo4mgQIwixtUjfSM5uJGG/g9s0SrcUjAy7V8ZZaEUfydsYYK/IoBPYPpJrtQ7UZSO8FAl/m4cLJfW4YWnalkwI1JRgUQK2/5z2L+huXQK9j1H+3UERQS/DQVwlEOPtN0LSnysKvHSJkNGpbL/123+MIeyuMy80mh6uZ2I/lUOkuHk17cA8OpbnchTD0iAcWImfHkkDbuepxA4JpPEzFU36Rp0sNNNDqihJpFGNJ1inbLAyyMJ1wgvlzxbfXeb/n2CWQKJmb7JID1yL88/P++jyDtwYnDwRsqa+6mvZSHSr1ZIlmBg==
 
-What is the entropy? (one decimal)
+What is the entropy? (one decimal, rounded up)
 
         </p>
 
@@ -97,13 +98,14 @@ What is the entropy? (one decimal)
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "extreme";
+    const DB_TIER = "expert";
+const URL_TIER = "extreme";
     const LEVEL = 2;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    const NEXT_LEVEL_URL = `/academy/${URL_TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

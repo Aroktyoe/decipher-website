@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -78,8 +79,8 @@
 AES is a modern cipher where the ciphertext usually is displayed in Base64 format and is usually not used in decoding puzzles, but a lot of the time people see base64 and assume that they can decode it with a simple base64 decoder. In AES keys are usually displayed in Hex format. Can you figure out what mode of AES this is? CBC? ECB? GCM? Good luck decoding it!
 
 AES 256 bit (no padding)
-Ciphertext: r2mZNY/kG63LbAk8PcmeceaMcvRh4PU9OlI6H0FS9iOlB/c5JJT2+JdsJfcF3NOXiI71TrSjdqKN7lKmEzIyNCJ22SshxI7JgNU2icYvSnnrB+EFwCfF+MwJBrqA6ow3YbBGEi0t1Q0xbLYq8Kw92u4vZZlARVOUHyrxFo85Jc3MjXeVMiLabnU0gDXy6ZOCqzrO/WlYIyyf3nIQ9accC+JANvzFwu6vkC5ovK6gHUhPY6d7oxg4N8TKNCFIJSUFUp9cAPRE4HUgW7eKQRDHHDdhUXBR9rVa0ZcPl0IcWus6JkfMZHxcYOFOWcG8e6rGXOUkeN/4qhc8S5FUcutl0A==
-Key: d41d8cd98f00b204e9800998ecf8427e
+Ciphertext: Pu6ccrsDqn0is0ehAv+QsbumUsfdOZlKt+q9yZHBsQ+IFLgHdRTFeZptW9xS+JUOLcBeTCpR0Hp6GzF0IEuGB8YOpB03CJqSZxVsAj34/xCxLgNP0XamGbwCZBYhHT5FVYXT9fVjmvDqbEdptjPd4dKtQwF3W9udRtWAI5tkNvho4+4Rnh4UidDLySKD++n3WhsJtM5fI5wTE06bmEN00Uh05F6i0Y+4nkr83UNTQ4UWsPB9U5ISGpo4eFNw5jNLChTkcnwIrvodtzYmw9lALsVUAcbhRZE0fkEiyC3RJl+xB/iDhJTrdTOCutm1WQ0eV2P2s9DRPjg5KlX4KADp3A==
+Key: CompletelyRandomAESKey-NotReally
 
         </p>
 
@@ -95,13 +96,14 @@ Key: d41d8cd98f00b204e9800998ecf8427e
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "extreme";
+    const DB_TIER = "expert";
+const URL_TIER = "extreme";
     const LEVEL = 1;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    const NEXT_LEVEL_URL = `/academy/${URL_TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

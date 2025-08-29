@@ -1,15 +1,22 @@
+// guard.js — display slugs ↔ DB slugs, server-truth gating, no localStorage
 (async () => {
-  // /academy/<tier>/<level>[optional / or .html/.shtml]
+  // Match both display and DB slugs for backward compatibility
   const m = location.pathname.match(
-    /^\/academy\/(beginner|mediocre|expert)\/(\d+)(?:\/|(?:\.(?:s?html))?)?$/i
+    /^\/academy\/(beginner|medium|mediocre|extreme|expert)\/(\d+)(?:\/|(?:\.(?:s?html))?)?$/i
   );
   if (!m) return;
 
-  const tier = m[1].toLowerCase();
+  const slug = m[1].toLowerCase();
   const level = parseInt(m[2], 10);
 
+  // Maps
+  const toDb = { beginner: "beginner", medium: "mediocre", mediocre: "mediocre", extreme: "expert", expert: "expert" };
+  const toDisplay = { beginner: "beginner", mediocre: "medium", medium: "medium", expert: "extreme", extreme: "extreme" };
+
+  const urlTier = toDisplay[slug]; // what we show in URLs
+  const dbTier  = toDb[slug];      // what backend uses
+
   function block(reason, gotoUrl) {
-    // Prefer redirect to the last unlocked level; show a message first for UX
     const html = `
       <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
       <title>Locked • DECIPHER Academy</title><link href="/index2.css" rel="stylesheet"></head>
@@ -38,33 +45,30 @@
     block(`You must be signed in to view Academy levels.`, "/login-page.shtml");
   }
 
-  // 2) progress: try API, accept multiple shapes; fallback to localStorage
-  let solved = 0;
+  // 2) authoritative progress from server
+  let cur = { solved: 0, total: 1, unlocked: false };
   try {
     const r = await fetch("/api/academy/progress", { credentials: "include", cache: "no-store" });
     if (r.ok) {
       const data = await r.json();
-      // Accept {beginner: n} or {progress:{beginner:n}} or {academy_progress:{beginner:n}}
-      const p =
-        (data && (data.progress || data.academy_progress || data)) || {};
-      solved = Math.max(0, +p[tier] || 0);
+      if (data && data[dbTier]) cur = data[dbTier];
     }
   } catch {}
-  if (!solved) {
-    try {
-      const ls = JSON.parse(localStorage.getItem("academy-progress") || "{}");
-      solved = Math.max(0, +ls[tier] || 0);
-    } catch {}
+
+  // If tier not unlocked at all (e.g., medium before finishing beginner), bounce
+  if (!cur.unlocked) {
+    block(`The ${urlTier} tier is locked. Finish the previous tier to unlock it.`, "/academy");
   }
 
-  const nextAllowed = Math.min(10, solved + 1);
+  // 3) gate by nextAllowed using server totals
+  const nextAllowed = Math.min((cur.solved || 0) + 1, cur.total || 1);
   if (level > nextAllowed) {
-    const tip = solved
-      ? `You’ve solved ${solved} ${tier} level${solved === 1 ? "" : "s"}. Next unlocked is ${tier} ${solved + 1}.`
-      : `You haven’t solved any ${tier} levels yet. Start at ${tier} 1.`;
+    const tip = (cur.solved || 0)
+      ? `You’ve solved ${cur.solved} ${urlTier} level${cur.solved === 1 ? "" : "s"}. Next unlocked is ${urlTier} ${cur.solved + 1}.`
+      : `You haven’t solved any ${urlTier} levels yet. Start at ${urlTier} 1.`;
     block(
-      `You haven’t unlocked ${tier} ${level} yet. ${tip}`,
-      `/academy/${tier}/${nextAllowed}`
+      `You haven’t unlocked ${urlTier} ${level} yet. ${tip}`,
+      `/academy/${urlTier}/${nextAllowed}`
     );
   }
 })();

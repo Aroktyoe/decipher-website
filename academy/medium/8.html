@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -70,7 +71,7 @@
 
       <div id="signin-note" class="notice hidden">
         <strong><i class="fa-solid fa-circle-exclamation"></i> Sign in required.</strong>
-        <span> <a href="/login-page.html?redirect=/academy/mediocre/8">Log in register</a> to continue.</span>
+        <span> <a href="/login-page.html?redirect=/academy/medium/8">Log in register</a> to continue.</span>
       </div>
 
       <section class="challenge-card">
@@ -84,6 +85,8 @@ Xz’ aswsi gf xteelnvus mk wygn ml dzujsanj teqgrjg fvgm gqwij. Aef, ts kpvck x
 Fmt ’kks e uodoor hrfqf xzak noadiegsw as pqury addixaoe’u levdvt, wlwrvvo xze tniqtei-wpasru vuvfs yks jscv; dux, ohvp hi gntg axlazps xze lrmskt iqurv, hv vhif uevo xze ccdhwr kwrrk hzu beuk, cqook ie vhi ulfwdw, kcftnmfg kje fssv fekjevu bc ohzeh lw dzf awueef.
 Ss Uavuav eap. Vhif, lvut lw mra, pvwvvpt. Efd jkngw tyg qysrigl aalc deej nf eopgr wqr xze kjiry hv ks, jssykor at kjuw: lhrv wlst yg iw, suxoerleu, yoydd iwn xg tygsi snu vhike vztvwmzviik.
 Aef tlwrvhovw tykno zid cs e keirerl’s vig, azitj, helcygd, agucf, aw zij mirv, giqw qastjiinolu, Arv kznl lam zp tlw syglp.
+
+The answer is the vigenere key.
         </p>
 
         <form id="answer-form" class="answer-row" autocomplete="off">
@@ -98,12 +101,13 @@ Aef tlwrvhovw tykno zid cs e keirerl’s vig, azitj, helcygd, agucf, aw zij mirv
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "mediocre";
     const LEVEL = 8;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
-    // ------------------------------------------------------------
+    const URL_TIER = "medium";      // what shows in the URL
+    const DB_TIER  = "mediocre";    // what backend expects
+    const NEXT_LEVEL_URL = `/academy/${URL_TIER}/${LEVEL+1}`;
+    // ---------------------------------------------------
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

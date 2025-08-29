@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -75,7 +76,7 @@
 
       <section class="challenge-card">
         <p class="prompt">
-You should be familiar with what this ciphertext looks like by now, but remember, be logical about this. Analyzing the raw bytes should be a good first step.
+You should be familiar with what this ciphertext looks like by now, but remember, be <i>logical</i> about this. Analyzing the raw bytes should be a good first step, especially cribbing space to figure out the key!
 
 GiQ4KjwgICAgIGFlOCcrbTQ5JiA5ID88KyMxJS4ibTY5IiMoN2wpPDgsOGNuJDZsLm47LC49LyMxbC07PzY4byErZT4qKD8gPycjKCs4bzk/JDw/KyllJSFuLGUrPSsoK2E8Oj8sPCoqbTclISpjZQU7PW0vOSYtNGlsPTsvPGE9KyllKiMrPi1sJj1tNjwqLSYpKStuOiw4J24qKSM8PTRlLiMvLi5sPCsoIT8hLzkwPio9bSYjISgoMTgmbiQrbCo4KDc1bz0hLC8qYG0SJCo6JSA+bz0oNzoqKm0mJCYiISAoby85ZTwmLSMsLzxuIjdsLSIoKygqKm0sIjshbTYhICE5LSUqPWFlOy46KDchKiIiK2wtPCQrKzxuLGU/OCsoMWBvLT8sPz9uLjc5IS0lZTgnLzk2bC0hOS1sISE+MS0jKSQmbC4gKWUlITgkIiM9LzksIihgbU9sb0QUKjlvLSwrbD0rLiorISc3IGwXAR9kbAEhPygtIyI0ZSU7bi4qISo9bSwibyYoPWwgPG0nJSEvPzxsKSE/KGBvLDgxbC0vPiB6e24kNmwuICIxJCo8bSo8OyciK2JvFyIwPm8lKDxsOyFtNS08PW0sP286JSBsPC8gIGwuPW0xJCpuFQoebyooJj42PjksIyFuJiA1b2YsKSBvLSw1P2Zg
         </p>
@@ -92,13 +93,14 @@ GiQ4KjwgICAgIGFlOCcrbTQ5JiA5ID88KyMxJS4ibTY5IiMoN2wpPDgsOGNuJDZsLm47LC49LyMxbC07
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "extreme";
+    const DB_TIER = "expert";
+const URL_TIER = "extreme";
     const LEVEL = 4;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    const NEXT_LEVEL_URL = `/academy/${URL_TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

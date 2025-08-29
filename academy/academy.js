@@ -1,28 +1,19 @@
-function getCSRFToken() {
+function getCSRFToken(){
   const m = document.cookie.match(/csrf_access_token=([^;]+)/);
   return m ? m[1] : '';
 }
 
 async function saveProgress(answer){
-  try {
-    const r = await fetch('/api/academy/submit', {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json', 'X-CSRF-TOKEN': getCSRFToken() },
-      credentials: 'include',
-      body: JSON.stringify({ tier: TIER, challenge: LEVEL, answer })
+  try{
+    const r = await fetch('/api/academy/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-CSRF-TOKEN':getCSRFToken()},
+      credentials:'include',
+      body:JSON.stringify({ tier: DB_TIER, challenge: LEVEL, answer })
     });
-    const data = await r.json().catch(()=> ({}));
-    if (r.ok && data && data.ok){
-      // mirror server state locally so client + server stay in sync
-      const key = 'academy-progress';
-      const cur = JSON.parse(localStorage.getItem(key) || '{}');
-      const next = {...cur};
-      next[TIER] = Math.max(next[TIER] || 0, LEVEL);
-      localStorage.setItem(key, JSON.stringify(next));
-      return true;
-    }
-  } catch(e){}
-  return false;
+    const data = await r.json().catch(()=>({}));
+    return { ok: r.ok && data && data.ok, data };
+  }catch(e){ return { ok:false, data:null }; }
 }
 
 async function init(){
@@ -30,65 +21,77 @@ async function init(){
   const form = document.getElementById('answer-form');
   const input = document.getElementById('answer');
   const submitBtn = document.getElementById('submit-btn');
+  const card = document.querySelector('.challenge-card');
+  if (card) card.style.display = 'none';
 
-  // gate by login
+  // login gate
   let signedIn = false;
   try{
-    const me = await fetch('/me', { credentials:'include', cache:'no-store' }).then(r => r.ok ? r.json() : null);
+    const me = await fetch('/me',{credentials:'include',cache:'no-store'}).then(r=>r.ok?r.json():null);
     signedIn = !!(me && (me.username || me.user || me.email));
   }catch(e){}
   if(!signedIn){
-    document.getElementById('signin-note').classList.remove('hidden');
-    form.querySelectorAll('input,button').forEach(el => el.disabled = true);
+    document.getElementById('signin-note')?.classList.remove('hidden');
+    form?.querySelectorAll('input,button').forEach(el=>el.disabled=true);
+    document.querySelector('.loader')?.remove();
+    return;
   }
 
-  // Prefill "already complete" using /me; fallback to localStorage
-  try {
-    const r = await fetch('/me', {credentials:'include', cache:'no-store'});
-    if (r.ok) {
-      const me = await r.json();
-      const solvedFromDB = (me.academy_progress && me.academy_progress[TIER]) ? me.academy_progress[TIER] : 0;
+  // server truth for solved/total
+  let solved = 0, total = 1;
+  try{
+    const prog = await fetch('/api/academy/progress',{credentials:'include',cache:'no-store'}).then(r=>r.ok?r.json():null);
+    solved = prog?.[DB_TIER]?.solved || 0;
+    total  = prog?.[DB_TIER]?.total  || 1;
+  }catch(e){}
 
-      if (solvedFromDB >= LEVEL) {
-        input.disabled = true;
-        submitBtn.disabled = true;
-        status.className = 'status-line ok';
-        status.textContent = '✅ Already complete!';
-      } else {
-        // only fallback to localStorage if server shows 0
-        const cur = JSON.parse(localStorage.getItem('academy-progress') || '{}');
-        if ((cur[TIER] || 0) >= LEVEL) {
-          input.disabled = true;
-          submitBtn.disabled = true;
-          status.className = 'status-line ok';
-          status.textContent = '✅ Already complete! (local cache)';
-        }
-      }
-    }
-  } catch(e){}
+  const nextAllowed = Math.min(solved + 1, total);
 
+  // hard gate
+  if (LEVEL > nextAllowed){
+    status.className = 'status-line err';
+    status.textContent = `🔒 You haven't unlocked Level ${LEVEL} yet. Redirecting to Level ${nextAllowed}…`;
+    form?.querySelectorAll('input,button').forEach(el=>el.disabled=true);
+    setTimeout(()=>{ window.location.href = `/academy/${URL_TIER}/${nextAllowed}`; }, 800);
+    document.querySelector('.loader')?.remove();
+    return;
+  }
 
-  form.addEventListener('submit', async (e)=>{
+  if (card) card.style.display = '';
+
+  // already complete
+  if (solved >= LEVEL){
+    if (input) input.disabled = true;
+    if (submitBtn) submitBtn.disabled = false;
+    status.className = 'status-line ok';
+    status.textContent = '✅ Already complete!';
+  }
+
+  // submit
+  form?.addEventListener('submit', async (e)=>{
     e.preventDefault();
     status.textContent = '';
-    const raw = input.value;
-
-    const ok = await saveProgress(raw);
+    const { ok, data } = await saveProgress(input.value);
     if (ok){
-      input.disabled = true;
-      submitBtn.disabled = false;
+      if (input) input.disabled = true;
+      if (submitBtn) submitBtn.disabled = false;
       status.className = 'status-line ok';
       status.textContent = '✅ Correct!';
       submitBtn.textContent = '➡️ Go to Next Level';
-      submitBtn.onclick = () => { window.location.href = NEXT_LEVEL_URL; };
-    } else {
+      submitBtn.onclick = () => {
+          const aliasOut = { beginner:'beginner', mediocre:'medium', expert:'extreme' };
+          let next = (data && data.next) || NEXT_LEVEL_URL;
+          next = next.replace(/\/academy\/(beginner|mediocre|expert)\//,
+                              (_, t) => `/academy/${aliasOut[t]}/`);
+          window.location.href = next;
+        };
+    }else{
       status.className = 'status-line err';
-      status.textContent = '❌ That’s not quite right.';
+      status.textContent = (data && data.msg) ? `❌ ${data.msg}` : '❌ That’s not quite right.';
     }
   });
 
-  input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') form.requestSubmit(); });
-
+  input?.addEventListener('keydown', e=>{ if(e.key==='Enter') form.requestSubmit(); });
   document.querySelector('.loader')?.remove();
 }
 

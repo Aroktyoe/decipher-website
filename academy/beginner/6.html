@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -80,8 +81,7 @@ This puzzle has two parts, decode both of them, and separate both answers with "
 We’ll now be looking into encodings, and no encodings are not the same as encryptions or ciphers. A cipher hides a message by using a key(s) like an alphabet or a password.
 And an encoding changes how the message is formatted. An example of an encoding is binary, aka base 2. Binary transforms the characters in the message into base 2, meaning it only uses 2 characters 0 and 1.
 Encodings are usually made for computers to read data but are also commonly found in decoding puzzles. Convert the following base64 encoded text to UTF8 (human text) to complete this task:
-VGhlIGxlbmd0aCBvZiB0aGlzIGVuY29kaW5nIHdpbGwgYWx3YXlzIGJlIGEgbXVsdGlwbGUgb2YgNCBie
-SBwYWRkaW5nIHVzaW5nID0gc3ltYm9scyBpbiB0aGUgZW5kIG9mIHRoZSBiYXNlNjQgaWYgbmVlZGVkLg==
+VGhlIGxlbmd0aCBvZiB0aGlzIGVuY29kaW5nIHdpbGwgYWx3YXlzIGJlIGEgbXVsdGlwbGUgb2YgNCBieSBwYWRkaW5nIHVzaW5nID0gc3ltYm9scyBpbiB0aGUgZW5kIG9mIHRoZSBiYXNlNjQgaWYgbmVlZGVkLg==
 
 The following phrase is another example of a different encoding format. It’s fairly popular, do you recognize it? Decode the following sentence: 
 01001001 01110100 00100111 01110011 00100000 01110100 01101000 01100101 00100000 01101100 01100001 01101110 01100111 01110101 01100001 01100111 01100101 00100000 01101111 01100110 00100000 01100011 01101111 01101101 01110000 01110101 01110100 01100101 01110010 01110011 00100001 00100000 01100010 01100101 01100101 01110000 00100000 01100010 01101111 01101111 01110000 00101110
@@ -100,13 +100,14 @@ The following phrase is another example of a different encoding format. It’s f
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "beginner";
+    const DB_TIER = "beginner";
+const URL_TIER = "beginner";
     const LEVEL = 6;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    const NEXT_LEVEL_URL = `/academy/${URL_TIER}/${LEVEL+1}`;
     // ------------------------------------------------------------
 
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

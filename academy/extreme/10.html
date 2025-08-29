@@ -18,7 +18,8 @@
   <link href="https://decipher.wiki/index2.css" rel="stylesheet" type="text/css" media="all" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://decipher.wiki/academy/guard.js" defer></script>
+  <script src="https://decipher.wiki/academy/guard.js?v=4" defer></script>
+<link rel="stylesheet" href="https://decipher.wiki/academy/academy.css">
 
   <style>
     :root { --accent:#a61690; --card-bg:#01010125; --card-border:#a6169094; }
@@ -75,7 +76,7 @@
 
       <section class="challenge-card">
         <p class="prompt">
-Will you solve the last puzzle and complete the entire DECIPHER Academy? Good luck!
+Will you solve the last puzzle and complete the entire DECIPHER Academy? There's even a new cipher for you in this one (believe it or not but the word "Bacon" is your clue). Good luck!
 <a href="https://decipher.wiki/academy/final_puzzle.txt" download>Download final_puzzle.txt</a>
         </p>
 
@@ -91,13 +92,14 @@ Will you solve the last puzzle and complete the entire DECIPHER Academy? Good lu
 
   <script>
     // -------- SETTINGS: only change these for new levels --------
-    const TIER = "extreme";
+    const DB_TIER = "expert";
+const URL_TIER = "extreme";
     const LEVEL = 10;
-    const NEXT_LEVEL_URL = `/academy/${TIER}/${LEVEL+1}`;
+    const NEXT_LEVEL_URL = `/academy/`;
     // ------------------------------------------------------------
 
 </script>
-<script src="https://decipher.wiki/academy/academy.js"></script>
+<script src="https://decipher.wiki/academy/academy.js?v=4"></script>
   <script src="https://decipher.wiki/compiledjs.js"></script>
 </body>
 </html>

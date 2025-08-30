@@ -1,0 +1,4 @@
+.prompt {
+  word-wrap: break-word;      /* legacy support */
+  overflow-wrap: break-word;  /* modern browsers */
+}

@@ -142,7 +142,7 @@ window.addEventListener("load", () => {
 });
 
 // ---------------- Mobile nav ----------------
-fetch("mobile-nav.html")
+fetch("/mobile-nav.html")
   .then(res => res.text())
   .then(html => {
     const placeholder = document.getElementById("mobile-nav-placeholder");

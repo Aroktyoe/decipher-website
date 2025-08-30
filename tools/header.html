@@ -1,0 +1,175 @@
+
+<style>
+  .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .merch-button,
+  .discord-button,
+  #login-link {
+    display: none !important;
+  }
+
+  .left-header,
+  .right-header,
+  .center-header {
+    width: auto;
+    margin: 0;
+  }
+
+  .discord-button {
+    margin: 0;
+  }
+
+  .center-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-right: -20px;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .user-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .auth-link {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  #header-user-info {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+  .auth-link {
+    background-color: #c4214b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .auth-link:hover {
+    background-color: #a01b3d;
+  }
+
+  .user-info {
+    font-weight: 500;
+  }
+
+  .user-info .username {
+    color: inherit;
+  }
+
+
+  body.light-theme .user-info .username {
+    color: var(--text-dark);
+  }
+
+  .dropdown.open .dropdown-menu {
+  display: block;
+}
+
+  @media (max-width: 768px) {
+
+  .user-actions #account-link,
+  .user-actions #logout-btn {
+    display: none !important;
+  }
+  #account-dropdown {
+    display: none !important
+   }
+  }
+
+/* Desktop dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #c4214b;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #2a2a2a;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #3a3a3a;
+}
+
+</style>
+
+
+<div class="user-actions">
+  <span id="header-user-info" class="user-info"></span>
+
+  <!-- Shown when logged out -->
+  <a href="/login-page.html" id="login-link" class="auth-link"
+     onclick="sessionStorage.setItem('postLoginRedirect', location.href)">Login/Register</a>
+
+  <!-- Shown when logged in -->
+  <div id="account-dropdown" class="dropdown" style="display: none;">
+    <button class="auth-link dropdown-toggle">Account ▾</button>
+    <div class="dropdown-menu">
+      <a href="/profile" id="account-link">Profile</a>
+      <a href="/account.html">Settings</a>
+      <a href="javascript:void(0)" id="logout-btn">Logout</a> <!-- 🔑 added -->
+    </div>
+  </div>
+</div>

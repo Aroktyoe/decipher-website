@@ -166,7 +166,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-fetch("mobile-nav.html")
+fetch("/mobile-nav.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("mobile-nav-placeholder").innerHTML = html;

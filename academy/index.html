@@ -51,8 +51,12 @@
 
   <main>
     <h1 class="page-title">DECIPHER Academy</h1>
-    <p class="subtitle">Beat 9-11 challenges per tier to unlock the next. Signed-in only.</p>
-
+    <p class="subtitle">
+      Beat 9-11 challenges per tier to unlock the next and learn a ton about decoding and solving cryptographic puzzles. 
+      Link your account with Discord to get the 
+      <span style="color:#ff20a6">@Academy Solver</span> 
+      role in the server upon completion. Signed-in only.
+    </p>
     <div id="signin-note" class="notice hidden">
       <strong><i class="fa-solid fa-circle-exclamation"></i> You must be signed in.</strong>
       <span> <a href="/login-page.shtml?redirect=/academy">Log in</a> or <a href="/register.shtml">create an account</a> to start the Academy.</span>
@@ -79,28 +83,31 @@
           <div class="tier-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
           <h2 class="tier-title">Medium</h2>
         </div>
-        <p class="tier-desc">Up the difficulty. Now you'll start learning the real deal</p>
+        <p class="tier-desc">Up the difficulty. Now you'll start learning the real deal.</p>
         <div class="progress-wrap">
           <div class="progress-bar"><span></span></div>
           <div class="progress-text"><span>0 / 11 solved</span><span class="status">Locked</span></div>
         </div>
         <div class="cta-row">
-          <a class="btn primary start-btn" href="/academy/mediocre/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
+          <a class="btn primary start-btn" href="/academy/medium/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
         </div>
       </article>
 
-      <article class="tier-card locked" data-tier="expert">
+      <article class="tier-card locked" data-tier="extreme">
         <div class="tier-head">
           <div class="tier-icon"><i class="fa-solid fa-skull"></i></div>
           <h2 class="tier-title">Expert</h2>
         </div>
-        <p class="tier-desc">Complete this and you'll be ready to solve all of our extremely hard puzzles at https://decipher.wiki/puzzles</p>
+        <p class="tier-desc">
+          Complete this and you'll be ready to solve all our 
+          <a href="https://decipher.wiki/puzzles">Puzzles</a>.
+        </p>
         <div class="progress-wrap">
           <div class="progress-bar"><span></span></div>
           <div class="progress-text"><span>0 / 10 solved</span><span class="status">Locked</span></div>
         </div>
         <div class="cta-row">
-          <a class="btn primary start-btn" href="/academy/expert/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
+          <a class="btn primary start-btn" href="/academy/extreme/1" disabled><i class="fa-solid fa-lock"></i> Start</a>
         </div>
       </article>
     </section>
@@ -120,59 +127,121 @@
 function updateStartLinks(prog) {
   const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
   const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
-  const expertBtn = document.querySelector('[data-tier="expert"] .start-btn');
+  const extremeBtn = document.querySelector('[data-tier="extreme"] .start-btn');
 
   if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + (Math.min(prog.beginner + 1, 9));
   if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + (Math.min(prog.mediocre + 1, 11));
-  if (expertBtn) expertBtn.href = "/academy/expert/" + (Math.min(prog.expert + 1, 10));
+  if (extremeBtn) extremeBtn.href = "/academy/extreme/" + (Math.min(prog.extreme + 1, 10));
 }
 
-    function applyCardState(card, solved, total, unlocked) {
-      const bar = card.querySelector('.progress-bar span');
-      const txt = card.querySelector('.progress-text span');
-      const status = card.querySelector('.status');
-      solved = Math.max(0, Math.min(total, solved|0));
-      bar.style.width = (solved/total*100) + '%';
-      txt.textContent = solved + " / " + total + " solved";
-      if (unlocked) {
-        card.classList.remove("locked");
-        status.textContent = solved >= total ? "Completed" : "Unlocked";
-      } else {
-        card.classList.add("locked");
-        status.textContent = "Locked";
-      }
+function applyCardState(card, solved, total, unlocked) {
+  const bar = card.querySelector('.progress-bar span');
+  const txt = card.querySelector('.progress-text span');
+  const status = card.querySelector('.status');
+  const btn = card.querySelector('.start-btn');
+
+  solved = Math.max(0, Math.min(total, solved|0));
+  bar.style.width = (solved/total*100) + '%';
+  txt.textContent = solved + " / " + total + " solved";
+
+  if (unlocked) {
+    card.classList.remove("locked");
+    status.textContent = solved >= total ? "Completed" : "Unlocked";
+
+    if (btn) {
+      btn.removeAttribute('disabled');
+      btn.style.pointerEvents = '';
+      const label = solved >= total ? 'Review' : (solved > 0 ? 'Continue' : 'Start');
+      btn.innerHTML = `<i class="fa-solid ${solved >= total ? 'fa-check' : 'fa-play'}"></i> ${label}`;
     }
+  } else {
+    card.classList.add("locked");
+    status.textContent = "Locked";
 
-async function initAcademy() {
-  try {
-    const res = await fetch("/me", { credentials: "include" });
-    if (!res.ok) throw new Error("Not logged in");
-    const user = await res.json();
-
-    if (!user || !user.username) {
-      document.getElementById("signin-note").classList.remove("hidden");
-    } else {
-      const prog = user.academy_progress || { beginner: 0, mediocre: 0, expert: 0 };
-
-      applyCardState(document.querySelector('[data-tier="beginner"]'), prog.beginner || 0, 9, true);
-      applyCardState(document.querySelector('[data-tier="mediocre"]'), prog.mediocre || 0, 11, (prog.beginner||0) >= 9);
-      applyCardState(document.querySelector('[data-tier="expert"]'), prog.expert || 0, 10, (prog.mediocre||0) >= 11);
-
-      // update Start buttons to the current level
-      const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
-      const mediocreBtn = document.querySelector('[data-tier="mediocre"] .start-btn');
-      const expertBtn   = document.querySelector('[data-tier="expert"] .start-btn');
-
-      if (beginnerBtn) beginnerBtn.href = "/academy/beginner/" + Math.min((prog.beginner || 0) + 1, 9);
-      if (mediocreBtn) mediocreBtn.href = "/academy/mediocre/" + Math.min((prog.mediocre || 0) + 1, 11);
-      if (expertBtn)   expertBtn.href   = "/academy/expert/"   + Math.min((prog.expert   || 0) + 1, 10);
+    if (btn) {
+      btn.setAttribute('disabled', '');
+      btn.style.pointerEvents = 'none';
+      btn.innerHTML = `<i class="fa-solid fa-lock"></i> Start`;
     }
-  } catch {
-    document.getElementById("signin-note").classList.remove("hidden");
-  } finally {
-    document.querySelector('.loader')?.remove();
   }
 }
+
+// Map between frontend tier name (URL/display) and backend DB tier key
+const TIER_MAP = {
+  beginner: "beginner",
+  medium: "mediocre",
+  extreme: "expert"
+};
+
+async function initAcademy(){
+  const note = document.getElementById("signin-note");
+
+  // check login (keeps your current UX)
+  const me = await fetch("/me", { credentials:"include" }).then(r=>r.ok?r.json():null).catch(()=>null);
+  if (!me || !(me.username || me.user || me.email)) {
+    note?.classList.remove("hidden");
+    document.querySelector('.loader')?.remove();
+    return;
+  }
+
+  // fetch authoritative progress (solved/total/unlocked)
+  const prog = await fetch("/api/academy/progress",{credentials:"include"}).then(r=>r.ok?r.json():null).catch(()=>null);
+  if (!prog) { note?.classList.remove("hidden"); document.querySelector('.loader')?.remove(); return; }
+
+  const b = prog.beginner, m = prog.mediocre, e = prog.expert;
+
+  applyCardState(document.querySelector('[data-tier="beginner"]'), b.solved, b.total, b.unlocked);
+  applyCardState(document.querySelector('[data-tier="mediocre"]'), m.solved, m.total, m.unlocked);
+  applyCardState(document.querySelector('[data-tier="extreme"]'),  e.solved, e.total,  e.unlocked);
+
+  // next links from server counts
+  const nb = Math.min(b.solved+1, b.total);
+  const nm = Math.min(m.solved+1, m.total);
+  const ne = Math.min(e.solved+1, e.total);
+  const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
+  const mediumBtn   = document.querySelector('[data-tier="mediocre"] .start-btn');
+  const extremeBtn  = document.querySelector('[data-tier="extreme"] .start-btn');
+  if (beginnerBtn) beginnerBtn.href = `/academy/beginner/${nb}`;
+  if (mediumBtn)   mediumBtn.href   = `/academy/medium/${nm}`;
+  if (extremeBtn)  extremeBtn.href  = `/academy/extreme/${ne}`;
+
+  document.querySelector('.loader')?.remove();
+}
+async function initAcademy(){
+  const note = document.getElementById("signin-note");
+
+  // check login (keeps your current UX)
+  const me = await fetch("/me", { credentials:"include" }).then(r=>r.ok?r.json():null).catch(()=>null);
+  if (!me || !(me.username || me.user || me.email)) {
+    note?.classList.remove("hidden");
+    document.querySelector('.loader')?.remove();
+    return;
+  }
+
+  // fetch authoritative progress (solved/total/unlocked)
+  const prog = await fetch("/api/academy/progress",{credentials:"include"}).then(r=>r.ok?r.json():null).catch(()=>null);
+  if (!prog) { note?.classList.remove("hidden"); document.querySelector('.loader')?.remove(); return; }
+
+  const b = prog.beginner, m = prog.mediocre, e = prog.expert;
+
+  applyCardState(document.querySelector('[data-tier="beginner"]'), b.solved, b.total, b.unlocked);
+  applyCardState(document.querySelector('[data-tier="mediocre"]'), m.solved, m.total, m.unlocked);
+  applyCardState(document.querySelector('[data-tier="extreme"]'),  e.solved, e.total,  e.unlocked);
+
+  // next links from server counts
+  const nb = Math.min(b.solved+1, b.total);
+  const nm = Math.min(m.solved+1, m.total);
+  const ne = Math.min(e.solved+1, e.total);
+  const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
+  const mediumBtn   = document.querySelector('[data-tier="mediocre"] .start-btn');
+  const extremeBtn  = document.querySelector('[data-tier="extreme"] .start-btn');
+  if (beginnerBtn) beginnerBtn.href = `/academy/beginner/${nb}`;
+  if (mediumBtn)   mediumBtn.href   = `/academy/medium/${nm}`;
+  if (extremeBtn)  extremeBtn.href  = `/academy/extreme/${ne}`;
+
+  document.querySelector('.loader')?.remove();
+}
+
 
     document.addEventListener("DOMContentLoaded", initAcademy);
   </script>

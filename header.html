@@ -158,14 +158,18 @@
 
 <div class="user-actions">
   <span id="header-user-info" class="user-info"></span>
-  <a href="/login-page.html" id="login-link" class="auth-link"
-   onclick="sessionStorage.setItem('postLoginRedirect', location.href)">Login/Register</a>
 
+  <!-- Shown when logged out -->
+  <a href="/login-page.html" id="login-link" class="auth-link"
+     onclick="sessionStorage.setItem('postLoginRedirect', location.href)">Login/Register</a>
+
+  <!-- Shown when logged in -->
   <div id="account-dropdown" class="dropdown" style="display: none;">
     <button class="auth-link dropdown-toggle">Account ▾</button>
     <div class="dropdown-menu">
-      <a href="/profile">Profile</a>
+      <a href="/profile" id="account-link">Profile</a>
       <a href="/account.html">Settings</a>
+      <a href="javascript:void(0)" id="logout-btn">Logout</a> <!-- 🔑 added -->
     </div>
   </div>
 </div>

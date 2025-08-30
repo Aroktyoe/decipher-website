@@ -3,12 +3,22 @@
 <head>
 <!-- Google Tag Manager -->
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const gtm = document.createElement("script");
+    gtm.src = "https://www.googletagmanager.com/gtm.js?id=GTM-5QWRN8QL";
+    gtm.async = true;
+    document.head.appendChild(gtm);
+  }, 2000); // delay GTM by 2s
+});
+</script>
 <!-- End Google Tag Manager -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</noscript>
   <meta charset="UTF-8">
   <meta name="google-adsense-account" content="ca-pub-5556863026084584">
   <link rel="icon" href="decipher_logo.png">
@@ -16,8 +26,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <title>DECIPHER - Leaderboard</title>
   <link href="index2.css" rel="stylesheet" type="text/css" media="all">
   <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap">
+</noscript>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
    crossorigin="anonymous"></script>
 </head>
@@ -104,9 +118,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </style>
 </head>
 <body>
-<div id="header-placeholder"></div>
-
-<div id="mobile-nav-placeholder"></div>
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
 
   <div class="container">
     <h1>Leaderboard (top 50)</h1>

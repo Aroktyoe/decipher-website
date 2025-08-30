@@ -4,6 +4,11 @@
   <!-- Google Tag Manager -->
   <script src="/js/googleTags.js"></script>
   <!-- End Google Tag Manager -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</noscript>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +20,12 @@
 
   <link rel="icon" href="decipher_logo.png">
   <link href="casino.css" rel="stylesheet" type="text/css" media="all">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap">
+</noscript>
+
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
@@ -51,9 +60,8 @@
     <i class="fas fa-arrow-up"></i>
   </div>
 
-<div id="header-placeholder"></div>
-
-<div id="mobile-nav-placeholder"></div>
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
 
 
       <li id="mobile-account" style="display: none;"><a href="/account.html">Account</a></li>
@@ -236,6 +244,7 @@
   <script type="module" src="/js/autoclaim.js"></script>
   <!--<script type="module" src="/js/games/1000button.js?v=2"></script>-->
   <script type="module" src="/js/games/wheel.js"></script>
-  <script src="compiledjs.js"></script>
+  <script src="compiledjs.js" defer></script>
+<script src="header.js" defer></script>
 </body>
 </html>

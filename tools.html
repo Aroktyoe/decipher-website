@@ -8,14 +8,23 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
   <!-- End Google Tag Manager -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</noscript>
   <meta charset="UTF-8">
   <meta name="google-adsense-account" content="ca-pub-5556863026084584">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DECIPHER Tools</title>
   <link rel="icon" href="decipher_logo.png">
   <link href="index2.css" rel="stylesheet" type="text/css" media="all">
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap">
+</noscript>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
   <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
   <script defer src="/tools.js"></script>
@@ -99,9 +108,8 @@ main.container section button:hover {
   <div class="loader"><div class="loader-spinner"></div></div>
   <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
-<div id="header-placeholder"></div>
-
-<div id="mobile-nav-placeholder"></div>
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
 
   <main class="container">
     <h1>🛠️ Cryptographic Tools</h1>
@@ -133,6 +141,7 @@ main.container section button:hover {
     </div>
   </footer>
 
-  <script src="compiledjs.js"></script>
+  <script src="compiledjs.js" defer></script>
+<script src="header.js" defer></script>
 </body>
 </html>

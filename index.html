@@ -3,12 +3,22 @@
   <head>
 <!-- Google Tag Manager -->
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    const gtm = document.createElement("script");
+    gtm.src = "https://www.googletagmanager.com/gtm.js?id=GTM-5QWRN8QL";
+    gtm.async = true;
+    document.head.appendChild(gtm);
+  }, 2000); // delay GTM by 2s
+});
+</script>
 <!-- End Google Tag Manager -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</noscript>
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-5556863026084584">
     <link rel="icon" href="decipher_logo.png">
@@ -17,7 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="keywords" content="cryptography tools, online decoder, cipher solver, decipher tools, puzzle solving, decode ciphers, encryption tools, cryptography puzzles, decipher, dcode, ae27ff, notpron, cicada, 3301, decrypt, encrypt, free">
 <title>DECIPHER – Cryptography Tools</title>
     <link href="index2.css" rel="stylesheet" type="text/css" media="all">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap&text=CryptographyToolsCiphersDecodersatDECIPHER" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
@@ -35,7 +46,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ]
       }
       </script>
+      <link rel="preload" 
+      href="https://fonts.gstatic.com/s/exo2/v10/xyz123.woff2" 
+      as="font" type="font/woff2" crossorigin>
   </head>
+  <style>
+    body {
+  font-family: 'Exo 2', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+@media (max-width: 768px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+}
+
 </style>
   <body>
 <!-- Google Tag Manager (noscript) -->
@@ -52,14 +77,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <i class="fas fa-arrow-up"></i>
     </div>
     
-<div id="header-placeholder"></div>
-    
-    <div id="mobile-nav-placeholder"></div>
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
     
       <main>
       <h1>Cryptography Tools, Ciphers, and Decoders at DECIPHER</h1>
       <p class="subtitle">Your resource for cryptography tools, symbols, ciphers, and puzzles</p>
-      <p class="hide-on-mobile" style="text-align:center;">On this website you can find free online tools and decoding resources that will help you solve decoding puzzles, you can find resources to help you learn codebreaking techniques and learn how to identify symbol ciphers and textual ciphers. You can test your skill at our very own decoding puzzles and put your name on the leaderboard! If you have resources or ideas fitting to the site, contact me on Discord or by Email :)</p>
+      <p class="desktop-only" style="text-align:center;">On this website you can find free online tools and decoding resources that will help you solve decoding puzzles, you can find resources to help you learn codebreaking techniques and learn how to identify symbol ciphers and textual ciphers. You can test your skill at our very own decoding puzzles and put your name on the leaderboard! If you have resources or ideas fitting to the site, contact me on Discord or by Email :)</p>
+      <p class="mobile-only" style="text-align:center;">Free tools and puzzles to learn cryptography</p>
       <link rel="canonical" href="https://decipher.wiki/">
       
       <div class="search-container">
@@ -165,7 +190,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
       </div>
     </footer>
-    <script src="compiledjs.js"></script>
+    <script src="compiledjs.js" defer></script>
+<script src="header.js" defer></script>
     <script>
       const searchInput = document.getElementById('search-input');
       const searchIcon = document.querySelector('.search-icon');
@@ -183,5 +209,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       searchIcon.addEventListener('click', triggerSearch);
     </script>
+    <script>
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      document.body.classList.add("fonts-loaded");
+    });
+  }
+</script>
   </body>
 </html>

@@ -1,32 +1,15 @@
-// Force hide loader even if load event fails
-document.addEventListener('DOMContentLoaded', function() {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 500);
-  }
+// ---------------- Loader ----------------
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.loader')?.classList.add('hidden');
 });
 
-// Fallback to hide loader after fixed time
+// Fallback in case something goes wrong
 setTimeout(() => {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    loader.classList.add('hidden');
-  }
+  document.querySelector('.loader')?.classList.add('hidden');
 }, 2000);
 
-// Loading spinner
-window.addEventListener('load', function() {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    loader.classList.add('hidden');
-  }
-});
-
-// Back to top button
+// ---------------- Back to top button ----------------
 const backToTopButton = document.getElementById('back-to-top');
-
 if (backToTopButton) {
   window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
@@ -35,26 +18,21 @@ if (backToTopButton) {
       backToTopButton.classList.remove('visible');
     }
   });
-  
+
   backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
+// ---------------- Mobile dropdown toggle ----------------
 document.addEventListener('DOMContentLoaded', () => {
-  // Dropdown toggle (fixed)
   document.querySelectorAll('.mobile-nav .dropdown-toggle').forEach(button => {
     button.addEventListener('click', (e) => {
       e.stopPropagation();
-      const parent = button.closest('.dropdown');
-      parent.classList.toggle('open');
+      button.closest('.dropdown')?.classList.toggle('open');
     });
   });
 
-  // Close if clicking outside
   document.addEventListener('click', () => {
     document.querySelectorAll('.mobile-nav .dropdown.open').forEach(drop => {
       drop.classList.remove('open');
@@ -62,50 +40,47 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// ---------------- Header + Navbar ----------------
 window.addEventListener("DOMContentLoaded", () => {
-  // Load the full navbar
+  // Load the full navbar AFTER paint
+  requestAnimationFrame(() => {
     fetch("/pc-navbar.html")
       .then(res => res.text())
       .then(html => {
         const container = document.getElementById("header-placeholder");
+        if (!container) return;
         container.innerHTML = html;
 
         const links = container.querySelectorAll("nav.main-nav a");
         const path = window.location.pathname.replace(/\/$/, "");
-
         links.forEach(link => {
           const href = link.getAttribute("href").replace(/\/$/, "");
-
-          if (
-            (href === "" && path === "") || // exact match for "/"
-            (href !== "" && (path === href || path.startsWith(href + "/")))
-          ) {
+          if ((href === "" && path === "") || (href !== "" && (path === href || path.startsWith(href + "/")))) {
             link.classList.add("active");
           }
         });
 
-      // Load header auth slot *after* navbar is injected
-      fetch("/header.html", { headers: { "X-Original-Request": "true" } })
-        .then(res => res.text())
-        .then(html => {
-          const slot = document.getElementById("header-auth-slot");
-          if (slot) {
+        // Load header auth slot AFTER navbar
+        fetch("/header.html", { headers: { "X-Original-Request": "true" } })
+          .then(res => res.text())
+          .then(html => {
+            const slot = document.getElementById("header-auth-slot");
+            if (!slot) return;
             slot.innerHTML = html;
+
             const script = document.createElement("script");
             script.src = "/header.js?v=" + Date.now();
             script.onload = () => {
-              setupHeader();
+              if (typeof setupHeader === "function") setupHeader();
 
               const themeToggle = document.getElementById('theme-toggle');
               if (themeToggle) {
                 const themeIcon = themeToggle.querySelector('i');
                 const savedTheme = localStorage.getItem('theme');
-
                 if (savedTheme === 'light') {
                   document.body.classList.add('light-theme');
                   themeIcon.classList.replace('fa-moon', 'fa-sun');
                 }
-
                 themeToggle.addEventListener('click', () => {
                   const isLight = document.body.classList.toggle('light-theme');
                   localStorage.setItem('theme', isLight ? 'light' : 'dark');
@@ -115,63 +90,65 @@ window.addEventListener("DOMContentLoaded", () => {
               }
             };
             document.body.appendChild(script);
-          }
-        });
-    });
+          });
+      });
+  });
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+// ---------------- Background video ----------------
+window.addEventListener("load", () => {
   const skipVideoPaths = ["/account.html", "/login-page.html", "/casino"];
   if (skipVideoPaths.includes(window.location.pathname)) return;
 
-  const video = document.createElement("video");
-  video.id = "bg-video";
-  video.autoplay = true;
-  video.muted = true;
-  video.loop = true;
-  video.setAttribute("playsinline", "");
-  video.playsInline = true;
+  setTimeout(() => { // delay video so it doesn't block LCP
+    const video = document.createElement("video");
+    video.id = "bg-video";
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.setAttribute("playsinline", "");
+    video.playsInline = true;
 
-  const source = document.createElement("source");
-  source.src = "https://decipher.wiki/effects.mp4";
-  source.type = "video/mp4";
-  video.appendChild(source);
-  document.body.prepend(video);
+    const source = document.createElement("source");
+    source.src = "https://decipher.wiki/effects.mp4";
+    source.type = "video/mp4";
+    video.appendChild(source);
+    document.body.prepend(video);
 
-  video.addEventListener("loadeddata", () => {
-    video.playbackRate = 0.75;
-    if (localStorage.getItem("bg-video-paused") === "true") {
-      video.pause();
-    }
-  });
-
-  const togglePlaybackIfBackground = (e) => {
-    const target = e.target;
-    const isBackground = !target.closest("a, button, input, textarea, video");
-
-    if (isBackground && (target.nodeName === "MAIN" || target.nodeName === "BODY")) {
-      if (video.paused) {
-        video.play();
-        localStorage.setItem("bg-video-paused", "false");
-      } else {
+    video.addEventListener("loadeddata", () => {
+      video.playbackRate = 0.75;
+      if (localStorage.getItem("bg-video-paused") === "true") {
         video.pause();
-        localStorage.setItem("bg-video-paused", "true");
       }
-    }
-  };
+    });
 
-  document.body.addEventListener("click", togglePlaybackIfBackground);
-  document.body.addEventListener("touchstart", togglePlaybackIfBackground);
+    const togglePlaybackIfBackground = (e) => {
+      const target = e.target;
+      const isBackground = !target.closest("a, button, input, textarea, video");
+      if (isBackground && (target.nodeName === "MAIN" || target.nodeName === "BODY")) {
+        if (video.paused) {
+          video.play();
+          localStorage.setItem("bg-video-paused", "false");
+        } else {
+          video.pause();
+          localStorage.setItem("bg-video-paused", "true");
+        }
+      }
+    };
+
+    document.body.addEventListener("click", togglePlaybackIfBackground);
+    document.body.addEventListener("touchstart", togglePlaybackIfBackground);
+  }, 1000);
 });
 
-
-
+// ---------------- Mobile nav ----------------
 fetch("mobile-nav.html")
   .then(res => res.text())
   .then(html => {
-    document.getElementById("mobile-nav-placeholder").innerHTML = html;
+    const placeholder = document.getElementById("mobile-nav-placeholder");
+    if (!placeholder) return;
+    placeholder.innerHTML = html;
 
-    // Wait for both mobile-nav and hamburger to exist before attaching
     const tryAttach = () => {
       const closeNavBtn = document.getElementById('close-nav');
       const mobileNav = document.getElementById('mobile-nav');
@@ -190,16 +167,13 @@ fetch("mobile-nav.html")
       }
     };
 
-    setTimeout(tryAttach, 100); // slight delay ensures DOM update
+    setTimeout(tryAttach, 100);
   });
 
-
-  // Theme toggle
+// ---------------- Theme toggle ----------------
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
   const themeIcon = themeToggle.querySelector('i');
-
-  // Set initial theme from localStorage
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'light') {
     document.body.classList.add('light-theme');
@@ -210,105 +184,75 @@ if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light-theme');
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-    if (isLight) {
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-    } else {
-      themeIcon.classList.remove('fa-sun');
-      themeIcon.classList.add('fa-moon');
-    }
+    themeIcon.classList.toggle('fa-sun', isLight);
+    themeIcon.classList.toggle('fa-moon', !isLight);
   });
 }
 
-  // Button hover effects with animations
-  const buttons = document.querySelectorAll('.button6');
-  
-  buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-      button.style.transform = 'translateY(-5px)';
-      button.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      button.style.transform = '';
-      button.style.boxShadow = '';
-    });
-
-    // Add pulse animation on page load
-    setTimeout(() => {
-      button.classList.add('pulse');
-      setTimeout(() => {
-        button.classList.remove('pulse');
-      }, 1000);
-    }, Math.random() * 1000 + 1000);
+// ---------------- Button hover animations ----------------
+document.querySelectorAll('.button6').forEach(button => {
+  button.addEventListener('mouseenter', () => {
+    button.style.transform = 'translateY(-5px)';
+    button.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
   });
+  button.addEventListener('mouseleave', () => {
+    button.style.transform = '';
+    button.style.boxShadow = '';
+  });
+  setTimeout(() => {
+    button.classList.add('pulse');
+    setTimeout(() => button.classList.remove('pulse'), 1000);
+  }, Math.random() * 1000 + 1000);
+});
 
-  // Add subtle animation to logo
-  const logoIcon = document.querySelector('.logo-icon');
-  if (logoIcon) {
-    logoIcon.addEventListener('mouseenter', () => {
-      logoIcon.style.filter = 'brightness(1.3) contrast(1.2)';
-    });
-    
-    logoIcon.addEventListener('mouseleave', () => {
-      logoIcon.style.filter = 'brightness(1.2) contrast(1.1)';
-    });
-  }
+// ---------------- Logo hover animation ----------------
+const logoIcon = document.querySelector('.logo-icon');
+if (logoIcon) {
+  logoIcon.addEventListener('mouseenter', () => {
+    logoIcon.style.filter = 'brightness(1.3) contrast(1.2)';
+  });
+  logoIcon.addEventListener('mouseleave', () => {
+    logoIcon.style.filter = 'brightness(1.2) contrast(1.1)';
+  });
+}
 
-
-    const closeNavBtn = document.getElementById('close-nav');
-    const mobileNav = document.getElementById('mobile-nav');
-    if (closeNavBtn && mobileNav) {
-      closeNavBtn.addEventListener('click', () => {
-        mobileNav.classList.remove('open');
+// ---------------- Collapsible sections ----------------
+document.querySelectorAll(".collapsible").forEach(button => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("active");
+    if (button.style.maxHeight) {
+      button.style.maxHeight = null;
+      button.style.marginTop = "0px";
+    } else {
+      document.querySelectorAll(".collapsible").forEach(btn => {
+        btn.style.maxHeight = null;
+        btn.style.marginTop = "0px";
       });
+      button.style.maxHeight = button.scrollHeight + "px";
+      button.style.marginTop = "3px";
     }
-
-  document.querySelectorAll(".collapsible").forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.toggle("active");
-      
-      if (button.style.maxHeight) { // turn off
-        button.style.maxHeight = null;
-        button.style.marginTop = "0px";
-      } else { // turn on
-        document.querySelectorAll(".collapsible").forEach(btn => {
-          btn.style.maxHeight = null; // turns everything off
-          btn.style.marginTop = "0px";
-        });
-        button.style.maxHeight = button.scrollHeight + "px";
-        button.style.marginTop = "3px";
-      }
-    });
   });
+});
 
-  function getCSRFToken() {
-    const match = document.cookie.match(/csrf_access_token=([^;]+)/);
-    return match ? match[1] : '';
-  }
+// ---------------- CSRF Helper ----------------
+function getCSRFToken() {
+  const match = document.cookie.match(/csrf_access_token=([^;]+)/);
+  return match ? match[1] : '';
+}
 
+// ---------------- Link toggle ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const settingKey = "openLinksInNewTab";
   const toggle = document.getElementById("link-toggle");
 
-  // If toggle exists (only on settings page), apply state and listen to changes
   if (toggle) {
     const savedSetting = localStorage.getItem(settingKey);
-
-    // Explicitly set true/false
-    if (savedSetting === "false") {
-      toggle.checked = false;
-    } else {
-      toggle.checked = true; // default if missing or "true"
-    }
-
+    toggle.checked = savedSetting !== "false"; // default true
     toggle.addEventListener("change", () => {
       localStorage.setItem(settingKey, toggle.checked ? "true" : "false");
     });
   }
 
-  // Set target on all links
   const shouldOpenInNewTab = localStorage.getItem(settingKey) !== "false";
   document.querySelectorAll("a[href]").forEach(link => {
     if (!link.hasAttribute("target")) {

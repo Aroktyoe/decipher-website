@@ -42,7 +42,7 @@
     if (res.ok) user = await res.json();
   } catch {}
   if (!user || !(user.username || user.user || user.email)) {
-    block(`You must be signed in to view Academy levels.`, "/login-page.shtml");
+    block(`You must be signed in to view Academy levels.`, "/login-page.html");
   }
 
   // 2) authoritative progress from server

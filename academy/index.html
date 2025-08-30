@@ -8,6 +8,11 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5QWRN8QL');</script>
   <!-- End Google Tag Manager -->
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</noscript>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -46,9 +51,8 @@
   <div class="loader"><div class="loader-spinner"></div></div>
   <div class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
-  <div id="header-placeholder"></div>
-  <div id="mobile-nav-placeholder"></div>
-
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
   <main>
     <h1 class="page-title">DECIPHER Academy</h1>
     <p class="subtitle">
@@ -59,7 +63,7 @@
     </p>
     <div id="signin-note" class="notice hidden">
       <strong><i class="fa-solid fa-circle-exclamation"></i> You must be signed in.</strong>
-      <span> <a href="/login-page.shtml?redirect=/academy">Log in</a> or <a href="/register.shtml">create an account</a> to start the Academy.</span>
+      <span> <a href="/login-page.html?redirect=/academy">Log in or Register</a> to start the Academy.</span>
     </div>
 
     <section class="tiers-grid" id="tiers">
@@ -207,41 +211,6 @@ async function initAcademy(){
 
   document.querySelector('.loader')?.remove();
 }
-async function initAcademy(){
-  const note = document.getElementById("signin-note");
-
-  // check login (keeps your current UX)
-  const me = await fetch("/me", { credentials:"include" }).then(r=>r.ok?r.json():null).catch(()=>null);
-  if (!me || !(me.username || me.user || me.email)) {
-    note?.classList.remove("hidden");
-    document.querySelector('.loader')?.remove();
-    return;
-  }
-
-  // fetch authoritative progress (solved/total/unlocked)
-  const prog = await fetch("/api/academy/progress",{credentials:"include"}).then(r=>r.ok?r.json():null).catch(()=>null);
-  if (!prog) { note?.classList.remove("hidden"); document.querySelector('.loader')?.remove(); return; }
-
-  const b = prog.beginner, m = prog.mediocre, e = prog.expert;
-
-  applyCardState(document.querySelector('[data-tier="beginner"]'), b.solved, b.total, b.unlocked);
-  applyCardState(document.querySelector('[data-tier="mediocre"]'), m.solved, m.total, m.unlocked);
-  applyCardState(document.querySelector('[data-tier="extreme"]'),  e.solved, e.total,  e.unlocked);
-
-  // next links from server counts
-  const nb = Math.min(b.solved+1, b.total);
-  const nm = Math.min(m.solved+1, m.total);
-  const ne = Math.min(e.solved+1, e.total);
-  const beginnerBtn = document.querySelector('[data-tier="beginner"] .start-btn');
-  const mediumBtn   = document.querySelector('[data-tier="mediocre"] .start-btn');
-  const extremeBtn  = document.querySelector('[data-tier="extreme"] .start-btn');
-  if (beginnerBtn) beginnerBtn.href = `/academy/beginner/${nb}`;
-  if (mediumBtn)   mediumBtn.href   = `/academy/medium/${nm}`;
-  if (extremeBtn)  extremeBtn.href  = `/academy/extreme/${ne}`;
-
-  document.querySelector('.loader')?.remove();
-}
-
 
     document.addEventListener("DOMContentLoaded", initAcademy);
   </script>

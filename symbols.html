@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
 <!-- Google Tag Manager -->
 
 <script>
@@ -19,314 +19,601 @@ window.addEventListener("DOMContentLoaded", () => {
 <noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </noscript>
-    <meta charset="UTF-8">
-          <link rel="icon" href="decipher_logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Exo 2' rel='stylesheet'>
-    <title>DECIPHER</title>
-  </head>
-  <body>
+  <meta charset="UTF-8">
+  <meta name="google-adsense-account" content="ca-pub-5556863026084584">
+  <link rel="icon" href="decipher_logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DECIPHER - Symbol Reference List</title>
+  <meta name="description" content="Extensive list of symbol ciphers to help you identify your cipher!">
+  <meta name="keywords" content="Symbol cipher, symbols, cipher, decoding, symbol reference list, symbol cipher reference list, list of ciphers, cipher list, symbols list, pigpen, semaphore, code">
+  <link href="index2.css" rel="stylesheet" type="text/css" media="all">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap" 
+      as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap">
+</noscript>
+
+  <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
+   crossorigin="anonymous"></script>-->
+</head>
+<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QWRN8QL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-    <div id="header-placeholder"></div>
+
+  <script>
+    document.getElementById('close-nav').addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+  });
+  </script>
+
+  <style>
+
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+
+  .tool-categories.boxed {
+    display: block !important;           /* stop any grid/row wrap tricks */
+    white-space: normal !important;      /* in case nowrap is set in index2.css */
+    overflow-x: visible !important;
+    padding: 0 12px;
+  }
+
+  .symbol-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 16px 0;
+  }
+
+  .symbol-label {
+    font-size: 14px;
+    line-height: 1.3;
+    margin: 8px 0 6px;
+    word-break: break-word;
+  }
+
+  img.symbol {
+    display: block;
+    width: 100% !important;   /* fill container width */
+    max-width: 100% !important;
+    height: auto !important;  /* keep aspect ratio */
+    object-fit: contain;
+  }
+
+  /* neutralize any width tweaks from the ratio classes on mobile */
+  .normal-image, .wide-image, .extra-wide-image {
+    width: 100% !important;
+  }
+}
+
+    .ad-fixed {
+      position: absolute;
+      top: 120px;
+      width: 160px;
+      height: 600px;
+      z-index: 0;
+    }
+    .ad-left { left: 10px; }
+    .ad-right { right: 10px; }
+  
+    .ad-wrapper {
+      position: relative;
+      width: 160px;
+      height: 600px;
+      z-index: 1;
+    }
+  
+    .ad-wrapper ins {
+      position: relative;
+      z-index: 2;
+    }
+  
+    .ad-placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      padding: 10px;
+      border: 2px dotted purple;
+      color: purple;
+      background: rgba(187, 134, 252, 0.05);
+      text-align: center;
+      font-size: 13px;
+      font-style: italic;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  
+    @media (max-width: 1300px) {
+      .ad-fixed {
+        display: none;
+      }
+    }
+  </style>
+
+    <div class="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+{{ include "pc-navbar.html" }}
+{{ include "mobile-nav.html" }}
+
+  <!--
+
+  <div class="ad-fixed ad-left">
+    <div class="ad-wrapper">
+      <div class="ad-placeholder">ad would go here without adblocker :)</div>
+      <ins class="adsbygoogle"
+           style="display:block; height:600px; width:160px;"
+           data-ad-client="ca-pub-5556863026084584"
+           data-ad-slot="1283858161"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+    </div>
+  </div>
+  
+  <div class="ad-fixed ad-right">
+    <div class="ad-wrapper">
+      <div class="ad-placeholder">ad would go here without adblocker :)</div>
+      <ins class="adsbygoogle"
+           style="display:block; height:600px; width:160px;"
+           data-ad-client="ca-pub-5556863026084584"
+           data-ad-slot="1283858161"
+           data-ad-format="auto"
+           data-full-width-responsive="false"></ins>
+    </div>
+  </div>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.ad-wrapper').forEach(wrapper => {
+        const ad = wrapper.querySelector('ins');
+        const placeholder = wrapper.querySelector('.ad-placeholder');
+        if (!ad || ad.offsetHeight === 0 || getComputedStyle(ad).display === 'none') {
+          if (placeholder) {
+            placeholder.style.zIndex = '2';
+            placeholder.style.opacity = '1';
+            placeholder.style.pointerEvents = 'auto';
+          }
+        }
+      });
+    });
+  </script>
+  -->
+
+
+    <center><p> Sources are mostly:<a href = "https://dcode.fr"> dCode</a>, <a href = "https://kryptografie.de"> Kryptografie</a> </p> </center>
+    <div class="tool-categories boxed" style="text-align:center;">
+      <img src="https://decipher.wiki/symbols/7-segment-display-cipher.png" alt="7 Segment Display Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/abaddon-cipher.png" alt="Abaddon Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/alienese-cipher.png" alt="Alienese Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/alt-code-cipher.png" alt="Alt Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/alternian-cipher.jpg" alt="Alternian Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/amphibia-cipher.png" alt="Amphibia Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/angelic-script-or-celestial-alphabet.png" alt="Angelic Script Or Celestial Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/angelic_cipher-2.jpg" alt="Angelic Cipher 2 - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/angles-cipher.png" alt="Angles Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/antiker-code-cipher.png" alt="Antiker Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/arcadian-alphabet-cipher.png" alt="Arcadian Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/arthur-and-the-invisibles-alphabet-cipher.png" alt="Arthur And The Invisibles Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ath-alphabet-cipher.png" alt="Ath Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/atlantean-cipher.png" alt="Atlantean Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/aurebesh-alphabet-cipher.png" alt="Aurebesh Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/babylonian-cipher.gif" alt="Babylonian Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/baconian-cipher.png" alt="Baconian Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ballet-cipher.png" alt="Ballet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barbier-night-cipher.png" alt="Barbier Night Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-128-cipher.png" alt="Barcode 128 Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-39-cipher.png" alt="Barcode 39 Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-93.png" alt="Barcode 93 - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-kix-alphabet.png" alt="Barcode Kix Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-planet-top-numbers-barcode-postnet-bottom-numbers.png" alt="Barcode Planet Top Numbers Barcode Postnet Bottom Numbers - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/barcode-rm4scc.png" alt="Barcode Rm4Scc - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/baudot-murray-code-cipher.png" alt="Baudot Murray Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/betamaze-cipher.png" alt="Betamaze Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/bionocle-okoto-cipher.png" alt="Bionocle Okoto Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/birds-on-a-wire-cipher.png" alt="Birds On A Wire Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/box-code-cipher.png" alt="Box Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/brahmi-numbers-cipher.png" alt="Brahmi Numbers Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/braille.png" alt="Braille - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/brainfuck-language-cipher.png" alt="Brainfuck Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/chain-of-death-maxwell-grant-the-shadow-magazine-1934.png" alt="Chain Of Death Maxwell Grant The Shadow Magazine 1934 - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/chappe-code-cipher.png" alt="Chappe Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/chinese-code-cipher.png" alt="Chinese Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/cirth-alphabet-cipher.png" alt="Cirth Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/cisterian-numerals-monk-cipher.png" alt="Cisterian Numerals Monk Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/clock-cipher.png" alt="Clock Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/coldplay-cipher.png" alt="Coldplay Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/color-honey-cipher.png" alt="Color Honey Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/color-tokki-cipher.png" alt="Color Tokki Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/cryptic_calendar.png" alt="Cryptic Calendar - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/cuneiform-alphabet-cipher.png" alt="Cuneiform Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/cyrillic-numbers-cipher.png" alt="Cyrillic Numbers Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/daedric-cipher.png" alt="Daedric Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/daggers-alphabet-cipher.png" alt="Daggers Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dalecarlian-runes.png" alt="Dalecarlian Runes - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dancing-men-cipher.png" alt="Dancing Men Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/decabit-cipher-sections-of-10-and-converts-using-decimalascii-code.png" alt="Decabit Cipher Sections Of 10 And Converts Using Decimalascii Code - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dice-cipher.png" alt="Dice Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/digicode.png" alt="Digicode - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dinglehopper-cipher.png" alt="Dinglehopper Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dorabella-cipher.png" alt="Dorabella Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dotsies-ciphers.png" alt="Dotsies Ciphers - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/draconic-language-cipher.png" alt="Draconic Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dream-smp-cipher.jpg" alt="Dream Smp Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dwarf-runes-cipher-.png" alt="Dwarf Runes Cipher  - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/easycuneiform.png" alt="Easycuneiform - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/elder-futhark-runes-cipher.png" alt="Elder Futhark Runes Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/enochian-alphabet-cipher.png" alt="Enochian Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/eve-online-arg-cipher.jpg" alt="Eve Online Arg Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/five_needle_telegraph_cipher.png" alt="Five Needle Telegraph Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/flag-semaphore-cipher.png" alt="Flag Semaphore Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/flaps-cipher.png" alt="Flaps Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/fonicfonime-alphabet-cipher.png" alt="Fonicfonime Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/four-triangles-cipher.png" alt="Four Triangles Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/freman-cipher.png" alt="Freman Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/friederici-windows-cipher.png" alt="Friederici Windows Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/futurama-2-cipher.png" alt="Futurama 2 Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/futurama-alien-language-cipher.png" alt="Futurama Alien Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gallifreyan-alphabet-cipher.png" alt="Gallifreyan Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/game-theory-arg-cipher.jpg" alt="Game Theory Arg Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gargish-ultima-cipher.png" alt="Gargish Ultima Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gauss-and-webers-telegraph-cipher.png" alt="Gauss And Webers Telegraph Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gerudo-cipher.png" alt="Gerudo Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/giovanni-battista-palatino-cipher.png" alt="Giovanni Battista Palatino Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gnommish-cipher.png" alt="Gnommish Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gold-bug-cipher.png" alt="Gold Bug Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/goron-language-cipher.png" alt="Goron Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/gravity-falls-cipher.png" alt="Gravity Falls Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/halo-covenant-cipher.png" alt="Halo Covenant Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/halo-covenant-language.png" alt="Halo Covenant Language - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hebrew-numbers.png" alt="Hebrew Numbers - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hexahue-cipher.png" alt="Hexahue Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hieratic-numbers-cipher.png" alt="Hieratic Numbers Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/high-spirit-cipher.png" alt="High Spirit Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hittitite-alphabet-cipher.png" alt="Hittitite Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hobo-hieroglyphs-cipher-.png" alt="Hobo Hieroglyphs Cipher  - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hylian-1-breath-of-the-wild-cipher.png" alt="Hylian 1 Breath Of The Wild Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hylian-2-skyward-sword-cipher.png" alt="Hylian 2 Skyward Sword Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hylian-3-twilight-princess-cipher.png" alt="Hylian 3 Twilight Princess Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/hymnos-alphabet.png" alt="Hymnos Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ichingching-hexagrams.png" alt="Ichingching Hexagrams - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/inuktitut-cipher.png" alt="Inuktitut Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/iokharic-language-cipher.png" alt="Iokharic Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/itc-zapf-dingbats-font.png" alt="Itc Zapf Dingbats Font - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/jenks-arm-cipher.png" alt="Jenks Arm Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/jigsaw-puzzle-code-cipher.png" alt="Jigsaw Puzzle Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/jsfuck-code-cipher.png" alt="Jsfuck Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/kabouter-alphabet-cipher.png" alt="Kabouter Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/kaotican-alphabet.png" alt="Kaotican Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/kenny-code-cipher.png" alt="Kenny Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/klingon-language-cipher.png" alt="Klingon Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/klinzhai-alphabet-cipher.png" alt="Klinzhai Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/knot-notations.png" alt="Knot Notations - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/lingua-ignota-cipher.png" alt="Lingua Ignota Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/lorm-alphabet-cipher.png" alt="Lorm Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/lunar-alphabet.png" alt="Lunar Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/mandalorian-alphabet-cipher.png" alt="Mandalorian Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/mary-stuart-mary-queen-of-scots-cipher.png" alt="Mary Stuart Mary Queen Of Scots Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/matoran-alphabet-bionicles-cipher.png" alt="Matoran Alphabet Bionicles Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/mayan-numerals-cipher.png" alt="Mayan Numerals Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/maze-cipher.png" alt="Maze Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/mirror-digits.png" alt="Mirror Digits - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/moon-alphabet-cipher.png" alt="Moon Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/music-note-cipher.png" alt="Music Note Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/music-sheets-cipher.png" alt="Music Sheets Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/navy-signals-cipher.png" alt="Navy Signals Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/new-krytan-cipher.png" alt="New Krytan Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/nyctograph-cipher.png" alt="Nyctograph Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/oa-language.png" alt="Oa Language - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/oa-number-system.png" alt="Oa Number System - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/occultam-scripturam.png" alt="Occultam Scripturam - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ogham-cipher.png" alt="Ogham Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/oldcode-cipher.png" alt="Oldcode Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/old_hungarian_script.png" alt="Old Hungarian Script - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ook-cipher.png" alt="Ook Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ooo-code-cipher.png" alt="Ooo Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ophidean-cipher.png" alt="Ophidean Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/orkhon-alphabets.png" alt="Orkhon Alphabets - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/otherm-or-chozo-cipher.png" alt="Otherm Or Chozo Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/outer-rim-alien-cipher.png" alt="Outer Rim Alien Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/pasley-poles-telegraph-cipher.png" alt="Pasley Poles Telegraph Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/periodic-table-cipher.png" alt="Periodic Table Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/phoenician-cipher.png" alt="Phoenician Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/piet-codecipher.png" alt="Piet Codecipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/pigpen-masonic-cipher..png" alt="Pigpen Masonic Cipher. - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/planet-cipher-numbers.png" alt="Planet Cipher Numbers - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/polka-dot-cipher.png" alt="Polka Dot Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/prussian-semaphore-cipher.png" alt="Prussian Semaphore Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/quadoo-alphabet-cipher.png" alt="Quadoo Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/red-herring-cipher.jpg" alt="Red Herring Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/rellanic-elvish-alphabet-cipher.png" alt="Rellanic Elvish Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/rhesus-a-cipher-.png" alt="Rhesus A Cipher  - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/road-signs-traffic-signs-cipher.png" alt="Road Signs Traffic Signs Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/rogue-tines-cipher.png" alt="Rogue Tines Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/rosicrucian-cipher.png" alt="Rosicrucian Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/san-lucas-code-cipher.png" alt="San Lucas Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/semaphore-trousers-cipher.png" alt="Semaphore Trousers Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/sheikah-alphabet.png" alt="Sheikah Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/sheikah-language-cipher.png" alt="Sheikah Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/sign-language-cipher.png" alt="Sign Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/simlish-language-cipher.png" alt="Simlish Language Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/slash-pipe-code-cipher.png" alt="Slash Pipe Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/slash_and_pipe_code.png" alt="Slash And Pipe Code - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/solresol-cipher.png" alt="Solresol Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/space-invader-cipher.png" alt="Space Invader Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/standard-galactic-alphabet-cipher.png" alt="Standard Galactic Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/stargate-ancients-cipher.png" alt="Stargate Ancients Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/steinheil-cipher.png" alt="Steinheil Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/symbol-font-cipher.png" alt="Symbol Font Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/symbol-font.png" alt="Symbol Font - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tai-xuan-jing-tetragrams.png" alt="Tai Xuan Jing Tetragrams - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tally-unary-marks.png" alt="Tally Unary Marks - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/templars-cipher.png" alt="Templars Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tengwar-elvish-cipher.png" alt="Tengwar Elvish Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/terran-codex-cipher.jpg" alt="Terran Codex Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tetragrammaton-cipher.png" alt="Tetragrammaton Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/theban-alphabet-cipher.png" alt="Theban Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/three-square-cipher.png" alt="Three Square Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tic-tac-toe-cipher.png" alt="Tic Tac Toe Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tifinagh-alphabet-v1.png" alt="Tifinagh Alphabet V1 - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tifinagh-alphabet-v2.png" alt="Tifinagh Alphabet V2 - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tom-tom-code-cipher-uses-.png" alt="Tom Tom Code Cipher Uses  - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/unknown-pokemon-cipher.png" alt="Unknown Pokemon Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/utopian-code-cipher.png" alt="Utopian Code Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/visitor-alphabet-cipher.png" alt="Visitor Alphabet Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/voynich-eva-cipher.png" alt="Voynich Eva Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/vulcan-script-cipher.png" alt="Vulcan Script Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/wakanda-alphabet.png" alt="Wakanda Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/wakfu-draconic-cipher.jpg" alt="Wakfu Draconic Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/webdings-cipher.png" alt="Webdings Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/wingdings-cipher.png" alt="Wingdings Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ying-yang-alphaline-cipher.png" alt="Ying Yang Alphaline Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/zodiac-times-herald-cipher.png" alt="Zodiac Times Herald Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/zoran-alphabet.png" alt="Zoran Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/nyctographic-alphabet.png" alt="Nyctographic Alphabet - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/JAB-code.png" alt="Jab Code - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/fnaf-security-breach-wall-cipher.png" alt="Fnaf Security Breach Wall Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/Alterna-cipher.png" alt="Alterna Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/alphabetum-kaldeorum-cipher.png" alt="Alphabetum Kaldeorum Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dothraki-cipher.png" alt="Dothraki Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/tolkien-goblin-cipher.png" alt="Tolkien Goblin Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/al-bhed-cipher.png" alt="Al Bhed Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/genshin-impact-ciphers.png" alt="Genshin Impact Ciphers - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/egyptian-hieroglyphics.png" alt="Egyptian Hieroglyphics - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/outer-rim-basic-cipher.png" alt="Outer Rim Basic Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/stray-cipher.png" alt="Stray Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/monklish-cipher.png" alt="Monklish Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/mourier-cipher.png" alt="Mourier Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/d'ni-numerals.png" alt="D'Ni Numerals - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/kryptonian-cipher.png" alt="Kryptonian Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/circular-glyphs-cipher.png" alt="Circular Glyphs Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/angels-and-genii-cipher.png" alt="Angels And Genii Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/rata-alada-cipher.png" alt="Rata Alada Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/malachim-cipher.png" alt="Malachim Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/passing-of-the-river-cipher.png" alt="Passing Of The River Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/kirby-forgotten-land-cipher.png" alt="Kirby Forgotten Land Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/ahmaric-cipher.png" alt="Ahmaric Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/dada-urka-cipher.png" alt="Dada Urka Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/copiale-cipher.png" alt="Copiale Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+      <img src="https://decipher.wiki/symbols/Watch-Dogs-2-Shuffler-Cipher.png" alt="Watch Dogs 2 Shuffler Cipher - cipher symbol image used in cryptography and codes" class="symbol">
+    </div>
+  </main>
+<footer>
+  <div class="contact-info">
+    <p>Contact: <a href="mailto:aroktyoe@gmail.com">aroktyoe@gmail.com</a></p>
+    <p>Support us on <a href="https://www.patreon.com/decipher_community" target="_blank">Patreon</a></p>
+    <p>Terms: <a href="https://decipher.wiki/terms" target="_blank">Terms</a></p>
+    <p>Privacy Policy: <a href="https://decipher.wiki/privacy" target="_blank">Privacy</a></p>
+  </div>
+  <!--
+
+  <div class="ad-container">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5556863026084584" data-ad-slot="8801587236" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+</footer>
+
+<script src="/tool-category-loader.js"></script>
+<script src="/theme-toggle.js"></script>
+<script src="/mobile-nav-toggle.js"></script>
+<script src="/header-loader.js"></script>
+<script src="/scroll-effects.js"></script>
+<script src="compiledjs.js" defer></script>
+<script src="header.js" defer></script>
+<script>
+  // Force hide loader even if load event fails
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 500);
+    }
+  });
+
+  // Fallback to hide loader after fixed time
+  setTimeout(() => {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  }, 2000);
+
+  // Loading spinner
+  window.addEventListener('load', function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.classList.add('hidden');
+    }
+  });
+
+  // Back to top button
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Mobile menu toggle
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const mobileNav = document.getElementById('mobile-nav');
+  
+  if (hamburgerMenu && mobileNav) {
+    hamburgerMenu.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  }
+
+  // Theme toggle
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  const themeIcon = themeToggle.querySelector('i');
+
+  // Set initial theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+    if (isLight) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
+  });
+}
+
+  // Button hover effects with animations
+  const buttons = document.querySelectorAll('.button6');
+  
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      button.style.transform = 'translateY(-5px)';
+      button.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.transform = '';
+      button.style.boxShadow = '';
+    });
+
+    // Add pulse animation on page load
+    setTimeout(() => {
+      button.classList.add('pulse');
+      setTimeout(() => {
+        button.classList.remove('pulse');
+      }, 1000);
+    }, Math.random() * 1000 + 1000);
+  });
+
+  // Add subtle animation to logo
+  const logoIcon = document.querySelector('.logo-icon');
+  if (logoIcon) {
+    logoIcon.addEventListener('mouseenter', () => {
+      logoIcon.style.filter = 'brightness(1.3) contrast(1.2)';
+    });
+    
+    logoIcon.addEventListener('mouseleave', () => {
+      logoIcon.style.filter = 'brightness(1.2) contrast(1.1)';
+    });
+  }
+
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.tool-categories.boxed');
+    const images = Array.from(document.querySelectorAll('img.symbol'));
+  
+    let loaded = 0;
+    const entries = [];
+  
+    const checkAllLoaded = () => {
+      if (++loaded === images.length) {
+        entries.sort((a, b) => b.ratio - a.ratio);
+        container.innerHTML = '';
+        entries.forEach(entry => container.appendChild(entry.wrapper));
+      }
+    };
+  
+    images.forEach(img => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'symbol-entry';
+  
+      const label = document.createElement('div');
+      label.className = 'symbol-label';
+      label.textContent = img.src.split('/').pop().split('.')[0] + ":";
+  
+      wrapper.appendChild(label);
+      wrapper.appendChild(img);
+  
+      const onReady = () => {
+        const ratio = img.naturalWidth / img.naturalHeight;
+        if (ratio > 5) wrapper.classList.add('extra-wide-image');
+        else if (ratio > 3) wrapper.classList.add('wide-image');
+        else wrapper.classList.add('normal-image');
+  
+        entries.push({ wrapper, ratio });
+        checkAllLoaded();
+      };
+  
+      if (img.complete) onReady();
+      else img.onload = onReady;
+    });
+  });
+  </script>
+
 <script>
   fetch("/header.html", { headers: { "X-Original-Request": "true" } })
     .then(res => res.text())
     .then(html => {
-      document.getElementById("header-placeholder").innerHTML = html;
-      console.log("✅ Header loaded");
+      document.getElementById("header-auth-slot").innerHTML = html;
       const script = document.createElement("script");
       script.src = "/header.js?v=" + Date.now();
-      script.onload = () => {
-        console.log("✅ Script loaded");
-        setupHeader();
-      };
+      script.onload = () => setupHeader();
       document.body.appendChild(script);
     });
 </script>
 
-  <style>
-  body {
-  background-color:#49698C;
-  color:#fff7fe;
-  font-family: "Exo 2";
-}
-        .button2 {
-            font-family: "Exo 2";
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: capitalize;
-            background-color: #E6F2FF;
-            color: #49698C;
-            border: 2px solid;
-            border-color: #263443;
-            padding: 0.25em 0.5em;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top:10px;
-        }
-.symbol{
-  max-width: 450px;
-  border:2px solid;
-  border-color:#fff7fe;
-  border-radius:4px;
-  margin: auto;
-  }
-  .table {
-  display: table;
-  margin: auto;
-  vertical-align: middle;
-  text-align: center;
-}
-</style>
-    <center>
-    <a href = "https://decipher.wiki/" class="button2" style="text-decoration:none;"><strong>Home</strong></a>
-    <a href="https://discord.gg/GgRAYJesyY" style="text-decoration: none; display: inline-block;" class="button2">
-  <img src="/discordlogo.jpg" class="logo" style="height: 20px; width: 20px; margin-top:px; margin-bottom:-5px;">
-  <strong>Join DECIPHER Discord here</strong>
-</a>
-    </center>
-    
-<nav class="table">
-<ul>
-<img src="https://decipher.wiki/symbols_gallery/7-segment-display-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/abaddon-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/alienese-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/alt-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/alternian-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/amphibia-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/angelic-script-or-celestial-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/angelic_cipher-2.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/angles-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/antiker-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/arcadian-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/arthur-and-the-invisibles-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ath-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/atlantean-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/aurebesh-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/babylonian-cipher.gif" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/baconian-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ballet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barbier-night-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-128-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-39-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-93.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-kix-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-planet-top-numbers-barcode-postnet-bottom-numbers.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/barcode-rm4scc.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/baudot-murray-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/betamaze-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/bionocle-okoto-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/birds-on-a-wire-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/box-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/brahmi-numbers-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/braille.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/brainfuck-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/chain-of-death-maxwell-grant-the-shadow-magazine-1934.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/chappe-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/chinese-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/cirth-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/cisterian-numerals-monk-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/clock-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/coldplay-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/color-honey-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/color-tokki-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/cryptic_calendar.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/cuneiform-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/cyrillic-numbers-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/daedric-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/daggers-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dalecarlian-runes.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dancing-men-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/decabit-cipher-sections-of-10-and-converts-using-decimalascii-code.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dice-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/digicode.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dinglehopper-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dorabella-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dotsies-ciphers.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/draconic-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dream-smp-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dwarf-runes-cipher-.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/easycuneiform.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/elder-futhark-runes-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/enochian-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/eve-online-arg-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/five_needle_telegraph_cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/flag-semaphore-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/flaps-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/fonicfonime-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/four-triangles-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/freman-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/friederici-windows-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/futurama-2-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/futurama-alien-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gallifreyan-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/game-theory-arg-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gargish-ultima-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gauss-and-webers-telegraph-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gerudo-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/giovanni-battista-palatino-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gnommish-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gold-bug-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/goron-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/gravity-falls-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/halo-covenant-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/halo-covenant-language.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hebrew-numbers.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hexahue-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hieratic-numbers-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/high-spirit-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hittitite-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hobo-hieroglyphs-cipher-.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hylian-1-breath-of-the-wild-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hylian-2-skyward-sword-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hylian-3-twilight-princess-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/hymnos-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ichingching-hexagrams.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/inuktitut-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/iokharic-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/itc-zapf-dingbats-font.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/jenks-arm-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/jigsaw-puzzle-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/jsfuck-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/kabouter-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/kaotican-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/kenny-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/klingon-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/klinzhai-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/knot-notations.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/lingua-ignota-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/lorm-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/lunar-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/mandalorian-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/mary-stuart-mary-queen-of-scots-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/matoran-alphabet-bionicles-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/mayan-numerals-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/maze-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/mirror-digits.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/moon-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/music-note-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/music-sheets-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/navy-signals-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/new-krytan-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/nyctograph-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/oa-language.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/oa-number-system.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/occultam-scripturam.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ogham-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/oldcode-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/old_hungarian_script.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ook-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ooo-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ophidean-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/orkhon-alphabets.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/otherm-or-chozo-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/outer-rim-alien-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/pasley-poles-telegraph-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/periodic-table-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/phoenician-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/piet-codecipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/pigpen-masonic-cipher..png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/planet-cipher-numbers.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/polka-dot-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/prussian-semaphore-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/quadoo-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/red-herring-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/rellanic-elvish-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/rhesus-a-cipher-.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/road-signs-traffic-signs-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/rogue-tines-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/rosicrucian-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/san-lucas-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/semaphore-trousers-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/sheikah-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/sheikah-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/sign-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/simlish-language-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/slash-pipe-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/slash_and_pipe_code.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/solresol-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/space-invader-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/standard-galactic-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/stargate-ancients-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/steinheil-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/symbol-font-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/symbol-font.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tai-xuan-jing-tetragrams.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tally-unary-marks.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/templars-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tengwar-elvish-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/terran-codex-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tetragrammaton-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/theban-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/three-square-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tic-tac-toe-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tifinagh-alphabet-v1.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tifinagh-alphabet-v2.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tom-tom-code-cipher-uses-.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/unknown-pokemon-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/utopian-code-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/visitor-alphabet-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/voynich-eva-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/vulcan-script-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/wakanda-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/wakfu-draconic-cipher.jpg" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/webdings-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/wingdings-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ying-yang-alphaline-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/zodiac-times-herald-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/zoran-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/nyctographic-alphabet.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/JAB-code.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/fnaf-security-breach-wall-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/Alterna-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/alphabetum-kaldeorum-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dothraki-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/tolkien-goblin-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/al-bhed-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/genshin-impact-ciphers.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/egyptian-hieroglyphics.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/outer-rim-basic-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/stray-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/monklish-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/mourier-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/d'ni-numerals.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/kryptonian-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/circular-glyphs-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/angels-and-genii-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/rata-alada-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/malachim-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/passing-of-the-river-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/kirby-forgotten-land-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/ahmaric-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/dada-urka-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/copiale-cipher.png" class="symbol">
-<img src="https://decipher.wiki/symbols_gallery/Watch-Dogs-2-Shuffler-Cipher.png" class="symbol">
-
- </ul>
- </nav>
-<script>
-  var images = document.querySelectorAll('.symbol');
-  for (var i = 0; i < images.length; i++) {
-    var fileName = images[i].src.split('/').pop().split('.')[0];
-    images[i].insertAdjacentHTML('beforebegin', '<div>' + fileName + ':</div>');
-    images[i].src = 'https://decipher.wiki/symbols_gallery/' + fileName + '.png';
-  }
-</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5556863026084584"
-     crossorigin="anonymous"></script>
-<!-- vertical -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5556863026084584"
-     data-ad-slot="1283858161"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  </body>
+</body>
 </html>
-

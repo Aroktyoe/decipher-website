@@ -8,7 +8,9 @@ async function setupHeader() {
   const mobileAccountDropdown = document.getElementById("mobile-account-dropdown");
   const mobileLogoutBtn = document.getElementById("mobile-logout-btn");
 
-  if (!loginLink || !userInfo || !document.getElementById("account-dropdown")) return;
+  if (!loginLink || !userInfo) {
+  console.warn("Missing header elements");
+}
 
   const logout = async () => {
     await fetch("/logout", {
@@ -26,6 +28,7 @@ async function setupHeader() {
       method: "GET",
       credentials: "include"
     });
+    console.log("ME status:", res.status);
 
     if (!res.ok) throw new Error();
 
